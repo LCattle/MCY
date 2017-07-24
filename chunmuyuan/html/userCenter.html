@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css?v=1">
+		<title>个人中心主页</title>
+	</head>
+	<style type="text/css">
+		.userCenterTopBox {
+			background: url(../imgs/xq-images/head-bj.png) no-repeat top center;
+			background-size: cover;
+			position:relative;
+		}
+		
+		.Head {
+			text-align: center;
+			color: #FFFDEF;
+			display:block;
+		    padding-top:0.75rem;
+		}
+		
+		.Head img {
+			width: 4rem;
+			height: 4rem;
+			border-radius: 50%;
+		}
+
+		.aui-grid .iconfont {
+			font-size: 1.4rem;
+			line-height: 1.4rem;
+		}
+
+		.aui-grid .icon-daifukuan {
+			font-size: 1.8rem!important;
+		}
+
+		.aui-grid .icon-daishouhuo {
+			font-size: 1.6rem!important;
+		}
+
+		.aui-grid .icon-daipingjia {
+			font-size: 1.6rem!important;
+		}
+
+		.aui-col-xs-3:active {
+			background: #f5f5f5;
+		}
+
+		.tishi {
+			background: #f39c29;
+			text-align: center;
+			color: #FFFFFF;
+			position: absolute;
+			line-height: 0.9rem!important;
+			left: 3.5rem;
+			top: 0.65rem;
+		}
+		.aui-badge{
+			background: #f59b29;
+		}
+
+		.nickname {
+			display: block;
+			height: 1.2rem;
+		}
+		.order-information{
+			position:absolute;
+			bottom:0;
+			height:2rem;
+			width:100%;
+			background-color:#000;
+			background-color: rgba(0,0,0,0.4);
+		}
+		.order-information li{
+			width:50%;
+			height:1.5rem;
+			float:left;
+			line-height:1.5rem;
+			text-align: center;
+			color:#fff;
+			font-size:0.7rem;
+			margin-top:0.25rem;
+			box-sizing: border-box;
+		}
+		.information1{
+			border-right: 1px solid #fff;
+		}
+		.vip{
+			width:4.5rem;
+			height:1.2rem;
+			position:absolute;
+			right:0;
+			top:45%;
+			background:white;
+		    border-radius: 1.2rem 0 0 1.2rem;
+		}
+		.vip_left{
+			width:1rem;
+			height:1rem;
+			background-color:orange;
+			float:left;
+			margin-top:0.1rem;
+			border-radius: 50%;
+			margin-left:0.1rem;
+			color:#fff;
+			line-height: 1rem;
+			text-align: center;
+		}
+		.vip_right{
+			width:3.4rem;
+			height:1.2rem;
+			text-align: center;
+			line-height:1.2rem;
+			font-size:0.6rem;
+			float:right;
+			color:#ff8400;
+			font-family: "微软雅黑";
+		}
+		.quick{
+			height:1.75rem;
+			width:70%;
+			margin:0 auto;
+			text-align: center;
+			line-height:1.75rem;
+			border:1px solid orange;
+			border-radius: 0.3rem;
+			font-size:0.7rem;
+			color:orange;
+		}
+		.czquick{
+			padding:0 1rem;
+			width:100%;
+			height:1.7rem;
+			background:#fff;
+			line-height:1.7rem;
+		}
+		.colorf1691b{
+			color: #f1691b;
+		}
+		.colorf46819{
+			color: #f46819;
+		}
+		.colorf39402{
+			color: #f39402;
+		}
+		.color1fc4b3{
+			color: #1fc4b3;
+		}
+		.colorfc546b{
+			color: #fc546b;
+		}
+		.color71bafa{
+			color:#71bafa;
+		}
+	</style>
+
+	<body id="app">
+		<div class="userCenterContentBox" style="position: absolute;">
+			<div class="userCenterTopBox aui-text-center">
+				<div class="Head" style="display: none">
+					<img src="../imgs/xq-images/photo.png" id="hit"  onclick="app.toUserInfo()"/>
+					<span class="nickname" id="nickname"></span>
+				</div>
+				<div class="vip">
+					<div class="vip_left">
+						<i class="iconfont icon-huangguan1"></i>
+					</div>
+					<div class="vip_right">
+						
+					</div>
+				</div>
+				<ul class="order-information">
+					<li class="information1" onclick="app.href('myIntegral.html?action=0');">
+					       积分 : <span>0</span>
+					</li>
+					<li onclick="app.gotoPageCheck('myAccount.html?action=2')">
+						账户余额 : <span id="kobe">0</span>
+					</li>
+				</ul>
+			</div>
+			<!--
+		    	描述：全部订单
+		    -->
+			<!--<ul class="aui-list aui-media-list">
+				<li onclick="app.gotoPageCheck('orderList.html?state=0')" class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div lan-res="all_order" class="aui-list-item-inner aui-list-item-arrow">
+							全部订单
+						</div>
+					</div>
+				</li>
+			</ul>-->
+			<section class="aui-grid">
+				<div class="aui-row">
+					<div class="aui-col-xs-3" onclick="app.gotoPageCheck('orderList.html?state=0')" style="padding:0.5rem 0;">
+						<div class="aui-badge" id="daifukuan" style="display: none;"></div>
+						<i class="iconfont icon-daifukuan"></i>
+						<div class="aui-grid-label" lan-res="wait_pay">待支付</div>
+					</div>
+					<div class="aui-col-xs-3" onclick="app.gotoPageCheck('orderList.html?state=1')" style="padding: 0.5rem 0;">
+						<div class="aui-badge" id="daishouhuo" style="display: none;"></div>
+						<i class="iconfont icon-daishouhuo"></i>
+						<div class="aui-grid-label" style="margin-top: 0.37rem;">待收货</div>
+					</div>
+					<div class="aui-col-xs-3" style="padding: 0.5rem 0;">
+						<div class="aui-badge" id="daipingjia" style="display: none;"></div>
+						<i class="iconfont icon-daipingjia" onclick="app.gotoPageCheck('orderList.html?state=2')"></i>
+						<div class="aui-grid-label">待评价</div>
+					</div>
+					<div class="aui-col-xs-3" onclick="app.gotoPageCheck('orderList.html?state=-1')" style="padding: 0.5rem 0;">
+						<i class="iconfont icon-quanbudingdan1"></i>
+						<div class="aui-grid-label" >全部订单</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="aui-content aui-margin-b-10 aui-margin-t-10" style="border:none;">
+				<ul class="aui-list aui-list-in">
+					<li style="display: none;" id="zsgwbox"  class="aui-list-item aui-list-item-arrow aui-list-item-middle aui-margin-b-10">
+						<div class="aui-media-list-item-inner" style="width: 100%;" >
+							<div class="aui-list-item-media" style="width: 3rem;">
+								<img src="../imgs/pic.jpg" style="width: 2.25rem;height: 2.25rem;" onerror="this.src='../imgs/pic.jpg'" id="zsgwimg" class="aui-img-round aui-list-img-sm">
+							</div>
+							<div class="aui-list-item-inner noafer" style="width: 100%;">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title aui-font-size-14">我的专属顾问<br>
+										<div class="aui-list-item-text" id="zsgwname">
+										</div>
+									</div>
+								</div>
+								<div class="aui-list-item-right"  style="display: none;">
+									<span id="zsgwmobile"></span>
+									<i class="iconfont icon-dianhua aui-margin-l-5"></i>
+								</div>
+							</div>
+						</div>					
+					</li>
+					<li class="aui-font-size-14 czquick"><span style="display:block;float:left;">快速充值</span><span style="display:block;float:right;" onclick="location.href='memberRecharge.html'">更多></span></li>
+					<section class="aui-grid aui-margin-b-10" style="padding-bottom:0.5rem;">
+						<div class="aui-row">
+							<div class="aui-col-xs-4" style="padding:0;" id="quick1">								    
+								<div class="aui-grid-label" style="margin:0;">
+									<div class="quick">998元</div>
+								</div>
+						    </div>
+						    <div class="aui-col-xs-4" style="padding:0;" id="quick2">    
+							    <div class="aui-grid-label" style="margin:0;">
+							    	<div class="quick">1888元</div>
+							    </div>
+						    </div>
+						    <div class="aui-col-xs-4" style="padding:0;" id="quick3">   
+							    <div class="aui-grid-label" style="margin:0;">
+							    	<div class="quick">3999元</div>
+							    </div>
+						    </div>
+						</div>
+					</section>
+					<section class="aui-grid">
+					    <div class="aui-row">
+					        <div class="aui-col-xs-3" onclick="location.href='addressList.html'">
+					            <i class="iconfont icon-wodeshouhuodizhi1 colorf1691b"></i>
+					            <div class="aui-grid-label">收货地址</div>
+					        </div>
+					        <div class="aui-col-xs-3">
+					            <i class="iconfont icon-icon1 colorf46819" onclick="location.href='memberRecharge.html'"></i>
+					            <div class="aui-grid-label">会员充值</div>
+					        </div>
+					        <div class="aui-col-xs-3">
+					            <i class="iconfont icon-qia colorf39402" onclick="location.href='cardActivte.html'"></i>
+					            <div class="aui-grid-label">卡券激活</div>
+					        </div>
+					        <div class="aui-col-xs-3">
+					            <i class="iconfont icon-huangguan colorf39402" onclick="app.gotoPageCheck('userAccount.html')"></i>
+					            <div class="aui-grid-label">会员信息</div>
+					        </div>
+					        <div class="aui-col-xs-3">
+					            <i class="iconfont icon-qiaquan color1fc4b3" onclick="app.href('couponList.html')"></i>
+					            <div class="aui-grid-label">我的卡券</div>
+					        </div>
+					        <div class="aui-col-xs-3">
+					            <i class="iconfont icon-bangzhuzhongxin color1fc4b3" onclick="location.href='../help/help.html'"></i>
+					            <div class="aui-grid-label">帮助中心</div>
+					        </div>
+					        <div class="aui-col-xs-3">
+					            <i class="iconfont icon-kefu colorfc546b" onclick="location.href='tel://400-900-8838'"></i>
+					            <div class="aui-grid-label">春沐源客服</div>
+					        </div>
+					        <div class="aui-col-xs-3" onclick="app.gotoPageCheck('gardenCenter.html')">
+					            <i class="iconfont icon-shucai1 colorfc546b"></i>
+					            <div class="aui-grid-label">我的菜园</div>
+					        </div>
+					        <div class="aui-col-xs-3" onclick="app.href('interest.html');">
+					            <i class="iconfont icon-huiyuanquanyi color71bafa"></i>
+					            <div class="aui-grid-label">我的权益</div>
+					        </div>
+					        <div class="aui-col-xs-3" onclick="location.href='feedback.html'">
+					            <i class="iconfont icon-fankui color71bafa"></i>
+					            <div class="aui-grid-label">意见反馈</div>
+					        </div>
+					    </div>
+					</section>
+					
+					<!--<li class="aui-list-item aui-list-item-middle" onclick="app.gotoPageCheck('myAccount.html?action=2')">
+						<div lan-res="my_account" class="aui-list-item-inner aui-list-item-arrow">
+							我的账户
+						</div>
+					</li>
+					<li class="aui-list-item" onclick="app.gotoPageCheck('userAccount.html')">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							会员信息
+						</div>
+					</li>
+					<li class="aui-list-item" onclick="location.href='selectRecharge.html'">
+						<div lan-res="account_recharge" class="aui-list-item-inner aui-list-item-arrow">
+							账户充值
+						</div>
+					</li>
+
+					<li class="aui-list-item" onclick="app.href('couponList.html')">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							我的优惠券
+						</div>
+					</li>
+					<li class="aui-list-header">
+					</li>
+					<li class="aui-list-item" onclick="location.href='msgList.html'" style="display: none;">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							消息中心
+							<span class="aui-font-size-12 tishi aui-badge" style="display: none;"></span>
+						</div>
+					</li>
+					<li class="aui-list-item" onclick="app.gotoPageCheck('exclusiveConsultant.html')">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							专属顾问
+						</div>
+					</li>
+					<li class="aui-list-item" onclick="location.href='../help/help.html'">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							帮助中心
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-title">春沐源客服</div>
+							<div class="aui-list-item-right" onclick="location.href='tel://400-900-8838'">400-900-8838<i class="iconfont icon-dianhua aui-margin-l-5"></i></div>
+						</div>
+					</li>
+					<li class="aui-list-item" onclick="app.gotoPageCheck('feedback.html')">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							意见反馈
+						</div>
+					</li>-->
+					
+				</ul>
+			</div>
+		</div>
+		<!--
+        	描述：底部tab
+        -->
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="aui-bar-tab-item" tapmode>
+				<i class="aui-iconfont aui-icon-home"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab1">首页</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<i class="aui-iconfont iconfont icon-shexiangtou" style="font-size: 1rem;"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab2">看现场</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<div class="aui-badge" id="carNum" style="display: none;"></div>
+				<i id="car_icon" class="aui-iconfont aui-icon-cart"></i>
+				<div class="aui-bar-tab-label" lan-res="">购物车</div>
+			</div>
+			<div class="aui-bar-tab-item aui-active" tapmode>
+				<i class="aui-iconfont aui-icon-my"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab4">我的</div>
+			</div>
+		</footer>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

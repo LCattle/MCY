@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>全部圈子</title>
+	</head>
+	<style type="text/css">
+		html,body{
+			background-color: #EEEEEE;
+		}
+	</style>
+
+	<body id="app">
+		<section id="wrapper" class="aui-padded-t-5" style="-webkit-overflow-scrolling: touch; padding-top: 0!important;">
+			<div class="aui-content aui-margin-b-15">
+				<ul class="aui-list aui-media-list" id="list">
+				</ul>
+			</div>
+		</section>
+		<script type="text/template" id="itemtemp">
+			<li class="aui-list-item aui-list-item-middle" id="circle_<@ it.id>" circleid="<@ it.id>" style=" margin-bottom: 0.2rem; padding-top: 0.5rem;padding-bottom: 0.5rem;" onclick="app.href('circleDetails.html?circleid=<@ it.id>')">
+		            <div class="aui-media-list-item-inner">
+		                <div class="aui-list-item-media" style="width: 3.4rem; padding-right: 0;">
+							<img style="width: 3.4rem; height: 3.4rem; border-radius: 0.3rem;" src="<@ app.getImgPath(it.image).replace('/image/', '/image/thumb/')>"/>
+		                  <!-- <img class="main" src="<@ it.image>" />-->
+		                </div>
+		                <div class="aui-list-item-inner" style="width: 65%;padding-left: 0.5rem; padding-right: 0.2rem;">
+		                    <div class="aui-list-item-text">
+			                    <div class="aui-list-item-title"><@ it.names></div>
+			                </div>
+			                <div class="aui-list-item-text">
+			                    <p style="color: #c3c1c1;"><span><@ it.partakenum></span>人<span style="margin-left: 0.2rem;"><@ it.tienum></span>条帖子</p>
+			                    
+			                </div>
+			                <div class="aui-ellipsis-1" style="color: #c3c1c1; font-size: 0.75rem;">
+			                	<@ it.descr>
+			                </div>	
+		                </div>
+		                <div class="joins" style="position: absolute; right: 0.5rem;padding: 0.1rem 0.6rem; border-radius: 0.2rem; color: #FFFFFF; background-color: #097754;">加入</div>
+		            </div>
+		        </li>
+		</script>
+		
+	<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

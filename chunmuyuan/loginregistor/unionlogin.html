@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title></title>
+		<style>
+			#eye {
+				font-size: 1.2rem;
+			}
+			
+			.tabItem {
+				padding: 0.5rem 0;
+				background: #BDBDBD;
+				text-align: center;
+			}
+			
+			.tabItem.active {
+				background: white;
+			}
+			
+			#app .app_btn_bgGreen.disable {
+				background: #e1e1e1!important;
+			}
+			
+			#unitbox{
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+			}
+			.line{
+				height: 1px;
+				background: gray;
+			}
+			.unitimg{
+				width: 2.5rem;
+				height: 2.5rem;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="aui-margin-t-15 app_bg_white">
+			
+			<!--手机验证码登录box-->
+			<div id="loginBox2">
+				<div layout class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-10">
+					<input type="text" name="userName" id="userName" placeholder="手机号" />
+				</div>
+				<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+					<input type="number" flex name="userName" id="userName" placeholder="请输入验证码" />
+					<div layout="column">
+						<div flex></div>
+						<div class="app_btn_small  btnfilter app_bg_green" onclick="app.getCode()">获取验证码</div>
+						<div flex></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="aui-padded-l-15 app_text_999 aui-font-size-14 aui-padded-b-15 aui-margin-t-15">关联后，您的QQ/微信和春沐源账号都能登录</div>
+		<!--
+        	描述：登录按钮
+        -->
+		<div class="aui-padded-l-15 aui-padded-r-15">
+			<div class="app_btn_big  btnfilter app_bg_green">立即关联</div>
+		</div>
+
+	</body>
+
+</html>

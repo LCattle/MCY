@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>我的收藏</title>
+		<style>
+			#app .aui-tab .aui-active {
+				color: #f59b29;
+				border-bottom: 2px solid #f59b29;
+				z-index: 10;
+			}
+			
+			#editBtn {
+				padding: 0 0.75rem;
+				height: 2.2rem;
+				line-height: 2.2rem;
+				background: white;
+				color: #f59b29;
+			}
+			.listItem{
+				padding: 0.5rem 0.75rem;
+				height: 6rem;
+				margin-bottom: 0.25rem;
+				background: white;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div layout>
+			<div flex class="aui-tab aui-margin-b-10 noafer" id="tab">
+				<div class="aui-tab-item">全部收藏</div>
+				<div class="aui-tab-item">自选菜</div>
+				<div class="aui-tab-item">宅配套餐</div>
+				<div class="aui-tab-item">礼品卡</div>
+			</div>
+			<div id="editBtn">编辑</div>
+		</div>
+
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+				<div class="swiper-container" style="height: 100%;">
+					<div class="swiper-wrapper" id="selectPrudctBox">
+						<div class="swiper-slide">
+							<div class="listItem" layout>
+								<img  src="../imgs/img/1.jpg" style="width: 5rem;height: 5rem;"/>
+								<div flex layout="column" class="aui-padded-l-10">
+									<div style="margin-bottom: 0.3rem;line-height: 1rem;">西红柿大西红柿</div>
+									<div flex class="app_text_999 aui-ellipsis-2" style="line-height: 1rem;">水培养殖大西红柿水培养殖大西红柿水培养殖大西红柿</div>
+									<div layout>
+										<div flex style="margin-top: 0.6rem;line-height: 1rem;" class="app-text-orange">
+										300g
+										</div>
+										<div style="margin-top: 0.6rem;">x 3</div>
+									</div>
+									
+								</div>
+							</div><div class="listItem" layout>
+								<img  src="../imgs/img/1.jpg" style="width: 5rem;height: 5rem;"/>
+								<div flex layout="column" class="aui-padded-l-10">
+									<div style="margin-bottom: 0.3rem;line-height: 1rem;">西红柿大西红柿</div>
+									<div flex class="app_text_999 aui-ellipsis-2 aui-font-size-14" style="line-height: 1rem;">水培养殖大西红柿水培养殖大西红柿水培养殖大西红柿</div>
+									<div style="margin-top: 0.6rem;line-height: 1rem;" class="app-text-orange">
+										300g
+									</div>
+								</div>
+							</div><div class="listItem" layout>
+								<img  src="../imgs/img/1.jpg" style="width: 5rem;height: 5rem;"/>
+								<div flex layout="column" class="aui-padded-l-10">
+									<div style="margin-bottom: 0.3rem;line-height: 1rem;">西红柿大西红柿</div>
+									<div flex class="app_text_999 aui-ellipsis-2" style="line-height: 1rem;">水培养殖大西红柿水培养殖大西红柿水培养殖大西红柿</div>
+									<div style="margin-top: 0.6rem;line-height: 1rem;" class="app-text-orange">
+										300g
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+
+</html>

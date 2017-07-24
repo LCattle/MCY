@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <title>我的优惠券</title>
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+        .myheader {
+            position: fixed;
+            background-color: #eeeeee;
+            z-index: 20;
+        }
+        .container{
+            position: relative;
+        }
+        .couponList {
+            padding-top: 2rem;
+            width: 100%;
+        }
+        .aui-content-padded{
+            margin-top: 1.2rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+        .aui-card-list {
+            background-color: #EEEEEE;
+            margin-bottom: 1.2rem;
+        }
+        .aui-card-list-header {
+            color:#ffffff;
+            background-color: #0F7B55;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        .aui-card-list-content {
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .aui-bar-btn-item:first-child{
+            /*border-left-width: 2px;*/
+            border-top-left-radius: 0.3rem;
+            border-bottom-left-radius: 0.3rem;
+        }
+        .aui-bar-btn-item:last-child {
+            border-top-right-radius: 0.3rem;
+            border-bottom-right-radius: 0.3rem;
+        }
+        .aui-bar-btn-item {
+            color: #589983;
+            border-color: #B4CFC6;
+            /*border-top-width: 2px;*/
+            /*border-bottom-width: 2px;*/
+            /*border-right-width: 2px;*/
+            font-size: 0.75rem;
+            padding-left: 1.2rem;
+            padding-right: 1.2rem;
+            padding-top: 5px;
+            padding-bottom: 5px
+        }
+        .active {
+            background-color: #0F7B55;
+            color: #ffffff;
+        }
+        .i_time {
+            position: absolute;
+            left: -0.9rem;
+            top:0.2rem;
+            width: 0.7rem;
+            height: 0.7rem;
+            background-repeat: no-repeat;
+            background-image: url("../imgs/i_time.png");
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class=" aui-bar-nav  myheader">
+        <div class="aui-bar aui-bar-btn">
+            <div style="border-color: #B4CFC6;" class="aui-bar-btn-item active">未使用</div>
+            <div style="border-color: #B4CFC6;" class="aui-bar-btn-item">已使用</div>
+            <div style="border-color: #B4CFC6;" class="aui-bar-btn-item">已过期</div>
+        </div>
+    </header>
+    <div class="couponList" >
+        <section id="couponSection" class="aui-content-padded">
+
+        </section>
+    </div>
+    <script type="text/template" id="couponTemplate">
+        <div class="aui-card-list">
+            <div class="aui-card-list-header">
+                春沐源 | <@it.couponName>
+            </div>
+            <div class="aui-card-list-content" style="color: #000000">
+                <img style="width: 100%" src="../imgs/card_bg.png">
+                <span style="position: absolute;top: 0.55rem;left: 1.1rem;font-size: 1rem;font-style: italic">￥</span>
+                <span style="position: absolute;top: 0.14rem;left: 2rem;font-size: 2rem;font-style: italic"><@it.value></span>
+                <span style="position: absolute;top: 0.8rem;left: 6rem;font-size: 1rem;"><span style="font-size:1.2rem">[ </span><@it.ruleName><span style="font-size:1.2rem"> ]</span></span>
+                <span style="position: absolute;bottom: 0.65rem;left: 1.5rem;font-size: 0.71rem;font-weight: bold"><i class="i_time"></i><@it.starttime>~<@it.endtime></span>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="noDataTemplate">
+        <div style="text-align: center;padding-top: 3rem">
+            <div><img src="../imgs/nhc.png" style="width:7rem"></div>
+            <div style="font-size: 0.8rem;color:#838383;">您目前无该类型卡券</div>
+        </div>
+    </script>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</div>
+</body>
+</html>

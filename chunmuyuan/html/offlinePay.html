@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>线下支付</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body id="app">
+<div class="aui-content aui-margin-b-10">
+    <ul class="aui-list aui-media-list">
+        <li class=" app_bg_green app-text-white aui-text-center" style="height: 4.5rem; line-height: 4.5rem;">
+            <span id="orderStatus" class="aui-font-size-16" style="width: 50%; display: inline-block;"> </span>
+            <i id="orderStatusIcon" class="icon iconfont aui-pull-right" style="font-size:3rem; width: 50%;color: #fff7ec;"></i>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner noafer">
+                <div class="aui-list-item-text aui-font-size-16" style="font-size:0.8rem;color:#333;">收款信息</div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-text" style="font-size:0.7rem;color:#333;line-height: 1.3rem">
+                    <span>收款方名称</span><span>深圳春沐源农业科技有限公司</span>
+                </div>
+                <div class="aui-list-item-text" style="font-size:0.7rem;color:#333;line-height: 1.3rem">
+                    <span>收款方账号</span><span>775768182747</span>
+                </div>
+                <div class="aui-list-item-text" style="font-size:0.7rem;color:#333;line-height: 1.3rem">
+                    <span>收款方银行</span><span>中国银行</span>
+                </div>
+                <div class="aui-list-item-text" style="font-size:0.7rem;color:#333;line-height: 1.3rem">
+                    <span>订单号(请在转账备注中填写) </span><span id="orderno"></span>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item aui-list-item-middle " id="address" style="display: none;">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media" style="width: 2rem;">
+                    <i class="aui-iconfont aui-icon-location" style="font-size: 1.1rem;"></i>
+                </div>
+                <div class="aui-list-item-inner ">
+                    <div class="aui-list-item-text plh13">
+                        <div class="aui-list-item-title aui-font-size-14 Name">收货人:<span id="addressName"></span></div>
+                        <div class="aui-list-item-title aui-font-size-14" id="addressPhone"></div>
+                    </div>
+                    <div class="aui-list-item-text" id="addressFull">
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item plh14" id="addressggq" style="display: none;">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-title aui-font-size-16">
+                    购买人手机号码:<span id="ggqUserMobile"></span></div>
+            </div>
+        </li>
+        <li class="aui-list-item plh14" id="addressdzk" style="display: none;">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-text plh13">
+                    <div class="aui-list-item-title aui-font-size-16">收货人:春沐源会员</div>
+
+                </div>
+                <div class="aui-list-item-title aui-font-size-16">
+                    收信手机号码:<span id="userMobile"></span></div>
+            </div>
+        </li>
+    </ul>
+    <div class="aui-content aui-margin-b-10">
+        <ul class="aui-list aui-list-in">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner noafer">
+                    <div class="aui-list-item-text aui-font-size-16" id="priceLable" style="font-size:0.8rem;color:#333;">
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-14" id="price">
+
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" id="derate" style="display:none;">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text aui-font-size-16" style="font-size:0.8rem;color:#333;">
+                        优惠减免
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-14" id="freeprice">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" id="actual" style="display:none;">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text aui-font-size-16" style="font-size:0.8rem;color:#333;">
+                        实付斤数
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-14" id="actualprice">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" id="depositbox" style="display:none">
+                <div class="aui-list-item-inner noafer">
+                    <div class="aui-list-item-text " id="priceLable">
+                        订金券抵扣
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-14" id="price">
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="aui-list-item" id="couponBox" style="display:none">
+                <div class="aui-list-item-inner noafer">
+                    <div class="aui-list-item-text " style="font-size:0.8rem;color:#333;"	 id="couponLable">
+                        优惠券
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-14" id="coupon">
+
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item ">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text " style="font-size:0.8rem;color:#333;">
+                        运费
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-14" id="logisticsprice">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item" id="totalbox" style="display:none">
+
+                <div class="aui-list-item-inner noafer">
+                    <div class="1 aui-font-size-16" id="priceLable">
+                        实付
+                    </div>
+                    <div class="aui-list-item-right app-text-orange aui-font-size-16" id="price">
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item jordan" style="display:none">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text kobe">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="aui-content-padded" style="margin-top:1rem;">
+        <div onclick="app.gotoIndexPage()" class="aui-btn border-radius15 app_bg_white app-text-green aui-btn-block aui-margin-b-10 border_green again" >返回首页</div>
+        <div onclick="app.toOrder()" class="border-radius15 aui-btn aui-btn-block  aui-pull-right">查看订单</div>
+        <div style="height: 4.5rem;"></div>
+    </div>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</div>
+</body>
+</html>

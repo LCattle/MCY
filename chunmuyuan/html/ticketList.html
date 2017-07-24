@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="adress=no">
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title lan-res="app_name">智慧蔬果梦工厂观光券</title>
+</head>
+<body id="app" STYLE="background-color: #EEEEEE">
+<div class="aui-content aui-padded-l-5 aui-padded-r-5">
+    <ul class="aui-list aui-media-list" id="ticketList">
+
+    </ul>
+    <script type="text/template" id="ticketItem">
+        <li class="aui-list-item aui-margin-t-0 aui-padded-l-10" >
+            <div onclick="app.href('../goods/goodsDetails.html?pid=s<@ it.id>')" class="aui-media-list-item-inner">
+                <div class="aui-list-item-media" style="width:7rem;padding: 0.75rem 0px;margin-right: 0.25rem">
+                    <img onerror="this.src='../imgs/defaultGoods.png'" style="width:7rem!important;" src="<@ app.getMiddelPath(it.product.picpath)>">
+                </div>
+                <div class="aui-list-item-inner aui-padded-t-15 aui-padded-r-10 ">
+                    <div class="aui-list-item-title">
+                        <@ it.product.names>
+                    </div>
+                    <div>
+                        <div class="aui-label aui-label-danger aui-label-outlined" style="height: 0.9rem;font-size: 0.6rem;line-height: 0.5rem">优惠</div>
+                        <div class="aui-label aui-label-outlined" style="height: 0.9rem;font-size: 0.6rem;border-color:#65A891;line-height: 0.5rem">一日游</div>
+                    </div>
+                    <div class="aui-list-item-text" style="font-size: 0.7rem">
+                        <@ it.product.ads>
+                    </div>
+                    <div class="aui-list-item-text" style="margin-top:0.5rem;">
+                       <p style="font-size: 0.7rem;color: #B6B6B6"><i style="font-size: 0.7rem;" class="iconfont icon-icon6"></i>河源</p>
+                    </div>
+                    <div class="aui-list-item-text" style="align-items: flex-start">
+                        <p class="app-text-orange"><@ app.getPriceStr(it.product.price)></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="adress=no">
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" type="text/css" href="../../../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/icon/iconfont.css">
+    <title lan-res="app_name">春沐源</title>
+</head>
+<style>
+    .box{
+        width:100%;
+        position:relative;
+    }
+    .box img{
+        width:100%;
+        display: block;
+    }
+    .box1{
+        width: 82%;
+        height: 5.5%;
+        position: absolute;
+        bottom: 2.75%;
+        left: 9%;
+    }
+    .mydailog {
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        display: none;
+    }
+    .dialog-inner {
+        position: absolute;
+        width: 80%;
+        height: auto;
+        left:10%;
+        top:20%;
+        background-color: #EEEEEE;
+        border-radius: 0.75rem;
+    }
+    .dialog-tip {
+        text-align: center;
+        color: #000000;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+    .dialog-goto {
+        text-align: center;
+        margin-bottom: 0.75rem;
+        font-size: 0.7rem;
+    }
+    .dialog-confirm {
+        display: inline-block;
+        padding: 0.25rem 1rem;
+        border-radius: 0.25rem;
+        color: white;
+    }
+    .dialog-footer {
+        width: 100%;
+    }
+    .aui-card-list-header {
+        color: #ffffff;
+        background-color: #0F7B55;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        font-size: 0.7rem;
+    }
+    .aui-card-list {
+        background-color: #EEEEEE;
+    }
+    .i_time {
+        position: absolute;
+        left: -0.9rem;
+        top:0.2rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        background-repeat: no-repeat;
+        background-image: url("../../../imgs/i_time.png");
+        background-size: 100%;
+    }
+    .dialog-coupon-ul {
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+    }
+</style>
+<body id="app" style="background-color: #EEEEEE">
+<div class="aui-content box">
+    <img src="v77.jpg">
+    <div class="box1" onclick= "app.toRecharge()">
+    </div>
+</div>
+<div class="mydailog">
+    <div class="dialog-inner">
+        <div class="dialog-tip">优惠劵已领取成功</div>
+        <div class="dialog-coupon-ul">
+            <div class="aui-card-list">
+                <div class="aui-card-list-header">
+                    春沐源 | 蔬果券(限APP使用)
+                </div>
+                <div class="aui-card-list-content" style="color: #000000">
+                    <img style="width: 100%" src="../../../imgs/card_bg.png">
+                    <span style="position: absolute;top: 0.5rem;left: 1rem;font-size: 1rem;font-style: italic">￥</span>
+                    <span style="position: absolute;top: 0.35rem;left: 1.8rem;font-size: 1.3rem;font-style: italic">50</span>
+                    <span style="position: absolute;top: 0.65rem;left: 4rem;font-size: 0.7rem;"><span style="font-size:0.9rem">[ </span>满99元可用<span style="font-size:0.9rem"> ]</span></span>
+                    <span style="position: absolute;bottom: 0.5rem;left: 1.5rem;font-size: 0.6rem;font-weight: bold"><i class="i_time"></i>自领用之日起30天内有效</span>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-footer">
+            <div class="dialog-goto" style=" margin-bottom: 0.5rem;"><span onclick="app.href('../../OptionalList.html');" class="dialog-confirm app_bg_green btnfilter">去使用</span></div>
+            <div class="dialog-goto"><a style="color: #097754" href="javascript:app.href('../../couponList.html');">我的优惠劵&gt;&gt;</a></div>
+        </div>
+    </div>
+</div>
+<script data-main="../../../js/main" data-app="../html/activity/20170707/v77" src="../../../lib/requirejs/require.js"></script>
+</body>
+</html>

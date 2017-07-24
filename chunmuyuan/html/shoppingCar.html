@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css?v=1">
+		<title>购物车</title>
+		<style>
+			#top {
+				position: relative;
+				color: #f39c29;
+				height: 1.5rem;
+				line-height: 1.5rem;
+				width: 100%;
+				z-index: 3;
+				background: #f5f5f5;
+			}
+			
+			#top .aui-list-item-arrow:before {
+				border: 1px solid #f39c29;
+				border-top: none;
+				border-right: none;
+				width: 0.3rem;
+				height: 0.3rem;
+			}
+			
+			.btn_nub {
+				position: absolute;
+				right: 0.75rem;
+				bottom: 0.3rem;
+			}
+			
+			.checkBtn,.checkBtn_No{
+				width: 0.75rem;
+				border: 1px #007548 solid;
+				height: 0.75rem;
+				border-radius: 50%;
+			}
+			.checkBtn_No{
+				border-color: #757575;
+			}
+			.checkBtn:active {
+				background-color: #f5f5f5;
+			}
+			
+			.checkBtn.active {
+				border: none;
+				background: url(../imgs/xq-images/on.png);
+				background-size: 100% 100%;
+			}
+			
+			.itembox {
+				height: 5.25rem;
+				position: relative;
+			}
+			
+			.itembox .aui-list-item {
+				position: absolute;
+				top: 0;
+				padding-left: 1.75rem;
+				width: 100%;
+			}
+			
+			.itembox .checkBtn ,.itembox .checkBtn_No{
+				position: absolute;
+				top: 2.25rem;
+				z-index: 1;
+				left: 0.75rem;
+			}
+			
+			.behind {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			
+			.behind a.ui-btn {
+				width: 68px;
+				margin: 0px;
+				float: right;
+				border: none;
+			}
+			
+			.behind a.delete-btn,
+			.behind a.delete-btn:active,
+			.behind a.delete-btn:visited,
+			.behind a.delete-btn:focus,
+			.behind a.delete-btn:hover {
+				color: white;
+				background-color: red;
+				height: 100%;
+				display: block;
+				width: 100px;
+				line-height: 5.25rem;
+				text-align: center;
+				text-shadow: none;
+			}
+			
+			.footer-bot {
+				height: 2.45rem;
+				background: #FFFFFF;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				z-index: 2;
+			}
+			
+			.del {
+				float: right;
+			}
+			
+			.del:active {
+				color: #757575!important;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div id="topMess" style="padding: 0 0.75rem;background-color:orange;color:#fff;height:2rem;">
+			<div style="height:2rem;line-height:2rem;float:left;width:8%;text-align: center;font-size:0.65rem;">
+				<i class="iconfont icon-tongzhi"></i>
+			</div>
+		 	<div style="height:2rem;float:left;width:90%;font-size:0.65rem;">
+		 		订单总额60元起配送,99元以下加12元运费,总额大于等于99免运费,自提免运费
+		 	</div>
+		</div>
+		<div id="head" style="height: 2.2rem; padding: 0 0.75rem; line-height: 2.2rem;">
+			<span class="app-text-orange del" onclick="app.delSelect()">删除</span>
+			<div onclick="app.delSelect()" style="width:0.5rem;float:right;height:2.2rem;"></div>
+			<div class="center_outter" onclick="app.selectAll()" style="height: 100%; width: 1.2rem;float: left;">
+				<div class="center_inner">
+					<div class="checkBtn active" id="checkAllBtn"></div>
+				</div>
+			</div>
+			<div onclick="app.selectAll()" style="width:50%;">全选</div>
+		</div>
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;padding-bottom: 2.45rem;">
+			<ul id="list" class="aui-list aui-media-list">
+
+			</ul>
+		</section>
+		<div style="height: 2.42rem;"></div>
+		<div class="footer-bot" style="z-index: 1000!important;">
+			<div class="aui-pull-left aui-font-size-14 " style="padding: 0.15rem 0.75rem ;">
+				<div class="center_outter" style="text-align: left;height:2.3rem;">
+					<div class="center_inner ">
+						<div><span id="bookPrice"></span><span class="aui-font-size-16 app-text-orange"><span id="sumWeight"></span></span>
+						</div>
+						<div id="infotip" class="aui-font-size-12" onclick="location.href='OptionalList.html'" style="display: none;">还差<span class="app-text-orange" id="chaKg"></span>满足起送
+							<span class="app-text-orange aui-padded-l-10" onclick="location.href='OptionalList.html'">去凑单</span>
+						</div>
+						<div id="vipTip" style="font-size: 0.6rem;color: #999999;display: none">会员享更多优惠</div>
+					</div>
+				</div>
+			</div>
+			<!--<div id="goon" class="aui-font-size-14 app-text-orange aui-pull-left" style="display: none;" onclick="location.href='OptionalList.html'">继续购买</div>-->
+			<div class="btn_submit_order app_bg_gray " onclick="app.toSubmit(this)" style="text-align: center;">
+				去结算
+			</div>
+		</div>
+		<script type="text/template" id="template">
+			<div class="itembox" id="skuitem_<@ it.id>" data-virtualvalue="<@ it.virtualvalue>" data-memberprice="<@ it.minPrice>">
+				<div class="behind">
+					<a class="ui-btn delete-btn btnfilter" onclick="app.delOne(<@ it.id>)">删除</a>
+				</div>
+				<div class="itembox swiper">
+					<div class=" <@ it.isDisabled?'checkBtn_No':'checkBtn' > active " onclick="app.selectOne(<@ it.id>);" data-sku="<@ it.id>"></div>
+					<li class="aui-list-item ">
+						<div class="aui-media-list-item-inner goodsIetm" >
+							<div class="aui-list-item-media" onclick="app.selectOne(<@ it.id>);" style="width: 4.75rem;padding-right: 0.25rem">
+								<img class="goodsimg" src="<@ app.getMiddelPath(it.picpath)>">
+							</div>
+							<div class="aui-list-item-inner">
+								<div style="position:absolute;left:0;top:0;width:38%;height:5.25rem;z-index: 999;" onclick="app.selectOne(<@ it.id>);">
+								</div>
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										<@ it.skuname>
+									</div>
+								</div>
+								<div class="aui-list-item-title" style="display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;width:10rem;font-size: 0.7rem;margin-top: 0.15rem;">
+									<@ it.product.ads>
+								</div>
+							</div>
+							<div class="goods_info app-text-orange aui-font-size-12" style="left:6.45rem;">
+								<div class="app-text-orange">
+									<span style="font-size:0.8rem;">
+										<span style=" display: <@ it.yuanPrice?'':'none'>; font-size:0.6rem;"><@ it.yuanPrice></span><@ app.getPriceStr(it.minPrice)><span style="font-size:0.6rem;display: <@ it.yuanPrice?'':'none'>;"><@ it.up></span>
+									</span>
+								</div>
+						        <div style="display: <@ it.isShow == 1?'none':''>;text-decoration: line-through;font-size:0.6rem;color:#757575;">原价¥<@ it.sellprice></div>
+							</div>
+						</div>
+					</li>
+					<div class="btn_nub" style="padding: 0;">
+						<div class="inputBox" style="display: <@ (it.isDisabled)?'none':'block' >;">
+							<i class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+							<input id="buynum<@ it.id>" skuid="<@ it.id>" class="buynum" type="number" value="<@ app.car.data[it.id].skucount>" readonly="" disabled="" style="color:#424242;-webkit-text-fill-color:#424242;-webkit-opacity:1;opacity: 1;">
+							<i class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+						</div>
+						<div class="inputBox app_bg_gray"  style="color: white;display:<@ it.isDisabled?'block':'none' > ;">
+							已售罄
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script id="shouqing" type="text/template">
+			<div id="shouqingBtn" style="height: 4.5rem;padding-top:;text-align: center;padding-top:1.5rem">
+				<div class="app-btn-orange app-text-orange btnfilter"
+					onclick="app.removeSq(<@ 1>)"
+					 style="width: 6rem;height:1.5rem;line-height:1.5rem;display:inline-block;border-radius: 0.3rem;">清除售罄商品</div>
+			</div>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

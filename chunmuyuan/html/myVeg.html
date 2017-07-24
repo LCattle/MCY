@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css"  href="../css/myVeg.css" />
+    <title>我的菜</title>
+    <style>
+        * {
+            text-indent:0px;
+        }
+        /*@font-face {*/
+            /*font-family: 'mnjse';*/
+            /*src: url('../css/font/mnjse.woff') format('woff'), !* Modern Browsers *!*/
+            /*url('../css/font/mnjse.ttf') format('truetype'), !* Safari, Android, iOS *!*/
+            /*url('../css/font/mnjse.svg#mnjse') format('svg'); !* Legacy iOS *!*/
+        /*}*/
+        #clipbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body id="app">
+    <div class="carrousel" style="display: none">
+        <span></span><img />
+    </div>
+    <div class="aui-row" style="padding-top: 0.4rem;padding-bottom: 0.4rem">
+        <div class="tree">
+            <div class="up_tree"></div>
+            <img src="../Trace/img/lasttree.jpg" class="tree_tall">
+        </div>
+        <div class="Authentication" style="height: auto;padding-bottom: 0.4rem;">
+            <div>
+                <img src="../imgs/myveg/zs_h.png" style="width: 100%" />
+                <div style="position: relative">
+                    <img src="../imgs/myveg/zs_kuang.png" style="width: 100%" />
+                    <div style="position: absolute;top:34%;left: 10%;width: 80%">
+                        <p style="text-align: center;font-size: 1.4rem;line-height: 2rem;width: 96%">水培证书</p>
+                        <p style="text-indent:1rem;font-size: 0.7rem;line-height: 2rem;"><pan id="userseedname" style="display:inline-block;height:1.36rem;width: 4rem;text-align: center;border-bottom: solid 1px #000000"></pan>小朋友</p>
+                        <p style="text-indent:1rem;font-size: 0.6rem">在春沐源亲子水培科学种植活动中，荣获“种植小能手”称号。</p>
+                        <p style="text-indent:1rem;font-size: 0.7rem;line-height: 2rem;">特发此证书，以兹鼓励</p>
+                        <p style="text-align: right;padding-right: 1.5rem;font-size: 0.3rem;line-height: 1rem;"><pan id="year"></pan>年<pan id="month"></pan>月<pan id="day"></pan>日</p>
+                        <p style="text-align: right;padding-right: 1.5rem;font-size: 0.3rem;line-height: 0.5rem;">举办单位：深圳春沐源农业科技有限公司</p>
+                    </div>
+                </div>
+                <div style="width: 86%;margin-left:7%;background-color: #54C2B6;border-radius: 10px;padding: 8px;">
+                    <div style="position:relative;height: 100%;width: 100%;background-color: #ffffff;border-radius: 10px;">
+                        <img src="../imgs/myveg/zs_lian.png" style="position:absolute;width: 100%">
+                        <div id="hz_img" style="min-height: 8rem;line-height: 8rem;text-align: center">
+                            点击上传，秀出你们的亲子合照吧
+                        </div>
+
+                        <input type="file" id="file" style="display:none;dopacity: 0;position: fixed;bottom: -100px" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="clipbox" style="display: none;">
+        <div class="clip" style="position: absolute;top: 0;bottom: 2.5rem;width: 100%;">
+        </div>
+        <div  style="position: absolute;bottom: 0;height: 2.5rem;width: 100%;">
+            <div class="aui-bar aui-bar-btn aui-bar-btn-sm aui-bar-btn-full" style="height: 2.5rem;">
+                <div id="clipCancel" class="aui-bar-btn-item btnfilter" style="border: none;color: #757575;">取消</div>
+                <div id="clipBtn" class="aui-bar-btn-item app-text-orange btnfilter" style="border: none;">确认上传</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/template" id="treeNodeTemplate">
+        <div class="data<@ it.index> node">
+            <p class="process<@ it.index>"><@ it.name></p>
+            <p class="time<@ it.index>"><@ it.time></p>
+            <div class="time_pic<@ it.index> like"><img src="<@ it.pic>"></div>
+        </div>
+    </script>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

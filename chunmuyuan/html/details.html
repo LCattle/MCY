@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>讲座介绍</title>
+    <style>
+       .introduce{
+       	 width:96%;
+       	 height:22rem;
+       	 border:8px solid darkgreen;
+       	 margin:0 auto;
+       	 margin-top:0.8rem;
+       }
+       .introduce p{
+       	padding-left:0.75rem;
+       	margin-top:0.5rem;
+       	color:#000000;
+       	font-size:0.8rem;
+       }
+       .record{
+       	width:100%;
+       	height:2rem;
+       	border-bottom: 1px solid gray;
+       	padding-left: 1.2rem;
+       	font-size:0.8rem;
+       	color:#000;
+       	line-height:2rem;
+       	margin-bottom:0.5rem;
+       }
+       .lesson{
+       	width:100%;
+       	padding-left:0.75rem;
+       	padding-right:0.5rem;
+       	display:block;
+       }
+       #minute{
+       	width:100%;
+       	margin:0 auto;
+       	height:12.5rem;
+       	overflow-y: auto;
+       	overflow-x: hidden;
+       	max-width: 100%;
+       	padding-left:0.75rem;
+       	padding-right:0.35rem;
+       	font-size:0.8rem;
+       	margin-top:0.3rem;
+       }
+    </style>
+</head>
+<body id="app">
+    <div class="introduce">
+    	<p>讲座名称:<span id="name"></span></p>
+    	<p>讲座时间:<span id="time"></span></p>
+		<p>讲座地点:<span id="address"></span></p>
+    	<p>主讲人:<span id="lecturer"></span></p>
+    	<div id="minute"></div>
+    </div>
+    <div class="record" style="display:none;font-weight:bold;">
+    	参讲记录
+    </div>
+    <div class="lesson">
+    	
+    </div>
+    <div class="aui-content-padded" style="margin-top:1.5rem;display:none;" id="joinBtn" onclick="app.toJoin()">
+    	<div class="btnfilter aui-btn aui-btn-success aui-btn-block  aui-pull-right border-radius15 app_bg_green btn_disable">领取报名</div>
+    </div>
+     <script type="text/template" id="recordTemplate">
+		 <div id="lessoner" style="width:100%;height:2rem;">
+    		<div class="lesson_left" style="width:50%; height:2rem; line-height:2rem;float:left;">
+    			<div class="left_up" style="width:100%;height:1rem; line-height: 1rem;font-size:0.7rem;">
+    				  <@ it.name>
+    			</div>
+    			<div class="left_down" style="width:100%;height:1rem; line-height: 1rem;font-size:0.7rem;">
+    				 <@ it.starttime.substr(0,16) == ''? '敬请期待' : it.starttime.substr(0,16)>	
+    			</div>
+    		</div>
+    		<div class="lesson_right" style="width:40%;height:2rem;float:right;">
+    			<div class="left" style="width:45%;height:1.5rem;background:orange;float:left;border-radius: 0.2rem;margin-top:0.25rem;text-align: center;line-height: 1.5rem;color:#ffffff;">
+    				已领取
+    			</div>
+    			<div class="right1" style=" display: <@ it.usestat == 2 ? '':'none'>;  width:45%;height:1.5rem;background:green;float:right;border-radius: 0.2rem;margin-top:0.25rem;text-align: center;line-height: 1.5rem;color:#ffffff;">
+    				已参加
+    			</div>
+    			<div class="right2" style=" display: <@ it.usestat == 1 ? '':'none'>; width:45%;height:1.5rem;background:#dadada;float:right;border-radius: 0.2rem;margin-top:0.25rem;text-align: center;line-height: 1.5rem;color:#ffffff;">
+    				未参加
+    			</div>
+    		</div>	
+    	</div>
+	</script>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

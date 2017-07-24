@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>春沐源</title>
+	</head>
+	<style>
+		.bg{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			background-image:url(bg.png) ;
+			background-size: 100% 100%;
+		}
+		
+		.downBtn{
+			position: absolute;
+			bottom: 25%;
+			left: 1.5rem;
+			right: 1.5rem;
+			background: white;
+			padding: 0.5rem;
+			text-align: center;
+			color: #2c6445;
+			border-radius: 0.25rem;
+		}
+		.logo{
+			position: absolute;
+			top:18%;
+			width: 100%;
+			text-align: center;
+		}
+		.logo img{
+			width: 3.5rem;
+		}
+		.cover{
+			position: absolute;
+			z-index: 100;
+			display: none;
+			top: 0;
+			width: 70%;
+			right: 0.75rem;
+		}
+	</style>
+	<body id="app">
+		<div class="bg"></div>
+		<div class="logo">
+			<img src="logo.png" />
+			<br>用科技成就健康生活
+		</div>
+		<div class="downBtn">
+			一键下载客户端
+		</div>
+		<img src="cover.png" class="cover"/>
+	</body>
+	<script data-main="../js/main" data-app="../download/download" src="../lib/requirejs/require.js"></script>
+
+</html>

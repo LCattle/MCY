@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<title>确认支付</title>
+		<style>
+			#app .btn_disable {
+				background-color: #dddddd!important;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="aui-text-center aui-font-size-16 " style="height:5.65rem;">
+			<div class="aui-padded-t-15">
+				<div class="aui-padded-t-15" style="color:#333;">春沐源－订单编号</div>
+				<div class="aui-margin-t-10" id="orderId"></div>
+			</div>
+		</div>
+		<div class="aui-content">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" style="height:3rem;">
+					<div class="aui-list-item-inner">
+						<div style="color: #666666;" id="label">
+						</div>
+						<div id="number" class="aui-list-item-title aui-list-item-right aui-font-size-16 aui-text-default">
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<ul  id="payAccoutUl" class="aui-list aui-list-in" style="display: none">
+			<li class="aui-list-item padding-0">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-title">
+						支付账户
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div id="payBtn" class="btnfilter aui-btn aui-btn-success aui-btn-block  aui-pull-right border-radius15 app_bg_green btn_disable"> 立即支付</div>
+		</div>
+		<script id="payAccountLi" type="text/template">
+			<li class="aui-list-item  padding-0">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-input aui-font-size-16" style="color: #666666">
+						　<@ it.name>
+					</div>
+					<div class="aui-list-item-right">
+						<@ it.checkbtn>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script data-main="../js/main" data-app="../payment/confirmpay"  src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

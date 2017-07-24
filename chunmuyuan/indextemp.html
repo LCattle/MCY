@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="lib/aui/css/aui-slide.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+		<title lan-res="app_name">春沐源</title>
+		<style>
+			#itemsBox {
+				margin-bottom: 2.7rem;
+			}
+			
+			.maxwidth {
+				width: 100000px;
+			}
+		</style>
+	</head>
+	<script>
+		/** 楼层信息 需要 后台去替换*/
+		var positionData = [{
+			position: "BANNER",
+			sort: 0,
+			"title": "banner",
+			"url": "http://www.baidu.com"
+		}, {
+			position: "OPTIONAL",
+			sort: 2,
+			"title": "自选菜品",
+			"url": "./html/OptionalList.html"
+		}, {
+			position: "PACKAGE",
+			sort: 11,
+			"title": "宅配套餐",
+			"url": "./html/indoorPackages.html"
+		}, {
+			position: "CARD",
+			sort: 10,
+			"title": "礼品卡",
+			"url": "http://www.baidu.com"
+		}, {
+			position: "KNOWLEDGE",
+			sort: 3,
+			"title": "营养知识",
+			"url": "http://www.baidu.com"
+		}, {
+			position: "VISUAL",
+			sort: 9,
+			"title": "溯源可视化",
+			"url": "http://www.baidu.com"
+		}];
+		/** 宅配套餐数据 需要 后台去替换*/
+		var packageGoods = [{
+			name: "套餐1",
+			url: "./goods/goodsDetails.html",
+			price: 300,
+			img: "imgs/index/goods.png"
+		}];
+		/** 自选菜 需要 后台去替换*/
+		var optionalGoods = [{
+			name: "白菜",
+			url: "./goods/goodsDetails.html",
+			price: 300,
+			img: "imgs/index/goods.png"
+		}, {
+			name: "白菜",
+			url: "./goods/goodsDetails.html",
+			price: 300,
+			img: "imgs/index/goods.png"
+		}, {
+			name: "白菜",
+			url: "./goods/goodsDetails.html",
+			price: 300,
+			img: "imgs/index/goods.png"
+		}, {
+			name: "白菜",
+			url: "./goods/goodsDetails.html",
+			price: 300,
+			img: "imgs/index/goods.png"
+		}];
+		/** 营养知识 需要 后台去替换*/
+		var knowledgeData = [{
+			name: "知识1",
+			url: "http://www.baidu.com",
+			img: "imgs/index/41.png"
+		}, {
+			name: "知识2",
+			url: "http://www.baidu.com",
+			img: "imgs/index/41.png"
+		}];
+		/** 礼品卡 需要 后台去替换*/
+		var cardData = [{
+			name: "知识1",
+			url: "http://www.baidu.com",
+			img: "imgs/index/card.png"
+		}];
+		/** 可视化 需要 后台去替换*/
+		var visualData = [{
+			name: "知识1",
+			url: "http://www.baidu.com",
+			img: "imgs/index/card.png"
+		}];
+		var bannerData = [{
+			name: "知识2",
+			url: "./goods/goodsDetails.html",
+			img: "imgs/temp/img5.png"
+		}, {
+			name: "知识2",
+			url: "http://www.baidu.com",
+			img: "imgs/temp/u17.png"
+		}, {
+			name: "知识2",
+			url: "./goods/goodsDetails.html",
+			img: "imgs/temp/img4.png"
+		}];
+	</script>
+
+	<body id="app">
+		<header class="aui-bar aui-bar-nav index_header app_bg_brown">
+			<img src="imgs/index/logo.png" id="index_logo" />
+		</header>
+		<!--轮播图开始-->
+		<div class="relativeBox" id="contentBox" style="margin-top: 2.25rem;">
+			<div id="slideBox" class="relativeBox">
+				<div id="aui-slide">
+					<div class="aui-slide-wrap" id="bannerImgs">
+
+					</div>
+					<div class="aui-slide-page-wrap">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--轮播图结束-->
+		<!--广告位开始-->
+		<div id="itemsBox">
+
+		</div>
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="aui-bar-tab-item aui-active" tapmode>
+				<i class="aui-iconfont aui-icon-home"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab1"></div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<i class="aui-iconfont aui-icon-location"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab2"></div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<div class="aui-badge" id="carNum" style="display: none;"></div>
+				<i id="car_icon" class="aui-iconfont aui-icon-cart"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab3"></div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<i class="aui-iconfont aui-icon-my"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab4"></div>
+			</div>
+		</footer>
+		<script data-main="js/main" data-app="index" src="lib/requirejs/require.js"></script>
+		<script type="text/template" id="goodsTemplate">
+			<div class="aui-col-xs-4 index_goods_info" style="width: <@ $(window).width()/3>px;">
+				<img src="imgs/index/goods.png" style="height: <@ $(window).width()/3*0.8>px;" />
+				<din class="index_goods">
+					<div class="name">
+						<@ it.name>
+					</div>
+					<div class="price">
+						500g
+					</div>
+				</din>
+			</div>
+		</script>
+
+		<script type="text/template" id="iTemTemplate">
+			<div class="aditem" id="item_<@ it.position>">
+				<div class="index_item_tbox <@ it.color>" onclick="location.href='<@ it.url>'">
+					<div class="index_item_line"></div>
+					<div class="index_item_title">
+						<@ it.title>
+					</div>
+					<div class="index_item_line"></div>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="goodsBoxTemplate">
+			<section class="aui-grid">
+				<div class="aui-row" style="overflow-x: scroll;">
+					<div class="maxwidth" id="<@ it.id>">
+					</div>
+				</div>
+			</section>
+		</script>
+
+		<script type="text/template" id="img2Template">
+			<div class="aui-col-xs-6 index_kn_info" style="width: <@ $(window).width()/2>px;" onclick="location.href='<@ it.url>'">
+				<img src="<@ it.img>" />
+				<din class="index_goods">
+					<div class="name">
+						<@ it.name>
+					</div>
+				</din>
+			</div>
+		</script>
+		<script type="text/template" id="img1Template">
+			<img src="<@ it.img>" class="aui-margin-b-10" style="width: 100%;display: block;" alt="<@ it.name>" onclick="location.href='<@ it.url>'" />
+		</script>
+		<script type="text/template" id="bannerTemplate">
+			<div class="aui-slide-node bg-dark" onclick="location.href='<@ it.url>'">
+				<img src="<@ it.img>" alt="<@ it.name>" />
+			</div>
+		</script>
+	</body>
+
+</html>

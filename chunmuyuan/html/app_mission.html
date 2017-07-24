@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>我的任务</title>
+    <style>
+		#app {
+			background-color: #FFFFFF;
+		}
+		.nav{
+			width:100%;
+			background:#f0f0f0;
+		}
+		.nav img{
+			width:100%;
+		}
+		.box{
+			width:100%;
+			height:4rem;
+			background:#fff;
+			overflow: hidden;
+			border-bottom: 1px solid #e0e0e0;
+			padding-left: 0.5rem;
+		}
+		.box .left_box{
+			margin-top: 1rem;
+			width:70%;
+			height:3rem;
+			float:left;
+		}
+		.box .left_box h2{
+			font-size:0.8rem;
+			line-height: 0.8rem;
+			font-family:"微软雅黑";
+			color:#000;
+		}
+		.box .left_box p{
+			font-size:0.6rem;
+			line-height: 0.7rem;
+			margin-top:0.3rem;
+			line-height:0.8rem;
+		}
+		.box .right_box{
+			width:18%;
+			height:1.2rem;
+			float:right;
+			margin-top:1.4rem;
+			margin-right:0.75rem;
+			font-size:0.7rem;
+			text-align: center;
+			line-height: 1.2rem;
+			border-radius: 3px;
+		}
+		 .strategyPic{
+        	width:100%;
+        	height:100%;
+        	background:rgba(0,0,0,0.5);
+        	position:absolute;
+        	top:0%;
+        	left:0%;
+        	z-index: 9999;
+        }
+        .strategy{
+        	width:80%;
+        	height:17rem;
+        	position:absolute;
+        	left:10%;
+        	top:20%;
+        	border-radius: 0.5rem;
+        }
+        .strategy img{
+        	width:100%;
+        	height:90%;
+        }
+        .close{
+        	width:10%;
+        	height:1.5rem;
+        	position:absolute;
+        	right:0;
+        	top:0;
+        }
+        .close img{	
+        	width:100%;
+        	height:100%;
+        }
+        .white{
+        	width:100%;
+        	height:3rem;
+        	background:#fff;
+        	position:absolute;
+        	bottom:0;
+        	border-radius: 0 0 1rem 1rem;
+        	display: flex;
+            justify-content:center;
+            align-items:Center;
+            z-index:999;
+        }
+        .white img{
+        	width:30%;
+        	height:1.5rem;
+        	margin:0 auto;
+        	display:block;
+        }
+        #total{
+        	display:block;
+        	width:70%;
+        	height:2rem;
+        	position:absolute;
+        	left:15%;
+        	top:1.3rem;
+        	text-align: center;
+        	line-height:1rem;
+        	font-size:1rem;
+        	color:#fff;
+        }
+        #content{
+        	display:block;
+        	width:80%;
+        	height:3rem;
+        	text-align: center;
+        	font-size:0.7rem;
+        	position:absolute;
+        	top:9rem;
+        	left:10%;
+        	color:#fff;
+        }
+    </style>
+</head>
+<body id="app">
+	<div class="strategyPic" style="display:none;">
+        	<div class="strategy">
+        		<img id="imgPath" src="../imgs/mission/bg.png"/>
+        		<div class="close">
+        			<img src="../imgs/mission/close.png" alt="" />
+        		</div>
+        		<span id="total"></span>
+        		<p id="content"></p>
+        		<div class="white">
+        			<img src="../imgs/mission/sures.png" alt="" />
+        		</div>
+        	</div>
+    </div>
+	<div class="nav">
+		<img src="../imgs/mission/top.png" alt="" />
+	</div>
+	<ul id="goodsList">
+		
+	</ul>
+	<script type="text/template" id="goodsTemp">
+		<div class="box">
+		    <div class="left_box">
+				<h2><@ it.taskname></h2>
+				<p><@ it.taskmemo></p>
+		    </div>
+			<div class="right_box" data-name="<@ it.taskmemo>" data-content="<@ it.taskname>" data-img="<@ it.taskpicpath>" data-url="<@ it.taskurl>" data-status="<@ it.status>">
+			</div>
+	    </div>
+	</script>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

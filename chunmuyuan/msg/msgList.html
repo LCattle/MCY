@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>消息</title>
+		<style>
+			.listItem {
+				position: relative;
+				padding: 0.25rem 0.75rem;
+				height: 4.5rem;
+				width: 100%;
+				background: white;
+			}
+			
+			
+			.listItem .icon-xiaoxi {
+				position: absolute;
+				top: 1rem;
+				font-size: 1.5rem;
+			}
+			
+			.listItem .dot {
+				position: absolute;
+				left: 1.75rem;
+				top: 1.5rem;
+				width: 0.5rem;
+				height: 0.5rem;
+				background: #ce8b20;
+				border-radius: 0.5rem;
+			}
+			
+			.listItem.readed .dot {
+				display: none;
+			}
+			
+			.titleBox,
+			.msg {
+				position: absolute;
+				left: 2.5rem;
+				top: 0.5rem;
+				right: 0.75rem;
+			}
+			
+			.msg {
+				top: 2.2rem;
+			}
+			#btn{ 
+				position: fixed;
+				bottom :0;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+			<div id="list" >
+
+			</div>
+		</section>
+		<div id="btn" style="padding:0.5rem 0.75rem;height: 3rem;">
+			<div onclick="app.clickClean()" class="app_btn_big app_bg_green aui-margin-l-15 aui-margin-r-15">一键清空</div>
+		</div>
+	</body>
+	<script type="text/template" id="itemtemp">
+		<div class="listItem aui-border-b  <@ it.isread=='Y'?'readed':''>" onclick="app.toDetails('<@ it.noticeid>')">
+			<i class="iconfont icon-xiaoxi"></i>
+			<div class="dot"></div>
+			<div class="titleBox" layout>
+				<div flex class="aui-ellipsis-1">
+					<@ it.title>
+				</div>
+				<div class="aui-font-size-14 app_text_999 aui-margin-l-10">
+					<@ it.pushtime>
+				</div>
+			</div>
+			<div class="msg aui-ellipsis-1 app_text_666">
+				<@ it.content>
+			</div>
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../msg/msgList" src="../lib/requirejs/require.js"></script>
+
+</html>

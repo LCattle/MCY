@@ -1,0 +1,146 @@
+define([], function() {
+	var net = {};
+	//下载页除外
+	//if(!isInAppEnviroment()){
+	//		location.href = "springwoods://app/share?url="+location.href;
+	//		setTimeout(function(){
+	//			if(location.href.indexOf("download/download.html")==-1)
+	//				location.href = "../download/download.html?url="+location.href;
+	//		},2000);
+	//}
+	net.netConfig = {
+		runType: "dev",
+		//鍓嶇椤甸潰鏍圭洰褰�
+		pageRoot:"http://test.springwoods.com/static/appchunmuyuan/",
+		//鍟嗗煄鏈嶅姟host鍓嶇紑
+		server: {
+			dev: "http://test.springwoods.com/ctower-mall-app/",
+			test: "http://112.74.57.203/ctower-mall-app/",
+			release: "",
+		},
+		//鍩虹鏈嶅姟host鍓嶇紑
+		server_i: {
+			dev: "http://test.springwoods.com/ctower-mall-i/",
+			test: "http://112.74.57.203/ctower-mall-i/",
+			release: "",
+		},
+		//浼氬憳鏈嶅姟host鍓嶇紑
+		server_m: {
+			dev: "http://test.springwoods.com/ctower-member-app/",
+			test: "http://112.74.57.203/ctower-member/",
+			release: "",
+		},
+		//鍟嗗搧璇︽儏椤甸潰鏁版嵁鍦板潃
+		server_d: {
+			dev: "http://test.springwoods.com/static_detail/",
+			test: "http://112.74.57.203/static_detail/",
+			release: ""
+		},
+		
+		//鍥剧墖鏈嶅姟host鍓嶇紑
+		imgServer: {
+			dev: "http://test.springwoods.com/uploaded/image",
+			test: "http://112.74.57.203/uploaded/image",
+			release: "",
+		},
+	};
+	//鑾峰彇鍥剧墖璺緞
+	net.getImgPath = function(url) {
+		var server = this.netConfig.imgServer[this.netConfig.runType];
+		return server + url
+	};
+	//鑾峰彇灏忓浘璺緞
+	net.getThumbPath = function(url) {
+		return this.getImgPath("/thumb" + url);
+	};
+	//鑾峰彇涓浘
+	net.getMiddelPath = function(url) {
+		return this.getImgPath("/middel" + url);
+	};
+	net.getNetServer = function(type) {
+		if(type === "i") {
+			return this.netConfig.server_i[this.netConfig.runType];
+		} else if(type === "m") {
+			return this.netConfig.server_m[this.netConfig.runType];
+		} else if(type == "d") {
+			return this.netConfig.server_d[this.netConfig.runType];
+		}
+		return this.netConfig.server[this.netConfig.runType];
+	};
+	/**
+	 * @param {Object} action
+	 * @param {Object} obj
+	 */
+	net.GETRequest_i = function(action, obj) {
+		$.ajax(this.getRequestObj(this.getNetServer("i"), action, obj, "GET"));
+	}
+	net.GETRequest_m = function(action, obj) {
+		$.ajax(this.getRequestObj(this.getNetServer("m"), action, obj, "GET"));
+	}
+	net.GETRequest = function(action, obj) {
+		$.ajax(this.getRequestObj(this.getNetServer(), action, obj, "GET"));
+	};
+	/**
+	 * @param {Object} action
+	 * @param {Object} obj
+	 */
+	net.POSTRequest_i = function(action, obj) {
+		$.ajax(this.getRequestObj(this.getNetServer("i"), action, obj, "POST"));
+	}
+	net.POSTRequest_m = function(action, obj) {
+		$.ajax(this.getRequestObj(this.getNetServer("m"), action, obj, "POST"));
+	}
+	net.POSTRequest = function(action, obj) {
+		$.ajax(this.getRequestObj(this.getNetServer(), action, obj, "POST"));
+	}
+	net.getRequestObj = function(server, action, obj, method) {
+        var _action = action;
+		var default_ = {
+			url: server + _action,
+			type: method,
+			dataType: "json"
+		};
+		var err = obj.error;
+		obj = jQuery.extend(obj, default_);
+		//		obj.headers = {
+		//          "login-token": 1234
+		//     };
+		/**鍐欏叆鐧诲綍淇℃伅*/
+		if(obj.data) {
+			obj.data.loginedtoken = localStorage.loginedToken;
+			obj.data.v = new Date().getTime();
+			obj.data.platformSource = 2;
+		} else {
+			obj.data = {
+				v: new Date().getTime(),
+				platformSource :2,
+				loginedtoken: localStorage.loginedToken
+			};
+		}
+		if(obj.loading) {
+			app.loading(obj.loading);
+			obj.loading = undefined;
+			var comp = obj.complete;
+			obj.complete = function() {
+				app.hideLoading();
+				if(comp && comp instanceof Function) {
+					comp();
+				}
+			}
+		}
+		obj.error = function(error, status) {
+			app.tipInfo("网络错误,请检查网络连接情况");
+			if(app.netConfig.runType == "dev") {
+				console.log(error);
+			}
+			if(err && err instanceof Function) {
+				err(error, status);
+			}
+		}
+		if(this.netConfig.runType == "dev") {
+			console.log(obj);
+		}
+		return obj;
+	}
+	return net;
+});

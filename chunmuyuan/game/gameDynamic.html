@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>菜园动态</title>
+		<style>
+			#list{
+				padding: 0 0.75rem;
+				background: white;
+			}
+			.item1{
+				padding: 0.5rem 0;
+				font-weight: bold;
+			}
+			.item2{
+				font-weight: bold;
+			}
+			.item3 .actionIcon{
+				background: #018ee8;
+			}
+			.verticalLine{
+				height: 1.4rem;
+				width: 1px;
+				margin-left: 0.6rem;
+				background: #e1e1e1;
+			}
+			.actionIcon{
+				height: 1.3rem;
+				width: 1.3rem;
+				border-radius: 1.3rem;
+				background: #2cb75a;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+				<div class="item1">今天</div>
+				<div class="verticalLine"></div>
+				<div class="item2">
+					<div layout>
+						<div class="actionIcon"></div>
+						<div flex class="aui-padded-l-10 aui-ellipsis-1">成功种植一颗白菜</div>
+					</div>
+					<div class="verticalLine"></div>
+				</div>
+				<div class="item3">
+					<div layout>
+						<div class="actionIcon"></div>
+						<div flex class="aui-padded-l-10 aui-ellipsis-1">浇灌能量</div>
+						<div class="aui-font-size-14 app_text_999">14:30</div>
+					</div>
+					<div class="verticalLine"></div>
+				</div>
+				<div class="item3">
+					<div layout>
+						<div class="actionIcon"></div>
+						<div flex class="aui-padded-l-10 aui-ellipsis-1">浇灌能量</div>
+						<div class="aui-font-size-14 app_text_999">14:30</div>
+					</div>
+					<div class="verticalLine"></div>
+				</div>
+				<div class="item1">4-12</div>
+				<div class="verticalLine"></div>
+				<div class="item2">
+					<div layout>
+						<div class="actionIcon"></div>
+						<div flex class="aui-padded-l-10 aui-ellipsis-1">成功种植一颗白菜</div>
+					</div>
+					<div class="verticalLine"></div>
+				</div>
+				<div class="item3">
+					<div layout>
+						<div class="actionIcon"></div>
+						<div flex class="aui-padded-l-10 aui-ellipsis-1">浇灌能量</div>
+						<div class="aui-font-size-14 app_text_999">14:30</div>
+					</div>
+					<div class="verticalLine"></div>
+				</div>
+			</div>
+		</section>
+
+	</body>
+	<script data-main="../js/main" data-app="../game/gameDynamic" src="../lib/requirejs/require.js"></script>
+
+</html>

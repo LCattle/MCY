@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>活动</title>
+		<style>
+			.listItem {
+				padding: 0.25rem 0.75rem;
+				width: 100%;
+				background: white;
+			}
+			
+		</style>
+	</head>
+
+	<body id="app">
+		<section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+				<div class="listItem aui-margin-b-5"  layout>
+					<div flex>
+						<div>推荐好友注册</div>
+						<div class="app_text_999 aui-font-size-14">
+							2017-04-21 17:13
+						</div>
+					</div>
+					<div layout="column">
+						<div flex></div>
+						<div class="app-text-green">赠送10积分</div>
+						<div flex></div>
+					</div>
+				</div>
+				<div class="listItem aui-margin-b-5"  layout>
+					<div flex>
+						<div>推荐好友注册</div>
+						<div class="app_text_999 aui-font-size-14">
+							2017-04-21 17:13
+						</div>
+					</div>
+					<div layout="column">
+						<div flex></div>
+						<div class="app-text-green">赠送10积分</div>
+						<div flex></div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+	</body>
+	<script type="text/template" id="itemtemp">
+		<div class="listItem aui-border-b" onclick="app.toDetails('<@ it.id>')">
+
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../userCenter/rewards" src="../lib/requirejs/require.js"></script>
+
+</html>

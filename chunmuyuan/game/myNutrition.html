@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>我的营养液</title>
+    <style type="text/css">
+        body,
+        .aui-card-list{
+            background-color: #f2f2f2;
+        }
+        .color-007447{
+            color: #007447;
+        }
+        .color-f38c03{
+            color: #f38c03;
+        }
+        .color-656565{
+            color: #656565;
+        }
+        .color-343434{
+            color: #343434;
+        }
+        .color-999999{
+            color: #999999;
+        }
+        .bg-fff{
+            background-color: #FFFFFF;
+        }
+        .nu-title div{
+            font-size: 0.9rem;
+        }
+        .nu-title span{
+            font-size: 0.6rem;
+        }
+        .aui-list-item-media span{
+            width: 100%;
+            text-align: right;
+        }
+        .aui-list .aui-list-item:after {
+            margin-left: 0.8rem !important;
+        }
+
+        .aui-card-list-header .item-title{
+            max-width: 50%;
+        }
+
+        .aui-card-list-header .item-title p{
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+        .aui-card-list-header span:first-child{
+            display: block;
+            font-size: 0.8rem !important;
+            float: left;
+        }
+        .aui-card-list-header span:last-child{
+            display: block;
+            min-width:60px !important;
+            text-align: right;
+        }
+        .aui-list .aui-list-item:after{
+        		right: 0!important;
+        		width: auto!important;
+        }
+    </style>
+</head>
+<body id="app">
+    <section id="wrapper" class="aui-padded-t-15" style="-webkit-overflow-scrolling: touch;">
+        <div id="list" class="aui-card-list">
+            <!--<div class="aui-card-list-header nu-title bg-fff">-->
+                <!--<div class="color-007447">叶菜营养液</div>-->
+                <!--<span class="color-656565" onclick="app.moreList('1')">更多明细</span>-->
+            <!--</div>-->
+            <!--<div class="aui-card-list-content">-->
+                <!--<ul class="aui-list aui-media-list">-->
+                    <!--<li class="aui-list-item aui-list-item-middle">-->
+                        <!--<div class="aui-media-list-item-inner">-->
+                            <!--<div class="aui-list-item-inner">-->
+                                <!--<div class="aui-list-item-text">-->
+                                    <!--<div class="aui-list-item-title aui-font-size-14 color-343434">购物车赠送</div>-->
+                                <!--</div>-->
+                                <!--<div class="aui-list-item-text color-999999">-->
+                                    <!--2016-12-25 10:45:34-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-media">-->
+                                <!--<span class="color-007447">+10ml</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+
+            <!--<div class="aui-card-list-header nu-title bg-fff aui-margin-t-10">-->
+                <!--<div class="color-f38c03">根茎菜营养液</div>-->
+                <!--<span class="color-656565" onclick="app.moreList('2')">更多明细</span>-->
+            <!--</div>-->
+            <!--<div class="aui-card-list-content">-->
+                <!--<ul class="aui-list aui-media-list">-->
+                    <!--<li class="aui-list-item aui-list-item-middle">-->
+                        <!--<div class="aui-media-list-item-inner">-->
+                            <!--<div class="aui-list-item-inner">-->
+                                <!--<div class="aui-list-item-text">-->
+                                    <!--<div class="aui-list-item-title aui-font-size-14 color-343434">购物车赠送</div>-->
+                                <!--</div>-->
+                                <!--<div class="aui-list-item-text color-999999">-->
+                                    <!--2016-12-25 10:45:34-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-media">-->
+                                <!--<span class="color-f38c03">+10ml</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        </div>
+    </section>
+
+    <!--营养液-->
+    <script type="text/template" id="myNutritionTemplate">
+        <div class="aui-card-list-header nu-title bg-fff <@ (it.index != 0)? 'aui-margin-t-10':''>">
+            <div class="item-title">
+                <p class="<@ it.class>"><@ it.nutrientname></p>
+            </div>
+            <span class="<@ it.class>" style="width: 45%;"><@ it.quantity>ml</span>
+            <span class="color-656565" onclick="app.moreList('<@ it.id>', '<@ it.class>')">更多明细</span>
+        </div>
+        <div class="aui-card-list-content">
+            <ul class="aui-list aui-media-list">
+                <@ it.liHtml>
+            </ul>
+        </div>
+    </script>
+
+    <!--营养液-->
+    <script type="text/template" id="nutritionLiTemplate">
+        <li class="aui-list-item aui-list-item-middle">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title aui-font-size-14 color-343434"><@ it.description></div>
+                    </div>
+                    <div class="aui-list-item-text color-999999">
+                        <@ it.createtime>
+                    </div>
+                </div>
+                <div class="aui-list-item-media">
+                    <span class="<@ it.class>"><@ it.tag><@ it.quantity> ml</span>
+                </div>
+            </div>
+        </li>
+    </script>
+</body>
+
+<script data-main="../js/main" data-app="../game/myNutrition" src="../lib/requirejs/require.js"></script>
+</html>

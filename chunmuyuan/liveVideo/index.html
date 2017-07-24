@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 直播现场</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        html,body{
+            margin: 0 ;
+            padding:0;
+            height:100%;
+            width:100%;
+            font-family:"微软雅黑",Helvetica;
+        }
+        img{
+            display: inline;
+        }
+
+        #app{
+            width:100%;
+            height:100%;
+            position:relative;
+
+        }
+        #app video{
+            position:absolute;
+            top:0;
+            left:0;
+            height:1px;
+            width:1px;
+            object-fit:fill;
+            display:none;
+        }
+        #app .liveImg{
+            width:100%;
+            height:24.85%;
+            position:relative;
+            display: block;
+        }
+        .liveImg .pic{
+            border:0;
+            display:block;
+            width:100%;
+            position:absolute;
+            height:98%;
+            top:2%;
+            left: 0;
+
+        }
+        .liveImg .Img_bg{
+            display:none;
+            position:absolute;
+            background-color:#000;
+            opacity:0.7;
+            width:100%;
+            height:100%;
+            z-index:1;
+        }
+        .liveImg .Img_bg.active{
+            display:block;
+            position:absolute;
+            background-color:#000;
+            opacity:0.6;
+            width:100%;
+            height:100%;
+            z-index:1;
+        }
+        .liveImg .Img_bg .bg_img{
+            display:block;
+            margin: 0 auto;
+            margin-top: 18%;
+        }
+        .liveImg .video-desc{
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            color:#fff;
+            font-size:1.2rem;
+            padding-left: 20px;
+            padding-bottom: 10px;
+        }
+        .play-class {
+            /*background-image: url("../imgs/chongz/play.png");*/
+            background-size: 100% 100%;
+            width:16px;
+            height:16px;
+            display: inline-block;
+            vertical-align: -4px;
+            background-color:#000;
+            opacity:0.8;
+            border-radius:50%;
+        }
+        .bg{
+            display:none;
+            position:fixed;
+            top:0;
+            bottom:0;
+            width:100%;
+            height:100%;
+            background-color:#000;
+            opacity:0.7;
+            z-index:99;
+        }
+        .box{
+            display:none;
+            position:fixed;
+            left:15%;
+            top: 40%;
+            width: 70%;
+            height: 7rem;
+            background-color: #fff;
+            box-sizing:border-box;
+            z-index:100;
+        }
+        .box .box_center{
+            width:90%;
+            margin:0 auto;
+            line-height: 150%;
+
+        }
+        .box .box_center .box_remind{
+            height:3.5rem;
+            margin-top:1.0rem;
+        }
+        .box .box_center button{
+            display:block;
+            float:right;
+            background-color:#fff;
+            border:none;
+            height:2rem;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+        }
+
+
+    </style>
+    <script>
+        if ("wView" in window) { //用于苹果设备自动播放
+            window.wView.allowsInlineMediaPlayback = "YES";
+            window.wView.mediaPlaybackRequiresUserAction = "NO";
+        }
+    </script>
+</head>
+<body style="height: 100%;overflow: scroll;">
+
+<div class="bg"></div>
+<div class="box">
+    <div class="box_center">
+        <div class="box_remind">
+            温馨提示：非Wi-fi环境下，播放视频会消耗较多流量！
+        </div>
+        <button id="btn1">继续播放</button>
+        <button id="btn2">取消播放</button>
+    </div>
+</div>
+<div id="app">
+    <video id="myvideo"   x5-video-player-type="h5" src="" autoplay="autoplay"  preload="auto">
+    </video>
+    <script type="text/template" id="liveTemplate" >
+        <div class="liveImg">
+            <div class="Img_bg">
+                <img class="bg_img" src="../imgs/chongz/loading.gif" alt="">
+            </div>
+            <img class="pic" src="<@ app.getThumbPath(it.picurl) >" data-index="index" data-cellerid="<@ it.cellerid>">
+
+            <div class="video-desc">
+                <p style="line-height: 2rem;font-weight:bold;font-size:1rem">
+                    <@ it.localtypename>
+                </p>
+                <p style="line-height: 1rem;font-size: 0.8rem">
+                    <i class="play-class" style="background-image: url('../imgs/chongz/play.png')"></i> 观看人次 <span class="clickcount" ><@ it.clickcount></span>
+                </p>
+            </div>
+        </div>
+
+    </script>
+</div>
+
+</body>
+<script data-main="../js/main" data-app="../lib/liveVideo/live" src="../lib/requirejs/require.js"></script>
+</html>
+

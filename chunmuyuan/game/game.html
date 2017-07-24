@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" /> 
+		<!--不启用缓存-->
+		<!--<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />-->
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="gameAnimation.css" />
+		<style>
+		</style>
+		<title>我的菜园</title>
+	</head>
+
+	<body id="app">
+		<div id="gameBox">
+			<img src="../imgs/game/gamebg.png" class="gamebg" />
+			<img src="../imgs/game/shelf.png" class="Spirit shelf">
+			<div onclick="app.href('myBasket.html')" class="gameBtn btnfilter Spirit" id="mycailan" style="left: 0.75rem;z-index: 5;">
+				<img src="../imgs/game/cailan.png" />
+				<div class="aui-badge"></div>
+				<div>我的菜篮</div>
+			</div>
+			<div id="caizhai" onclick="app.clickGameBtn(this)" class="gameBtn btnfilter Spirit" style="right: 0.75rem;">
+				<img src="../imgs/game/caizai.png" />
+				<div>摘 取</div>
+			</div>
+			<div id="addNutrient" onclick="app.clickGameBtn(this)" class="gameBtn btnfilter Spirit" style="right: 4.5rem;">
+				<img src="../imgs/game/tjnl.png" />
+				<div>浇 灌</div>
+			</div>
+			<div id="catchBtn" onclick="app.clickGameBtn(this)" class="gameBtn btnfilter Spirit" style="right: 9rem;">
+				<img src="../imgs/game/net.png" />
+				<div>捕 虫</div>
+			</div>
+			<div class="gonglueBox Spirit">
+			</div>
+			<div id="nutrBtn" class="topBtn Spirit" onclick="app.href('myNutrition.html')" style="top: 5rem;">
+				<img src="../imgs/game/nutrient.png" />
+				<div>营养液</div>
+			</div>
+			<div id="glbtn"  class="topBtn Spirit" onclick="app.href('gameGuide.html')" style="top: 2rem;">
+				<img src="../imgs/game/gonglue.png" />
+				<div>攻略</div>
+			</div>
+			<div id="seedsBtn" onclick="app.showSeedBox()" class="topBtn Spirit" style="top: 8rem;">
+				<img src="../imgs/game/package.png" />
+				<div class="aui-badge" style="display: none;top:-0.1rem;left: 50%;"></div>
+				<div>种子</div>
+			</div>
+			<div class="bottomBlock Spirit"></div>
+			<div class="addpowerbox">
+				<img class="shuidi1" src="../imgs/game/shuidi1.png" />
+				<img class="shuidi2" src="../imgs/game/shuidi2.png" />
+				<img src="../imgs/game/shuihu.png" class="addpowerimg" />
+			</div>
+			<div class="dlg_bg"></div>
+			<div class="seedsBox">
+				<div class="title">种子袋</div>
+				<div class="dlgClose" onclick="app.hideSeedBox()"><i class="aui-iconfont aui-icon-close"></i></div>
+				<div class="seedList">
+					<div class="swiper-container" style="width: 100%;height: 100%;">
+						<div class="swiper-wrapper" id="seedlist">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="absolute aui-text-center" style="width: 100%;display: none;z-index:10">
+				<div class="gameTipBox" style="display: inline-block;">
+					<div layout="column"  style="height: 100%;">
+						<div flex></div>
+						<div class="msg">哈哈哈，你不知道吧，游戏这个东西就是6个坑，你是来填坑的</div>
+						<div flex></div>
+					</div>
+				</div>
+			</div>
+			<!--
+            	描述：引导背景
+            -->
+            <div layout class="cover">
+            		<div class="bgblock"></div>
+            		<div layout="column">
+            			<div class="bgblock"></div>
+            			<img src="../imgs/game/cover.png" class="cicle" />
+            			<div flex class="bgblock"></div>
+            		</div>
+            		<div flex class="bgblock"></div>
+            </div>
+            <div class="coverText" layout="column">
+            		<div flex></div>
+            		<div ></div>
+            		<div flex></div>
+            </div>
+            <img src="../imgs/game/coverLine.png" class="coverLine" />
+            
+            <!--
+            	描述：静态资源加载进度
+            -->
+            <div class="progressBox">
+				<div class="inner">
+					<div></div>
+				</div>
+				<div class="processNum absolute"></div>
+			</div>
+			
+			<!-- 营养液选择表 -->
+			<div class="absolute nutrientSolutionBg"></div>
+			<div class="absolute nutrientSolutionBox">
+			</div>
+			
+			<!--
+            	描述：请求接口时的loading动画
+            -->
+            <div layout="column" class="gameLoading">
+            		<div flex></div>
+            		<div class="aui-text-center">
+            			<img class="animated infinite swing" src="../lib/dropload/img/01.png"/>
+            			<img class="animated infinite swing" src="../lib/dropload/img/02.png"/>
+            			<img class="animated infinite swing" src="../lib/dropload/img/03.png"/>
+            			<img class="animated infinite swing" src="../lib/dropload/img/04.png"/>
+            		</div>
+            		<div flex></div>
+            </div>
+		</div>
+		<!--最新动态-->
+		<div layout class="app_bg_white dynamicTitle">
+			<div>最新动态</div>
+			<div flex> </div>
+		</div>
+		<div class="dynamicList" id="dynamicList">
+		</div>
+		<div onclick="app.href('gardenDynamics.html')" class="btnfilter aui-text-center aui-padded-t-5 aui-padded-b-5 app_bg_white aui-margin-b-10">
+			查看更多动态
+		</div>
+		<!--最新动态 end-->
+		<div layout class="app_bg_white dynamicTitle">
+			好友排行榜
+		</div>
+		<div class="dynamicList" id="paihangbox">
+
+		</div>
+		<div onclick="app.href('friendsList.html')" class="btnfilter aui-text-center aui-padded-t-5 aui-padded-b-5 app_bg_white aui-margin-b-10">
+			查看更多好友
+		</div>
+	</body>
+
+	<script type="text/template" id="captemp">
+		<img src="<@ it.src>" onclick="app.clickCap(<@ it.id>)" style="height:<@ it.height>px;left: <@ it.left>px;bottom:<@ it.bottom>px;" class="cap cap<@ it.id>" />
+	</script>
+
+	<script type="text/template" id="maturetemp">
+		<img src="<@ it.src>" onclick="app.clickCap(<@ it.index>)" style="z-index:4;position:absolute;height:<@ it.height>px;left: <@ it.left>px;top:<@ it.top>px;" />
+	</script>
+	<!--
+    	描述：动态列表吧模板
+    -->
+    <script type="text/template" id="dynamictemp">
+    		<div layout="" class="aui-font-size-14 aui-padded-b-5 aui-padded-t-5">
+				<div flex=""><@ it.description> <span class="app-text-green"><@ it.number></span></div>
+				<div class="app_text_999"><@ it.createtime.split(" ")[0]></div>
+			</div>
+    </script>
+	<!--
+    	描述：好友排行榜的模板
+    -->
+	<script type="text/template" id="paihangTemp">
+		<div layout>
+			<div layout="column" class="storBox">
+				<div flex></div>
+				<@ it.storeStr>
+				<div flex></div>
+			</div>
+			<div layout flex class="aui-border-b aui-padded-t-5 aui-padded-b-5  aui-padded-l-10">
+				<div layout="column">
+					<div flex></div>
+					<img src="<@ it.header>" onerror="this.src ='../imgs/xq-images/photo.png'" style="width: 2.5rem;height: 2.5rem;border-radius: 2.5rem;" />
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-5">
+					<div flex class="plh14"><@ it.name></div>
+					<div flex class="app_text_999 aui-font-size-14 " style="line-height: 0.9rem;">
+						 已成功种植<@ it.plantcount>棵蔬菜
+					</div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<div class=" aui-font-size-14">
+						<img style="height: 0.6rem;" src="../imgs/game/water@3x.png" /> <@ it.quantity>ml
+					</div>
+					<div flex></div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<!--
+    	作者：1318831854@qq.com
+    	时间：2017-05-09
+    	描述：营养液列表模板
+    -->
+	<script type="text/template" id="nutrientSolutiontemp">
+		<div onclick="app.clickNutr('<@ it.id>')"  class="nutrientSolution" style="margin-top: 0;background-image: url(<@ it.nutrientpic>);" layout>
+			<span flex><@ it.nutrientname></span>
+			<span><@ it.quantity>ml</span>
+		</div>
+	</script>
+
+	<!--
+    	作者：1318831854@qq.com
+    	时间：2017-04-13
+    	描述：种子的模板
+    -->
+	<script type="text/template" id="seedtemp">
+		<div class="swiper-slide seed" id="seed<@ it.id>" layout="column">
+			<div class="seedimgbg">
+				<img src="<@ it.seedImg>" />
+			</div>
+			<div class="app-text-white aui-text-center"><@ it.names></div>
+			<div flex layout>
+				<div flex></div>
+				<div class="seednumber" layout="column">
+					<div flex></div>
+					<div id="seedNum<@ it.id>">
+						<@ it.seednumerStr>
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+			</div>
+			<div onclick="app.clickPlantSeed(<@ it.id>)" class="zhongzhi btnfilter">种植</div>
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../game/game" src="../lib/requirejs/require.js"></script>
+
+</html>

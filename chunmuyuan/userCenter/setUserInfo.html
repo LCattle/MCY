@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>完善个人信息</title>
+	</head>
+	<style type="text/css">
+		.item {
+			min-height: 2.2rem;
+			padding: 0.2rem 0;
+		}
+		
+		.sexBtn {
+			/*padding: 0.1rem 1rem;
+			border-radius: 0.2rem;
+			background: #ddd;
+			color: white;
+			margin-right: 0.5rem;*/
+		}
+		
+		/*.sexBtn.active {
+			background: #007548;
+		}*/
+		
+		.likes span {
+			display: inline-block;
+		}
+		
+		.likes input[type="text"] { 
+			min-height: 1.5rem;
+			line-height: 1.5rem;
+			height: 1.5rem!important;
+			display: inline-block;
+			width: 11.5rem;
+			border: 1px solid #eee;
+			border-radius: 0.3rem;
+		}
+		
+		.likiesbtn {
+			display: inline-block;
+			height: 1.5rem;
+			width:3.5rem;
+			border: 1px solid green;
+			position: relative; 
+			top: 0.1rem;
+			font-size:0.7rem;
+			border-radius: 1rem;
+			padding:0 0.5rem;
+			line-height: 1.5rem;
+			text-align: center;
+			/*background-color: #CCCCCC;*/
+		}
+		
+		.likiesbtn.active {
+			/*background-color: #f59b29;*/
+			background-color:#007548;
+			color:#fff;
+		}
+		.aui-list-item-arrow:before {
+			border: 1px solid #ddd!important;
+			border-top: none!important;
+			border-right: none!important;
+		}
+	</style>
+
+	<body id="app">
+
+		<div class="app_bg_white aui-padded-l-15 aui-padded-r-15">
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<input type="text" id="realName" style="color:#999999"/>
+					<div flex></div>
+				</div>
+			</div>
+
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					个性签名
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<input type="text" id="autograph" style="color:#999999"/>
+					<div flex></div>
+				</div>
+			</div>
+
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<!--<div>
+						<span class="sexBtn active btnfilter">男</span>
+						<span class="sexBtn btnfilter">女</span>
+					</div>-->
+					<div flex class="sexBtn aui-list-item-arrow" style="color:#999999"></div>
+					<div flex></div>
+				</div>
+			</div>
+
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<div id="birthday" class="aui-list-item-arrow" style="color:#999999">
+						1980-01-01
+					</div>
+					<div flex></div>
+				</div>
+			</div>
+
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					家庭人数
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<div flex id="fmnum" class="aui-list-item-arrow" style="color:#999999"></div>
+					<div flex></div>
+				</div>
+			</div>
+
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<input type="text" id="occupation" style="color:#999999"/>
+					<div flex></div>
+				</div>
+			</div>
+
+			<div class="item  aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					喜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<div class="likes">
+						<input type="text" id="likes"  placeholder="请输入" style="color:#999999"/>
+					</div>
+					<div flex></div>
+				</div>
+			</div>
+
+			<!--<div class="item " layout>
+				<div layout="column">
+					<div flex></div>
+					忌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-15 aui-padded-l-15">
+					<div flex></div>
+					<input type="text" id="jikou" />
+					<div flex></div>
+				</div>
+			</div>-->
+		</div>
+
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div onclick="app.next()" class="app_btn_big btnfilter app_bg_green">保存</div>
+		</div>
+		<script type="text/template" id="likestemp">
+			<span  class="aui-margin-r-5 aui-margin-b-5" onclick="app.clickLikes('<@ it.id>',this)">
+				<span likeid="<@ it.id>" class="likiesbtn <@ it.selected?'active':''>"><@ it.paramname></span>
+			</span>
+		</script>
+		<script data-main="../js/main" data-app="../userCenter/setUserInfo" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

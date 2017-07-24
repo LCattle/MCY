@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <title>专享生日礼物</title>
+    <style>
+        #app {
+            background-color: #FFFFFF;
+        }
+        .head img {
+            width: 100%;
+        }
+        .title {
+            font-size: 0.9rem;
+            line-height: 1.4rem;
+        }
+        .item {
+            font-size: 0.8rem;
+            color: #666666;
+            line-height: 1.2rem;
+        }
+        .detail {
+            font-size: 0.7rem;
+            color: #787878;
+            text-indent: 2em;
+            line-height: 1rem;
+        }
+        .get_btn_row{
+            margin: 0.75rem auto;
+            text-align: center;
+        }
+        .get_btn {
+            display: inline-block;
+            vertical-align: middle;
+            width: 6.25rem;
+            height: 1.5rem;
+            background-image: url("../imgs/rights/get_btn.png");
+            background-size: 100%;
+            margin: auto;
+            text-align: center;
+            line-height: 1.5rem;
+            font-weight: bold;
+            color: #570B08;
+            font-size: 0.8rem;
+        }
+        .my_dialog {
+            position: fixed;
+            top:0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            text-align: center;
+            display: none;
+        }
+        .my_dialog:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        .dialog_c {
+            width: 80%;
+            border-radius: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .dialog_info {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            background-color: #FC6455;
+            padding-bottom: 0.5rem;
+        }
+        .dialog_img {
+            width:90%;
+            margin-top: 0.25rem;
+            margin-left: 0.5rem;
+        }
+        .dialog_img img {
+            width: 100%;
+        }
+        .dialog_text p {
+            text-align: center;
+            color: #FFFFFF;
+            line-height: 0.9rem;
+        }
+        .dialog_btn_c {
+            height: 3.5rem;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+        .dialog_btn_c:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id="app">
+    <div class="aui-content">
+        <div class="aui-row head">
+            <img src="../imgs/rights/sr_head.png" />
+        </div>
+        <div class="aui-row aui-padded-l-15 aui-padded-r-15">
+            <h3 class="title">专享生日礼物</h3>
+            <p class="item">1、权益说明：</p>
+            <p class="detail">铜卡及以上级别的会员均可在生日当月免费领取春沐源提供的精美生日礼物一份！</p>
+            <p class="item">2、兑现方式：</p>
+            <p class="detail">领取成功后，您的专属顾问会及时与您联系，为您送货上门！</p>
+        </div>
+        <div class="aui-row get_btn_row" id="get_btn_row">
+            <div class="get_btn" style="background-image: url('../imgs/rights/ljlq.png');display: none"></div>
+        </div>
+    </div>
+    <div class="my_dialog">
+        <div class="dialog_c">
+            <div class="dialog_info">
+                <div class="dialog_img">
+                    <img src="../imgs/rights/lqcg.png" />
+                </div>
+                <div class="dialog_text">
+                    <p style="font-size: 0.8rem">恭喜您，生日礼物领取成功!</p>
+                    <p style="margin-top: 0.5rem">随后您的专属顾问将联系您，为您送上</p>
+                    <p>精美礼物！</p>
+                </div>
+            </div>
+            <div class="dialog_btn_c">
+                <div class="get_btn">确认</div>
+            </div>
+        </div>
+    </div>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

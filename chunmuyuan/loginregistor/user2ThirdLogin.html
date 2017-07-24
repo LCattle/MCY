@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>联合登录</title>
+		<style>
+			#app .getCodeBtn.disable {
+				background: #e1e1e1!important;
+			}
+			
+			.panle {
+				position: absolute;
+				width: 100%;
+				top: 0;
+				bottom: 0;
+			}
+			
+			.eye {
+				font-size: 1.2rem;
+				color: #999;
+			}
+			
+			#header {
+				width: 40%;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="panle">
+			<div class="aui-text-center aui-margin-t-15">
+				<img src="../imgs/activity/success.png" id="header" />
+			</div>
+			<div class="aui-padded-l-15 aui-margin-t-15 aui-font-size-14">
+				亲爱的用户:<span id="userName" class="app-text-orange"></span>
+			</div>
+			<div class="aui-padded-l-15 aui-padded-r-15 aui-font-size-14">
+				为了给你更好的服务，请关联一个春沐源账号。
+			</div>
+			<div class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-15">
+				<div id="submitBtn" class="app_btn_big  btnfilter app_bg_green" onclick="app.changePage()">立即关联</div>
+			</div>
+		</div>
+		<div class="panle" id="loginBox1" style="display: none;">
+			<div class="aui-margin-t-15 app_bg_white">
+				<!--手机验证码box-->
+				<div>
+					<div layout class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-10">
+						<input type="text" name="userName" id="phone" placeholder="手机号" />
+					</div>
+					<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+						<input type="number" flex name="userName" id="code" placeholder="请输入验证码" />
+						<div layout="column">
+							<div flex></div>
+							<div class="app_btn_small  btnfilter app_bg_green getCodeBtn" onclick="app.getCode()">获取验证码</div>
+							<div flex></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="app_text_999 aui-padded-l-15 aui-padded-r-15 aui-margin-t-15 aui-font-size-14">
+				关联后，您的<span id="type"></span>和春沐源账号都能登录
+			</div>
+			<!--
+        	描述：登录按钮
+        -->
+			<div class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-15">
+				<div id="submitBtn" class="app_btn_big  btnfilter app_bg_green" onclick="app.clickLogin()">登录</div>
+			</div>
+		</div>
+
+	</body>
+	<script data-main="../js/main" data-app="../loginregistor/user2ThirdLogin" src="../lib/requirejs/require.js"></script>
+
+</html>

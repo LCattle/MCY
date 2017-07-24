@@ -1,0 +1,141 @@
+<html>
+
+	<head>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+		<script src="nativeutil.js">
+		</script>
+		<style>
+			button{
+				padding: 0.2rem 0.3rem;
+				background: white;
+				border-radius: 0.3rem;
+			}
+		</style>
+		<title> -初始标题-</title>
+	</head>
+
+	<body>
+		<h1>这是按钮调用</h1>
+		<input id='scanBtn' type="button" value="扫一扫" onclick="scanClick()" />
+		<input id='colorBtn' type="button" value="注册返回方法" onclick="registBack()" />
+		<input id='shareBtn' type="button" value="点击分享" onclick="shareClick()" />
+		<input id='payBtn' type="button" value="注册分享按钮" onclick="registShare()" />
+		<input id='shakeBtn' type="button" value="微信登录" onclick="weixin()" />
+		<input id='gobackBtn' type="button" value="QQ登录" onclick="qq()" />
+		<input id='gobackBtn' type="button" value="微博登录" onclick="weibo()" />
+		<input id='gobackBtn' type="button" value="改变标题" onclick="nativeChangeTitle('新的标题')" />
+		<input id='gobackBtn' type="button" value="拨打电话" onclick="nativeCallPhone('15902683717')" />
+		<input type="button" value="获取联系人信息" onclick="getContacts()" />
+		<input type="button" value="获取版本信息" onclick="getLv()" />
+		<input type="button" value="支付宝支付" onclick="openpay('aliPay')" />
+		<input type="button" value="微信支付" onclick="openpay('wxPay')" />
+		<input type="button" value="银联支付" onclick="openpay('unionPay')" />
+		<input type="button" value="苹果支付" onclick="openpay('applePay')" />
+		<input type="button" value="检查更新" onclick="nativeCheckUpdate()" />
+		<input type="button" value="获取推送状态" onclick="GetPushSwitchStatus()" />
+		<input type="button" value="开启推送" onclick="nativeSetPushSwitchStatus('T')" />
+		<input type="button" value="关闭推送" onclick="nativeSetPushSwitchStatus('F')" />
+		<input type="button" value="获取消息列表" onclick="getMsgList()" />
+		<input type="button" value="设置消息已读" onclick="nativeSetMsgReaded('1')" />
+		<input type="button" value="删除消息" onclick="nativeDelMsgById('1')" />
+		<input type="button" value="隐藏标题栏" onclick="nativeHideTitleBar()" />
+		
+		<h1>这是文件上传</h1>
+
+		<input type="file" />
+
+		<h1>这是回调结果展示区</h1>
+		<textarea id="returnValue" type="value" rows="5" cols="50">
+        
+        </textarea>
+
+		<script>
+		
+			function GetPushSwitchStatus(){
+				nativeGetPushSwitchStatus(function(data){
+					showMsg(data);
+				});
+			}
+			
+			function getMsgList(){
+				nativeGetMsgList(function(data){
+					showMsg(data);
+				});
+			}
+			
+			function openpay(type){
+				window.nativeOpenPay({
+					type:type,
+					orderId:"12345"
+				},function(data){
+					showMsg(data);
+				})
+			}
+			function getLv(){
+				window.nativeGetVersion(function(data){
+					showMsg(data);
+				});
+			}
+			function showMsg(data) {
+				if(data instanceof String) {
+					returnValue.value = data;
+				} else {
+					returnValue.value = JSON.stringify(data);
+				}
+			}
+
+			function scanClick() {
+				window.nativeOpenScan(function(data) {
+					showMsg(data);
+				});
+			}
+			var app = {
+				onNativeBack: function() {
+					showMsg("点击了返回");
+				}
+			}
+
+			function registBack() {
+				window.nativeRegistBackFunc();
+			}
+			var shareData = {
+				'title': '测试分享的标题',
+				'content': '测试分享的内容',
+				'url': 'http://www.baidu.com'
+			};
+			//点击分享的 
+			function shareClick() {
+				window.nativeOpenShare(shareData, function(data) {
+					showMsg(data);
+				});
+			}
+			function registShare(){
+				window.nativeRegistShareBtn(shareData);
+			}
+			function weixin(){
+				window.nativeJointLogin("wx",function(data){
+					showMsg(data);
+				});
+			}
+			function qq(){
+				window.nativeJointLogin("qq",function(data){
+					showMsg(data);
+				});
+			}
+			function weibo(){
+				window.nativeJointLogin("weibo",function(data){
+					showMsg(data);
+				});
+			}
+			function getContacts(){
+				window.nativeGetContacts(function(data){
+					showMsg(data)
+				});
+			}
+		</script>
+	</body>
+
+</html>

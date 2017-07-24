@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<title>提交成功</title>
+	</head>
+   
+	<body id="app" style="position:relative;">
+		<div id="vegetableBook" style="width:100%;height:100%;display:none;position:absolute;left:0;top:0;background:rgba(0,0,0,0.5);z-index: 999;">
+			<div style="width:100%;margin-top:5rem;">
+				<img src="../imgs/vegetable1.png" alt="" style="width:100%;"/>
+			</div>
+		</div>
+		<div class="aui-content" id="confirm_goods">
+			<ul class="aui-list aui-list-in aui-media-list">
+				<li class="aui-list-item goodsIetm" style="height:13.5rem;padding-left:0;">
+					<div class="aui-text-center">
+						<div style="margin: 0.7rem auto 0;" class="imgBox">
+							<img src="" width="40%">
+						</div>
+						<div style="display:block;">
+							<div class="">
+								<div class="aui-list-item-title" id="paystatus"></div>
+							</div>
+						</div>
+					</div>
+					<div class="aui-text-center aui-font-size-14 disappear" style="display:none">
+						<div style="margin:0 auto 0;width:80%;height:2.25rem;font-size:0.6rem;line-height:1rem;color:#fff;background-color:red;background:url(../imgs/chongz/colortip.png) no-repeat;background-size:100% 100%;">
+	                        <div style="line-height: 0.9rem;">恭喜您,本次获得<span id="integrate"></span><span id="growUp">成长值<span></div>
+	                        <div>本次为您优惠:<span id="vipFare"></span></div>
+						</div>
+			       </div>
+				</li>
+			</ul>
+			<ul class="aui-list aui-list-in" style="display:none" id="varvalbox">
+			    <li class="aui-list-item aui-list-item-inner" >
+					<div class="aui-list-item-title">
+						<p class=" aui-padded-t-5 plh13" style="display:inline">
+						账号余额：<span id="varval" class="app-text-orange aui-font-size-16"></span>
+						</p>
+						<span id="balanceTip" style="color:#757575;" class="aui-font-size-14">
+						(不足一单起送斤数)<a class="app-text-orange aui-font-size-16 aui-list-item-right" href="memberRecharge.html"> 去充值</a>
+					    </span>
+					</div>
+				</li>
+			</ul>	
+		</div>
+		<div class="aui-content aui-margin-b-5" >
+			<ul class="aui-list aui-list-in">
+				<li id="dzktsbox" style="display: none;"  class="aui-margin-b-5 aui-padded-l-15 aui-padded-r-15 app-text-orange"  style="background: white;border: none;"> 
+					<div class="aui-list-item-inner" style="padding:0.3rem 0;">
+							电子卡卡号及密码将以短信的形式发送至您手机，请注意查收！
+					</div>
+					<div class="aui-font-size-14 aui-padded-b-15 aui-margin-t-10" style="color: #757575;">如未收到，请拨打客户电话：<span onclick="location.href = 'tel://400-900-8838'">400-900-8838</span></div>
+				</li>
+				<li id="shsmbox" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner aui-margin-b-5 app-text-orange" > 
+					春沐源工作人员会尽快与您联系，并送货上门
+				</li>
+				<li id="infos_li" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner aui-margin-b-5" >
+					<div class="aui-list-item-title">
+						<p class=" aui-padded-t-5 plh13" id="infos">
+							
+						</p>
+					</div>
+				</li>
+				<li id="orderPhone" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner noafer">
+					<div class="aui-list-item-text ">手机号码:</div>
+					<div id="orderPhoneText" class="aui-list-item-r"></div>
+				</li>
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner noafer">
+					<div class="aui-list-item-text aui-font-size-16">商品金额:</div>
+					<div class="aui-list-item-right app-text-orange aui-font-size-16" id="vipCount"></div>
+				</li>
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner noafer" id="vipFavourable" style="display:none;">
+					<div class="aui-list-item-text aui-font-size-16" id="priceLable"></div>
+					<div class="aui-list-item-right app-text-orange aui-font-size-16" id="number"></div>
+				</li>
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner noafer" id="vegetableBox" style="display:none;">
+					<div class="aui-list-item-text aui-font-size-16">蔬果现金券:</div>
+					<div class="aui-list-item-right app-text-orange aui-font-size-16" id="vegetableNumber"></div>
+				</li>
+				<li id="depositbox" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner noafer">
+					<div class="aui-list-item-text ">订金券抵扣:</div>
+					<div class="aui-list-item-r app-text-orange">0</div>
+				</li>
+				<li id="couponbox" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner noafer">
+					<div class="aui-list-item-text ">优惠券:</div>
+					<div id="coupon" class="aui-list-item-r app-text-orange">0</div>
+				</li>
+				<li id="freebox" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-text ">优惠减免:</div>
+					<div class="aui-list-item-r app-text-orange freedom">0</div>
+				</li>
+				<li id="actualbox" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-text ">实付斤数:</div>
+					<div class="aui-list-item-r app-text-orange freeactual">0</div>
+				</li>
+				<li id="logisticsbox"  class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-text ">运费:</div>
+					<div class="aui-list-item-r app-text-orange" id="fare">0</div>
+				</li>
+				<li id="totalbox" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-text aui-text-default aui-font-size-16" style="color:orange">待付款:</div>
+					<div class="aui-list-item-r app-text-orange">0</div>
+				</li>
+				<li id="remark" style="display: none;" class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-text kobe"></div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content-padded aui-padded-t-15" style="display:none;margin-top:1.5rem;">
+			<div class="aui-pull-left" style="width:50%">
+				<div class="aui-btn  aui-btn-block " style="width:96%; border:1px solid #481c13; color:#481c13;">查看订单</div>
+			</div>
+			<div class="aui-pull-right" style="width:50%">
+				<div class="aui-btn aui-btn-success aui-btn-block  aui-pull-right" style="width:96%; background:#481c13">返回首页</div>
+			</div>
+			<div class="aui-clearfix"></div>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1rem;">
+			<div onclick="app.gotoIndexPage()" class="aui-btn border-radius15 app_bg_white app-text-green aui-btn-block aui-margin-b-10 border_green again" >有新品 去看看</div>
+			<div onclick="app.toOrder()" class="border-radius15 aui-btn aui-btn-block  aui-pull-right">查看订单~</div>
+			<div style="height: 4.5rem;"></div>
+		</div>
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+</html>

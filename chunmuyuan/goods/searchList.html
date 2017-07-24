@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title></title>
+    <style type="text/css">
+        body{
+            background-color: #f2f2f2;
+            overflow: hidden;
+        }
+        .aui-list:before{
+            height: 0px !important;
+        }
+        .aui-list-item-media{
+            width: 5.5rem !important;
+        }
+
+        .color-f48b00{
+            color: #f48b00 !important;
+        }
+        .color-999999{
+            color:#999999 !important;
+        }
+        .li-description{
+            line-height: 0.8rem !important;
+        }
+        .li-description p{
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 0.8rem;
+            height: 2.4rem;
+        }
+    </style>
+</head>
+<body id="app">
+    <section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+        <div class="aui-content aui-margin-b-15">
+            <ul id="list" class="aui-list aui-media-list">
+                <!--<li class="aui-list-item aui-margin-t-10">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media">-->
+                            <!--<img src="../imgs/goods/goods.png">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title">奶油生菜</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-text li-description color-999999">-->
+                                <!--新鲜美味好吃再来鲜美味好吃再来-->
+                            <!--</div>-->
+                            <!--<div class="aui-info aui-margin-t-5" style="padding:0;">-->
+                                <!--<div class="aui-info-item">-->
+                                    <!--<span class="aui-margin-l-5 color-f48b00">300g</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </section>
+
+    <!--商品列表-->
+    <script type="text/template" id="goodsLiTemplate">
+        <li class="aui-list-item aui-margin-t-10" onclick="app.toGoodsDetails('<@ it.id>','<@ it.type>')">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media">
+                    <img src="<@ it.pic>" onerror="this.src='../imgs/defaultGoods.png'">
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title"><@ it.name></div>
+                    <div class="aui-list-item-text li-description color-999999">
+                        <p><@ it.ads></p>
+                    </div>
+                    <div class="aui-info aui-margin-t-5" style="padding:0;">
+                        <div class="aui-info-item aui-padded-t-5">
+                            <span class="aui-margin-l-5 color-f48b00"><@ it.value>g</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+</body>
+
+<script data-main="../js/main" data-app="../goods/searchList" src="../lib/requirejs/require.js"></script>
+</html>

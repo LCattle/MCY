@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css?v=1">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>自选菜</title>
+		<style>
+			#wrapper {
+				-webkit-overflow-scrolling: touch;
+				background: white;
+				/*position: fixed;*/
+				/*top: 2.25rem;*/
+			}
+			
+			.aui-searchbar {
+				position: static;
+				left: 2.25rem;
+				background: none;
+				right: 2.25rem;
+				width: auto;
+			}
+			
+			.aui-searchbar-input .aui-icon-search {
+				color: blueviolet;
+			}
+			
+			.goodsList .aui-list .aui-list-item-media .goodsimg {
+				width: 3.25rem!important;
+				height: 3.25rem!important;
+			}
+			
+			.aui-list .aui-list-item-media {
+				padding: 0.625rem 0;
+				width: 3.25rem;
+			}
+			
+			.aui-list .aui-list-item {
+				padding-left: 0.1rem;
+			}
+			
+			.goodsIetm .goods_info {
+				left: 3.3rem;
+			}
+			
+			.carBtn {
+				position: absolute;
+				margin-top: -1.7rem;
+				font-size: 0.6rem;
+				height: 1.1rem;
+				line-height: 1.1rem;
+				width: 1.1rem;
+				color: white;
+				background: #006a42;
+				text-align: center;
+				right: 0.75rem;
+				border-radius: 1.1rem;
+			}
+			
+			.aui-bar.aui-bar-btn .aui-bar-btn-item {
+				height: rem;
+			}
+			
+			header .aui-title {
+				left: 2rem!important;
+				right: 2rem!important;
+			}
+			
+			.aui-bar-nav .aui-pull-left {
+				margin-left: 0.15rem;
+			}
+			
+			.aui-bar-nav .aui-pull-right {
+				margin-right: 0.15rem;
+			}
+			
+			.aui-btn i {
+				color: #4b4c58!important;
+				font-size: 1.2rem!important;
+			}
+			
+			.footer-bot {
+				height: 2.45rem;
+				background: #FFFFFF;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				z-index: 2;
+			}
+			#aui-header {
+				background: white;
+				position: fixed;
+			}
+			
+			#aui-header .aui-searchbar-input i {
+				color: #d9d9d9!important;
+			}
+			
+			#aui-header .aui-searchbar-input {
+				background: #eaeaea;
+			}
+			
+			.goodsItem1 {
+				display: inline-block;
+				padding: 0 ;
+				float: left;
+				width: 50%;
+				background: white;
+				text-align: center;
+				border: 1px solid #d1d1d1;
+			}
+			
+			.goodsItem1.noborderleft {
+				border-left: none;
+			}
+			
+			.goodsItem1.noborderTop {
+				border-top: none;
+			}
+			/*<@ app.removeLeftBorder?'noborderleft':''> <@ app.listDataIndex<2?'':'noborderTop'>*/
+			.aui-list.list1 {
+				padding: 0.55rem;
+				overflow: scroll;
+				background: white;
+			}
+			
+			.goodsItem1_inner {
+				display: inline-block;
+			}
+			
+			.goodsItem1_inner img {
+				display: block;
+				width: 100%;
+			}
+			
+			.goodsItem1 .inputBox {
+				margin-top: -2rem;
+			}
+			
+			.goodsItem2 {
+				position: relative;height:4.5rem;
+			}
+			
+			.goodsItem2:after {
+				height: 1px;
+				background-color: #dddddd;
+				display: block;
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: auto;
+				bottom: auto;
+				width: 100%;
+				z-index: 2;
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				pointer-events: none;
+			}
+			
+			.cateListBox,
+			.curve {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 100;
+				background: white;
+				padding: 0.75rem;
+				text-align: center;
+				display: none;
+			}
+			
+			.curve {
+				background: none;
+				top: 0.5rem;
+				color: white;
+				right: 0rem;
+			}
+			
+			.curve img {
+				width: 9rem;
+				float: right;
+				clear: both;
+			}
+			
+			.curve div {
+				float: right;
+				text-align: center;
+				width: 100%;
+			}
+			
+			.cateListBox ul:before {
+				height: 0;
+			}
+			
+			#shoppingCar {
+				position: fixed;
+				bottom: 0.15rem;
+				right: 0.75rem;
+				background: #481b13;
+				width: 2rem;
+				height: 2rem;
+				opacity: 0.8;
+				border-radius: 50%;
+				z-index: 5;
+			}
+			#shoppingCar i {
+				display: block;
+				font-size: 1.2rem;
+				line-height: 2rem;
+				color: white;
+				text-align: center;
+			}
+			
+			#shoppingCar .aui-badge {
+				right: -0.1rem;
+				left: auto;
+				background: #f39c29;
+				color: white;
+				top: -0.3rem
+			}
+			
+			#app .aui-list:after {
+				height: 0;
+			}
+			
+			.goodsItem1 .icon-yishouqing {
+				position: absolute;
+				top: -10rem;
+				width: 40%;
+				left: 28%;
+				opacity: 0.7;
+				color: #ddd;
+				font-size: 3.5rem;
+			}
+			.productImg1{
+				display: block;
+				margin: 0 auto;
+			}
+            #vipTip {
+                font-size: 0.6rem;
+                color: #f59b29;
+                margin-left: 0.1rem;
+                border: solid 1px #f59b29;
+                display: none
+            }
+		</style>
+	</head>
+
+	<body id="app">
+		<div id="shoppingCar" onclick="app.href('shoppingCar.html')">
+			<i class="aui-iconfont aui-icon-cart"></i>
+			<div class="aui-badge" style="display: none;"></div>
+		</div>
+		<header class="aui-bar aui-bar-nav aui-margin-b-15" id="aui-header">
+			<a class="aui-btn aui-pull-left" tapmode onclick="app.OpenCate()">
+				<i class="iconfont icon-shaixuan"></i>
+			</a>
+			<div class="aui-title">
+				<div class="aui-searchbar">
+					<div class="aui-searchbar-input aui-border-radius" tapmode>
+						<i class="aui-iconfont aui-icon-search"></i>
+						<form onsubmit="app.search(this); return false;" >
+							<input type="search" autocomplete="off" placeholder="请输入搜索内容" id="search-input">
+						</form>
+					</div>
+					<div class="aui-searchbar-cancel" tapmod>取消</div>
+				</div>
+			</div>
+			<a class="aui-btn aui-pull-right" tapmode onclick="app.changeTemp(this)">
+				<i class="iconfont icon-icon1460187865317"></i>
+			</a>
+		</header>
+		<div style="height: 2.25rem;"></div>
+		<section id="wrapper" class="goodsList">
+			<ul id="list" class="aui-list aui-media-list">
+			</ul>
+		</section>
+		<div class="footer-bot" id="footer" >
+			<div class="aui-pull-left aui-font-size-14 " style="padding: 0.15rem 0.75rem ;">
+				<div class="center_outter" style="text-align: left;height:2.3rem;">
+					<div class="center_inner ">
+						<div><span id="priceName"></span><span class="aui-font-size-16 app-text-orange"><span id="nowkg"></span></span>
+							<span id="vipTip">会员享更多优惠</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="curve">
+			<img src="../imgs/curve.png" />
+			<div>点击这里可以切换视图哦~</div>
+		</div>
+
+		<div class="cateListBox">
+			<i onclick="app.closeCate()" id="car_icon" class="aui-iconfont aui-icon-close" style="font-size: 1.1rem;float: left;margin-top: -0.5rem;"> </i>
+			<div style="position: absolute;top:0.5rem;text-align: center;right: 3rem;left: 3rem;">
+				<img src="../imgs/logo.png " style="width: 1.2rem;" class="aui-margin-b-15 " />
+			</div>
+			<ul class="aui-list aui-margin-t-15 aui-padded-t-15">
+				<li class="aui-list-item" onclick="app.selectCate(this,'')">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">全部分类</div>
+						<div class="aui-list-item-right" style="display: block">
+							<i class="iconfont icon-duihao app_color_green"></i>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item " id="cateBox" onclick="app.checkShowEnable(this)">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">显示有货</div>
+						<div class="aui-list-item-right" style="display:none">
+							<i class="iconfont icon-duihao app_color_green"></i>
+						</div>
+					</div>
+				</li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="IMBOX" onclick="app.openImUrl()"></div>
+		<script type="text/template" id="template1">
+			<div class="goodsItem1">
+				<li class="goodsItem1_inner" >
+					<img onclick="location.href='../goods/goodsDetails.html?pid=s<@ it.id>'" class="productImg1" src="<@ app.getMiddelPath(it.picpath)>" style="width: <@ $(window).width()/2-2>px;height: <@ $(window).width()/2-2>px;" onerror="this.src='../imgs/defaultGoods.png'" />
+					<div onclick="location.href='../goods/goodsDetails.html?pid=s<@ it.id>'" class="aui-list-item-title aui-ellipsis-1 aui-text-left aui-padded-t-10" style="max-width:<@ $(window).width()/2-20>px;margin-left: 0.25rem;">
+						<@ it.skuname>
+					</div>
+					<div onclick="" class="aui-ellipsis-1 " style="max-width:<@ $(window).width()/2-20>px;padding-left: 0.25rem;text-align: left;color: #BB0000;font-size: 0.7rem">
+						<@ it.product.ads?it.product.ads:'&nbsp;'>
+					</div>
+					<div style="margin-left: 0.25rem;" class="aui-list-item-title aui-text-left aui-padded-t-15 aui-padded-b-5 aui-font-size-12">
+						<div class="app-text-orange"><span style="font-size:0.8rem;"><@ app.getPriceStr(it.sellprice)></span></div>
+					</div>
+				</li>
+				<div style="right:0;position: relative;height: 0.4rem;top:0;margin-top: -1.25px;">
+					<i class="iconfont icon-yishouqing" style="visibility: <@ it.stock<1?'visible':'hidden' >;"></i>
+					<div style="position: absolute;bottom: 0.55rem;right: 0.45rem;">
+						<span class="app-text-orange aui-clearfix" style="display: <@ it.stock<1?'block':'none' >;">已售罄</span>
+						<div class="inputBox" style="display: <@ it.stock<1?'none':'block' >">
+							<i class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+							<input id="countNum" style="color:#424242;-webkit-text-fill-color:#424242;-webkit-opacity:1;opacity: 1;" type="number" readonly="" disabled="" value="<@ it.count>">
+							<i class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+							<!--<i onclick="app.clickPlus(this,event,'<@ it.id>')" style="display: inline-block;background-color: #FF9200;color: white;width: 1.5rem;height: 1.5rem;border-radius: 1.5rem;line-height: 1.5rem;font-size: 1rem" class="icon iconfont icon-gouwuche2"></i>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script type="text/template" id="template">
+			<div class="goodsItem2" >
+				<li   style="padding: 0.3rem 0.75rem;" onclick="">
+					<span class="app-text-orange aui-clearfix" style="float: right;visibility: <@ it.stock<1?'visible':'hidden' >;">已售罄</span>
+					<div onclick="location.href='../goods/goodsDetails.html?pid=s<@ it.id>'">
+						<@ it.skuname>
+					</div>
+					<div onclick="" class="aui-list-item-text aui-ellipsis-1" style="display: block;">
+						<@ it.product.ads>
+					</div>
+					<div class="aui-margin-t-10 aui-font-size-12">
+						<div style="float:left;" class="app-text-orange"><span style="font-size:0.8rem;"><@ app.getPriceStr(it.sellprice)></span></div>
+						<!--<div style="float:left;margin-left: 0.5rem;color:#757575;font-size:0.6rem;height:1rem;padding-top:0.2rem;">会员享更多优惠</div>-->
+					</div>
+				</li>
+				<div style="position: absolute;bottom: 0.35rem;;right: 0.75rem;">
+					<div class="inputBox"style="display: <@ it.stock<1?'none':'block' >">
+						<i class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+						<input id="countNum" style="color:#424242;-webkit-text-fill-color:#424242;-webkit-opacity:1;opacity: 1;" type="number" readonly="" disabled="" value="<@ it.count>">
+						<i class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script type="text/template" id="cateTemplate">
+			<li class="aui-list-item" onclick="app.selectCate(this,<@ it.id>);">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-title">
+						<@ it.name>
+					</div>
+					<div class="aui-list-item-right" style="display: none">
+						<i class="iconfont icon-duihao app_color_green"></i>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

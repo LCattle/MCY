@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>菜园动态</title>
+		<style>
+			#list{
+				padding: 0 0.75rem;
+				background: white;
+			}
+			.storBox {
+				width: 1.5rem;
+				text-align: center;
+				font-weight: bold;
+				color: #999;
+			}
+			
+			.storBox img {
+				width: 1rem;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+			</div>	
+		</section>
+		<!--
+    	描述：好友排行榜的模板
+    -->
+	<script type="text/template" id="paihangTemp">
+		<div layout class="aui-padded-b-15 ">
+			<div layout="column" class="storBox">
+				<div flex></div>
+				<@ it.storeStr>
+					<div flex></div>
+			</div>
+			<div layout flex class="aui-border-b aui-padded-t-5 aui-padded-b-5  aui-padded-l-10">
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/xq-images/photo.png" style="width: 2.5rem;height: 2.5rem;" />
+					<div flex></div>
+				</div>
+				<div flex layout="column" class="aui-margin-l-5">
+					<div flex class="plh14">春沐源会员</div>
+					<div flex class="app_text_999 aui-font-size-14 " style="line-height: 0.9rem;">已种植3课蔬菜</div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<div class=" aui-font-size-14">
+						3000g
+					</div>
+					<div flex></div>
+				</div>
+			</div>
+		</div>
+	</script>
+	</body>
+	<script data-main="../js/main" data-app="../game/gamePaihang" src="../lib/requirejs/require.js"></script>
+
+</html>

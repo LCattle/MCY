@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <title>积分兑换</title>
+    <style type="text/css">
+        body, .aui-tab{
+            background-color: #f2f2f2;
+            overflow: hidden;
+        }
+        .aui-tab-item{
+            border-top: 1px solid #f2f2f2;
+            z-index: 2;
+        }
+        /*.aui-tab-item:first-child{*/
+            /*border-right: 0.5px solid #f2f2f2;*/
+        /*}*/
+        /*.aui-tab-item:last-child{*/
+            /*border-left: 0.5px solid #f2f2f2;*/
+        /*}*/
+        .aui-tab-item.aui-active {
+            color: #f28b00;
+            border-bottom: 2px solid #f28b00;
+        }
+        .item-img{
+            background-color: #fef3d5;
+            width: 100%;
+            height: 100%;
+        }
+        .item-text{
+            margin-top: 0.5rem;
+            width: 100%;
+            text-align: center;
+        }
+        .item-text .aui-list-item-text{
+            display: block;
+            text-align: center;
+        }
+        .item-text .btn-exchange{
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0.3rem auto;
+            background-color: #fdc415;
+            border: 2px solid #ffdd84;
+            border-radius: 8px;
+        }
+        .color-f28b00{
+            color: #f28b00 !important;
+        }
+        .color-574203{
+            color: #574203 !important;
+        }
+        .aui-list:before{
+            height: 0px;
+        }
+        .aui-media-list .aui-list-item-inner{
+            z-index: 1;
+        }
+        .aui-content{
+            position: relative;
+        }
+        .absolute-psi{
+            position: absolute;
+            top: 2.2rem;
+            left: 0px;
+            height: 100%;
+        }
+        .aui-tab-item.aui-active{
+            z-index: 2;
+        }
+        .aui-content{
+            display: block;
+        }
+        .apptipsbox{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .aui-col-xs-6:nth-child(odd) .aui-list-item-inner{
+            padding-right: 0.15rem;
+        }
+        .aui-col-xs-6:nth-child(even){
+            padding-left: 0.15rem;
+        }
+
+        .aui-list-item-title div:first-child{
+            display: inline-block;
+            width: 80%;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+        .aui-list-item-title div:last-child{
+            position: relative;
+            display: inline-block;
+            width: 17%;
+            margin-top: -0.2rem !important;
+            padding: 0;
+            text-align: left;
+            line-height: 1rem;
+            height: 1rem;
+        }
+        .aui-list-item-title div p{
+            line-height: 1rem;
+            height: 1rem;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        .aui-list-item-title div:first-child p{
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+        .aui-list-item-title div:last-child p{
+            position: absolute;
+            top: 0;
+            left: -0.25rem;
+        }
+        #imgBorder{
+        	border:1px solid #EEEEEE;
+        	padding:1rem 1rem;
+        	background:#fff;
+        }
+    </style>
+</head>
+<body id="app">
+    <div class="aui-tab" id="tab">
+        <div class="aui-tab-item aui-active" id="seeds" onclick="app.changeTab('seeds')">兑换种子</div>
+        <div class="aui-tab-item" id="energy" onclick="app.changeTab('energy')">兑换营养液</div>
+        <div class="aui-tab-item" id="integral" onclick="app.changeTab('integral')">兑换余额</div>
+    </div>
+
+    <!--种子-->
+    <div class="aui-content aui-margin-b-15 aui-margin-t-10 list-seeds absolute-psi">
+        <section id="wrapper-seeds" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+            <div id="list-seeds" class="aui-list aui-media-list aui-row aui-row-padded">
+
+                <!--<div class="aui-list-item aui-col-xs-6">-->
+                    <!--<div class="aui-list-item-inner">-->
+                        <!--<div class="aui-row aui-row-padded">-->
+                            <!--<div class="item-img">-->
+                                <!--<img src="../imgs/user-center/zhong-zi.png" />-->
+                            <!--</div>-->
+                            <!--<div class="item-text">-->
+                                <!--<div class="aui-list-item-title">水培黄瓜种子</div>-->
+                                <!--<div class="aui-list-item-text color-f28b00">100积分</div>-->
+                                <!--<div class="aui-list-item-text">-->
+                                    <!--<div class="btn-exchange color-574203" onclick="app.doExchangeSeeds()">兑换</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+        </section>
+    </div>
+
+    <!--营养液-->
+    <div class="aui-content aui-margin-b-15 aui-margin-t-10 absolute-psi list-energy" style="display: none;">
+        <section id="wrapper-energy" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+            <div id="list-energy" class="aui-list aui-media-list aui-row aui-row-padded">
+
+                <!--<div class="aui-list-item aui-col-xs-6">-->
+                    <!--<div class="aui-list-item-inner">-->
+                        <!--<div class="aui-row aui-row-padded">-->
+                            <!--<div class="item-img">-->
+                                <!--<img src="../imgs/user-center/ying-yang-ye.png" />-->
+                            <!--</div>-->
+                            <!--<div class="item-text">-->
+                                <!--<div class="aui-list-item-title">叶菜营养液100ml</div>-->
+                                <!--<div class="aui-list-item-text color-f28b00">100积分</div>-->
+                                <!--<div class="aui-list-item-text">-->
+                                    <!--<div class="btn-exchange color-574203" onclick="app.doExchangeNuLiquid()">兑换</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+        </section>
+    </div>
+    
+    <!--积分-->
+    <div class="aui-content aui-margin-b-15 aui-margin-t-10 absolute-psi list-integral" style="display: none;">
+        <section id="wrapper-integral" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+            <div id="list-integral" class="aui-list aui-media-list aui-row aui-row-padded">
+                <div class="aui-list-item aui-col-xs-6">
+                        <div class="aui-list-item-inner">
+                            <div class="item-img">
+			                    <img src="../imgs/user-center/20.png" id="imgBorder"/>
+			                </div>
+                        <div class="item-text">
+		                    <div class="aui-list-item-title">
+		                        <p>20元</p>
+		                    </div>
+		                    <div class="aui-list-item-text color-f28b00">2000积分</div>
+		                    <div class="aui-list-item-text">
+		                        <div class="btn-exchange color-574203" onclick="app.doExchangeintegral(2000)" data-value="2000">兑换</div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="aui-list-item aui-col-xs-6">
+                        <div class="aui-list-item-inner">
+                            <div class="item-img">
+			                    <img src="../imgs/user-center/40.png" id="imgBorder"/>
+			                </div>
+                        <div class="item-text">
+		                    <div class="aui-list-item-title">
+		                        <p>40元</p>
+		                    </div>
+		                    <div class="aui-list-item-text color-f28b00">4000积分</div>
+		                    <div class="aui-list-item-text">
+		                        <div class="btn-exchange color-574203" onclick="app.doExchangeintegral(4000)" data-value="4000">兑换</div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="aui-list-item aui-col-xs-6">
+                        <div class="aui-list-item-inner">
+                            <div class="item-img">
+			                    <img src="../imgs/user-center/100.png" id="imgBorder"/>
+			                </div>
+                        <div class="item-text">
+		                    <div class="aui-list-item-title">
+		                        <p>100元</p>
+		                    </div>
+		                    <div class="aui-list-item-text color-f28b00">10000积分</div>
+		                    <div class="aui-list-item-text">
+		                        <div class="btn-exchange color-574203" onclick="app.doExchangeintegral(10000)" data-value="10000">兑换</div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="aui-list-item aui-col-xs-6">
+                        <div class="aui-list-item-inner">
+                            <div class="item-img">
+			                    <img src="../imgs/user-center/160.png" id="imgBorder"/>
+			                </div>
+                        <div class="item-text">
+		                    <div class="aui-list-item-title">
+		                        <p>160元</p>
+		                    </div>
+		                    <div class="aui-list-item-text color-f28b00">16000积分</div>
+		                    <div class="aui-list-item-text">
+		                        <div class="btn-exchange color-574203" onclick="app.doExchangeintegral(16000)" data-value="16000">兑换</div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+            </div>
+        </section>
+    </div>
+    
+    <!--列表模版 种子-->
+    <script type="text/template" id="exchangeSeedsTemplate">
+        <div class="aui-list-item aui-col-xs-6">
+            <div class="aui-list-item-inner">
+                <div class="item-img">
+                    <img src="<@ it.picpath>" onerror="this.src='../imgs/seeds-default.png'" />
+                </div>
+                <div class="item-text">
+                    <div class="aui-list-item-title">
+                        <p><@ it.names></p>
+                    </div>
+                    <div class="aui-list-item-text color-f28b00"><@ it.point>积分</div>
+                    <div class="aui-list-item-text">
+                        <div class="btn-exchange color-574203" onclick="app.doExchangeSeeds('<@ it.seedid>', '<@ it.ruleid>')">兑换</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--列表模版 营养液-->
+    <script type="text/template" id="exchangeEnergyTemplate">
+        <div class="aui-list-item aui-col-xs-6">
+            <div class="aui-list-item-inner">
+                <div class="item-img">
+                    <img src="<@ it.nutrientpic>" onerror="this.src='../imgs/defaultGoods.png'" />
+                </div>
+                <div class="item-text">
+                    <div class="aui-list-item-title">
+                        <div style="width: 100%"><p style="width: 100%;text-align: center"><@ it.nutrientname> <@ it.quantity>ml</p></div>
+                    </div>
+                    <div class="aui-list-item-text color-f28b00"><@ it.score>积分</div>
+                    <div class="aui-list-item-text">
+                        <div class="btn-exchange color-574203" onclick="app.doExchangeNuLiquid('<@ it.nutrientid>', '<@ it.ruleid>', '<@ it.score>')">兑换</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    
+    <!--列表模板 积分兑换-->
+    <!--<script type="text/template" id="exchangeIntegralTemplate">
+        <div class="aui-list-item aui-col-xs-6">
+            <div class="aui-list-item-inner">
+                <div class="item-img">
+                    <img src="<@ it.nutrientpic>" onerror="this.src='../imgs/defaultGoods.png'" />
+                </div>
+                <div class="item-text">
+                    <div class="aui-list-item-title">
+                        <div><p><@ it.nutrientname></p></div>
+                        <div><p><@ it.quantity>ml</p></div>
+                    </div>
+                    <div class="aui-list-item-text color-f28b00"><@ it.score>积分</div>
+                    <div class="aui-list-item-text">
+                        <div class="btn-exchange color-574203" onclick="app.doExchangeNuLiquid('<@ it.nutrientid>', '<@ it.ruleid>')">兑换</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>-->
+    
+</body>
+
+<script data-main="../js/main" data-app="../userCenter/integralExchange" src="../lib/requirejs/require.js"></script>
+</html>

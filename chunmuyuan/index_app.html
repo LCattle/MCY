@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="./lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="./css/app.css">
+		<link rel="stylesheet" type="text/css" href="./css/layout.css">
+		<link rel="stylesheet" type="text/css" href="./css/icon/iconfont.css">
+		<title>首页</title>
+		<style>
+			#informationBox,
+			#advNavigation {
+				padding: 0.2rem 0.75rem;
+				background: white;
+			}
+			
+			#informationBox .aui-border-l:before {
+				background: #f59b29;
+			}
+			
+			#advNavigation img {
+				display: block;
+				width: 40%;
+				margin: 0.2rem 30% 0.5rem 30%;
+			}
+			
+			.itemTitle {
+				padding: 1rem 0 0.2rem;
+				background: white;
+			}
+			/**
+			 * 菱形效果
+			 */
+			
+			.diamond,
+			.diamond2 {
+				display: inline-block;
+				width: 0.4rem;
+				height: 0.4rem;
+				margin: 0.5rem 1rem 0 1rem;
+				background: #1eff00;
+				/* Rotate */
+				-webkit-transform: rotate(-45deg);
+				-moz-transform: rotate(-45deg);
+				-ms-transform: rotate(-45deg);
+				-o-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				/* Rotate Origin */
+				-webkit-transform-origin: 0 100%;
+				-moz-transform-origin: 0 100%;
+				-ms-transform-origin: 0 100%;
+				-o-transform-origin: 0 100%;
+				transform-origin: 0 100%;
+			}
+			
+			.diamond2 {
+				margin-left: 1.3rem;
+			}
+			
+			.advMPic {
+				display: block;
+				width: 100%;
+			}
+			
+			.srcollDiv {
+				width: 10000px;
+			}
+			
+			.panel {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			
+			#wrapper {
+				overflow: scroll;
+			}
+			
+			#footer {
+				height: 2rem;
+				background: white;
+			}
+			/**
+			 * 重写分页器选中的颜色
+			 */
+			
+			#app .swiper-pagination-bullet-active {
+				background: #f59b29;
+			}
+			
+			#app .hidden {
+				display: none;
+			}
+			
+			.vegetables {
+				display: inline-block;
+				text-align: center;
+				background: white;
+			}
+			
+			.vegetables img {
+				width: 100%;
+				display: block;
+			}
+			
+			.hotsell {
+				background: white;
+				display: inline-block;
+			}
+			
+			#header,
+			#headerbg {
+				z-index: 10;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				color: white;
+				padding: 0 0.75rem;
+				font-size: 0.6rem;
+				text-align: center;
+			}
+			
+			#headerbg {
+				z-index: 9;
+				height: 2.2rem;
+				opacity: 0.5;
+				background: green;
+			}
+			.tabItemIcon{
+				height: 1.2rem;
+				width: 1.2rem;
+				background: url();
+				
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div id="headerbg" layout>
+		</div>
+		<div id="header" layout>
+			<div>
+				<i class="iconfont icon-saoma"></i>
+				<br> 扫一扫
+			</div>
+			<div flex></div>
+			<div>
+				<i class="iconfont icon-xiaoxi"></i>
+				<br> 消息
+			</div>
+		</div>
+		<div class="panel" layout="column">
+			<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+				<div flex id="contentBox">
+					<!-- 	描述:轮播图  -->
+					<div id="bannerbox" class="swiper-container">
+						<div class="swiper-wrapper">
+
+						</div>
+						<div class="swiper-pagination">
+
+						</div>
+					</div>
+					<!--资讯-->
+					<div id="informationBox" class="aui-margin-b-10" layout>
+						<i class="iconfont icon-laba app-text-orange aui-margin-r-10"></i>
+						<marquee flex id="information">测试发布了测试发布了测试发布了</marquee>
+						<div class="app-text-orange aui-border-l aui-padded-l-5 aui-margin-l-10">更多...</div>
+					</div>
+				</div>
+			</section>
+			<div id="footer" class="aui-bar aui-bar-tab">
+				<div class="aui-bar-tab-item aui-active" tapmode>
+					<div class="tabItemIcon"></div>
+					<div class="aui-bar-tab-label" >首页</div>
+				</div>
+				<div class="aui-bar-tab-item" tapmode>
+					<i class="aui-iconfont iconfont icon-shexiangtou" style="font-size: 1rem;"></i>
+					<div class="aui-bar-tab-label" lan-res="home_tab2"></div>
+				</div>
+				<div class="aui-bar-tab-item" tapmode>
+					<div class="aui-badge" id="carNum" style="display: none;"></div>
+					<i id="car_icon" class="aui-iconfont aui-icon-cart"></i>
+					<div class="aui-bar-tab-label">购物车</div>
+				</div>
+				<div class="aui-bar-tab-item" tapmode>
+					<div class="aui-dot" id="loginbtn" style="display: none;"></div>
+					<i class="aui-iconfont aui-icon-my"></i>
+					<div class="aui-bar-tab-label" lan-res="home_tab4"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--导航操作广告位-->
+		<div id="advNavigation" class="aui-margin-b-10 hidden">
+		</div>
+
+		<!-- 热销推荐广告位 -->
+		<div id="advHotSell" class="hidden aui-margin-b-10">
+			<img src="imgs/chongz/2.jpg" class="advMPic" />
+			<div class="itemTitle aui-border-b" layout>
+				<div flex></div>
+				<div class="diamond"></div>
+				热销推荐
+				<div class="diamond2"></div>
+				<div flex class="aui-text-right app-text-orange plh12">
+				</div>
+			</div>
+			<div style="overflow: scroll;">
+				<div id="optional" class="swiper-wrapper">
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- 广告位头部模板 -->
+	<script type="text/template" id="advTitleTemplate">
+		<div class="aui-margin-b-10">
+			<img src="<@ it.img>" class="advMPic" style="display: <@ it.hideImg?'none':''>;" />
+			<div class="itemTitle aui-border-b" layout>
+				<div flex></div>
+				<div class="diamond"></div>
+				<@ it.title>
+					<div class="diamond2"></div>
+					<div flex onclick="if('<@ it.hideMore>' != true){app.href('<@ it.url>')}" class="aui-text-right app-text-orange plh12">
+						<span style="display:<@ it.hideMore?'none':''> ;">更多 <i class="aui-iconfont aui-icon-right "></i></span>
+					</div>
+			</div>
+		</div>
+	</script>
+	<!--热销推荐商品模板-->
+	<script type="text/template" id="hotsellTemplate">
+		<div style="width: <@ it.width>px;" class="hotsell">
+			<img src="<@ it.img>" style="width: <@ it.width>px;height: <@ it.width>px;">
+			<div class="aui-padded-t-5  aui-padded-l-15 aui-padded-r-15 aui-ellipsis-1">
+				<div>
+					<@ it.name>
+				</div>
+				<div class="aui-font-size-14 app_text_999 aui-ellipsis-1">
+					<@ it.ads>
+				</div>
+			</div>
+			<div class="aui-padded-b-10 aui-padded-t-10 app-text-orange aui-padded-l-15 aui-padded-r-15">
+				<@ it.price>g</div>
+		</div>
+	</script>
+	<!--自选菜和宅配套餐的商品模板-->
+	<script type="text/template" id="vegetablesTemplate">
+		<div style="width: <@ it.width>px;" class="vegetables">
+			<img src="imgs/chongz/daofu.png" style="position: absolute;width: 1rem;">
+			<img src="<@ it.img>" style="width: <@ it.width>px;height: <@ it.width>px;">
+			<div class="aui-padded-t-5 aui-padded-b-5 aui-ellipsis-1">
+				<@ it.name>
+			</div>
+			<div class="aui-padded-b-10 app-text-orange">
+				<@ it.price>g</div>
+		</div>
+	</script>
+
+	<!--
+    	描述：banner模板
+    -->
+	<script type="text/template" id="bannerTemplate">
+		<img onclick="app.href('<@ it.url>')"  src="<@ it.img>" class="swiper-slide" />
+	</script>
+	<!--
+    	描述：导航按钮的模板
+    -->
+	<script type="text/template" id="advNavigationTemplate">
+		<div flex class="aui-text-center" onclick="app.href('<@ it.url>')">
+			<img src="<@ it.img>" />
+			<@ it.name>
+		</div>
+	</script>
+	<script type="text/template" id="campaing1temp">
+		<div class="app_bg_white">
+			<img class="advMPic" src="<@ it[0].img>" style="height: <@ app.actImg1Height>px;" />
+		</div>
+	</script>
+	<script type="text/template" id="campaing2temp">
+		<div layout class="app_bg_white" style="height: <@ app.actImg1Height>px;">
+			<div flex class="aui-border-r" style="height: 100%;">
+				<img class="advMPic" src="<@ it[0].img>" style="height: 100%;" />
+			</div>
+			<div flex style="height: 100%;">
+				<img class="advMPic" src="<@ it[1].img>" style="height: 100%;" />
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="campaing3temp">
+		<div layout style="height: <@ app.actImg1Height>px;" class="app_bg_white">
+			<div layout="column" class="aui-border-r" style="width: <@ app.actImg1Width>px;height: <@ app.actImg1Height>px;">
+				<div style="height: <@ app.actImg1Height/9*5>px;" class="aui-border-b">
+					<img class="advMPic" src="<@ it[0].img>" style="height: 100%;" />
+				</div>
+				<img style="height: <@ app.actImg1Height/9*4>px;" class="advMPic" src="<@ it[1].img>" />
+			</div>
+			<img class="advMPic" src="<@ it[2].img>" style="height: 100%;width: <@ $(window).width()-app.actImg1Width>px;" />
+		</div>
+	</script>
+	<script type="text/template" id="campaing4temp">
+		<div layout style="height: <@ app.actImg1Height>px;" class="app_bg_white">
+			<div class="aui-border-r" style="width:<@ $(window).width()*0.6>px">
+				<div class="aui-border-b" layout style="height: <@ app.actImg1Height/3*2>px;">
+					<div class="aui-border-r" style="width: 50%;height: 100%;">
+						<img class="advMPic" src="<@ it[0].img>" style="height: 100%;" />
+					</div>
+					<img src="<@ it[1].img>" style="width: 50%;" />
+				</div>
+				<img class="advMPic" src="<@ it[2].img>" style="height: <@ app.actImg1Height/3>px;" />
+			</div>
+			<div flex style="height: 100%;">
+				<img class="advMPic" src="<@ it[3].img>" style="height: 100%;" />
+			</div>
+		</div>
+	</script>
+	<script data-main="js/main" data-app="../index" src="lib/requirejs/require.js"></script>
+
+</html>

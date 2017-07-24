@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>选择支付</title>
+	</head>
+	<style type="text/css">
+		.item{
+			min-height: 2.2rem;
+			padding: 0 0.75rem;
+		}
+		.paycheckBtn{
+			width: 0.9rem;
+			height: 0.7rem;
+		}
+		.paycheckBtn.active{
+			background: url(../imgs/chongz/gou_green.png);
+			background-size:cover;
+		}
+	</style>
+
+	<body id="app"> 
+		<div class="item app_bg_white aui-margin-b-10 aui-margin-t-10" layout>
+				<div layout="column" flex>
+					<div flex></div>
+					<div >现在支付方式</div>
+					<div flex></div>
+				</div>
+		</div>
+			
+		<div class="app_bg_white">
+			<div class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/weixin.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						微信支付
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn active"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/yinlian.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						银联支付
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/weixin.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						支付宝
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/applepay.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						Apple Pay
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div>
+						<img src="../imgs/chongz/yinlian.png"/  style="height: 1.1rem;">
+						<img src="../imgs/chongz/shanfu.png"/  style="height: 0.8rem;">
+					</div>
+					<div flex></div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn"> </div>
+					<div flex></div>
+				</div>
+			</div>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div onclick="app.next()" class="app_btn_big btnfilter app_bg_green">下一步</div>
+		</div>
+		<script data-main="../js/main" data-app="../userCenter/selectPay.html" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

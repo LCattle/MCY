@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="gameAnimation.css" />
+		<title>蔬菜详情</title>
+		<style>
+			.gameBtn {
+				bottom: auto;
+				right: 0.5rem;
+			}
+			
+			.gameBtn img {
+				width: 1.5rem;
+			}
+			.gameBtn div {
+				font-size: 0.6rem;
+				color: #666;
+				width: 2.5rem;
+				text-align: center;
+			}
+			
+			.temperature,
+			.humidity {
+				z-index: 2;
+				top: 2.5rem;
+				left: 0.75rem;
+				color: #118cde;
+				font-size: 0.7rem;
+				padding-left: 1.5rem;
+				background-image: url(../imgs/game/humidity.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+			
+			.temperature {
+				top: 4rem;
+				color: #eb770a;
+				background-image: url(../imgs/game/temperature.png);
+			}
+			
+			.seedBg {
+				display: inline-block;
+				width: 9rem;
+				height: 9rem;
+				border-radius: 10rem;
+				background: #85c9ff;
+				text-align: center;
+			}
+			
+			.seedBg img {
+				margin-top: 0.5rem;
+				height: 8rem;
+			}
+			
+			.nextStaupTip {
+				display: none;
+				margin: 1rem 2rem;
+				padding: 0.5rem;
+				background: #fad970;
+				border-radius: 0.6rem;
+				border: 2px #f7b91f solid;
+			}
+			
+			.sun {
+				display: none;
+				z-index: 5;
+				width: 3rem;
+				height: 3rem;
+			}
+			
+			.spin {
+				display: none;
+				z-index: 2;
+				width: 4rem;
+				height: 4rem;
+			}
+			
+			.buddle {
+				display: none;
+				z-index: 2;
+				width: 5rem;
+				height: 4rem;
+				padding: 0.8rem 0.9rem;
+				font-size: 0.6rem;
+				color: #974e03;
+				background-image: url(../imgs/game/bubble.png);
+				background-size: 100% 100%;
+			}
+			
+			.sun img,
+			.spin img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			
+			
+			.videoBox {
+				position: relative;
+				display: none;
+				height: 8rem;
+				width: 100%;
+				background: url(../imgs/chongz/jn.jpg);
+				background-size: 100% 100%;
+			}
+			
+			#myvideo {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				object-fit: fill;
+				display: none;
+			}
+			
+			.coverLine.left {
+				-webkit-transform: rotate3d(1, 0, 0, 180deg)!important;
+				transform: rotate3d(1, 0, 0, 180deg)!important;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div id="gameBox" class="aui-margin-b-5">
+			<img src="../imgs/game/gamedelbg.png" class="gamebg" />
+			<!-- 生长进度 -->
+			<div class="progressBox Spirit">
+				<div class="inner">
+					<div></div>
+				</div>
+				<div class="lines">
+					<div class="processBlock left"></div>
+					<div class="processBlock"></div>
+					<div class="processBlock"></div>
+					<div class="processBlock"></div>
+					<div class="processBlock"></div>
+					<div class="processBlock"></div>
+					<div class="processBlock"></div>
+					<div class="processBlock"></div>
+				</div>
+				<div class="processNum absolute"></div>
+			</div>
+			<div class="gonglueBox Spirit" style="top: 0.25rem;height: 13rem;">
+			</div>
+			<!--
+            	描述：上排按钮
+            -->
+			<div id="tjnlBtn" class="gameBtn Spirit btnfilter" style="top: 0.5rem;">
+				<img src="../imgs/game/tjnl.png" />
+				<div>浇 灌</div>
+			</div>
+			
+			<div id="sunBtn" class="gameBtn Spirit btnfilter" style="top: 6.75rem;">
+				<img src="../imgs/game/sun.png" />
+				<div>调温度</div>
+			</div>
+			<div id="spinBtn" class="gameBtn Spirit btnfilter" style="top: 3.5rem;">
+				<img src="../imgs/game/spin.png" />
+				<div>调湿度</div>
+			</div>
+			<div id="catch" class="gameBtn Spirit btnfilter" style="top: 10.25rem">
+				<img src="../imgs/game/net.png" />
+				<div>捕 虫</div>
+			</div>
+			<!--
+            	描述：温度湿度
+            -->
+			<div class="absolute humidity Spirit">
+				当前湿度：<span></span>RH <span></span>
+			</div>
+			<div class="absolute temperature Spirit">
+				当前温度：<span></span>度 <span></span>
+			</div>
+			<!--
+            	描述：种子大图
+            -->
+			<div layout="column" class="absolute" style="top: 0;bottom: 0;width: 100%;">
+				<div flex></div>
+				<div class="aui-text-center ">
+					<div class="seedBg">
+					</div>
+				</div>
+				<div flex class="aui-text-center">
+					<div class="nextStaupTip app-text-white">
+						距离下个阶段还有10g
+					</div>
+				</div>
+			</div>
+			<!-- 营养液选择表 -->
+			<div class="absolute nutrientSolutionBg"></div>
+			<div class="absolute nutrientSolutionBox">
+			</div>
+
+			<!--
+            	描述：太阳
+            -->
+			<div class="absolute sun">
+				<img src="../imgs/game/bigsun.png" />
+			</div>
+			<!--
+            	描述：太阳
+            -->
+			<div class="absolute spin">
+				<img src="../imgs/game/spin.png" />
+			</div>
+			<!-- 气泡 -->
+			<div class="absolute buddle">
+				今天我已经喝得饱饱的了
+			</div>
+			<div class="absolute gameTipBox">
+				<div layout="column" style="height: 100%;">
+					<div flex></div>
+					<div class="msg"></div>
+					<div flex></div>
+				</div>
+			</div>
+			<!--
+            	描述：浇水动画
+            -->
+			<div class="addpowerbox">
+				<img class="shuidi1" src="../imgs/game/shuidi1.png" />
+				<img class="shuidi2" src="../imgs/game/shuidi2.png" />
+				<img src="../imgs/game/shuihu.png" class="addpowerimg" />
+			</div>
+
+			<!--
+            	描述：引导背景
+            -->
+			<div layout class="cover">
+				<div class="bgblock"></div>
+				<div layout="column">
+					<div class="bgblock"></div>
+					<img src="../imgs/game/cover.png" class="cicle" />
+					<div flex class="bgblock"></div>
+				</div>
+				<div flex class="bgblock"></div>
+			</div>
+			<div class="coverText" layout="column">
+				<div flex></div>
+				<div></div>
+				<div flex></div>
+			</div>
+			<img src="../imgs/game/coverLine.png" class="coverLine" />
+
+			<!--
+            	描述：请求接口时的loading动画
+            -->
+			<div layout="column" class="gameLoading">
+				<div flex></div>
+				<div class="aui-text-center">
+					<img class="animated infinite swing" src="../lib/dropload/img/01.png" />
+					<img class="animated infinite swing" src="../lib/dropload/img/02.png" />
+					<img class="animated infinite swing" src="../lib/dropload/img/03.png" />
+					<img class="animated infinite swing" src="../lib/dropload/img/04.png" />
+				</div>
+				<div flex></div>
+			</div>
+			<!--
+            	作者：1318831854@qq.com
+            	时间：2017-05-11
+            	描述：初始化时加载进度
+            -->
+			<!-- 生长进度 -->
+			<div class="progressBox" id="proccess">
+				<div class="inner">
+					<div></div>
+				</div>
+				<div class="processNum absolute"></div>
+			</div>
+		</div>
+		<div class="videoBox">
+
+		</div>
+		<div id="description"></div>
+	</body>
+
+	<!--
+    	作者：1318831854@qq.com
+    	时间：2017-05-09
+    	描述：营养液列表模板
+    -->
+	<script type="text/template" id="nutrientSolutiontemp">
+		<div onclick="app.clickNutr('<@ it.id>')" class="nutrientSolution" style="margin-top: 0;background-image: url(<@ it.nutrientpic>);" layout>
+			<span flex><@ it.nutrientname></span>
+			<span><@ it.quantity>ml</span>
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../game/bottleDetails" src="../lib/requirejs/require.js"></script>
+
+</html>

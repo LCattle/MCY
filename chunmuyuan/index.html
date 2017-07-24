@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<script src="lib/jquery.js?v=1"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js?v=1"></script>
+		<script src="js/base/wxAuth.js?v=1"></script>
+		<link rel="stylesheet" type="text/css" href="lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="lib/aui/css/aui-slide.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+		<link rel="stylesheet" type="text/css" href="./css/icon/iconfont.css">
+		<title lan-res="app_name">春沐源</title>
+		<style>
+			#itemsBox {
+
+			}
+			
+			.maxwidth {
+				width: 100000px;
+			}
+			
+			.aui-badge {
+				background: #f59b29;
+			}
+			
+			.loginbtn {
+				position: absolute;
+				right: 0rem;
+				top: 0;
+				height: 100%;
+				padding: 0.2rem 0.75rem;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="aui-bar aui-bar-nav index_header app_bg_brown">
+			<img src="imgs/index/logo.png" id="index_logo" />
+			<div class="loginbtn btnfilter" onclick="location.href='html/login.html'">
+				<div class="center_outter">
+					<div class="center_inner">
+						<i class=" aui-iconfont aui-icon-my aui-font-size-20"></i>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!--轮播图开始-->
+		<div class="relativeBox" id="contentBox" style="margin-top: 2.25rem;">
+			<div id="slideBox" class="relativeBox">
+				<div id="aui-slide">
+					<div class="aui-slide-wrap" id="bannerImgs">
+
+					</div>
+					<div class="aui-slide-page-wrap">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--轮播图结束-->
+		<!--广告位开始-->
+		<div id="itemsBox">
+
+		</div>
+		<div id="wx_ewm" style="margin-bottom: 2.7rem;display: none">
+			<img style="width: 100%" src="imgs/wx_ewm.jpg">
+		</div>
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="aui-bar-tab-item aui-active" tapmode>
+				<i class="aui-iconfont aui-icon-home"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab1"></div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<i class="aui-iconfont iconfont icon-shexiangtou" style="font-size: 1rem;"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab2"></div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<div class="aui-badge" id="carNum" style="display: none;"></div>
+				<i id="car_icon" class="aui-iconfont aui-icon-cart"></i>
+				<div class="aui-bar-tab-label">购物车</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<div class="aui-dot" id="loginbtn" style="display: none;"></div>
+				<i class="aui-iconfont aui-icon-my"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab4"></div>
+			</div>
+		</footer>
+		<script data-main="js/main" data-app="index" src="lib/requirejs/require.js"></script>
+		<script type="text/template" id="goodsTemplate">
+			<div onclick="location.href='<@ it.url>'" class="aui-col-xs-4 index_goods_info" style="width: <@ $(window).width()/3>px;">
+				<img src="<@ app.getMiddelPath(it.img)>" style="height: <@ $(window).width()/3*0.8>px;" />
+				<din class="index_goods">
+					<div class="name" >
+						<span style="width: 5rem;display: inline-flex;"><@ it.name></span>
+					</div>
+					<div class="price">
+						<@ it.price>g
+					</div>
+				</din>
+			</div>
+		</script>
+
+		<script type="text/template" id="iTemTemplate">
+			<div class="aditem" id="item_<@ it.position>">
+				<div class="index_item_tbox <@ it.color>" onclick="app.href('<@ it.url>')">
+					<div class="index_item_line"></div>
+					<div class="index_item_title">
+						<@ it.title>  <span style="position: absolute;right: 0.25rem;font-size: 0.65rem;display: <@ it.showMoer?'inline':'none'>;">更多 <i class="aui-iconfont aui-icon-right"></i></span>
+					</div>
+					<div class="index_item_line"></div>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="goodsBoxTemplate">
+			<section class="aui-grid">
+				<div class="aui-row" style="overflow-x: scroll;">
+					<div class="maxwidth" id="<@ it.id>">
+					</div>
+				</div>
+			</section>
+		</script>
+
+		<script type="text/template" id="goodsBoxTemplate">
+			<section class="aui-grid">
+				<div class="aui-row">
+					<div class="maxwidth" id="<@ it.id>">
+					</div>
+				</div>
+			</section>
+		</script>
+		<script type="text/template" id="knTemplate">
+			<section class="aui-grid">
+				<div class="aui-row">
+					<div class="maxwidth" id="<@ it.id>">
+					</div>
+				</div>
+			</section>
+		</script>
+		<script type="text/template" id="img2Template">
+			<div onclick="location.href='<@ it.url>'" class="aui-col-xs-6 index_kn_info" style="width: <@ app.slideWidth/2>px;">
+				<img src="<@ app.getMiddelPath(it.img)>" style="width:<@ app.slideWidth/2-20>px;margin-left: 10px;" />
+				<din class="index_goods">
+					<div class="name aui-ellipsis-1" style="width:<@ app.slideWidth/2-20>px;margin-left: 10px;">
+						<@ it.name>
+					</div>
+				</din>
+			</div>
+		</script>
+		<script type="text/template" id="img1Template">
+			<img src="<@ app.getMiddelPath(it.img)>" style="width: 100%;display: block;" alt="<@ it.name>" onclick="location.href='<@ it.url>'" />
+		</script>
+		<script type="text/template" id="bannerTemplate">
+			<div class="aui-slide-node bg-dark" onclick="location.href='<@ app.bannerGo(it.url)>'">
+				<img src="<@ app.getMiddelPath(it.img)>" alt="<@ it.name>" />
+			</div>
+		</script>
+	</body>
+</html>

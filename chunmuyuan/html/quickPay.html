@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>选择支付方式</title>
+	</head>
+	<style type="text/css">
+		.checkBtn {
+			width: 0.75rem;
+			border: 1px #007548 solid;
+			height: 0.75rem;
+			border-radius: 50%;
+			display: inline-block;
+		}
+		
+		.checkBtn.active {
+			border: none;
+			background: url(../imgs/xq-images/on.png);
+			background-size: 100% 100%;
+		}
+		#couponLi.aui-list-item-arrow:before {
+			right:0.25rem
+		}
+
+		.choice-div {
+			display:none;
+		}
+
+		.choice-div.active {
+			display: block;
+		}
+		.aui-list .choice-li {
+			display:none;
+		}
+
+		.aui-list .choice-li.active {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+		}
+
+	</style>
+
+	<body id="app">
+		<div class="aui-content aui-margin-b-5">
+			<ul id="paywayUl" class="aui-list aui-list-in">
+				<li class="aui-list-item aui-margin-b-10">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							选择支付方式
+						</div>
+					</div>
+				</li>
+				<li id="wx-pay" class="aui-list-item"  onclick="app.clickCk(this,10)">
+					<div class="aui-list-item-inner ">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/weixin.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							微信支付
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn active"></div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" id="hdhk" style="display: none;" onclick="app.clickCk(this,30)">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/daofu.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							货到付款
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"></div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" onclick="app.clickCk(this,50)">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/yinlian.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							银联支付
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"></div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" onclick="app.clickCk(this,80)">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/alipay.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							支付宝支付
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"></div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" onclick="app.clickCk(this,90)" id="applePay" style="display: none;">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/applepay.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							Apple Pay
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div id="activityDiv" data-level=60 class="aui-list aui-list-in choice-div" style="background-color:#ffffff;line-height: 2.2rem;">
+			<div class="aui-list-item">
+				<div class="aui-list-item-title">
+					参加活动
+				</div>
+				<div class="aui-list-item-right app-text-orange aui-font-size-16" style="padding-right: 0.75rem;">
+					<div class="checkBtn" ></div>
+				</div>
+			</div>
+		</div>
+		<div id="couponDiv" data-level=40 class="aui-list aui-list-in choice-div" style="background-color:#ffffff;line-height: 2.2rem;">
+			<div class="aui-list-item">
+				<div class="aui-list-item-title">
+					优惠券
+				</div>
+				<div class="aui-list-item-right app-text-orange aui-font-size-16" style="padding-right: 0.75rem;">
+					<div class="checkBtn" ></div>
+				</div>
+			</div>
+		</div>
+		<ul class="aui-list aui-list-in" style="margin-bottom: 0rem;font-size:0.8rem;">
+			<!--<li id="exchangeLi" class="aui-list-item" style="background-color:#ffffff;line-height: 2.2rem;">
+				<div class="aui-list-item-title">
+					可兑换
+				</div>
+				<div class="aui-list-item-right app-text-orange aui-font-size-16" id="exchange" style="padding-right: 0.75rem;"></div>
+			</li>-->
+			<li id="activityLi" class="aui-list-item choice-li" data-level=60 data-selector="activityDiv"  style="position:relative;background-color:#ffffff;line-height: 2.2rem;">
+				<div class="aui-list-item-title">
+					赠送金额
+				</div>
+				<div class="aui-list-item-right app-text-orange aui-font-size-16" id="activity" style="padding-right: 0.75rem;"></div>
+			</li>
+            <li id="couponLi" class="aui-list-item choice-li" data-level=40 data-selector="couponDiv" style="background-color:#ffffff;line-height: 2.2rem;">
+				<div class="aui-list-item-title">
+					优惠金额<span id="couponMore" style="display: none">(<span id="couponLength"></span>张可用)</span>
+				</div>
+				<div class="aui-list-item-right app-text-orange aui-font-size-16" id="coupon" style="padding-right: 0.75rem;"></div>
+            </li>
+            <li id="finapayLi" class="aui-list-item" style="background-color:#ffffff;line-height: 2.2rem;display:none;">
+				<div class="aui-list-item-title">
+					实付
+				</div>
+				<div class="aui-list-item-right app-text-orange aui-font-size-16" id="finapay" style="padding-right: 0.75rem;"></div>
+            </li>
+        </ul>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div onclick="app.next()" class="aui-btn aui-btn-success aui-btn-block app_bg_green border-radius15">下一步</div>
+		</div>
+		<div id="wxTip" class="aui-font-size-14 app-text-orange " style="padding: 0 0.75rem;display: none;">
+			注：通过微信支付时，中、农、工、建、交等银行单日/单笔最高限额10000元，请使用其他银行如平安、招行、中信等银行
+		</div>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

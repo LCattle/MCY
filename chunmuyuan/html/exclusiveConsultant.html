@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>专属顾问</title>
+	</head>
+	<style type="text/css">
+		#app .aui-list-item-media {
+			width: 4.5rem;
+			text-align: justify;
+			padding-right: 0;
+		}
+		.order-evaluation-checkbox ul li{
+            width:7rem;
+            height:2.2rem;
+            border:1px solid #e8e8e8;
+            text-align: center;
+            background: #fff;
+            font-size:0.7rem;
+            color:#333333;
+            line-height:2.2rem;
+            margin-right:1.4rem;
+            margin-bottom:0.4rem;
+            float:left;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 0.8rem;
+        }
+        .orange{
+        	color:orange;
+        }
+	</style>
+
+	<body id="app">
+
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-media-list">
+
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner aui-text-center">
+						<img src="../imgs/pic.jpg" onerror="this.src='../imgs/pic.jpg'" id="pic" class="aui-img-round" style="width: 3.25rem;height: 3.25rem;">
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width:4rem;">
+							<div class="aui-list-item-title">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+						</div>
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title" id="name"></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 4rem;">
+							工&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：
+						</div>
+						<div class="aui-list-item-inner" id="number">
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 4rem;">
+							电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title" id="phone" onclick="app.call()"></div>
+								<div class="aui-list-item-right" onclick="app.call()"><i class="iconfont icon-dianhua aui-margin-l-5"></i></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 4.5rem;">
+							服务星级：
+						</div>
+						<div class="aui-list-item-inner">
+							<span class="app-text-orange " id="starts">
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5" style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5 "style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                    </span>
+		              	<span class="app-bg-orange app-text-white" id="serviceScore" style="padding: 0.1rem 0.25rem;border-radius: 0.25rem;">0.0</span>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle" id="marking" style="display:none;">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 4.5rem;" id="today">
+							打个分吧：
+						</div>
+						<div class="aui-list-item-inner">
+							<span class="app-text-orange " id="startsBox">
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5" style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5 "style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                   </span>	           
+						</div>
+					</div>
+					<div class="aui-media-list-item-inner">
+						<div style="height:1.2rem;line-height:1.2rem;margin-left:4.2rem;width:7.3rem;font-size:0.7rem;text-align: center;display:none;color:orange;" id="serviceGrade">
+							
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle" id="todayMarking" style="display:none;">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 4.5rem;">
+							今日打分：
+						</div>
+						<div class="aui-list-item-inner">
+							<span class="app-text-orange " id="lastBox">
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5" style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5 "style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                        		<i class="iconfont icon-wuxing2 aui-margin-r-5"style="font-size: 1rem;"></i>
+		                   </span>	           
+						</div>
+					</div>
+					<div class="aui-media-list-item-inner">
+						<div style="height:1.2rem;line-height:1.2rem;margin-left:4.2rem;width:7.3rem;font-size:0.7rem;text-align: center;display:none;color:orange;" id="serviceGrade">
+							
+						</div>
+					</div>
+				</li>
+				<div class="givemark" style="display:none;">
+					<li style="line-height: 2.2rem;padding:0 0.75rem;background:#ffffff;">
+					请选择标签
+					</li>
+					<li style="display:block;width:100%;background:#ffffff;padding-left: 0.75rem;">
+						<div class="order-evaluation-checkbox">
+					        <ul class="clearfix">
+					            <li class="order-evaluation-check" data-impression="1"><span class="serviceAttidude1"></span><i class="iconfont icon-damuzhizhaoxia"></i></li>
+					            <li class="order-evaluation-check" data-impression="2"><span class="serviceAttidude2"></span><i class="iconfont icon-damuzhizhaoxia"></i></li>
+					            <li class="order-evaluation-check" data-impression="3"><span class="serviceAttidude3"></span><i class="iconfont icon-damuzhizhaoxia"></i></li>
+					            <li class="order-evaluation-check" data-impression="4" id="checkmore">点击查看更多</li>
+					            <div id="moreLi" style="display:none;">
+						           	<li class="order-evaluation-check" data-impression="5"><span class="serviceAttidude4"></span><i class="iconfont icon-damuzhizhaoxia"></i></li>
+						            <li class="order-evaluation-check" data-impression="6"><span class="serviceAttidude5"></span><i class="iconfont icon-damuzhizhaoxia"></i></li>
+						            <li class="order-evaluation-check" data-impression="7"><span class="serviceAttidude6"></span><i class="iconfont icon-damuzhizhaoxia"></i></li>
+					            </div> 			         
+					        </ul>
+				        </div>
+					</li>
+					<div class="order-evaluation-textarea" style="background: #ffffff;padding:0 0.75rem;">
+				        <textarea name="content" maxlength="100" id="TextArea1" placeholder="其它意见和建议(100字以内)" style="margin:0;border:1px solid gainsboro;"></textarea>
+				    </div>
+				    <div style="background:#ffffff;height:1rem;">
+				    	
+				    </div>
+				    <div class="aui-content-padded" style="background:#ffffff;margin:0;text-align: center;">
+				    	<p><div class="aui-btn" style="padding:0.5rem 0.8rem;" onclick="app.Submit_evaluation()">提交评价</div></p>
+				    </div>	
+				     <div style="background:#ffffff;height:1rem;">
+				    	
+				    </div>
+				</div>
+				<li class="aui-list-item aui-list-item-middle wxCount">
+					<div class="aui-list-item-inner aui-text-center">
+						<img id="wxpic" onerror="this.src='../imgs/erweima/WechatIMG5.jpeg'" />
+						<p>微信号</p>
+					</div>
+				</li>
+				<li class="aui-list-item aui-list-item-middle" id="tip" style="display:none ;">
+					<div class="aui-list-item-inner  aui-font-size-14 app-text-black">
+						温馨提示：<br>您还没有专属顾问，请联系
+						<a class="app-text-orange" href="tel://4009008838">4009008838</a> 为您分配专属顾问，给您 一对一专属服务。
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--
+        	描述：底部tab
+        -->
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

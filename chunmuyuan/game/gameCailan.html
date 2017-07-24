@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>我的菜篮</title>
+		<style>
+			#app .aui-tab .aui-active {
+				color: #f59b29;
+				border-bottom: 2px solid #f59b29;
+				z-index: 10;
+			}
+			
+			#editBtn {
+				padding: 0 0.75rem;
+				height: 2.2rem;
+				line-height: 2.2rem;
+				background: white;
+				color: #f59b29;
+			}
+			
+			.listItem {
+				padding: 0.5rem 0.75rem;
+				height: 6rem;
+				background: white;
+			}
+			
+			
+			#footer {
+				display: none;
+				height: 2.2rem;
+				width: 100%;
+				padding: 0 0.75rem;
+				background: white;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div layout>
+			<div flex class="aui-tab  noafer" id="tab">
+				<div class="aui-tab-item">未兑换蔬菜</div>
+				<div class="aui-tab-item">已兑换蔬菜</div>
+			</div>
+		</div>
+
+		<section id="wrapper" class="goodsList aui-padded-t-10" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+				<div class="swiper-container" style="height: 100%;">
+					<div class="swiper-wrapper" id="selectPrudctBox">
+						<div class="swiper-slide">
+							<div class="listItem aui-border-b" layout>
+								<div layout="column" class="aui-padded-r-10">
+									<div flex></div>
+									<div class="checkBtn"></div>
+									<div flex></div>
+								</div>
+								<img src="../imgs/img/1.jpg" style="width: 5rem;height: 5rem;" />
+								<div flex layout="column" class="aui-padded-l-10">
+									<div style="margin-bottom: 0.3rem;line-height: 1rem;">西红柿大西红柿</div>
+									<div flex class="app_text_999 aui-ellipsis-2" style="line-height: 1rem;">水培养殖大西红柿水培养殖大西红柿水培养殖大西红柿</div>
+									<div style="margin-top: 0.6rem;line-height: 1rem;" class="app-text-orange">
+										300g
+									</div>
+								</div>
+							</div>
+							<div class="listItem" layout>
+								<img src="../imgs/img/1.jpg" style="width: 5rem;height: 5rem;" />
+								<div flex layout="column" class="aui-padded-l-10">
+									<div style="margin-bottom: 0.3rem;line-height: 1rem;">西红柿大西红柿</div>
+									<div flex class="app_text_999 aui-ellipsis-2 aui-font-size-14" style="line-height: 1rem;">水培养殖大西红柿水培养殖大西红柿水培养殖大西红柿</div>
+									<div style="margin-top: 0.6rem;line-height: 1rem;" class="app-text-orange">
+										300g
+									</div>
+								</div>
+							</div>
+							<div class="listItem" layout>
+								<img src="../imgs/img/1.jpg" style="width: 5rem;height: 5rem;" />
+								<div flex layout="column" class="aui-padded-l-10">
+									<div style="margin-bottom: 0.3rem;line-height: 1rem;">西红柿大西红柿</div>
+									<div flex class="app_text_999 aui-ellipsis-2" style="line-height: 1rem;">水培养殖大西红柿水培养殖大西红柿水培养殖大西红柿</div>
+									<div style="margin-top: 0.6rem;line-height: 1rem;" class="app-text-orange">
+										300g
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div id="footer">
+			<div layout style="height: 100%;">
+				<div layout="column" onclick="app.clickAll()">
+					<div flex></div>
+					<div class="checkBtn"></div>
+					<div flex></div>
+				</div>
+				<div onclick="app.clickAll()" layout="column" class="aui-padded-l-5">
+					<div flex></div>
+					全选
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="app_btn_small app_bg_green btnfilter"> 删 除 </div>
+					<div flex></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script data-main="../js/main" data-app="../game/gameCailan" src="../lib/requirejs/require.js"></script>
+
+</html>

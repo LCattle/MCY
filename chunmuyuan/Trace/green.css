@@ -1,0 +1,406 @@
+* {
+  box-sizing: border-box;
+}
+ul li{
+	list-style: none;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0 none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+.nav{
+	width:100%;
+	height:4.75rem;
+	background-color:#39383E;
+	color:#FDFDFD;
+	line-height:0.95rem;
+}
+.nav-delect{
+	float:left;
+	padding:0 0.2rem 0 0.2rem;
+	font-size:0.45rem;
+}
+.nav-title{
+	float:left;
+	font-size:0.3rem;
+}
+.outer{
+	width:100%;
+	background-color:#F2F2F2;
+	
+}
+.vagetable_pic{
+	width:100%;
+	height:4.53rem;
+	background-color:"#f2f2f2";
+	overflow: hidden;
+	position:relative;
+}
+.lock{
+	width:34%;
+	height:0.2rem;
+	background-color:pink;
+	position:absolute;
+	left:35%;
+	top:0.3rem;
+}
+.warm{
+	height:0.2rem;
+	margin:0 auto;
+}
+.earn{
+	width:0.2rem;
+	height:0.2rem;
+	background:#a8a8a8;
+	border-radius: 50%;
+}
+
+.outline_border{
+	width:47%;
+	height:3.5rem;
+	margin-left:26.8%;
+	margin-top:1.03rem;
+}
+.breed{
+	width:35.9%;
+	height:2.68rem;
+	position:absolute;
+	left:32.6%;
+	top:1.43rem;
+	background-color:gold;
+	border-radius: 50%;
+}
+.vagetable_name{
+	width:100%;
+	height:1.1rem;
+}
+.line_left{
+    border-bottom:0.01rem solid #333;
+	width:26%;
+    height:0.55rem; 
+    float:left;
+    margin-left:13%;
+}
+.text_middle{
+	font-size:0.38rem;
+	width:22%;
+	height:1.1rem;
+	text-align: center;
+	line-height:1.1rem;
+	float:left;
+}
+.line_right{
+	border-bottom: 0.01rem solid #333;
+	width:26%;
+	height:0.55rem;
+	float:left;
+}
+.line_chart{
+	margin:0 auto;
+	height:6.2rem;
+	width:92%;
+	margin-bottom: 0.3rem;
+	background-color:#fff;
+}
+.line_chart_nav{
+	height:0.87rem;
+	width:100%;
+	border-bottom: 1px solid #dbdbdb;
+}
+.line_chart_nav p{
+	width:34.4%;
+	height:0.87rem;
+	font-size:0.3rem;
+	float:left;
+	font-family: "微软雅黑";
+	line-height:0.87rem;
+	text-align: center;
+}
+.massage{
+	width:65.6%;
+	height:0.87rem;
+	float:left;
+}
+.massage li{
+	font-size:0.3rem;
+	float: left;
+	text-align: center;
+	line-height: 0.87rem;
+	width:25%;
+	height:0.87rem;
+}
+.kobe{
+	border-top:0.05rem solid #f28b00;
+	border-left:0.02rem solid #dbdbdb;
+	border-right:0.02rem solid #dbdbdb;
+	border-bottom:0.02rem solid #fff;
+}
+.active{
+	border-top:0.05rem solid #f28b00;
+	border-left:0.02rem solid #dbdbdb;
+	border-right:0.02rem solid #dbdbdb;
+	border-bottom:0.02rem solid #fff;
+}
+.line_chart_pic{
+	width:100%;
+	height:5.32rem;
+	overflow: hidden;
+}
+.line_chart_pic li{
+	display:none;
+	width:100%;
+	height:5.32rem;
+  font-size: 0.3rem;
+  text-align: center;
+}
+#main{
+	display:block;
+	width:100%;
+	height:5.32rem;
+	margin:0;
+	padding:0;
+	background:red;
+}
+#easy{
+	display:block;
+	width:100%;
+	height:5.32rem;
+	margin:0;
+	padding:0;
+}
+#lake{
+	display:block;
+	width:100%;
+	height:5.32rem;
+	margin:0;
+	padding:0;
+}
+#jeep{
+	display:block;
+	width:100%;
+	height:5.32rem;
+	margin:0;
+	padding:0;
+}
+.tree{
+	width:92%;
+	margin:0 auto;
+	height:12rem;
+	margin-bottom:0.2rem;
+	position:relative;
+}
+.data1{
+	width:20%;
+	height:1.94rem;
+	position:absolute;
+	left:70%;
+	top:9rem;
+}
+.data1 .process1{
+	text-align: left; 
+	font-size:0.3rem;
+	color:#f08b02;
+}
+.data1 .time1{
+	text-align: left;
+	font-size:0.21rem;
+	color:#666;
+}
+.data1 .time_pic1{
+	width:76%;
+	height: 1.11rem;
+	margin-top:0.12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.data2{
+	width:20%;
+	height:1.94rem;
+	position:absolute;
+	left:10%;
+	top:7rem;
+}
+.data2 .process2{
+	text-align: right; 
+	font-size:0.3rem;
+	color:#f08b02;
+}
+.data2 .time2{
+	text-align: left;
+	font-size:0.21rem;
+	color:#666;
+}
+.data2 .time_pic2{
+	width:76%;
+	height: 1.11rem;
+	margin-top:0.12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.data3{
+	width:20%;
+	height:1.94rem;
+	position:absolute;
+	left:70%;
+	top:6.5rem;
+}
+.data3 .process3{
+	text-align: left; 
+	font-size:0.3rem;
+	color:#f08b02;
+}
+.data3 .time3{
+	text-align: left;
+	font-size:0.21rem;
+	color:#666;
+}
+.data3 .time_pic3{
+	width:76%;
+	height: 1.11rem;
+	margin-top:0.12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.data4{
+	width:20%;
+	height:1.94rem;
+	position:absolute;
+	left:10%;
+	top:4.5rem;
+}
+.data4 .process4{
+	text-align: right; 
+	font-size:0.3rem;
+	color:#f08b02;
+}
+.data4 .time4{
+	text-align: left;
+	font-size:0.21rem;
+	color:#666;
+}
+.data4 .time_pic4{
+	width:76%;
+	height: 1.11rem;
+	margin-top:0.12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.data5{
+	width:20%;
+	height:1.94rem;
+	position:absolute;
+	left:70%;
+	top:4rem;
+}
+.data5 .process5{
+	text-align: left; 
+	font-size:0.3rem;
+	color:#f08b02;
+}
+.data5 .time5{
+	text-align: left;
+	font-size:0.21rem;
+	color:#666;
+}
+.data5 .time_pic5{
+	width:76%;
+	height: 1.11rem;
+	margin-top:0.12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.data6{
+	width:20%;
+	height:1.94rem;
+	position:absolute;
+	left:10%;
+	top:2rem;
+}
+.data6 .process6{
+	text-align: right; 
+	font-size:0.3rem;
+	color:#f08b02;
+}
+.data6 .time6{
+	text-align: left;
+	font-size:0.21rem;
+	color:#666;
+}
+.data6 .time_pic6{
+	width:76%;
+	height: 1.11rem;
+	margin-top:0.12rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.tree_tall{
+	width:100%;
+	height:12rem;
+}
+.Authentication{
+	width:92%;
+	margin:0 auto;
+	height:9.2rem;
+	
+}
+.Authentication h2{
+	font-size: 0.3rem;
+	color:#f28b02;
+	font-family: "微软雅黑";
+	line-height:0.9rem;
+}
+.Authentication p{
+	font-size:0.27rem;
+	line-height:0.45rem;
+	color:#333;
+}
+.certificate{
+	width:100%;
+	height:3.35rem;
+	margin-top:0.58rem;
+	margin-bottom:0.28rem;
+}
+.certificate .img1{
+	margin-left:15%;
+	width:30%;
+	height:3.35rem;
+	float:left;
+}
+.certificate .img2{
+	width:30%;
+	height:3.35rem;
+	float:left;
+	margin-left:10%;
+}
+.carrousel{
+	position: fixed;
+  background-color: rgba(10, 10, 10, 0.8);
+  width:100%;
+  height:100%;
+  display:none;
+  
+}
+.carrousel .wrapper{
+	width:90%;
+	margin: auto;
+	position:relative;
+	top:50%;
+	transform:translateY(-50%);
+}
+.carrousel .wrapper img{
+	width:100%;
+	height:auto;
+}
+

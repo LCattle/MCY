@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>活动详情</title>
+		<style>
+			#title {
+				padding: 0.5rem 0.75rem;
+				text-align: center;
+				background: white;
+				;
+			}
+			
+			#memo {
+				background: #EEE;
+				font-size: 0.7rem;
+				padding: 0.25rem 0.75rem;
+				color: #999;
+			}
+			
+			.contFull {
+				background: white;
+				padding: 0.25rem 0.75rem;
+			}
+			
+			#footer {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				height: 2.2rem;
+				line-height: 2.2rem;
+				background: white;
+			}
+			
+			#footer #footerBtn {
+				text-align: center;
+			}
+			
+			.xindeheader {
+				height: 2.5rem;
+				width: 2.5rem;
+				border-radius: 2rem;
+				margin-right: 0.5rem;
+			}
+			
+			.xindezhankai {
+				margin-right: 0.75rem;
+				float: right;
+				background: white;
+			}
+			
+			.imgbox {
+				position: relative;
+				text-align: center;
+				height: 0;
+				width: 100%;
+				margin-left: 0.2rem;
+				border-radius: 0.3rem;
+				background-clip: content-box;
+				background-size: cover;
+				background-position: center;
+				background-image: url(../help/otherimg/02b.jpg);
+			}
+			#picshowpanel {
+				z-index: 100;
+				position: fixed;
+				display: none;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			#picshowpanel .aui-icon-close,.aui-icon-trash,.numbers{
+				position: absolute;
+				z-index: 101;
+				top: 0.2rem;
+				font-size: 1.2rem;
+				left: 0.5rem;
+				color: white;
+			}
+			#picshowpanel .aui-icon-trash{
+				left: auto;
+				right: 0.5rem;
+			}
+			.numbers{
+				width: 100%;
+				left: 0;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body id="app" style="display: none;">
+		<div style="padding-bottom: 2.3rem;">
+		<div id="title" class="aui-ellipsis-1">
+		</div>
+		<div id="memo"></div>
+		<div id="actFull" class="contFull"></div>
+		<div class="contFull aui-margin-t-10">
+			<div class="app-text-orange">
+				报名时间：
+			</div>
+			<div id="registTime" class="app_text_666 aui-font-size-14">
+
+			</div>
+			<div class="app-text-orange aui-margin-t-10">
+				活动时间：
+			</div>
+			<div id="actTime" class="app_text_666 aui-font-size-14">
+
+			</div>
+			<div class="app-text-orange aui-margin-t-10">
+				活动地点：
+			</div>
+			<div id="actAddrees" class="app_text_666 aui-font-size-14">
+
+			</div>
+		</div>
+		<div id="xindebox" style="display: none;" class="app_bg_white aui-margin-t-15 ">
+			<div class="aui-border-b aui-padded-b-5 aui-padded-t-5 aui-text-center">
+				活动心得
+			</div>
+			<div>
+
+			</div>
+			<div id="showMore" onclick="app.showMore()" class="aui-border-t aui-padded-b-5 aui-padded-t-5 aui-text-center">
+				查看更多
+			</div>
+		</div>
+		</div>
+		<div id="footer" layout>
+			<div id="countNum" class="aui-padded-l-15 aui-padded-r-15 app-text-orange">
+			</div>
+			<div flex id="footerBtn">
+			</div>
+			<div flex id="firends" onclick="app.invitation()" style="display: none;" class="app-bg-orange app-text-white aui-text-center" >
+				邀请好友
+			</div>
+		</div>
+		
+		<div id="picshowpanel" layout="column">
+			<div class="numbers">3/9</div>
+			<i onclick="app.closeSwipe()" class="aui-iconfont aui-icon-close"></i>
+			<div class="swiper-container" flex style="width: 100%;height: 100%;">
+				<div class="swiper-wrapper" style="height: 100%;">
+				</div>
+			</div>
+		</div>
+		<div class="dlg_bg" style="display: none;"></div>
+	</body>
+	<script type="text/template" id="xindetemp1">
+		<div layout class="aui-padded-b-5 aui-padded-t-5 aui-padded-l-15 aui-padded-r-15">
+			<div>
+				<img src="<@ it.header>"  onerror="this.src='../imgs/xq-images/photo.png '"  class="xindeheader">
+			</div>
+			<div flex>
+				<div><@ it.username></div>
+				<div class="aui-font-size-14 app_text_999">
+					<@ it.createtime>
+				</div>
+				<div class="aui-font-size-14 app_text_666 aui-margin-t-10 ">
+					<span style="word-break: break-all;float: left;"> <font><@ it.note_s?it.note_s:it.note></font>
+						<span style="display: <@ it.note_s?'iinline':'none'>;" onclick="app.clickZhankai(this)" class="app_text_999 xindezhankai">
+						<span>展开</span> 
+						<i class="aui-iconfont aui-icon-right"></i>
+					</span>
+					</span>
+					
+				</div>
+				<div style="display: none;">
+					<@ it.note>
+				</div>
+				<div layout style="width: 100%;margin-bottom: <@ it.getImgPath(3)?'0.2rem':'0'>;" >
+					<div class="imgbox" comid="<@ it.id>" index="1" style="height: <@ it.getHeight(0)>px;background-image:url(<@ it.getImgPath(0)>) ;"></div>
+					<div class="imgbox" comid="<@ it.id>"  index="2" style="height: <@ it.getHeight(1)>px;background-image:url(<@ it.getImgPath(1)>) ;"></div>
+					<div class="imgbox" comid="<@ it.id>"  index="3" style="height: <@ it.getHeight(2)>px;background-image:url(<@ it.getImgPath(2)>) ;"></div>
+				</div>
+				<div layout style="width: 100%;margin-bottom: <@ it.getImgPath(6)?'0.2rem':'0'>;">
+					<div class="imgbox" comid="<@ it.id>"  index="4" style="height: <@ it.getHeight(3)>px;background-image:url(<@ it.getImgPath(3)>) ;"></div>
+					<div class="imgbox" comid="<@ it.id>"  index="5" style="height: <@ it.getHeight(4)>px;background-image:url(<@ it.getImgPath(4)>) ;"></div>
+					<div class="imgbox" comid="<@ it.id>"  index="6" style="height: <@ it.getHeight(5)>px;background-image:url(<@ it.getImgPath(5)>) ;"></div>
+				</div>
+				<div layout style="width: 100%;">
+					<div class="imgbox" comid="<@ it.id>"  index="7" style="height: <@ it.getHeight(6)>px;background-image:url(<@ it.getImgPath(6)>) ;"></div>
+					<div class="imgbox" comid="<@ it.id>"  index="8" style="height: <@ it.getHeight(7)>px;background-image:url(<@ it.getImgPath(7)>) ;"></div>
+					<div class="imgbox" comid="<@ it.id>"  index="9" style="height: <@ it.getHeight(8)>px;background-image:url(<@ it.getImgPath(8)>) ;"></div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<!--
+    	描述：查看大图的模板
+    -->
+	<script type="text/template" id="bigimgtemp">
+		<div class="swiper-slide" uuid="<@ it.uuid>" style="height: 100%;"  layout="column">
+			<div flex ></div>
+			<div  style="overflow: scroll;margin: 2rem 0 1rem 0;">
+				<img style="width: 100%;" onclick="app.closeSwipe()" src="<@ it.url>" />
+			</div>
+			<div flex></div>
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../activity/activity" src="../lib/requirejs/require.js"></script>
+
+</html>

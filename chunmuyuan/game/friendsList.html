@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>好友排行榜</title>
+    <style type="text/css">
+        .serial-number{
+            width: 1.5rem !important;
+            padding-right: 0.35rem !important;
+            text-align: center;
+        }
+        .serial-number i{
+            width: 100%;
+        }
+        .icon-width{
+            width: 2.3rem !important;
+            padding-right: 0.35rem !important;
+        }
+        .last-num{
+            width: 4rem !important;
+            text-align: right;
+        }
+        .last-num span{
+            width: 100%;
+        }
+        .color-333333{
+            color: #333333 !important;
+        }
+        .color-999999{
+            color: #999999 !important;
+        }
+        .color-343434{
+            color: #343434 !important;
+        }
+        .aui-list:before{
+            height: 0 !important;
+        }
+        .aui-list .aui-list-item:after{
+            margin-left: 2.5rem !important;
+        }
+        .last-num img{
+            width: 10px !important;
+            padding-right: 2px;
+        }
+        .aui-list .aui-list-item:after{
+        		width: auto;
+        		right: 0;	
+        }
+    </style>
+</head>
+<body id="app">
+    <section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+        <div class="aui-card-list-content aui-margin-t-10">
+            <ul id="list" class="aui-list aui-media-list">
+
+                <!--<li class="aui-list-item aui-list-item-middle">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media serial-number">-->
+                            <!--&lt;!&ndash;<i class="color-999999">1</i>&ndash;&gt;-->
+                            <!--<img src="../imgs/game/f-1.png" />-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-media icon-width">-->
+                            <!--<img src="../imgs/game/logo@2x.png" width="100%" />-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title aui-font-size-14 color-333333">楠楠</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-text color-999999">-->
+                                <!--已成功种植3棵蔬菜-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-media last-num">-->
+                            <!--<span class="color-343434"><img src="../imgs/game/water@3x.png"/>3000ml</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+
+            </ul>
+        </div>
+    </section>
+
+
+    <!--列表项-->
+    <script type="text/template" id="friendsLiTemplate">
+        <li class="aui-list-item aui-list-item-middle">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media serial-number">
+                    <@ it.number>
+                </div>
+                <div class="aui-list-item-media icon-width">
+                    <img src="<@ it.avatar>" style="border-radius: 50%;" onerror="this.src='../imgs/game/logo@2x.png'" width="100%" />
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title aui-font-size-14 color-333333"><@ it.name></div>
+                    </div>
+                    <div class="aui-list-item-text color-999999">
+                        已成功种植<@ it.plantcount>棵蔬菜
+                    </div>
+                </div>
+                <div class="aui-list-item-media last-num">
+                    <span class="color-343434"><img src="../imgs/game/water@3x.png" /><@ it.quantity>ml</span>
+                </div>
+            </div>
+        </li>
+    </script>
+</body>
+
+<script data-main="../js/main" data-app="../game/friendsList" src="../lib/requirejs/require.js"></script>
+</html>

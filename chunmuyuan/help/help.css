@@ -1,0 +1,30 @@
+p {
+	padding: 0.25rem 0.75rem;
+	width: 100%;
+}
+table {
+	border-collapse: collapse;
+	margin: 0.5rem 0.2rem;
+	border-color: #ddd;
+}
+
+table>tbody>tr>td:nth-of-type(1) {
+	text-align: center;
+}
+
+td {
+	padding: 0.5rem 0.1rem;
+}
+
+table>tbody>tr>td:nth-of-type(2) {
+	text-align: center;
+}
+
+.imgCert{
+	display: block;
+	width: 98%;
+	margin: 0 auto;
+}
+p img{
+	width:100%;
+}

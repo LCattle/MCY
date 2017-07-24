@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <title>电子卡列表</title>
+    <style>
+        body{
+            background-color: #f2f2f2;
+        }
+        .card-list{
+            padding-left: 0 !important;
+            padding-top: 0rem !important;
+            margin: 0.5rem !important;
+            border: none;
+            border-radius: .5rem;
+        }
+        .title-top-radius{
+            border: none;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            -moz-border-radius-topleft: .5rem;
+            -moz-border-radius-topright: .5rem;
+        }
+        .color-0e7b54{
+            color: #0e7b54 !important;
+        }
+        .color-fff{
+            color: #FFFFFF !important;
+        }
+        .bg-color-0e7b54{
+            background-color: #0e7b54;
+        }
+        .font-w100{
+            font-weight: 100 !important;
+        }
+        .font-w600{
+            font-weight: 600 !important;
+        }
+        .btn-activate{
+            display: block;
+            width: 60px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            padding: 0 !important;
+            margin: 0 auto;
+            border: 1px solid #FFFFFF;
+            margin-right: 0.3rem !important;
+            border-radius: 3px !important;
+        }
+        .btn-give{
+            display: block;
+            width: 60px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            padding: 0 !important;
+            margin: 0 auto;
+            border: 1px solid #0e7b54;
+            margin-right: 0.3rem !important;
+            border-radius: 3px !important;
+        }
+
+        .card-bg{
+            background: url("../imgs/user-center/card-bg.png");
+            background-size: 100% 100%;
+            padding-top: 2px;
+        }
+
+        .aui-list-item-text div{
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .states{
+            padding-top: 1.5rem !important;
+        }
+        .aui-list:before{
+            height: 0px !important;
+        }
+        .aui-list:before,
+        .aui-list:after,
+        .aui-list .aui-list-item:before,
+        .aui-list .aui-list-item:after{
+            background-color: #f2f2f2 !important;
+        }
+
+        .pad-lr-5{
+            padding-right: .5rem;
+            padding-left: .5rem;
+        }
+        .pad-lr-8{
+            padding-right: .4rem;
+            padding-left: .8rem;
+        }
+        .color-000{
+            color: #000000;
+        }
+
+        .aui-list-item-title{
+            margin: auto 3px !important;
+        }
+    </style>
+</head>
+<body id="app">
+    <div class="aui-content aui-margin-b-15">
+        <section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+            <ul id="list" class="aui-list aui-media-list">
+                <!--<li class="aui-list-item card-list">-->
+                    <!--<div class="aui-list-item-inner bg-color-0e7b54 title-top-radius">-->
+                        <!--<div class="aui-list-item-text">-->
+                            <!--<div class="aui-list-item-title color-fff pad-lr-8">春沐源 | 电子卡券</div>-->
+                            <!--<div class="aui-list-item-right" style="padding-top: 0.1rem;">-->
+                                <!--<div class="aui-btn aui-btn-outlined btn-activate color-fff font-w100">激活</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="aui-media-list-item-inner pad-lr-8 card-bg">-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div>卡号：CMY7JNK000001</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div>密码：NY7****FGP</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-media states">-->
+                            <!--<img src="../imgs/user-center/not-activated.png">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="aui-info" style="padding-top:0">-->
+                        <!--<div class="aui-info-item pad-lr-5">-->
+                            <!--<i class="aui-iconfont aui-icon-date color-0e7b54 font-w600"></i>-->
+                            <!--<span class="aui-margin-l-10 font-w600">2015.07.14 ~ 2015.07.19</span>-->
+                        <!--</div>-->
+                        <!--<div class="aui-info-item">-->
+                            <!--<div class="aui-btn aui-btn-outlined btn-give color-0e7b54 font-w100">赠送</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+
+                <!--<li class="aui-list-item card-list">-->
+                    <!--<div class="aui-list-item-inner bg-color-0e7b54 title-top-radius">-->
+                        <!--<div class="aui-list-item-text pad-lr-8">-->
+                            <!--<div class="aui-list-item-title color-fff">春沐源 | 电子卡券</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="aui-media-list-item-inner pad-lr-8 card-bg">-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div>卡号：CMY7JNK000001</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div>密码：NY7****FGP</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-media states">-->
+                            <!--<img src="../imgs/user-center/activated.png">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="aui-info" style="padding-top:0">-->
+                        <!--<div class="aui-info-item pad-lr-5">-->
+                            <!--<i class="aui-iconfont aui-icon-date color-0e7b54 font-w600"></i>-->
+                            <!--<span class="aui-margin-l-10 font-w600">2015.07.14 ~ 2015.07.19</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </section>
+    </div>
+
+    <!--电子卡-->
+    <script type="text/template" id="cardsTemplate">
+        <li class="aui-list-item card-list" id="<@ it.cardNo>">
+            <div class="aui-list-item-inner bg-color-0e7b54 title-top-radius">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title color-fff pad-lr-8">春沐源 | <@ it.cardName></div>
+                    <div class="aui-list-item-right" style="padding-top: 0.1rem; display: <@ it.canActive? 'block':'none';>">
+                        <div class="aui-btn aui-btn-outlined btn-activate color-fff font-w100" onclick="app.doActivate('<@ it.cardNo>')">激活</div>
+                    </div>
+                </div>
+            </div>
+            <div class="aui-media-list-item-inner pad-lr-8 card-bg">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="color-000">卡号：<@ it.cardNo></div>
+                    </div>
+                    <div class="aui-list-item-text">
+                        <!--<div>密码：NY7****FGP</div>-->
+                        <div class="color-000">卡面值：&yen;<@ it.value></div>
+                    </div>
+                </div>
+                <div class="aui-list-item-media states">
+                    <@ it.activateImg>
+                </div>
+            </div>
+            <div class="aui-info" style="padding-top:0;">
+                <div class="aui-info-item pad-lr-5">
+                    <i class="aui-iconfont aui-icon-date color-0e7b54 font-w600"></i>
+                    <span class="aui-margin-l-10 font-w600"><@ it.start> ~ <@ it.end></span>
+                </div>
+                <div class="aui-info-item" id="send-card" style="display: <@ (it.status == 0 && it.sendFlag == 'Y')? 'block':'none';>">
+                    <div class="aui-btn aui-btn-outlined btn-give color-0e7b54 font-w100" onclick="app.doGive('<@ it.cardNo>')">赠送</div>
+                </div>
+            </div>
+        </li>
+    </script>
+</body>
+
+<script data-main="../js/main" data-app="../userCenter/electronicCardsList" src="../lib/requirejs/require.js"></script>
+</html>

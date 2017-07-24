@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>意见反馈</title>
+	</head>
+	<style type="text/css">
+		.feedback {
+			padding: 1rem 0.75rem;
+		}
+		
+		.feedback textarea {
+			background: white;
+			padding: 0.5rem;
+			height: 10rem;
+			font-size: 0.7rem;
+			overflow: scroll;
+		}
+	</style>
+
+	<body id="app">
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-form-list" id="DeliveryDateBox">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label">
+							反馈类型：
+						</div>
+						<div class="aui-list-item-input">
+							<div class="aui-searchbar-input aui-border-radius">
+								<form>
+									<input type="text" readonly="" id="DeliveryDate" placeholder="请选择">
+								</form>
+								<i class="icon iconfont icon-xiala app-text-green"></i>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="feedback">
+			<textarea placeholder="说点什么 ..."></textarea>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div onclick="app.submit()" class="aui-btn app-text-white aui-btn-block  app_bg_green border-radius15 ">发表意见</div>
+		</div>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

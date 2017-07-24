@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>自选菜</title>
+		<style>
+			#wrapper {
+				-webkit-overflow-scrolling: touch;
+				background: white;
+				/*position: fixed;*/
+				/*top: 2.25rem;*/
+			}
+			
+			.aui-searchbar {
+				position: static;
+				left: 2.25rem;
+				background: none;
+				right: 2.25rem;
+				width: auto;
+			}
+			
+			.aui-searchbar-input .aui-icon-search {
+				color: blueviolet;
+			}
+			
+			.aui-list .aui-list-item {
+				padding-left: 0.1rem;
+			}
+
+			header .aui-title {
+				left: 2rem!important;
+				right: 2rem!important;
+			}
+			
+			.aui-bar-nav .aui-pull-left {
+				margin-left: 0.15rem;
+			}
+			
+			.aui-btn i {
+				color: #4b4c58!important;
+				font-size: 1.2rem!important;
+			}
+
+			#aui-header {
+				background: white;
+				position: fixed;
+			}
+			
+			#aui-header .aui-searchbar-input i {
+				color: #d9d9d9!important;
+			}
+			
+			#aui-header .aui-searchbar-input {
+				background: #eaeaea;
+			}
+			
+			.goodsItem1_inner img {
+				display: block;
+				width: 100%;
+			}
+
+			.cateListBox {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 100;
+				background: white;
+				padding: 0.75rem;
+				text-align: center;
+				display: none;
+			}
+
+
+			.cateListBox ul:before {
+				height: 0;
+			}
+			
+			.curve div {
+				float: right;
+				text-align: center;
+				width: 100%;
+			}
+
+			
+			#app .aui-list:after {
+				height: 0;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="aui-bar aui-bar-nav aui-margin-b-15" id="aui-header">
+			<a class="aui-btn aui-pull-left" tapmode onclick="app.OpenCate()">
+				<i class="iconfont icon-shaixuan"></i>
+			</a>
+			<div class="aui-title">
+				<div class="aui-searchbar">
+					<div class="aui-searchbar-input aui-border-radius" tapmode>
+						<i class="aui-iconfont aui-icon-search"></i>
+						<form onsubmit="app.search(this); return false;" >
+							<input type="search" placeholder="请输入搜索内容" id="search-input">
+						</form>
+					</div>
+					<div class="aui-searchbar-cancel" tapmod>取消</div>
+				</div>
+			</div>
+		</header>
+		<div style="height: 2.25rem;"></div>
+		<section id="wrapper" class="goodsList">
+			<ul id="list" class="aui-list aui-media-list">
+			</ul>
+		</section>
+
+		<div class="cateListBox">
+			<i onclick="app.closeCate()" id="car_icon" class="aui-iconfont aui-icon-close" style="font-size: 1.1rem;float: left;margin-top: -0.5rem;"> </i>
+			<div style="position: absolute;top:0.5rem;text-align: center;right: 3rem;left: 3rem;">
+				<img src="../imgs/logo.png " style="width: 1.2rem;" class="aui-margin-b-15 " />
+			</div>
+			<ul id="cateBox" class="aui-list aui-margin-t-15 aui-padded-t-15">
+				<li class="aui-list-item" onclick="app.selectCate('')">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">全部分类</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<footer class="footer_bar" style="height:2.45rem;">
+			<div onclick="app.clickNext()" class="btn_submit_order btnfilter app_bg_green " style="text-align: center;border-radius: 0.2rem;" id="nextBtn">
+				确定
+			</div>
+		</footer>
+		<script type="text/template" id="template">
+			<li class="aui-list-item aui-margin-b-5 <@ it.hide?'none':''>" style="overflow: hidden;">
+				<div class="">
+					<div class="aui-media-list-item-inner goodsIetm ">
+						<div class="aui-list-item-media" style="width: 5.15rem;">
+							<img class="goodsimg" onerror="this.src='../imgs/defaultGoods.png'" src="<@ app.getMiddelPath(it.picpath)>">
+						</div>
+						<div class="aui-list-item-inner no noafer">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									<@ it.skuname>
+								</div>
+							</div>
+						</div>
+						<div style="position: absolute;left: 5.9rem;right: 0.75rem;top:1.5rem">
+							<div class="aui-ellipsis-1 aui-font-size-14 " style="color: #757575;margin-top: 0.25rem;">
+								<@ it.product.ads>
+							</div>
+						</div>
+						<div class="goods_info app-text-orange">
+							<@ it.virtualvalue>g</div>
+						<div class="goods_num">
+
+							<div style="position: absolute;bottom: 0.35rem;;right: 0.75rem;">
+								<div class="inputBox"style="display: <@ it.stock<1?'none':'block' >">
+									<i onclick="app.clickMinus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+									<input id="countNum" type="number" readonly="" value="<@ it.count>">
+									<i onclick="app.clickPlus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script type="text/template" id="cateTemplate">
+			<li class="aui-list-item" onclick="app.selectCate(<@ it.id>);">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-title">
+						<@ it.name>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

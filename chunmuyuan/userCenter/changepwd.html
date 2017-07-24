@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>修改密码</title>
+		<style>
+			#app .getCodeBtn.disable {
+				background: #e1e1e1!important;
+			}
+			
+			#loginBox1,
+			#loginBox2 {
+				margin-bottom: 1.1rem;
+			}
+			.eye {
+				font-size: 1.2rem;
+				color: #999;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="aui-margin-t-15 app_bg_white">
+			<!--确认密码box-->
+			<div id="loginBox2" >
+				<div layout class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-10">
+					<input type="password" name="userName" id="oldpwd" placeholder="请输入原密码" />
+					<div layout="column">
+						<div flex></div>
+						<i  class="eye iconfont icon-pwd-hide"></i>
+						<div flex></div>
+					</div>
+				</div>
+				<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+					<input type="password" name="userName" id="pwd1" placeholder="请输入新密码" />
+					<div layout="column">
+						<div flex></div>
+						<i  class="eye iconfont icon-pwd-hide"></i>
+						<div flex></div>
+					</div>
+				</div>
+				<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+					<input type="password" flex name="userName" id="pwd2" placeholder="请再次输入新密码" />
+					<div layout="column">
+						<div flex></div>
+						<i  class="eye iconfont icon-pwd-hide"></i>
+						<div flex></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+        	描述：登录按钮
+        -->
+		<div class="aui-padded-l-15 aui-padded-r-15">
+			<div id="submitBtn" class="app_btn_big  btnfilter app_bg_green" onclick="app.clickNext()">保存</div>
+		</div>
+
+	</body>
+	<script data-main="../js/main" data-app="../userCenter/changepwd" src="../lib/requirejs/require.js"></script>
+
+</html>

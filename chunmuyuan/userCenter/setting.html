@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>账户信息</title>
+	</head>
+	<style type="text/css">
+		.item{
+			min-height: 2.2rem;
+			padding: 0 0.75rem;
+		}
+	</style>
+
+	<body id="app">
+		<div class="app_bg_white aui-margin-t-10">
+			<div class="item aui-border-b" layout>
+				<div layout="column" flex>
+					<div flex></div>
+					<div >TOUCH ID登录</div>
+					<div flex></div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<div><input type="checkbox" class="aui-switch" checked></div>
+					<div flex></div>
+				</div>
+			</div>
+			<div class="item aui-border-b" layout>
+				<div layout="column" flex>
+					<div flex></div>
+					<div>推送消息设置</div>
+					<div flex></div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<div><input type="checkbox" class="aui-switch" checked></div>
+					<div flex></div>
+				</div>
+			</div>
+			<div class="item btnfilter aui-border-b" layout>
+				<div layout="column" flex>
+					<div flex></div>
+					<div>清除本地缓存</div>
+					<div flex></div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<div class="app_text_999">
+						4M
+					</div>
+					<div flex></div>
+				</div>
+			</div>
+			<div class="item btnfilter aui-border-b" layout>
+				<div layout="column" flex>
+					<div flex></div>
+					<div>关于我们</div>
+					<div flex></div>
+				</div>
+				<div layout="column">
+					<div flex></div>
+					<i class="aui-iconfont aui-icon-right app_text_999"></i>
+					<div flex></div>
+				</div>
+			</div>
+		</div>
+		
+		<footer class="aui-bar aui-bar-tab" id="footer" style="background: none;margin-bottom: 1rem;">
+			<div class="aui-content-padded" style="margin-top:1.5rem;">
+				<div onclick="app.logout()" class="app_btn_big app_bg_green">退出登录</div>
+			</div>
+		</footer>
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

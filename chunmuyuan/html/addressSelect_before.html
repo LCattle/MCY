@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>选择自提地址</title>
+</head>
+<style type="text/css">
+    .anniu .anniu {
+        display: inline-block;
+    }
+    .bottom_line{
+        content:'';
+        background-color:#C9C9C9;
+        height:2px;
+        width:94%;
+    }
+
+    .btn-jia {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .checkBtn {
+        width: 0.75rem;
+        border: 0.5px #007548 solid;
+        height: 0.75rem;
+        border-radius: 0.75rem;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .checkBtn:active {
+        background-color: #f5f5f5;
+    }
+
+    .checkBtn.active {
+        background: url(../imgs/xq-images/on.png) #007548;
+        background-size: cover;
+    }
+
+    .right-text {
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translate(0, -50%);
+        font-size: 0.9rem;
+    }
+
+    .btn_nub {
+        position: absolute;
+        right: 0.75rem;
+        bottom: 0.3rem;
+    }
+
+    .itembox {
+        height: 4.3rem;
+        position: relative;
+    }
+
+    .itembox .aui-list-item {
+        position: absolute;
+        top: 0;
+        padding-left: 1.75rem;
+        width: 100%;
+    }
+
+    .itembox .center_outter {
+        width: 1rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        left: 0.75rem;
+    }
+</style>
+
+<body id="app">
+<!--选择自提地址-->
+
+<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+    <ul id="list" class="aui-list aui-media-list noafer" style="overflow: scroll;">
+
+    </ul>
+</section>
+<script id="address_SinceTemplate" type="text/template">
+    <li class="aui-list-item aui-margin-b-10 Since_bottom"  id="address_<@ it.id>" onclick="app.selected(<@ it.id>)">
+        <div class="right-text" style="right: auto;left: 0.75rem;">
+            <div class="checkBtn <@ it.selected?'active':''>"></div>
+        </div>
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media" style="width: 1rem;">
+            </div>
+            <div class="aui-list-item-inner" style="width: 84%; padding-right: 0;">
+                <div style="padding: 0.3rem 0.1rem;">
+                    <div class="goods_describe aui-list-item-title  <@ it.selected?'app-text-orange':''>">
+                        <@ it.addressPart2> <@ it.addressPart3>
+                        <!--深圳市科技园高新路超多维科技大厦-->
+                    </div>
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title">
+                            <@ it.addressPart1>
+                        </div>
+                    </div>
+                    <div class="goods_describe aui-list-item-title">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </li>
+</script>
+<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>发帖子</title>
+		<style>
+			
+			html,body{
+			background-color: #efefef;
+		}
+		
+		
+		/* 清除浮动 */
+			.ks-clear:after, .clear:after {
+			  content: '\20';
+			  display: block;
+			  height: 0;
+			  clear: both;
+			}
+			.ks-clear, .clear {
+			  *zoom: 1;
+			}
+		
+			.bankuai{
+           	width: 100%;
+           	margin-top: 0.5rem;
+           	padding: 0 2%;
+           	background-color: #FFFFFF;
+           	font-size: 0.7rem;
+           }
+           
+           .bankuai .ave{
+           	background-color: #fc9304;
+           	color: #FFFFFF;
+           }
+           
+           
+           .bankuai ul{
+           	width: 100%;
+           }
+           
+           .bankuai ul li{
+           	padding: 1% 5%;
+           	float: left;
+           	border-radius: 0.3rem;
+           }
+           
+         ::-webkit-input-placeholder{
+                   color: #CCCCCC;
+
+         }
+			
+			
+			.content {
+				padding: 0.5rem;
+				border-radius: 0.5rem;
+				background: white;
+			}
+			
+			.content textarea {
+				height: 6.6rem;
+				overflow: scroll;
+			}
+			
+			.imgbox {
+				position: relative;
+				display: inline-block;
+				text-align: center;
+				height: 100%;
+				width: 100%;
+				margin-left: 0.2rem;
+				border: 1px solid #e1e1e1;
+				border-radius: 0.3rem;
+				background-clip: content-box;
+				background-size: cover;
+				background-position: center;
+				/*background-image: url(../help/otherimg/02b.jpg);*/
+			}
+			
+			#filePicker {
+				display: none;
+			}
+			
+			#filePicker .imgbox {
+				width: 100%;
+				height: 100%;
+				border: 0;
+				background-image: url(../imgs/addImgIcon.png);
+			}
+			
+			#file-input {
+				float: left;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				display: block;
+			}
+			
+			#picshowpanel {
+				z-index: 100;
+				position: fixed;
+				display: none;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			#picshowpanel .aui-icon-close,.aui-icon-trash,.numbers{
+				position: absolute;
+				z-index: 101;
+				top: 0.2rem;
+				font-size: 1.2rem;
+				left: 0.5rem;
+				color: white;
+			}
+			#picshowpanel .aui-icon-trash{
+				left: auto;
+				right: 0.5rem;
+			}
+			.numbers{
+				width: 100%;
+				left: 0;
+				text-align: center;
+			}
+			.process{
+				width: 100%;
+				height: 100%;
+				display: none;
+				background: black;
+				opacity: 0.5;
+				border-radius: 0.2rem;
+			}
+			.proMsgbox,.proMsgbox1{
+				position: absolute;
+				font-size: 0.7rem;
+				top:0;
+				bottom: 0;
+				height: 100%;
+				width: 100%;
+				color: white;
+			}
+			.successDlg{
+				position: fixed;
+				display: none;
+				z-index: 100;
+				top:4rem;
+				left: 1rem;
+				right: 1rem;
+				height: 15rem;
+				background: white;
+				border-radius: 0.6rem;
+				text-align: center;
+			}
+			.successDlg img{
+				margin: 1rem;
+				height: 6rem;
+			}
+			.successDlg .btns{
+				position: absolute;
+				bottom: 0.5rem;
+				height: 2rem;
+				width: 100%;
+			}
+			.btn1,.btn2{
+				padding: 0 0.75rem;
+				line-height: 2rem;
+				border-radius: 0.2rem;
+				border:1px solid #eee
+			}
+			.btn2{
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="content">
+			 <div class="aui-list-item" style="border-bottom: 2px solid #efefef;">
+		            <input type="text" class="title" maxlength="30" placeholder="主题"  style="padding-left: 0.7rem;overflow: hidden;white-space:nowrap;text-overflow:ellipsis;" />
+		     </div>
+			<textarea placeholder="说点什么吧..." style="padding-left: 0.7rem;overflow: auto;"></textarea>
+			<div id="photosbox" class="aui-margin-t-15">
+				<div id="filePicker" onclick="" class="btnfilter">
+					<div class="imgbox">
+						<input type="file" id="file-input" accept="image/*" style="" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dlg_bg" style="display: none;">
+		</div>
+		<div id="picshowpanel" >
+			<div class="numbers">3/9</div>
+			<i onclick="app.closeSwipe()" class="aui-iconfont aui-icon-close"></i>
+			<i onclick="app.clickTrash()" class="aui-iconfont aui-icon-trash"></i>
+			<div class="swiper-container" style="width: 100%;height: 100%;">
+				<div class="swiper-wrapper">
+				</div>
+			</div>
+		</div>
+		
+		<div class="bankuai aui-grid">
+    		<div class="aui-row blanks">
+    			
+    		</div>
+		</div>
+		
+		<div class="aui-padded-l-15 aui-padded-r-15" style="margin-top: 3rem;">
+			<button class="app_btn_big btnfilter" style="background-color: #fc9304;color: #FFFFFF; width: 100%; border: none;" onclick="app.submit()" > 发 布 </button>
+		</div>
+		
+	</body>
+	
+	
+	<!--
+    	选择板块模板
+    -->
+	<script type="text/template" id="blockTemp">
+        <div class="aui-col-xs-3 lis" cid="<@ it.id>" style="padding: 0.3rem 0; margin: 0.3rem 0; margin-bottom:0.3rem; border-radius: 0.3rem;">
+            <div class="aui-grid-label" style="margin: 0;"><@ it.names></div>
+        </div>
+	</script>
+	
+	
+	<!--发布成功的弹窗-->
+	<div class="successDlg">
+		<img src="../imgs/activity/success.png" />
+		<div class="app-text-orange">发表成功，感谢您的分享！</div>
+		<div class="btns" layout>
+			<div flex="2"></div>
+			<div onclick="app.onNativeBack()" class="btn1 btnfilter">返回活动</div>
+			<div flex=></div>
+			<div onclick="app.gotoIndexPage()" class="btn2 btnfilter app_bg_green ">前往商城</div>
+			<div flex="2"  ></div>
+		</div>
+	</div>
+
+	<!--
+    	描述：查看大图的模板
+    -->
+	<script type="text/template" id="bigimgtemp">
+		<div class="swiper-slide" uuid="<@ it.uuid>" style="height: 100%;"  layout="column">
+			<div flex ></div>
+			<div  style="overflow: scroll;margin: 2rem 0 1rem 0;">
+				<img style="width: 100%;" src="<@ it.url>" />
+			</div>
+			<div flex></div>
+		</div>
+	</script>
+	<script type="text/template" id="imgboxtemp">
+		<div class="imgbox" uuid="<@ it.uuid>"  onclick="app.openSwipe('<@ it.uuid>')" style="background-image:url({@ it.src});width: <@ app.imgboxwidth>px;height: <@ app.imgboxwidth>px;">
+			<div class="process"></div>
+			<div class="proMsgbox"   layout="column">
+				<div flex layout="column"  onclick="app.reupload('<@ it.uuid>',event)">
+					<div flex></div>
+					<div class="proMsg"></div>
+					<div flex></div>
+				</div>
+				<div flex layout="column" onclick="app.DelUploadErr('<@ it.uuid>',event)">
+					<div flex></div>
+					<div class="">删除</div>
+					<div flex></div>
+				</div>
+			</div>
+			<div class="proMsgbox1"   onclick="" layout="column">
+				<div flex></div>
+				<div class="proMsg animated infinite flash">上传中...</div>
+				<div flex></div>
+			</div>
+		</div>
+	</script>
+	<div></div>
+	<script data-main="../js/main" data-app="sendCard" src="../lib/requirejs/require.js"></script>
+
+</html>

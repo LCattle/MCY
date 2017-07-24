@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title></title>
+		<style>
+			#seedsBox {
+				visibility: hidden;
+				z-index: 100;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			
+			#seedsBox .title {
+				background: #f9e89f;
+				padding: 0.5rem;
+				color: #f5c42a;
+				border-top-left-radius: 0.5rem;
+				border-top-right-radius: 0.5rem;
+				text-align: center;
+				line-height: 1.2rem;
+			}
+			
+			.dlgClose {
+				width: 1.1rem;
+				line-height: 1rem;
+				float: right;
+				margin-top: -0.3rem;
+				margin-right: -0.3rem;
+				height: 1.1rem;
+				text-align: center;
+				background: #fdf3d4;
+				border-radius: 2rem;
+				border: 0.1rem solid #f5c42a;
+			}
+			
+			#seedsBox .seedList {
+				border-bottom-left-radius: 0.5rem;
+				border-bottom-right-radius: 0.5rem;
+				background: #fdf2c5;
+				padding-top: 1rem;
+				text-align: center;
+				height: 10rem;
+			}
+			
+			.seedList .seedBg {
+				margin: 0rem auto;
+				height: 5rem;
+				width: 5rem;
+				background: #f9e89f;
+				border-radius: 3rem;
+				padding-left: 0.25rem;
+				padding-top: 0.5rem;
+			}
+			
+			.seedBg img {
+				width: 4rem;
+				height: 4rem;
+			}
+			
+			.seedBtn {
+				line-height: 1.3rem;
+				bottom: 8%;
+				padding: 0.2rem 0.75rem;
+				margin: 1rem auto;
+				display: inline-block;
+				text-align: center;
+				font-size: 0.7rem;
+				border-radius: 2rem;
+				border: 2px solid #c7882a;
+				background: #f9d55c;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div style="position: absolute;top: 0;bottom:0rem;width: 100%;overflow: scroll;">
+			<div style="display: none;" class="orderInfo app-text-orange aui-text-right aui-margin-r-15 aui-margin-t-5" onclick="app.toOrder()">
+				<i class="icon iconfont icon-xiaoxi" style="font-size: 1.2rem;position:relative;">
+              </i>订单留言</div>
+			<div class="aui-text-center aui-font-size-16">
+				<div style="margin: 0.7rem auto 0;">
+					<img src="../imgs/chongz/czk.png" / width="40%">
+				</div>
+				<div>
+					<div class="activeInfo" style="display: none;">
+						<h2 id="tipType" class="app-text-orange">恭喜您已激活成功！</h2>
+						<p style="color:#333;">充值金额：<span id="balance" class='app-text-orange aui-font-size-18'></span></p>
+					</div>
+					
+					<div class="app-text-orange orderInfo" style="display: none;text-align: left;padding: 0 0.75rem;">
+						请按照如下方式尽快完成线下转账，财务确认到账后，系统自动完成充值。<br>
+						<p class="aui-margin-t-5">
+							注:<br>1、转账时请在转账平台备注订单编号<br>
+							 2、转账完成请至订单详情页面备注转账信息
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="aui-text-center aui-font-size-14">
+				<div style="margin:1rem auto 0.5rem;width:80%;height:2.5rem;line-height:2rem;color:#fff;background-color:red;background:url(../imgs/chongz/colortip.png)no-repeat;background-size:100% 100%;">
+			                        恭喜您,本次获得<span id="integrate"></span>成长值
+				</div>
+			</div>
+			<div class="aui-content orderInfo" style="display: none;margin-top: 2rem;">
+				<ul class="aui-list aui-list-in">
+					<li class="aui-list-item ui-padded-t-5 aui-list-item-inner">
+						<div class="aui-list-item-title" style="width:100%;line-height: 1.5rem;padding-top: 0.75rem;padding-bottom: 0.75rem;">
+							<p>收款方名称<span class="aui-pull-right">xxxxxxx</span></p>
+							<p>收款方银行<span class="aui-pull-right">xxxxxxx</span></p>
+							<p>收款方卡号<span class="aui-pull-right">123456</span></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="aui-content-padded" style="margin-top:1.5rem;">
+				<div onclick="app.replace('./myAccount.html?action=2')" class="aui-btn  aui-btn-block app-text-green aui-margin-b-15  border-radius15 border_green" style="background: #FFFFFF;">查看账户余额</div>
+				<div onclick="app.gotoIndexPage()" class="border-radius15 aui-btn aui-btn-block  aui-pull-right app-text-green border_green">有新品 去看看</div>
+			</div>
+		</div>
+		<footer class="aui-bar aui-bar-tab" id="footer" style="background: none;margin-bottom: 1rem;">
+
+		</footer>
+		<div id="seedsBox" layout="column">
+			<div flex></div>
+			<div style="width: 80%;margin: 0 auto;">
+				<div class="dlgClose"><i class="aui-iconfont aui-icon-close"></i></div>
+				<div class="title">
+					赠送您一颗游戏种子<br> 赶紧去把它种起来吧！
+				</div>
+				<div class="seedList">
+					<div class="seedBg">
+						<img src="../imgs/game/seed.png" />
+					</div>
+					<div class="seedBtn" onclick="app.href('../game/game.html')">
+						进入菜园
+					</div>
+				</div>
+			</div>
+			<div flex></div>
+		</div>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

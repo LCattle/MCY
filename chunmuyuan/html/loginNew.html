@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>登录</title>
+		<style>
+			#eye {
+				font-size: 1.2rem;
+				color: #999;
+			}
+			
+			.tabItem {
+				padding: 0.5rem 0;
+				background: white;
+				text-align: center;
+			}
+			
+			.tabItem.active {
+				color: #F38B00;
+				border-bottom: #F38B00 solid 0.1rem;
+			}
+			
+			#app .getCodeBtn.disable {
+				background: #e1e1e1!important;
+			}
+			
+			#unitbox {
+				display: none;
+			}
+			
+			.line {
+				height: 1px;
+				background: gray;
+			}
+			
+			.unitimg {
+				height: 2.5rem!important;
+			}
+			
+			.logininputBox {
+				position: relative;
+				height: 5rem;
+				width: 100%;
+				margin-bottom: 1.1rem;
+			}
+			
+			#loginBox1,
+			#loginBox2 {
+				position: absolute;
+				width: 100%;
+			}
+			
+			.loginPage {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div id="contentBox1">
+			<div class="aui-margin-t-15 app_bg_white">
+				<!--tab切换-->
+				<div layout>
+					<div class="tabItem active" flex onclick="app.switchTab(0)">
+						手机号密码登录
+					</div>
+					<div class="tabItem" flex onclick="app.switchTab(1)">
+						手机验证码快捷登录
+					</div>
+				</div>
+				<div class="logininputBox ">
+					<!--手机密码登录的box-->
+					<div id="loginBox1">
+						<div layout class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-10">
+							<input type="text" name="userName" id="userName" placeholder="用户名/手机号" />
+						</div>
+						<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+							<input type="password" flex id="password" placeholder="请输入密码" />
+							<div layout="column">
+								<div flex></div>
+								<i id="eye" class="iconfont icon-pwd-hide"></i>
+								<div flex></div>
+							</div>
+						</div>
+					</div>
+					<!--手机验证码登录box-->
+					<div id="loginBox2" style="display: none;">
+						<div layout class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-10">
+							<input type="text" name="userName" id="phone" placeholder="手机号" />
+						</div>
+						<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+							<input type="number" flex id="code" placeholder="请输入验证码" />
+							<div layout="column">
+								<div flex></div>
+								<div class="app_btn_small  btnfilter app_bg_green getCodeBtn" onclick="app.getCode()">获取验证码</div>
+								<div flex></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--
+        	描述：登录按钮
+        -->
+			<div class="aui-padded-l-15 aui-padded-r-15">
+				<div class="app_btn_big  btnfilter app_bg_green" onclick="app.clickLogin()">登录</div>
+
+				<div class="aui-margin-t-10" layout>
+					<div class="app_text_999 aui-font-size-14">手机快速注册</div>
+					<div flex></div>
+					<div class="app_text_999 aui-font-size-14">忘记密码</div>
+				</div>
+			</div>
+		</div>
+		<!--
+        	描述：联合登录box
+        -->
+		<div id="unitbox">
+			<div layout class="aui-padded-l-15 aui-padded-r-15" style="margin-bottom: 2rem;">
+				<div flex layout="column">
+					<div flex></div>
+					<div class="line"></div>
+					<div flex></div>
+				</div>
+
+				<div class="aui-padded-l-5 aui-padded-r-5 app_text_666">第三方登录</div>
+
+				<div flex layout="column">
+					<div flex></div>
+					<div class="line"></div>
+					<div flex></div>
+				</div>
+			</div>
+			<!--图标-->
+			<div layout style="">
+				<div flex=5></div>
+				<div class="aui-text-center btnfilter" onclick="app.jointLogin('wx')">
+					<img class="unitimg" src="../imgs/login/WX.png" />
+				</div>
+				<div flex=4></div>
+				<div class="aui-text-center btnfilter"  onclick="app.jointLogin('qq')">
+					<img class="unitimg" src="../imgs/login/QQ.png" />
+				</div>
+				<div flex=5></div>
+			</div>
+		</div>
+		<script data-main="../js/main"  src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

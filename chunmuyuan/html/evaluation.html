@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>评价</title>
+	</head>
+	<style>
+		.aui-list textarea {
+			margin: 0.5rem 0 0;
+			font-size: 0.7rem;
+		}
+		
+		.btn_bot {
+			position: absolute;
+			right: 0.75rem;
+			bottom: 0.35rem;
+		}
+		
+		.checkBtn {
+			width: 0.75rem;
+			border: 0.5px #007548 solid;
+			height: 0.75rem;
+			border-radius: 0.75rem;
+		}
+		
+		.checkBtn:active {
+			background-color: #f5f5f5;
+		}
+		
+		.checkBtn.active {
+			background: url(../imgs/xq-images/on.png) #007548;
+			background-size: cover;
+		}
+		
+		.aui-list.aui-list-in .aui-list-item-inner.no:after {
+			height: 0;
+		}
+		
+	</style>
+
+	<body id="app">
+		<div class="aui-content aui-margin-b-10">
+			<div class="aui-content goodsList" id="confirm_goods">
+				<ul class="aui-list aui-list-in aui-media-list">
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">订单评价</div>
+								<div class="aui-list-item-right aui-font-size-14">满意请给5星哦</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner no ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title  aui-font-size-14">描述相符</div>
+								<div class="aui-list-item-right app-text-orange startsbox" id="describeStarts">
+									<div class="tri">
+
+									</div>
+									<i id="text" class="iconfont icon-wuxing2 aui-margin-l-5 " style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5 " style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li id="wlpj" class="aui-list-item" style="display: none">
+						<div class="aui-list-item-inner no ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title  aui-font-size-14">物流服务</div>
+								<div class="aui-list-item-right app-text-orange startsbox" id="logisticsStarts">
+									<i class="iconfont icon-wuxing2" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title  aui-font-size-14">服务态度</div>
+								<div class="aui-list-item-right app-text-orange startsbox" id="serviceStarts">
+									<i class="iconfont icon-wuxing2" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<textarea style="margin: 0 0  0.25rem;color:#C0C0C0;" id="ordertextarea" >服务周到，非常满意！</textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="aui-content">
+			<ul class="aui-list aui-media-list" id="goodsList">
+
+			</ul>
+		</div>
+		
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="confir_sum_order">
+				<div onclick='$("#nikeCheck").toggleClass("active");' class="center_outter" style="float:left;width: 1rem;height: 100%;">
+					<div class="center_inner">
+						<div class="checkBtn active" id="nikeCheck"></div>
+					</div>
+				</div>
+				<div onclick='$("#nikeCheck").toggleClass("active");' style="float: left;vertical-align: middle;">
+					匿名评价
+				</div>
+			</div>
+			<div class="btn_bot">
+				<div onclick="app.submit()" class="aui-btn app_bg_green  app-text-white  aui-pull-right aui-margin-l-10">提交</div>
+			</div>
+
+		</footer>
+		<script type="text/template" id="cardTemplate">
+			<li class="aui-list-item aui-margin-b-5">
+				<div class="aui-media-list-item-inner">
+					<div class="aui-list-item-media" style="width: 6rem;">
+						<img style="width: 5.25rem;height: 3.25rem;" onerror="this.src='../imgs/defaultGoods.png'" src="<@ app.getMiddelPath(it.productpic)>">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text aui-padded-b-5">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+						<div class="aui-list-item-text" style="border-top: 1px solid #DDDDDD;">
+							<textarea id="textarea_<@ it.skuid>" style="color:#C0C0C0;" >购买方便快捷，享受高品质生活体验！</textarea>
+						</div>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script type="text/template" id="ggqTemplate">
+			<li class="aui-list-item aui-margin-b-5">
+				<div class="aui-media-list-item-inner">
+					<div class="aui-list-item-media" style="width: 6rem;">
+						<img style="width: 5.25rem;height: 3.25rem;" onerror="this.src='../imgs/defaultGoods.png'" src="<@ app.getMiddelPath(it.productpic)>">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text aui-padded-b-5">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+						<div class="aui-list-item-text" style="border-top: 1px solid #DDDDDD;">
+							<textarea id="textarea_<@ it.skuid>" style="color:#C0C0C0;" >品鉴原生态美食，参观智慧科技梦工厂，休闲旅游的好去处。</textarea>
+						</div>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script type="text/template" id="goodsTemp">
+			<li class="aui-list-item aui-margin-b-5">
+				<div class="aui-media-list-item-inner">
+					<div class="aui-list-item-media">
+						<img src="<@ app.getMiddelPath(it.productpic)>" onerror="this.src='../imgs/defaultGoods.png'">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text aui-padded-b-5">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+						<div class="aui-list-item-text" style="border-top: 1px solid #DDDDDD;">
+							<textarea id="textarea_<@ it.skuid>" style="color:#C0C0C0;" >鲜、爽、脆，能吃出小时候的味道！</textarea>
+						</div>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>菜园动态</title>
+    <style type="text/css">
+        body{
+            background-color: #f2f2f2;
+        }
+        .aui-list:before{
+            height: 0px;
+        }
+        .aui-list-item-media{
+            width: 1.6rem !important;
+            padding-right: 0.35rem !important;
+        }
+        .aui-list .aui-list-item:after,
+        .aui-list:after{
+            background-color: #FFFFFF !important;
+            height: 0px;
+        }
+        .aui-media-list-item-inner,
+        .aui-list-item-media{
+            border: none !important;
+            height: 100%;
+        }
+        .aui-list .aui-list-header{
+            font-size: 0.8rem;
+            padding: 0.6rem 0.9rem;
+        }
+        .head-line:before{
+            content:"";
+            width:1px;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0.6rem;
+            background-color:#dbdbdb;
+        }
+        .head-line img{
+            z-index: 1;
+        }
+
+        .bg-fff{
+            background-color: #ffffff !important;
+        }
+        .color-333333{
+            color:#333333;
+        }
+        .color-f28b00{
+            color: #f28b00;
+        }
+        .color-999999{
+            color: #999999;
+        }
+    </style>
+</head>
+<body id="app">
+    <section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+        <div id="list" class="aui-content aui-margin-b-15 aui-padded-b-10 bg-fff">
+            <!--<ul class="aui-list aui-media-list">-->
+                <!--<li class="aui-list-header bg-fff color-333333">-->
+                    <!--今天-->
+                <!--</li>-->
+                <!--<li class="aui-list-item aui-list-item-middle">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media head-line">-->
+                            <!--<img src="../imgs/game/vegetable-icon-t.png" class="aui-img-round aui-list-img-sm">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title aui-font-size-14 color-333333">成功种植一棵水果黄瓜</div>-->
+                                <!--<div class="aui-list-item-right color-999999">08:00</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="aui-list-item aui-list-item-middle">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media head-line">-->
+                            <!--<img src="../imgs/game/vegetable-icon-l.png" class="aui-img-round aui-list-img-sm">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title aui-font-size-14 color-333333">给奶油生菜浇水一次 <span class="color-f28b00">-10g</span></div>-->
+                                <!--<div class="aui-list-item-right color-999999">12:00</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="aui-list-item aui-list-item-middle">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media head-line">-->
+                            <!--<img src="../imgs/game/vegetable-icon-l.png" class="aui-img-round aui-list-img-sm">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title aui-font-size-14 color-333333">给奶油生菜浇水一次 <span class="color-f28b00">-10g</span></div>-->
+                                <!--<div class="aui-list-item-right color-999999">18:00</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<ul class="aui-list aui-media-list">-->
+                <!--<li class="aui-list-header bg-fff color-333333">-->
+                    <!--04-06-->
+                <!--</li>-->
+                <!--<li class="aui-list-item aui-list-item-middle">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media head-line">-->
+                            <!--<img src="../imgs/game/vegetable-icon-t.png" class="aui-img-round aui-list-img-sm">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title aui-font-size-14 color-333333">成功种植一棵水果黄瓜</div>-->
+                                <!--<div class="aui-list-item-right color-999999">08:00</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="aui-list-item aui-list-item-middle">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media head-line">-->
+                            <!--<img src="../imgs/game/vegetable-icon-l.png" class="aui-img-round aui-list-img-sm">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title aui-font-size-14 color-333333">给奶油生菜浇水一次 <span class="color-f28b00">-10g</span></div>-->
+                                <!--<div class="aui-list-item-right color-999999">12:00</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        </div>
+    </section>
+
+    <!--动态头部-->
+    <script type="text/template" id="dynamicsHeadTemplate">
+        <ul class="aui-list aui-media-list <@ it.date>">
+            <li class="aui-list-header bg-fff color-333333">
+                <@ it.dateLabel>
+            </li>
+            <@ it.lists>
+        </ul>
+    </script>
+
+    <!--动态列表内容-->
+    <script type="text/template" id="dynamicsLiTemplate">
+        <li class="aui-list-item aui-list-item-middle">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media head-line">
+                    <img src="<@ it.icon>" class="aui-img-round aui-list-img-sm">
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title aui-font-size-14 color-333333"><@ it.description> <span class="app-text-green"><@ it.number></span></div>
+                        
+                        <div class="aui-list-item-right color-999999"><@ it.time></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+</body>
+
+<script data-main="../js/main" data-app="../game/gardenDynamics" src="../lib/requirejs/require.js"></script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>我的评价</title>
+	</head>
+	<style type="text/css">
+		.aui-list .aui-list-item:after {
+			left: 0.75rem;
+		}
+	</style>
+
+	<body id="app">
+		<section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+			<ul class="aui-list aui-media-list " id="list">
+				
+			</ul>
+		</section>
+		<script type="text/template" id="template">
+			<li class="aui-list-item">
+					<div class="aui-list-item-inner ">
+						<p>订单编号：<@ '123344'></p>
+					</div>
+				</li>
+				<li class="aui-margin-b-10 ">
+					<div class="aui-list-item">
+						<div class="aui-media-list-item-inner">
+							<div class="aui-list-item-media">
+								<img class="goodsimg" src="../imgs/temp/img3.jpeg">
+							</div>
+							<div class="aui-list-item-inner" style="padding-bottom: 2rem;" >
+								<div class="aui-list-item-text " >
+									<div class="aui-list-item-title">
+										白菜
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text" style="margin-top: 0.15rem;">
+									新鲜大白菜新鲜大...
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="aui-list-item " style="padding-top: 0.5rem;">
+						<div class="aui-media-list-item-inner">
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-text aui-margin-b-10">
+									新鲜大白菜东西不错！
+								</div>
+								<p class="aui-list-item-text ">
+									2016-12-13 20:11
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>资讯</title>
+		<style>
+			.listItem {
+				position: relative;
+				height: 8.5rem;
+				margin-bottom: 0.25rem;
+				width: 100%;
+				background: white;
+			}
+			
+			.itemContent {
+				position: absolute;
+				top: 0.3rem;
+				bottom: 0;
+				left: 0.75rem;
+				right: 11rem;
+			}
+			
+			.listItem .main {
+				position: absolute;
+				top: 0.5rem;
+				right: 0.75rem;
+				height: 7rem;
+				width: 10rem;
+			}
+			.swiper-container{
+				width: 100%;
+			}
+			.swiper-slide{
+				background-image:url(../imgs/chongz/flower.gif) ;
+				background-size:cover ;
+			}
+			.swiper-slide .textBg,.swiper-slide .text{
+				position: absolute;
+				bottom: 0;
+				height: 1.3rem;
+				width: 100%;
+				line-height: 1.3rem;
+				color: white;
+				padding:0 0.75rem;
+			}
+			.swiper-slide .textBg{
+				opacity: 0.5;
+				background: black;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="swiper-container" >
+			<div class="swiper-wrapper" >
+				
+			</div>
+		</div>
+		<section id="wrapper" class="aui-padded-t-5" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+
+			</div>
+		</section>
+	</body>
+	<script type="text/template" id="adtemp">
+		<div class="swiper-slide" style="background-image: url(<@it.img>);">
+			<div class="textBg"></div>
+			<div class="text aui-ellipsis-1"><@ it.title></div>
+		</div>
+	</script>
+	<script type="text/template" id="itemtemp">
+		<div class="listItem" onclick="app.toDetails('<@ it.id>')">
+			<img class="main" src="<@ it.img>" />
+			<div class="itemContent">
+				<div class="aui-ellipsis-1 plh14">
+					<@ it.title>
+				</div>
+				<div style="line-height: 1rem;" class="aui-ellipsis-3 app_text_666 aui-font-size-14">
+					<@ it.content>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../activity/informationList" src="../lib/requirejs/require.js"></script>
+
+</html>

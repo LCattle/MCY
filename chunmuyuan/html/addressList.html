@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>收货地址管理</title>
+	</head>
+	<style type="text/css">
+		.aui-list .aui-list-item:after {
+			width: auto;
+			right: 0.75rem;
+			left: 0.75rem;
+		}
+		
+		.anniu .anniu {
+			display: inline-block;
+		}
+		
+		.btn-jia {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+		}
+		
+		.checkBtn {
+			width: 0.75rem;
+			border: 0.5px #007548 solid;
+			height: 0.75rem;
+			border-radius: 0.75rem;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.checkBtn:active {
+			background-color: #f5f5f5;
+		}
+		
+		.checkBtn.active {
+			background: url(../imgs/xq-images/on.png) #007548;
+			background-size: cover;
+		}
+		#list{
+			overflow: scroll;
+		}
+	</style>
+
+	<body id="app">
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul class="aui-content noafer" id="list" style="overflow: scroll;">
+				
+			</ul>
+		</section>
+		<script type="text/template" id="addressTemplate">
+			<li class="aui-list aui-media-list  aui-margin-b-10" id="address_<@ it.id>">
+				<div class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title"><@ it.consignee></div>
+								<div class="aui-list-item-title"><@ it.mobile></div>
+							</div>
+							<div class="aui-list-item-text">
+								<@ it.fulladdress>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div onclick="app.setDefault(<@ it.id>)" class="aui-list-item-title aui-font-size-14">
+									<div class="checkBtn <@ it.isdefault==1?'active':''> aui-margin-r-10"></div>
+									默认地址</div>
+								<div class="aui-list-item-title anniu  aui-font-size-14">
+									<div class="anniu aui-margin-l-10"onclick="app.editAddress(<@ it.id>)"><i class="iconfont icon-bianji aui-margin-r-5"></i>编辑</div>
+									<div class="anniu aui-margin-l-10" onclick="app.clickDel(<@ it.id>)"><i class="iconfont icon-shanchu1 aui-margin-r-5"></i>删除</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</script>
+		<footer class="btn-jia">
+			<div class="aui-content-padded">
+				<div onclick="app.editAddress('')" class="aui-btn app-text-white aui-btn-block  app_bg_green btnfilter border-radius15 ">添加新地址</div>
+			</div>
+		</footer>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

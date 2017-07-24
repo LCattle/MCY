@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>活动</title>
+		<style>
+			.listItem {
+				position: relative;
+				height: 8rem;
+				width: 100%;
+				margin-bottom: 0.25rem;
+				background: white;
+			}
+			
+			.itemContent {
+				position: absolute;
+				top: 0.3rem;
+				bottom: 0;
+				left: 6rem;
+				right: 0.75rem;
+			}
+			
+			.listItem .main {
+				position: absolute;
+				top: 0.5rem;
+				left: 0.75rem;
+				height: 5rem;
+				width: 5rem;
+			}
+			
+			.flag {
+				position: absolute;
+				top: 0rem;
+				right: 0;
+				width: 2rem;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<section id="wrapper" class="aui-padded-t-5" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+
+			</div>
+		</section>
+	</body>
+	<script type="text/template" id="itemtemp">
+		<div class="listItem" onclick="app.toDetails('<@ it.id>')">
+			<img class="main" src="<@ it.pic>" />
+			<div class="itemContent" layout="column">
+				<div class="aui-ellipsis-1 plh14">
+					<@ it.activityname>
+				</div>
+				<div style="line-height: 1rem;" class="aui-ellipsis-2 app_text_666 aui-font-size-14">
+					<@ it.activitymemo>
+				</div>
+				<div class="app_text_999 aui-margin-t-10 aui-font-size-14">
+					<i class="iconfont icon-shijian app-text-orange"></i> 
+					<@ it.timeStr>
+				</div>
+				<div class="app_text_999 aui-font-size-14 aui-ellipsis-1">
+					<i class="iconfont icon-dingwei "></i> 
+					<@ it.cityname> <@ it.countyname>
+				</div>
+				<div flex></div>
+				<div style="display: <@ it.showNum?'':'none'>;" class="aui-margin-t-10 app_text_999" layout>
+					<div flex><@ it.joinstatus==2?'已参与':''></div>
+					<span class="app-text-orange"><@ it.virtualamount></span>人报名
+				</div>
+			</div>
+			<img class="flag" src="../imgs/activity/<@ it.stateFlag>">
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../activity/activityList" src="../lib/requirejs/require.js"></script>
+
+</html>

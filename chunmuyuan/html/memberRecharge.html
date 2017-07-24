@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>会员充值</title>
+	</head>
+	<style type="text/css">
+
+        *{
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            -webkit-tap-highlight-color:transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+
+        }
+
+
+		.chongzka {
+			margin: 0 0.5rem;
+		}
+		/*.checkButton {*/
+			/*width: 0.75rem;*/
+			/*border: 0.5px #007548 solid;*/
+			/*height: 0.75rem;*/
+			/*border-radius: 0.75rem;*/
+			/*display: none;*/
+		/*}*/
+		/**/
+		/*.checkButton.active {*/
+			/*background: url(../imgs/xq-images/on.png) #007548;*/
+			/*background-size: cover;*/
+			/*display: block;*/
+			/*z-index: 3;*/
+		/*}*/
+		/**/
+		.chongzka .aui-col-xs-6 {
+			position: relative;
+		}
+
+		/*.chongzka .aui-col-xs-6 .checkButton.active {*/
+			/*position: absolute;*/
+			/*right: 0.4rem;*/
+			/*top: 0.3rem;*/
+		/*}*/
+
+		.chongzka li .pic {
+			padding: 0 0.15rem;
+		}
+		
+		.chongzka .aui-col-xs-6 img {
+			width: 100%;
+			border-radius: 0.3rem;
+		}
+
+        .chongzjin_l{
+            width:70%;
+            height:100%;
+            border:1px solid #A2A2A2;
+            margin: 0 auto;
+            position:relative;
+            border-radius:0.3rem;
+            background:#fff;
+        }
+        .chongzjin_r{
+            width:70%;
+            height:100%;
+            border:1px solid #A2A2A2;
+            position:relative;
+            border-radius:0.3rem;
+            background:#fff;
+        }
+        .chongzjin_l span,.chongzjin_r span{
+            height:2.2rem;
+            line-height: 2.2rem;
+        }
+        .chong.active{
+            border:1px solid #F18904;
+        }
+        .chongzjin_l .aui-grid-label,.chongzjin_r .aui-grid-label{
+            margin-top:0;
+            position:relative;
+            top:-4px;
+            color:#999;
+        }
+        .chongzjin_l .checkButton,.chongzjin_r .checkButton{
+            position:absolute;
+            bottom:0;
+            right:0;
+            width:16%;
+            height:49%;
+
+        }
+        .chongzjin_l .checkButton.active,.chongzjin_r .checkButton.active{
+            background:url('../imgs/xq-images/xuanzhong.jpg')  ;
+            background-size: cover;
+        }
+
+        li.aui-col-xs-6{
+            height:2.2rem;
+            margin-bottom:0.5rem;
+            padding:0 !important;
+            /*background:#eee;*/
+        }
+        .zidingyi{
+            min-height:2.5rem;
+            line-height: 2.5rem;
+            top:0px !important;
+        }
+        .ztian{
+            display:block;
+        }
+        #exchange{
+            /*display:none;*/
+           /* margin-top:0.5rem;*/
+        }
+        #exchangement{
+            display:none;
+            /*margin-top:0.5rem;*/
+        }
+        .tishi{
+            display:none;
+            margin-top:0.5rem;
+        }
+        #amount{
+            border-radius:0.3rem;
+            width:78%;
+            display:inline-block;
+            border:1px solid #B9B9B9;
+            margin-left:7%;
+            text-indent:0.5rem;
+            background-color:#fff;
+        }
+        #amount.active{
+            border:2px solid #F18904;
+        }
+
+        .aui-grid [class*=aui-col-xs-]:active{
+            background-color:#eeeeee;
+        }
+
+        .repay{
+        	position: absolute;
+        	top: 1.3rem;
+        	right: 1rem;
+        	padding: 0.2rem 0.5rem;
+        	border-radius: 0.3rem;
+        	color: #FFFFFF;
+        	display: none;
+        	background-color: #f59b29;
+        	font-size: 0.7rem;
+        	letter-spacing:5px;
+        }
+        .checkBtn {
+            width: 0.75rem;
+            border: 1px #007548 solid;
+            height: 0.75rem;
+            border-radius: 50%;
+            position:absolute;
+            right:10%;
+            top:0.25rem;
+            display:none;
+        }
+
+        .checkBtn.active {
+            border: none;
+            background: url(../imgs/xq-images/on.png);
+            background-size: 100% 100%;
+        }
+        #buy{
+        	width:20%;
+        	height:100%;
+        	line-height: 1rem;
+        	color:#fff;
+        	font-size: 0.6rem;
+        	text-align: center;
+        	background:orange;
+        	position:absolute;
+        	left:0;
+        	top:0;
+        	display:none;
+        	border-radius: 0.3rem 0 0 0.3rem;
+        }
+        .aui-list-item-arrow:before{
+        	position: absolute;
+        	top:50%;
+        	right:3.75rem;
+        }
+        #wang{
+        	padding-left:0.7rem;
+        	z-index: 99;
+        }
+	</style>
+
+	<body id="app" style="background:#eee;">
+        <div style="position: absolute;top: 0;bottom: 0;left: 0;right: 0">
+            <div class="head_div" style="position: fixed;top:0;left: 0;right: 0;display: none;background-color: #eeeeee;">
+                <div class="aui-content " id="header" >
+                    <ul class="aui-list aui-list-in">
+                        <li class="aui-list-item aui-margin-b-10" id="depositBox" style="display: none;">
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-title">可使用订金券:<span id="deposit">0</span>元</div>
+                                <div class="aui-list-item-right">一次支付，不设找赎<i class="icon iconfont icon-zhanghuchongzhi"></i></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="aui-content" style="padding:0.5rem;position: relative">
+                    <div class="repay" onclick="location.href='memberReplaceCharge.html'">代充值</div>
+                    <div class="" style="width:96%">账号：<span id="iphone"></span></div>
+                    <div class="" >余额：<span id="virtualmoney" style="color:#F18904"></span>
+                    </div>
+                    <!--<@ app.getKg(it.balance)>-->
+                    <div class="line" style="width:100%; border:0.5px solid #B9B9B9 ;text-align:center;margin-top:0.25rem;"></div>
+                </div>
+                <div class="aui-padded-b-10 aui-padded-l-10" style="overflow: scroll;">充值金额</div>
+            </div>
+            <div class="content" style="overflow-y:scroll; height:auto;position: absolute;top: 0;left: 0;right: 0;display: none">
+                <div id="productList" class="aui-grid" style="width:100%;background:#eeeeee">
+                    <ul class="aui-row cz">
+                        <!--<li class="aui-col-xs-6">
+                            <div data-price="366" class="chongzjin_l chong"  >
+                            	<div id="buy">买<br/>赠</div>
+                                <span class="aui-font-size-16 first" >366元</span>
+                                <div class="aui-grid-label aui-font-size-14" >兑换6kg</div>
+                                <div class="checkButton"></div>
+                            </div>
+                        </li>-->
+                        <li class="aui-col-xs-6" >
+                            <div data-price="998" class="chongzjin_l chong" >
+                            	<div id="buy">买<br/>赠</div>
+                                <span class="aui-font-size-16" >998元</span>
+                                <!--<div class="aui-grid-label aui-font-size-14" id="wang">兑换16.37kg</div>-->
+                                <div class="checkButton"></div>
+                            </div>
+                        </li>
+                        <li class="aui-col-xs-6" >
+                            <div data-price="1888" class="chongzjin_r chong" >
+                            	<div id="buy">买<br/>赠</div>
+                                <span class="aui-font-size-16" >1888元</span>
+                                <!--<div class="aui-grid-label aui-font-size-14" >兑换32kg</div>-->
+                                <div class="checkButton"></div>
+                            </div>
+                        </li>
+                        <li class="aui-col-xs-6" >
+                            <div data-price="3999" class="chongzjin_l chong" >
+                            	<div id="buy">买<br/>赠</div>
+                                <span class="aui-font-size-16" >3999元</span>
+                               <!-- <div class="aui-grid-label" >兑换71kg</div>-->
+                                <div class="checkButton"></div>
+                            </div>
+
+                        </li>
+                        <li class="aui-col-xs-6" >
+                            <div data-price="7666" class="chongzjin_r chong" >
+                            	<div id="buy">买<br/>赠</div>
+                                <span class="aui-font-size-16" >7666元</span>
+                                <!--<div class="aui-grid-label" >兑换144kg</div>-->
+                                <div class="checkButton"></div>
+                            </div>
+                        </li>
+                        <li class="aui-col-xs-6" >
+                            <div data-price="14888" class="chongzjin_l chong" >
+                            	<div id="buy">买<br/>赠</div>
+                                <span class="aui-font-size-16" >14888元</span>
+                                <!--<div class="aui-grid-label" >兑换300kg</div>-->
+                                <div class="checkButton"></div>
+                            </div>
+                        </li>
+                        <!--<li class="aui-col-xs-6" >-->
+                        <!--<div class="chongzjin_l chong" onclick="app.clickZMoney(this);$('#amount').focus();">-->
+                        <!--<div class="aui-grid-label  zidingyi  aui-font-size-18" style="color:#000;font-weight:bold">自定义</div>-->
+                        <!--<div class="checkButton"></div>-->
+                        <!--</div>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <div class="zitian">
+                    <div class="ztian">
+                        <input type="text" id="amount"  onclick="app.clickZMoney(this);$('#amount').focus();" maxlength=7  placeholder="请输入充值金额，998元起充"/>
+                        元
+                    </div>
+                    <!--<div id="exchangement" style="margin-top:0.5rem;position:relative;">
+                        <span style="margin-left:7%;font-size:0.7rem;">可兑换</span>
+                        <span class="exchange" id="exchange" style="display:inline;color:#F18904;font-size:0.7rem;position:absolute;left:50%;top:0;"></span>
+                    </div>-->
+                    <div class="tishi" style="margin-left:7%;color:#F18904;">998起充值，请输入正确的整数金额</div>
+                    <div id="level" style="margin-left:7%;color:#F18904;  margin-top:0.5rem;"></div>
+                    <div id="buyGifts" style="margin-top:0.5rem;position:relative;display:none;">
+                    	<span style="margin-left:7%;font-size:0.7rem;">活动赠送</span>
+                    	<span style="color:#F18904;font-weight:normal;position:absolute;left:50%;top:0;">¥<span id="buySong"></span></span></span>
+                    	<div class="checkBtn active">
+                    		
+                    	</div>
+                    </div>
+                    <div id="couponLi" style="margin-top:0.5rem;position:relative;display:none;">
+                    	<span style="margin-left:7%;font-size:0.7rem;">优惠券</span>
+                    	<span id="coupon" style="color:#F18904;font-weight:normal;position:absolute;left:50%;top:0;">38</span>
+                    	<div class="checkBtn">
+                    		
+                    	</div>
+                    </div>
+                </div>
+                <div class="wenzi aui-font-size-14" style="color:#999;padding-left:7%;margin-top:0.5rem;margin-bottom: 0.5rem">
+                    充值成功后，请到我的账户中查看余额，该余额仅供购买等值蔬菜使用，不提现。
+                </div>
+                <div>
+                    <img style="width: 100%" src="../imgs/cmy_ewm.jpg">
+                </div>
+            </div>
+            <footer class="footer_bar" style="height: auto;display: none;">
+                <ul class="aui-list aui-list-in" style="margin-bottom: 0rem">
+                    <li id="concealInput" onclick="$('#zskfbox').focus()"  class="aui-list-item colorProblem" style="display:none">
+                        <div class="aui-list-item-inner" style="">
+                            <div class="aui-list-item-title">
+                                <input id="zskfbox"  type="text" placeholder="请输入推荐人手机号(非必填)" style="padding: 0.2rem;display: inline-block;width: 12rem;"/>
+                            </div>
+                        </div>
+                    </li>
+                    <!--<li id="couponLi" class="aui-list-item" style="background-color:#ffffff;line-height: 2.2rem;display: none">
+                        <span>优惠劵：<span id="coupon" style="color:#F18904">38</span>元</span>
+                    </li>-->
+                    <li class="aui-list-item" style="line-height: 2.2rem;">
+                        <span style="">还需支付：<span id="price" style="color:#F18904"></span>元</span>
+                        <span onclick="app.clickNext()" class="btnfilter app-bg-orange " style="text-align: center;color: white;padding: 0 0.75rem;line-height: 2.2rem;height: 2.2rem;font-size: 0.8rem;width: 5.75rem;" id="nextBtn">
+                            下一步
+                        </span>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+
+
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

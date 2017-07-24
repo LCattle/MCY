@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>我的菜篮</title>
+    <style type="text/css">
+        body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .aui-tab-item.aui-active {
+            color: #f28b00;
+            border-bottom: 2px solid #f28b00;
+            z-index: 10;
+        }
+        .aui-radio:checked,
+        .aui-radio.aui-checked,
+        .aui-checkbox:checked,
+        .aui-checkbox.aui-checked {
+            background-color: #007549;
+            border: solid 1px #007549;
+            text-align: center;
+            background-clip: padding-box;
+        }
+        .aui-list:before{
+            height: 0px;
+        }
+        .aui-bar-nav{
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        .aui-bar-nav .label{
+            color: #333333 !important;
+            margin-left: 3px;
+        }
+        .aui-bar-nav .aui-title{
+            font-size: 0.7rem !important;
+            font-weight: 100 !important;
+        }
+        .head-checkbox{
+            width: 1.5rem !important;
+            padding-right: 0.25rem !important;
+            vertical-align: middle;
+            margin: auto 0;
+        }
+        .aui-list-item-media.goods-img{
+            width: 3.5rem !important;
+            padding-right: 0.35rem !important;
+        }
+
+        .color-333333{
+            color: #333333;
+        }
+        .color-323232{
+            color: #323232;
+        }
+        .color-999999{
+            color:#999999;
+        }
+        .color-f38c01{
+            color: #f38c01;
+        }
+        .color-f28b02{
+            color: #f28b02;
+        }
+
+        .aui-bar-nav .right-btn{
+            position: relative;
+            z-index: 20;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin: 0;
+            border-width: 0;
+            background-color: #f28b00;
+            font-size: 0.7rem !important;
+            font-weight: 100 !important;
+        }
+        .aui-bar-nav .aui-title{
+            text-align: right !important;
+            right: 4.4rem !important;
+        }
+        footer{
+            position: absolute;
+            top: initial !important;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+            width: 100%;
+            min-height: 2.25rem;
+            font-size: 0.7rem;
+            text-align: center;
+            display: table;
+            z-index: 10;
+        }
+
+        .aui-content{
+            position: relative;
+        }
+        .absolute-psi{
+            position: absolute;
+            top: 2.2rem;
+            left: 0px;
+            width: 100%;
+        }
+        #app .btn_disable {
+            background-color: #dddddd!important;
+        }
+
+        #needDiv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6rem;
+            line-height: 1.1rem;
+            color:#999999;
+            font-size: 0.7rem;
+            display: none
+        }
+    </style>
+</head>
+<body id="app">
+    <div class="aui-tab" id="tab">
+        <div class="aui-tab-item aui-active" id="no-exchange" onclick="app.changeTab('no-exchange')">未兑换的蔬菜(<span id="no-exchange-num">0</span>)</div>
+        <div class="aui-tab-item" id="has-exchange" onclick="app.changeTab('has-exchange')">已兑换的蔬菜(<span id="has-exchange-num">0</span>)</div>
+    </div>
+
+
+    <div class="aui-content aui-margin-b-15 aui-margin-t-10 absolute-psi no-exchange">
+        <section id="wrapper-noExchange" style="-webkit-overflow-scrolling: touch;">
+            <ul id="list-noExchange" class="aui-list aui-media-list">
+                <!--<li class="aui-list-item">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media head-checkbox">-->
+                            <!--<input class="aui-radio" type="checkbox" name="checkbox">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-media goods-img">-->
+                            <!--<img src="../imgs/game/shucai.png">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title color-333333">有机包菜</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-text color-999999">-->
+                                <!--描述语句描述语句描述语句-->
+                            <!--</div>-->
+                            <!--<div class="aui-info aui-margin-t-5" style="padding:0">-->
+                                <!--<div class="aui-info-item">-->
+                                    <!--<span class="aui-margin-l-5 color-f38c01">300g</span>-->
+                                <!--</div>-->
+                                <!--<div class="aui-info-item color-323232">x1</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </section>
+    </div>
+
+    <div class="aui-content aui-margin-b-15 aui-margin-t-10 absolute-psi has-exchange" style="display: none">
+        <section id="wrapper-hasExchange" style="-webkit-overflow-scrolling: touch;">
+            <ul id="list-hasExchange" class="aui-list aui-media-list">
+                <!--<li class="aui-list-item">-->
+                    <!--<div class="aui-media-list-item-inner">-->
+                        <!--<div class="aui-list-item-media goods-img">-->
+                            <!--<img src="../imgs/game/shucai.png">-->
+                        <!--</div>-->
+                        <!--<div class="aui-list-item-inner">-->
+                            <!--<div class="aui-list-item-text">-->
+                                <!--<div class="aui-list-item-title color-333333">有机包菜</div>-->
+                            <!--</div>-->
+                            <!--<div class="aui-list-item-text color-999999">-->
+                                <!--描述语句描述语句描述语句-->
+                            <!--</div>-->
+                            <!--<div class="aui-info aui-margin-t-5" style="padding:0">-->
+                                <!--<div class="aui-info-item">-->
+                                    <!--<span class="aui-margin-l-5 color-f38c01">300g</span>-->
+                                <!--</div>-->
+                                <!--<div class="aui-info-item color-323232">x1</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </section>
+    </div>
+
+
+    <footer class="aui-bar-nav" id="footer">
+        <div id="needDiv">再采摘<span style="color:#f28b02;"><span id="needNum"></span>颗</span>蔬菜可整单免费兑换哦~</div>
+        <a id="allcheck" class="aui-pull-left aui-btn aui-btn-outlined" style="display: none">
+            <!--<label><input id="all-checked" onclick="app.checkedAll(this)" class="aui-radio" type="checkbox" name="checkbox"> 全选</label>-->
+            <span id="all-checked" onclick="app.checkedAll(this)" class="checkBtn"></span><span class="label">全选</span>
+        </a>
+        <div id="allprice" class="aui-title" style="display: none">合计：<span class="color-f28b02" id="total">￥0.00</span></div>
+        <a id="exchangeBtn" class="aui-pull-right right-btn aui-padded-l-15 aui-padded-r-15"  style="display: none" onclick="app.clickexchange(this)">
+            兑换蔬菜
+        </a>
+    </footer>
+
+    <!--蔬菜列表模版 未兑换-->
+    <script type="text/template" id="noExchangeTemplate">
+        <li class="aui-list-item" onclick="app.checked('<@ it.id>', '<@ it.productid>')">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media head-checkbox">
+                    <span id="<@ it.id>" data-sku="<@ it.id>:<@ it.eAmount>"  class="checkBtn <@ app.isSelectAll()?'active':''>"></span>
+                </div>
+                <div class="aui-list-item-media goods-img">
+                    <img src="<@ it.picpath>" onerror="this.src='../imgs/defaultGoods.png'">
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title color-333333"><@ it.skuname></div>
+                    </div>
+                    <div class="aui-list-item-text color-999999">
+                        <@ it.ads>
+                    </div>
+                    <div class="aui-info aui-margin-t-5" style="padding:0">
+                        <div class="aui-info-item">
+                            <span class="aui-margin-l-5 color-f38c01">¥<@ parseInt(it.sellprice).toFixed(2)></span>
+                        </div>
+                        <div class="aui-info-item color-323232">x <@ it.eAmount></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+
+    <!--蔬菜列表模版 已兑换-->
+    <script type="text/template" id="hasExchangeTemplate">
+        <li class="aui-list-item">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media goods-img">
+                    <img src="<@ it.picpath>" onerror="this.src='../imgs/defaultGoods.png'">
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title color-333333"><@ it.skuname></div>
+                    </div>
+                    <div class="aui-list-item-text color-999999">
+                        <@ it.ads>
+                    </div>
+                    <div class="aui-info aui-margin-t-5" style="padding:0">
+                        <div class="aui-info-item">
+                            <span class="aui-margin-l-5 color-f38c01">¥<@ parseInt(it.sellprice).toFixed(2)></span>
+                        </div>
+                        <div class="aui-info-item color-323232">x <@ it.uAmount></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+</body>
+
+<script data-main="../js/main" data-app="../game/myBasket" src="../lib/requirejs/require.js"></script>
+</html>

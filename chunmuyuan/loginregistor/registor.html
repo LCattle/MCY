@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>注册</title>
+		<style>
+			#app .getCodeBtn.disable{
+				background: #e1e1e1!important;
+			}
+			.panle {
+				position: absolute;
+				width: 100%;
+				top: 0;
+				bottom: 0;
+			}
+			select {
+				width: 1.6rem;
+			}
+			.eye {
+				font-size: 1.2rem;
+				color: #999;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="panle" style="display: ;">
+			<div layout class="aui-margin-t-15 aui-margin-b-10 app_bg_white aui-padded-l-15 aui-padded-r-15">
+				<select id="select">
+					<option>+86</option>
+				</select>
+				<div layout="column" class="aui-margin-r-10">
+					<div flex></div>
+					<i class="aui-iconfont aui-icon-down"></i>
+					<div flex></div>
+				</div>
+				<input type="tel" flex name="tel" id="phone" placeholder="请输入手机号" />
+			</div>
+			<div class="aui-padded-l-15 aui-padded-b-15" layout >
+				<div class="checkBtn active aui-margin-r-10" onclick="app.checkPro()"></div>
+				<div layout="column" flex>
+					<div flex></div>
+					<div class="aui-font-size-14 app_text_666">同意<span class="app-text-orange" onclick="app.href('../html/userAgreement.html')">《注册协议》</span></div>
+					<div flex></div>
+				</div>
+			</div>
+			<div class="aui-padded-l-15 aui-padded-r-15 aui-margin-b-15">
+				<div onclick="app.toGetCode()" class="app_btn_big  btnfilter app_bg_green">下一步</div>
+			</div>
+			<div class="aui-text-center app_text_999">
+				客服电话 <span onclick="app.callPhoneNum('4008008838')">400-800-8838</span>
+			</div>
+		</div>
+
+		<div class="panle" style="display:none;">
+			<div class="aui-padded-l-15 aui-margin-t-15 aui-font-size-14 app_text_999">
+				请输入收到的短信验证码
+			</div>
+			<div layout class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-10 app_bg_white aui-margin-b-15">
+				<input type="number" flex name="userName" id="code" placeholder="请输入验证码" />
+				<div layout="column">
+					<div flex></div>
+					<div class="app_btn_small  btnfilter app_bg_green getCodeBtn" onclick="app.getCode()">获取验证码</div>
+					<div flex></div>
+				</div>
+			</div>
+			<div class="aui-padded-l-15 aui-padded-r-15 aui-margin-b-15">
+				<div onclick="app.toSetPwd()" class="app_btn_big  btnfilter app_bg_green">下一步</div>
+			</div>
+		</div>
+		<!--确认密码box-->
+		<div class="panle" style="display:none ;">
+			<div class="app_bg_white">
+			<div layout class=" aui-padded-l-15 aui-padded-r-15 aui-margin-t-10">
+				<input type="password" name="userName" id="pwd1" placeholder="请输入密码" />
+				<div layout="column">
+					<div flex></div>
+					<i class="eye iconfont icon-pwd-hide"></i>
+					<div flex></div>
+				</div>
+			</div>
+			<div layout class="aui-padded-l-15 aui-padded-r-15 aui-border-t">
+				<input type="password" flex name="pwd2" id="pwd2" placeholder="请再次确认密码" />
+				<div layout="column">
+					<div flex></div>
+					<i class="eye iconfont icon-pwd-hide"></i>
+					<div flex></div>
+				</div>
+			</div>
+			</div>
+			<div class="aui-padded-l-15 aui-padded-r-15 aui-margin-t-15">
+				<div onclick="app.register()" class="app_btn_big  btnfilter app_bg_green">注 册</div>
+			</div>
+		</div>
+	</body>
+	<script data-main="../js/main" data-app="../loginregistor/registor" src="../lib/requirejs/require.js"></script>
+</html>

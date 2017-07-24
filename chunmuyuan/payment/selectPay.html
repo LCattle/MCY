@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<title>选择支付方式</title>
+	</head>
+	<style type="text/css">
+		.item{
+			min-height: 2.2rem;
+			padding: 0 0.75rem;
+		}
+		/*.paycheckBtn{
+			width: 0.9rem;
+			height: 0.7rem;
+		}
+		.paycheckBtn.active{
+			background: url(../imgs/chongz/gou_green.png);
+			background-size:cover;
+		}*/
+		.paycheckBtn{
+			width: 0.75rem;
+			border: 1px #007548 solid;
+			height: 0.75rem;
+			border-radius: 50%;
+		}
+		.paycheckBtn.active{
+			border: none;
+			background: url(../imgs/xq-images/on.png);
+			background-size: 100% 100%;
+		}
+	</style>
+
+	<body id="app"> 
+		<div class="item app_bg_white aui-margin-b-10 aui-margin-t-10" layout>
+				<div layout="column" flex>
+					<div flex></div>
+					<div >选择支付方式</div>
+					<div flex></div>
+				</div>
+		</div>
+			
+		<div class="app_bg_white">
+			<div class="item btnfilter aui-border-b" layout onclick="app.clickCk(this,10)">
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/weixin.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						微信支付
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn" id="check10"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div onclick="app.clickCk(this,50)" class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/yinlian.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						银联支付
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn" id="check50"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div onclick="app.clickCk(this,80)" class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/alipay.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						支付宝
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn" id="check80"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div onclick="app.clickCk(this,30)" style="display: none;" id="hdhk" class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/daofu.png"/  style="width: 1.8rem;">
+					<div flex></div>
+				</div>
+				<div layout="column" class="aui-margin-l-10">
+					<div flex></div>
+					<div>
+						货到付款
+					</div>
+					<div flex></div>
+				</div>
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn" id="check30"> </div>
+					<div flex></div>
+				</div>
+			</div>
+			
+			<div onclick="app.clickCk(this,90)" id="applePay" style="display: none;" class="item btnfilter aui-border-b" layout>
+				<div layout="column">
+					<div flex></div>
+					<img src="../imgs/chongz/apple-pay.png"  style="height: 1rem;">
+					<div flex></div>
+				</div>
+				<!--<div layout="column">-->
+					<!--<div flex></div>-->
+					<!--<img src="../imgs/chongz/apple-pay.png"  style="height: 1rem;">-->
+					<!--<div flex></div>-->
+				<!--</div>-->
+				<!--<div layout="column" class="aui-margin-l-10">-->
+					<!--<div flex></div>-->
+					<!--<div>-->
+						<!--<span style="margin-right: 1rem">Apple Pay</span><img style="height: 1rem;display: inline-block;vertical-align: -0.2rem" src="../imgs/chongz/unionPay.png">-->
+					<!--</div>-->
+					<!--<div flex></div>-->
+				<!--</div>-->
+				<div flex></div>
+				<div layout="column">
+					<div flex></div>
+					<div class="paycheckBtn" id="check90"> </div>
+					<div flex></div>
+				</div>
+			</div>
+		</div>
+		<div id="wxTip" class="aui-font-size-14 app-text-orange aui-margin-t-15" style="padding: 0 0.75rem;display: none;">
+			注：通过微信支付时，中、农、工、建、交等银行单日/单笔最高限额10000元，请使用其他银行如平安、招行、中信等银行
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.5rem;display: none;" id="btn">
+			<div onclick="app.next()" class="app_btn_big btnfilter app_bg_green">下一步</div>
+		</div>
+		<script data-main="../js/main" data-app="../payment/selectPay" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

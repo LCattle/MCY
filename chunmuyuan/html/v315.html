@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <title>春沐源商城</title>
+    <style>
+        .container {
+            position:relative;
+        }
+        .operate-bar{
+            position: absolute;
+            top:27.6%;
+            width: 100%;
+            text-align: center
+        }
+        .get-btn {
+            width:28%;
+        }
+
+        .cancel-btn {
+            margin-left:13%;
+            width:28%;
+        }
+
+        .cmy_qy {
+            position: absolute;
+            top:57.4%;
+            left:19.5%;
+            width: 45%;
+        }
+
+        .my_dialog {
+            position: fixed;
+            top: 0px;
+            z-index: 50;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .my_tip {
+            position:absolute;
+            width: 72%;
+            top: 14%;
+            left: 14%;
+            line-height: 0.1rem;
+        }
+
+        .my_dialog .success {
+            width: 100%;
+        }
+
+        .my_dialog .confirm_btn {
+            width: 100%;
+        }
+
+        .my_dialog .getsuccess {
+            position: absolute;
+            width: 30%;
+            top: 60%;
+            left: 35%;
+        }
+
+        .my_dialog .detail {
+            position: absolute;
+            width: 80%;
+            top: 71%;
+            left: 10%;
+        }
+
+        .my_dialog .confirm {
+            position: absolute;
+            width: 14%;
+            top: 89%;
+            left: 43%;
+        }
+
+        .my_dialog
+    </style>
+</head>
+<body  id="app">
+    <div class="container" >
+        <img style="width: 100%" src="../imgs/v315/v315.jpg" >
+        <div class="operate-bar" >
+            <img class="get-btn" src="../imgs/v315/get.png" >
+            <img class="cancel-btn" src="../imgs/v315/cancel.png" >
+        </div>
+        <img onclick="app.href('http://mp.weixin.qq.com/s/zZoQkwgPtcOGHVZ0D_9cPg');" class="cmy_qy" src="../imgs/v315/cmy_qy.png">
+
+        <div class="my_dialog" style="display:none">
+            <div class="my_tip">
+                <img class="success" src="../imgs/v315/success_d.png">
+                <img class="confirm_btn" src="../imgs/v315/confirm_btn.png">
+                <img class="getsuccess" src="../imgs/v315/getsuccess.png">
+                <img class="detail" src="../imgs/v315/detail.png">
+                <img class="confirm" src="../imgs/v315/confirm.png">
+            </div>
+        </div>
+    </div>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

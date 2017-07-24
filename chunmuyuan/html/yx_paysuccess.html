@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<title>支付成功</title>
+	</head>
+
+	<body id="app">
+		<div class="aui-content" id="confirm_goods">
+			<ul class="aui-list aui-list-in aui-media-list">
+				<li class="aui-list-item goodsIetm aui-margin-b-10" style="height:8rem;">
+					<div class="aui-media-list-item-inner aui-padded-b-15 aui-padded-t-15 aui-margin-t-10">
+						<div class="aui-list-item-media aui-padded-t-15 aui-padded-l-10 aui-text-center" style="width:5.35rem ;">
+							<img src="../imgs/xq-images/icon-go.png " width="3.5rem">
+						</div>
+						<div class=" aui-margin-l-10" style="padding-top: 0.6rem;padding-bottom: 0.6rem; display:block;">
+							<div class="">
+								<div class="aui-list-item-title aui-font-size-18 aui-padded-t-5" id="paystatus" style=""></div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-10" >
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner aui-margin-b-10" >
+					<div class="aui-list-item-title">
+						<p class=" aui-padded-t-5 plh13" id="infos">
+
+						</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content-padded aui-padded-t-15" style="display:none;margin-top:1.5rem;">
+			<div class="aui-pull-left" style="width:50%">
+				<div class="aui-btn  aui-btn-block " style="width:96%; border:1px solid #481c13; color:#481c13;">查看订单</div>
+			</div>
+			<div class="aui-pull-right" style="width:50%">
+				<div class="aui-btn aui-btn-success aui-btn-block  aui-pull-right" style="width:96%; background:#481c13">返回首页</div>
+			</div>
+			<div class="aui-clearfix"></div>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div onclick="app.toOrder()" class="aui-btn border-radius15 app_bg_white aui-btn-block aui-margin-b-15 border_green" >查看订单</div>
+			<div onclick="app.gotoIndexPage()" class="border-radius15 aui-btn aui-btn-success aui-btn-block  aui-pull-right app_bg_green ">返回首页</div>
+			<div style="height: 4.5rem;"></div>
+		</div>
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+</html>

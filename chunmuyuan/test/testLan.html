@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+				<link rel="stylesheet" type="text/css" href="../lib/refresher/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../lib/refresher/css/pullToRefresh.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>春沐源</title>
+	</head>
+
+	<body>
+		<select onchange="app.language.changeLan(this.value)">
+			<option value="ch_res">中文</option>
+			<option value="en_res">English</option>
+		</select>
+		<i class="aui-iconfont aui-icon-back" ></i>
+		<i class="iconfont icon-duanxin" style="color: red; font-size: 4rem;" ></i>
+		<div lan-res="home_title"></div>
+		<div lan-res="home_title1"></div>
+		<div lan-res="home_title2"></div>
+		<div lan-res="home_title3"></div>
+		<div lan-res="home_title4"></div>
+		<div lan-res="home_title5"></div>
+		<div lan-res="home_title6"></div>
+		<input type="button" lan-res="btn" onclick="app.addNode()"></input>
+		<div id="nodeParent">
+			
+		</div>
+		<div class="center_outter" style="height: 100px;">
+			<div class="center_inner">sadsa</div>
+		</div>
+		<script data-main="../js/main" data-app="../test/js/testLan" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

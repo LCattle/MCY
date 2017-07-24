@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<!--<link rel="stylesheet" href="../css/icon/demo.css" />-->
+		<title>春沐源社区</title>
+	</head>
+	<style type="text/css">
+		html,body{
+			background-color: #efefef;
+		}
+		
+		
+		
+		/* 清除浮动 */
+			.ks-clear:after, .clear:after {
+			  content: '\20';
+			  display: block;
+			  height: 0;
+			  clear: both;
+			}
+			.ks-clear, .clear {
+			  *zoom: 1;
+			}
+		
+			.topbg{
+				width: 100%;
+			}
+		
+		  .topbg img{
+				display: block;
+				width: 100%;
+			}
+			
+			
+           .radioms{ 
+	           	width:100%; 
+	           	height:1.5rem; 
+	           	overflow:hidden; 
+	           	padding: 0 5%;
+	           	background: url(../imgs/shequ/laba.jpg) no-repeat 5% center;
+	           	background-size: 1rem 1rem;
+	           	background-color: #FFFFFF;
+           	}  
+
+           .radioms li{ 
+	           width:100%; 
+	           height:inherit; 
+	           line-height:1.5rem; 
+	           overflow:hidden;
+	           text-indent: 1.5rem;
+           }  
+           .goodsList{
+           	padding-bottom: 3.2rem;
+           }
+           .mainPage{
+           	margin-top: 0.3rem;
+           }
+           
+           #tab .aui-active{
+           	z-index: 7!important;
+           }
+           
+           
+           .bankuai{
+           	width: 100%;
+           	padding: 0 2%;
+           	padding-top: 0.2rem;
+           	background-color: #FFFFFF;
+           	color: #a7a7a7;
+           }
+           
+           .bankuai .ave{
+           	background-color: #fc9304;
+           	color: #FFFFFF;
+           }
+           
+           .bankuai ul{
+           	width: 100%;
+           }
+           
+           .bankuai ul li{
+           	padding: 1% 5%;
+           	float: left;
+           	border-radius: 0.3rem;
+           }
+           
+           .all_tiezi img{
+           		display: block;
+           		width: 100%;
+           }
+           
+           .tiezi_content{
+           	margin-top: 0.3rem;
+           	padding: 0 2%;
+           	background-color: #FFFFFF;
+           }
+           
+           .tiezi_content .tiezi_header{
+           	width: 100%;
+           	height: 2.4rem;
+           }
+           
+           
+           .tiezi_content .tiezi_header .ueser_icon{
+           	width: 2.4rem;
+           	height: 2.4rem;
+           	float: left;
+           }
+           
+           .tiezi_content .tiezi_header .user_tit{
+           	width: 70%;
+           	float: left;
+           	padding: 0 0.5rem;
+           }
+           
+          .tiezi_content .tiezi_header .user_tit .user_name{
+          	font-size: 0.8rem;
+          	font-weight: 500 ;
+          }
+           
+           .tiezi_content .tiezi_header .user_tit .user_time{
+          	width: 100%;
+          	line-height: 1.2rem;
+          	margin-top: 0.2rem;
+          }
+           
+           .tiezi_content .tiezi_header .user_tit .user_time .u_time{
+           		float: left;
+           		font-size: 0.6rem!important;
+           }
+           
+           .tiezi_content .tiezi_header .user_tit .user_time .block_name{
+           		float: left;
+           		font-size: 0.6rem!important;
+           		
+           }
+           
+           .tiezi_content .tiezi_header .look_num{
+           	width: 2.2rem;
+           	height: 2.2rem;
+           	float: right;
+           	background: url(../imgs/shequ/liulan.jpg) no-repeat center top;
+           	background-size: 1.5rem 0.8rem;
+           	text-align: center;
+           	line-height: 3rem;
+           	font-size: 0.7rem;
+           	margin-top: 0.55rem;
+           	line-height: 2.4rem;
+           	color: #a7a7a7;
+           }
+      
+       
+        
+        .masking{
+        	position: fixed;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    background: rgba(0, 0, 0, 0.3);
+		    opacity: 0;
+		    z-index: 8;
+		    visibility: hidden;
+		    -webkit-transition-duration: 300ms;
+		    transition-duration: 300ms;
+        }   
+        
+        .masking-in{
+        	position: fixed;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    background: rgba(0, 0, 0, 0.3);
+		    visibility: visible;
+  		    opacity: 1;
+  		    z-index: 666;
+  		    -webkit-transition-duration: 300ms;
+		    transition-duration: 300ms;
+        }
+         
+        .mainPage #tab .aui-active{
+        	border-bottom: 2px solid #097754;
+        	color: #097754;
+        }  
+        
+        .listItem {
+				position: relative;
+				height: 8rem;
+				width: 100%;
+				margin-bottom: 0.25rem;
+				background: white;
+			}
+			
+			.itemContent {
+				position: absolute;
+				top: 0.3rem;
+				bottom: 0;
+				left: 6rem;
+				right: 0.75rem;
+			}
+			
+			.listItem .main {
+				position: absolute;
+				top: 0.5rem;
+				left: 0.75rem;
+				height: 5rem;
+				width: 5rem;
+			}
+			
+			.flag {
+				position: absolute;
+				top: 0rem;
+				right: 0;
+				width: 2rem;
+			}
+       		
+       		.imgs{
+       			position: fixed;
+       			margin: auto;
+       			top: 0;
+       			bottom: 0;
+       			left: 0;
+       			right: 0;
+       			z-index: 888;
+       		}
+           
+           .imgbox {
+				position: relative;
+				text-align: center;
+				height: 0;
+				width: 100%;
+				margin-right: 0.8rem;
+				border-radius: 0.3rem;
+				background-clip: content-box;
+				background-size: cover;
+				background-position: center;
+				background-image: url(../help/otherimg/02b.jpg);
+			}
+			#picshowpanel {
+				z-index: 100;
+				position: fixed;
+				display: none;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			#picshowpanel .aui-icon-close,.aui-icon-trash,.numbers{
+				position: absolute;
+				z-index: 101;
+				top: 0.2rem;
+				font-size: 1.2rem;
+				left: 0.5rem;
+				color: white;
+			}
+			#picshowpanel .aui-icon-trash{
+				left: auto;
+				right: 0.5rem;
+			}
+			.numbers{
+				width: 100%;
+				left: 0;
+				text-align: center;
+			}
+           .shuru textarea{
+           	min-height: 1.5rem!important;
+           }
+           .maskings{
+         		position: fixed;
+			    width: 100%;
+			    height: 100%;
+			    top: 0;
+			    left: 0;
+			    background: #FDFDFD;
+			    visibility: visible;
+			    opacity: 1;
+			    z-index: 666;
+			    -webkit-transition-duration: 300ms;
+			    transition-duration: 300ms;
+			}
+	</style>
+
+	<body id="app" style="-webkit-overflow-scrolling: touch;">
+		<section id="wrapper" class="goodsList" >
+			<!--头部图片-->
+			<div class="topbg">
+				<img src="../imgs/shequ/banner_t.jpg" />
+			</div>
+			
+			<!--消息滚动-->
+			<div class="radioms">
+				
+			</div>
+			<div data="1"></div>
+			<!--热门推荐下所有内容-->
+			<div class="mainPage">
+				<div class="aui-tab" id="tab">
+					<div class="aui-tab-item">热门推荐</div>
+					<div class="aui-tab-item">最新活动</div>
+					<div class="aui-tab-item">我的圈子</div>
+				</div>
+				<div class="all_tiezi">
+					
+					<!--全部板块-->
+					
+					<div id="bankuai" class="bankuai aui-grid" style="display: none;">
+						<div class="aui-row blanks">
+							<div id="allPlate" class="aui-col-xs-3 all_bankuai lis" onclick="app.bkCid()" style="padding: 0.3rem 0; margin: 0.3rem 0; border-radius: 0.3rem;">
+								<div class="aui-grid-label" style="margin: 0;" >全部</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--全部发帖内容-->
+					
+					
+					<div id="list" class="all_content">
+						<!--<div class="dropload-down" ><div class="dropload-load"><span class="loading"></span>加载中...</div></div>-->
+						
+					</div>
+				</div>
+				<!--相关活动-->
+				<div class="activitymore" style="display: none;">
+					<!--<section id="wrapper1" class="aui-padded-t-5" style="-webkit-overflow-scrolling: touch;">-->
+						<div id="list-activity">
+			
+						</div>
+					<!--</section>-->
+				</div>
+				
+				
+			</div>
+		</section>
+		<!--        
+			页面底部发帖
+        	-->
+		
+		<footer class="aui-bar aui-bar-tab" id="footer">
+		    <div class="aui-content-padded" onclick="app.href('sendCard.html')" id="publishTie">
+		   		<div class="aui-btn aui-btn-block aui-btn-sm" style="background-color: #fc9304;color: #FFFFFF;">发帖子</div>
+			</div>			
+		</footer>   
+		<div id="listSmall" style="width: 1px;height: 1px;overflow: hidden;"></div>
+		<!--        
+			举报和遮罩层
+        	-->
+		
+		<div id="report_j" style="color: #107452;  display: none; padding: 0.75rem; width: 100%; position:fixed;bottom:0; z-index: 1000;" >
+			<div class="aui-btn aui-btn-block aui-btn-sm" onclick="app.saveJubaoTie()" >举报</div>
+			<input id="jubaoVal" type="hidden" value="" />
+    		<div style="margin-top: 0.5rem; z-index: 1000; background-color: #FFFFFF; color: #107452;" id="qx_remove" onclick="app.qx_remove(this)" class="aui-btn aui-btn-block aui-btn-sm">取消</div>
+		</div>	
+		<div class="masking" onclick="app.masking()"></div>
+		<div class="maskings"></div>
+		<div class="aui-toast" style="display: block; margin-top: -60px; z-index: 666;"><div class="aui-toast-loading"></div><div class="aui-toast-content">加载中</div></div>
+
+		
+		<!--照片放大容器-->
+		<div id="picshowpanel" layout="column" class="piclist_<@ it.id>">
+			<div class="numbers">3/9</div>
+			<i onclick="app.closeSwipe()" class="aui-iconfont aui-icon-close"></i>
+			<div class="swiper-container" flex style="width: 100%;height: 100%;">
+				<div class="swiper-wrapper" style="height: 100%;">
+				</div>
+			</div>
+		</div>
+		<div class="dlg_bg" style="display: none;"></div>
+		
+		
+		
+		
+		<!--相关活动-->
+		<script type="text/template" id="itemtemp">
+		<div class="listItem" onclick="app.toDetails('<@ it.id>')">
+			<img class="main" src="<@ it.pic>" />
+			<div class="itemContent" layout="column">
+				<div class="aui-ellipsis-1 plh14">
+					<@ it.activityname>
+				</div>
+				<div style="line-height: 1rem;" class="aui-ellipsis-2 app_text_666 aui-font-size-14">
+					<@ it.activitymemo>
+				</div>
+				<div class="app_text_999 aui-margin-t-10 aui-font-size-14">
+					<i class="iconfont icon-shijian app-text-orange"></i> 
+					<@ it.timeStr>
+				</div>
+				<div class="app_text_999 aui-font-size-14 aui-ellipsis-1">
+					<i class="iconfont icon-dingwei "></i> 
+					<@ it.cityname> <@ it.countyname>
+				</div>
+				<div flex></div>
+				<div style="display: <@ it.showNum?'':'none'>;" class="aui-margin-t-10 app_text_999" layout>
+					<div flex><@ it.joinstatus==2?'已参与':''></div>
+					<span class="app-text-orange"><@ it.virtualamount></span>人报名
+				</div>
+			</div>
+			<img class="flag" src="../imgs/activity/<@ it.stateFlag>">
+		</div>
+	</script>
+		
+		
+		<!--        
+			加载板块内容
+        	-->
+		
+		<script type="text/template" id="blockTemp">
+	        <div class="aui-col-xs-3 lis" onclick="app.bkCid('<@ it.id>')" id="bkcid_<@ it.id>" cid="<@ it.id>" style="padding: 0.3rem 0; margin: 0.3rem 0; margin-bottom:0.3rem; border-radius: 0.3rem;">
+	            <div class="aui-grid-label" style="margin: 0;"><@ it.names></div>
+	        </div>
+		</script>
+		
+		<!--        
+			帖子内容
+        	-->
+		
+		<script type="text/template" id="gdsTemp">
+		    	<div class="tiezi_content" id_value="<@ it.id>" id="cid_<@ it.cid>"  >
+					<div class="tiezi_header clear">
+						<div class="ueser_icon">
+							<img style="border-radius: 50%;" src ="<@ it.avatar ==''?'../imgs/shequ/toux.jpg':app.getImgPath(it.avatar).replace('/image/', '')>"/>
+						</div>
+						<div class="user_tit">
+							<p class="user_name" style="color: #333333;"><@ it.creatname!=''?"沐沐":it.nickname !=''?it.nickname:it.mobile></p>
+							<div class="user_time clear">
+								<p class="u_time"><span class="date-w"><@ it.publishtime.substring(5,10)></span><span class="data-time" style="margin-left: 0.5rem;"><@ it.publishtime.substring(10,16)></span></p>
+								<p class="block_name" style="margin-left: 0.5rem;">版块&nbsp;:&nbsp;<span class="bk" style="color: #fc9304;" cid="<@ it.cid>"><@ it.columname></span></p>
+							</div>
+						</div>
+						<div class="look_num" onclick="app.tieDetail('<@ it.id>','<@ it.creatname>')" ><@ it.skims></div>
+					</div>
+						
+						<!--        
+							帖子中间内容
+				        -->
+				        
+						<div class="aui-media-list-item-inner" style="margin-top: 0.5rem;">
+							<div class="aui-list-item-inner" style="width:100%;">
+								<div onclick="app.tieDetail('<@it.id>','<@ it.creatname>')">
+									<div class="aui-list-item-text">
+										<div class="aui-list-item-title" id="tiltle_<@ it.id>" style="padding: 0 3%; font-size:0.8rem ; " ><@ it.tiltle></div>
+									</div>
+									<div class="aui-list-item-text content_s" id="contents_<@ it.id>" style="padding: 0 3%; margin-top: 0.5rem; color: #666666; font-size: 0.7rem; overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;">
+											<@ it.content >
+									</div>
+								 </div>	
+									 <div class="aui-list-item-inner" style="padding: 2% 1%;">
+										<div class="aui-row aui-row-padded piclist_<@ it.id>">
+											
+										</div>
+										
+									 </div>
+								
+								<!-- 回复底部-->
+								<div class="aui-row aui-card-list-footer aui-border-t">
+									<div class="aui-col-xs-6">
+										<div class="talk" style="width:3rem;"><i class="aui-iconfont aui-icon-note" style="font-size: 1rem;" onclick="app.showComment('<@ it.id>', '0')"></i> <sapn id="comments_<@ it.id>"><@ it.comments></span></div>
+									</div>
+									<div class="aui-col-xs-2.5">
+									   <div class="praise"  style="width:3rem;"><i class="aui-iconfont aui-icon-laud" id="praise_<@ it.id>"  style="font-size: 1rem;" onclick="app.dianzan('<@ it.id>')"></i> <span id="likes_<@ it.id>"><@ it.likes></span></div>
+									</div>
+									<div class="aui-col-xs-2.5">
+									   <div class="share" style="width:3rem;"><i onclick="app.shares('<@ it.id>','<@ it.creatname>')" class="aui-iconfont aui-icon-share" style="font-size: 1rem;"></i>&nbsp;&nbsp;<span id="shares_<@ it.id>"><@ it.shares></span></div>
+									</div>
+									<div class="aui-col-xs-1">
+									   <div class="aui-btn mores aui-iconfont aui-icon-more" style="padding: 0rem;font-size: 1rem; background-color: #FFFFFF;" onclick="app.shows('<@ it.id>')" id="id_<@ it.id>" ></div>
+									</div>
+								</div>
+								
+								
+								<div class="comment_ps" style="margin-top: 0.2rem;padding: 0.1rem 0.4rem;">
+									
+									<div class="comments-list" >
+										<ul class="comlist_<@ it.id> ckreplay" style="display: <@ it.comments==0?'none':'block'>">
+											
+										
+										</ul>
+										<div data="0"  onclick="app.ckreplay(this, '<@ it.id>')" id="replaybtn_<@ it.id>" style="font-size: 0.75rem;color: #949494; margin-top: 0.5rem;display: <@ it.comments<=2?'none':'black'>">查看全部<span id="comments1_<@ it.id>"><@ it.comments></span>条回复</div>
+									</div>
+								</div>
+								<div class="aui-list-item shuru clear shuru_<@ it.id>" style="display: none;">
+									
+										<textarea type="text" id="content_<@ it.id>" maxlength="100"  class="cont" style="overflow-y:hidden;  border: 1px solid #949494; height: 1rem; padding-left: 0.5rem; border-radius: 0.2rem; width: 85%;  float: left;" onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'"></textarea>
+									<!--<textarea type="text" class="cont" maxlength="100"  id="content_<@ it.id>" style="border: 1px solid #949494; text-indent: 0.5rem; border-radius: 0.2rem; width: 85%; float: left; padding-top: 0.1rem; min-height: 1.5rem; overflow: auto;"></textarea>-->
+									<input type="hidden" id="pcid_<@ it.id>" value='0'>
+									<button class="send_p" id="send_<@ it.id>" send_ms="0" onclick="app.saveComment('<@ it.id>','<@ it.pid>')" style="display: block; float: right; width: 15%; text-align: center;min-height: 1.55rem; font-size: 0.8rem; color: #949494; border: none; background-color: #fff;">发送</button>
+								</div>
+							</div>
+						</div>
+						
+            	</div> 
+            	 
+		</script>
+		
+		<!--        
+			帖子照片
+        	-->
+		
+		<script type="text/template" id="picTemp">
+          <div layout class="aui-padded-b-5 aui-padded-t-5 aui-padded-l-15 aui-padded-r-15">
+			
+			<div flex>
+				<div layout style="width: 100%;margin-bottom: <@ it.getImgPath(3)?'0.2rem':'0'>;" >
+					<div class="imgbox" data-url="<@ it.getImgPath(0)>" comid="<@ it.id>" index="1" style="width: <@ it.getHeight(0)>px;height: <@ it.getHeight(0)>px;background-image:url(<@ it.getImgPath(0)>) ;"></div>
+					<div class="imgbox" data-url="<@ it.getImgPath(1)>" comid="<@ it.id>"  index="2" style="width:<@ it.getHeight(1)>px;height: <@ it.getHeight(1)>px;background-image:url(<@ it.getImgPath(1)>) ;"></div>
+					<div class="imgbox" data-url="<@ it.getImgPath(2)>" comid="<@ it.id>"  index="3" style="width:<@ it.getHeight(2)>px;height: <@ it.getHeight(2)>px;background-image:url(<@ it.getImgPath(2)>) ;"></div>
+				</div>
+				<div layout style="width: 100%;margin-bottom: <@ it.getImgPath(6)?'0.2rem':'0'>;">
+					<div class="imgbox" data-url="<@ it.getImgPath(3)>" comid="<@ it.id>"  index="4" style="width: <@ it.getHeight(3)>px;height: <@ it.getHeight(3)>px;background-image:url(<@ it.getImgPath(3)>) ;"></div>
+					<div class="imgbox" data-url="<@ it.getImgPath(4)>" comid="<@ it.id>"  index="5" style="width: <@ it.getHeight(4)>px;height: <@ it.getHeight(4)>px;background-image:url(<@ it.getImgPath(4)>) ;"></div>
+					<div class="imgbox" data-url="<@ it.getImgPath(5)>" comid="<@ it.id>"  index="6" style="width: <@ it.getHeight(5)>px;height: <@ it.getHeight(5)>px;background-image:url(<@ it.getImgPath(5)>) ;"></div>
+				</div>
+				<div layout style="width: 100%;">
+					<div class="imgbox" data-url="<@ it.getImgPath(6)>" comid="<@ it.id>"  index="7" style="width: <@ it.getHeight(6)>px;height: <@ it.getHeight(6)>px;background-image:url(<@ it.getImgPath(6)>) ;"></div>
+					<div class="imgbox" data-url="<@ it.getImgPath(7)>" comid="<@ it.id>"  index="8" style="width: <@ it.getHeight(7)>px;height: <@ it.getHeight(7)>px;background-image:url(<@ it.getImgPath(7)>) ;"></div>
+					<div class="imgbox" data-url="<@ it.getImgPath(8)>" comid="<@ it.id>"  index="9" style="width: <@ it.getHeight(8)>px;height: <@ it.getHeight(8)>px;background-image:url(<@ it.getImgPath(8)>) ;"></div>
+				</div>
+			</div>
+		</div>
+        </script>
+        
+        
+        <script type="text/template" id="bigimgtemp">
+			<div class="swiper-slide" uuid="<@ it.uuid>" style="height: 100%;"  layout="column">
+				<div flex ></div>
+				<div  style="overflow: scroll;margin: 2rem 0 1rem 0;">
+					<img style="width: 100%;" onclick="app.closeSwipe()" src="<@ it.url>" />
+				</div>
+				<div flex></div>
+			</div>
+		</script>
+        
+     <!--        
+            评论和回复
+        	-->
+        	
+		<script type="text/template" id="allTemp">
+			
+			<li pid="<@ it.id>" data = "0" id="li_<@ it.id>" onclick="app.showComment('<@ it.pid>', '<@ it.id>')" style="font-size: 0.75rem;">
+				<div class="comments-content" style="display: <@ it.pcid==0?'black':'none'>; color: #949494;">
+					<span class="nicknames" style="color: #333333;" ><@ it.username==''?it.mobile:it.username></span>:
+					<span style="word-wrap: break-word;"><@ it.content></span>
+				</div>
+				<div style="display: <@ it.pcid==0?'none':'black'>; color: #949494;">
+					<span class="nicknames" style="color: #333333;"><@ it.username==''?it.mobile:it.username></span>回复<span class="next_nicknames" style="color: #333333;"><@ it.replyname></span>:
+					<span class="comment_p"  style="word-wrap: break-word;"><@ it.content></span>
+				</div>
+			</li>
+		</script>
+		
+		
+		
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+		
+		
+	</body>
+
+</html>
