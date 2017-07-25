@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>收获地址管理</title>
+	</head>
+	<style type="text/css">
+		.btn-jia {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+		}
+		
+		.right-text {
+			position: absolute;
+			top: 50%;
+			right: 0.75rem;
+			transform: translate(0, -50%);
+			font-size: 0.9rem;
+		}
+		.gou img{
+			position: absolute;
+			left: 0rem;
+			top: 50%;
+			transform: translate(0, -50%);
+			width: 0.65rem;
+		}
+		
+		.tableFixed {
+			table-layout: fixed;
+			background: white;
+		}
+		
+		.tableCell {
+			display: table-cell;
+			position: relative;
+			height: 2.5rem;
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+
+	<body id="app">
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list">
+				<li class="aui-list-item aui-margin-b-10">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 1.5rem;">
+							<div class="center_inner">
+								<div class="gou"><img src="../imgs/xq-images/gou.png" /></div>
+							</div>
+						</div>
+						<div class="aui-list-item-inner" style="padding-right: 0;">
+							<div style="border-right: 1px dotted #DBDBDB; padding-right: 0.5rem;">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title app-text-orange">
+										黄丽萍
+										<span class="" style="margin-left: 2.4rem;">15185002597</span>
+									</div>
+
+								</div>
+								<div class="aui-list-item-text aui-padded-t-5">
+									在下方我们加入了aui-info信息条 在下方我们o信息条
+								</div>
+							</div>
+						</div>
+						<div class="aui-list-item-inner" style="width: 3rem;">
+							<div class=" right-text">
+								<i class="iconfont icon-bianji" style="font-size: 1.2rem;"></i>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="tableFixed aui-margin-b-10" style="border-bottom: 0.5px solid #ddd;padding: 0.3rem 0rem 0.3rem 0.75rem;">
+					<div class="tableCell" style="width: 9%;">
+						<div class="tableFixed" style="border-right: 1px dotted #DBDBDB; padding-right: 0.5rem;">
+							<!--<div class="gou tableCell" style="width: 1%;">
+								<img src="../imgs/xq-images/gou.png" />
+							</div>-->
+							<div class="tableCell" style="width: 8%;">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										黄丽萍
+										<span class="" style="margin-left: 2.4rem;">15185002597</span>
+									</div>
+
+								</div>
+								<div class="aui-list-item-text aui-padded-t-5 aui-text-left">
+									在下方我们加入了aui-info信息条 在下方我们o信息条
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tableCell" style="width: 1%;">
+						<i  class="iconfont icon-bianji " style="font-size: 1.2rem;width: 2rem;"></i>
+					</div>
+				</li>
+				<li class="tableFixed aui-margin-b-10" style="border-bottom: 0.5px solid #ddd;padding: 0.3rem 0rem 0.3rem 0.75rem;">
+					<div class="tableCell" style="width: 9%;">
+						<div class="tableFixed" style="border-right: 1px dotted #DBDBDB; padding-right: 0.5rem;">
+							<div class="gou tableCell" style="width: 1%;">
+								<img src="../imgs/xq-images/gou.png" />
+							</div>
+							<div class="tableCell" style="width: 8%;">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										黄丽萍
+										<span class="" style="margin-left: 2.4rem;">15185002597</span>
+									</div>
+
+								</div>
+								<div class="aui-list-item-text aui-padded-t-5 aui-text-left">
+									在下方我们加入了aui-info信息条 在下方我们o信息条
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tableCell" style="width: 1%;">
+						<i  class="iconfont icon-bianji " style="font-size: 1.2rem;width: 2rem;"></i>
+					</div>
+				</li>
+				<li class="aui-list-item aui-margin-b-10">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 1.5rem;display: none ;">
+							<div class="center_inner">
+								<div class="gou"><img src="../imgs/xq-images/gou.png" /></div>
+							</div>
+						</div>
+						<div class="aui-list-item-inner" style="padding-right: 0;">
+							<div style="border-right: 1px  dotted #DBDBDB; padding-right: 0.5rem;">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										黄丽萍
+										<span class="" style="margin-left: 2.4rem;">15185002597</span>
+									</div>
+
+								</div>
+								<div class="aui-list-item-text aui-padded-t-5">
+									在下方我们加入了aui-info信息条 在下方我们o信息条
+								</div>
+							</div>
+						</div>
+						<div class="aui-list-item-inner" style="width: 3rem;">
+							<div class=" right-text">
+								<i class="iconfont icon-bianji" style="font-size: 1.2rem;"></i>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<footer class="btn-jia">
+			<div class="aui-content-padded">
+				<div class="aui-btn app-text-white aui-btn-block  app_bg_green border-radius15 ">添加新地址</div>
+			</div>
+		</footer>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

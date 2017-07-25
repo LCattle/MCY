@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>礼品卡购物车</title>
+		<style>
+			#top .aui-list-item-arrow:before {
+				border: 1px solid #f39c29;
+				border-top: none;
+				border-right: none;
+				width: 0.3rem;
+				height: 0.3rem;
+			}
+			
+			.btn_nub {
+				position: absolute;
+				right: 0.75rem;
+				bottom: 0.3rem;
+			}
+			
+			.checkBtn {
+				width: 0.75rem;
+				border: 0.5px #007548 solid;
+				height: 0.75rem;
+				border-radius: 0.75rem;
+			}
+			
+			.checkBtn:active {
+				background-color: #f5f5f5;
+			}
+			
+			.checkBtn.active {
+				background: url(../imgs/xq-images/on.png) #007548;
+				background-size: cover;
+			}
+			.checkBtn.no{
+				border: 1px solid #DDDDDD;
+			}
+			
+			.itembox {
+				height: 5.25rem;
+				position: relative;
+			}
+			
+			.itembox .aui-list-item {
+				position: absolute;
+				top: 0;
+				padding-left: 1.75rem;
+				width: 100%;
+			}
+			.itembox .center_outter{
+				width: 2rem;
+				height:100%;position: absolute;top: 0;z-index:1;left: 0.75rem;
+			}
+			.footer-bot{
+				height: 2.45rem;
+				background: #FFFFFF;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				z-index: 2;
+			
+			}
+			#app .goodsList .aui-list .aui-list-item-media .goodsimg {
+    width: 6rem!important;
+    height: 4.25rem!important;
+    border-radius: 0.3rem;
+
+}
+		</style>
+	</head>
+
+	<body id="app">
+		<div style="height: 2.2rem; padding: 0 0.75rem; line-height: 2.2rem;">
+			<div class="center_outter" style="height: 100%; width: 1.2rem;float: left;" >
+				<div class="center_inner">
+					<div class="checkBtn"></div>
+				</div>
+						
+			</div>
+			<div class="">实体卡<span class="aui-pull-right app-text-orange">删除</span></div>
+					
+		</div>
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list">
+				<div class="itembox">
+					<div class="center_outter" >
+						<div class="center_inner">
+							<div class="checkBtn active"></div>
+						</div>
+					</div>
+				<li class="aui-list-item " onclick="console.log(123)">
+					<div class="aui-media-list-item-inner goodsIetm" style="padding-left: 0.3rem;">
+
+						<div class="aui-list-item-media" style="width: 6.75rem;">
+							<img class="goodsimg" src="../imgs/chongz/ka4.png"/>
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									年卡
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								新鲜美味，营养多多
+							</div>
+						</div>
+						<div class="goods_info app-text-orange" style="left:9rem;">300元</div>
+					</div>
+				</li>
+				<div class="btn_nub" style="padding: 0;">
+					<div class="inputBox">
+						<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+						<input id="countNum" type="number" readonly="" value="1">
+						<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+					</div>
+				</div>
+			</div>
+			<div class="itembox">
+				<div class="center_outter" >
+					<div class="center_inner">
+						<div class="checkBtn"></div>
+					</div>
+				</div>
+				<li class="aui-list-item " onclick="console.log(123)">
+					<div class="aui-media-list-item-inner goodsIetm" style="padding-left: 0.3rem;">
+
+						<div class="aui-list-item-media" style="width: 6.75rem;">
+							<img class="goodsimg" src="../imgs/chongz/ka3.png"/>
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									月卡
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								新鲜美味，营养多多
+							</div>
+						</div>
+						<div class="goods_info app-text-orange" style="left:9rem;">300元</div>
+					</div>
+				</li>
+				<div class="btn_nub" style="padding: 0;">
+					<div class="inputBox">
+						<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+						<input id="countNum" type="number" readonly="" value="1">
+						<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+					</div>
+				</div>
+			</div>
+			
+			
+		</section>
+		<div style="height: 2.2rem; padding: 0 0.75rem; line-height: 2.2rem;">
+			<div class="center_outter" style="height: 100%; width: 1.2rem;float: left;" >
+				<div class="center_inner">
+					<div class="checkBtn"></div>
+				</div>
+						
+			</div>
+			<div class="">虚拟卡<span class="aui-pull-right app-text-orange">删除</span></div>
+					
+		</div>
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list">
+				<div class="itembox">
+					<div class="center_outter" >
+						<div class="center_inner">
+							<div class="checkBtn no"></div>
+						</div>
+					</div>
+				<li class="aui-list-item " onclick="console.log(123)">
+					<div class="aui-media-list-item-inner goodsIetm" style="padding-left: 0.3rem;">
+
+						<div class="aui-list-item-media" style="width: 6.75rem;">
+							<img class="goodsimg" src="../imgs/chongz/ka4.png"/>
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									年卡
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								新鲜美味，营养多多
+							</div>
+						</div>
+						<div class="goods_info app-text-orange" style="left:9rem;">300元</div>
+					</div>
+				</li>
+				<div class="btn_nub" style="padding: 0;">
+					<div class="inputBox">
+						<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+						<input id="countNum" type="number" readonly="" value="1">
+						<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+					</div>
+				</div>
+			</div>
+			<div class="itembox">
+				<div class="center_outter" >
+					<div class="center_inner">
+						<div class="checkBtn no"></div>
+					</div>
+				</div>
+				<li class="aui-list-item " onclick="console.log(123)">
+					<div class="aui-media-list-item-inner goodsIetm" style="padding-left: 0.3rem;">
+
+						<div class="aui-list-item-media" style="width: 6.75rem;">
+							<img class="goodsimg" src="../imgs/chongz/ka3.png"/>
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									季卡
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								新鲜美味，营养多多
+							</div>
+						</div>
+						<div class="goods_info app-text-orange" style="left:9rem;">300元</div>
+					</div>
+				</li>
+				<div class="btn_nub" style="padding: 0;">
+					<div class="inputBox">
+						<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+						<input id="countNum" type="number" readonly="" value="1">
+						<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="itembox aui-margin-t-10">
+				<div class="center_outter" >
+					<div class="center_inner">
+						<div class="checkBtn no"></div>
+					</div>
+				</div>
+				<li class="aui-list-item " onclick="console.log(123)">
+					<div class="aui-media-list-item-inner goodsIetm" style="padding-left: 0.3rem;">
+
+						<div class="aui-list-item-media" style="width: 6.75rem;">
+							<img class="goodsimg" src="../imgs/chongz/ka2.png"/>
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									半年卡
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								新鲜美味，营养多多
+							</div>
+						</div>
+						<div class="goods_info app-text-orange" style="left:9rem;">300元</div>
+					</div>
+				</li>
+				<div class="btn_nub" style="padding: 0;">
+					<div class="inputBox" style="background: #dbdbdb;">
+						<p style="color: white;">已抢光</p>
+					</div>
+				</div>
+			</div>
+			
+			</ul>
+			<div class="aui-text-center aui-margin-t-15 app-text-orange aui-font-size-14">
+				<div class="aui-btn app-btn-orange" >清除失效宝贝</div>
+			</div>
+		</section>
+		<div style="height: 2.8rem;"></div>
+		<div class="footer-bot">
+			<div class="aui-pull-left aui-font-size-14" style="padding: 0.15rem 0.75rem ; line-height: 2.45rem;">
+				总计：<span class="aui-font-size-16 app-text-green">300元</span><br />
+				
+			</div>
+			<div class="btn_submit_order app_bg_green " style="text-align: center;">
+				去结算
+			</div>
+		</div>
+		
+
+
+
+		<script type="text/template" id="template">
+			<div class="itembox">
+				<div class="center_outter" >
+					<div class="center_inner">
+						<div class="checkBtn active"></div>
+					</div>
+				</div>
+				<li class="aui-list-item " onclick="console.log(123)">
+					<div class="aui-media-list-item-inner goodsIetm">
+
+						<div class="aui-list-item-media">
+							<img class="goodsimg" src="../imgs/temp/img3.jpeg">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									白菜
+									<@ 1>
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								新鲜大白菜新鲜大...
+							</div>
+						</div>
+						<div class="goods_info app_color_brown" style="left:6.35rem;">3kg</div>
+					</div>
+				</li>
+				<div class="btn_nub" style="padding: 0;">
+					<div class="inputBox">
+						<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+						<input id="countNum" type="number" readonly="" value="1">
+						<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

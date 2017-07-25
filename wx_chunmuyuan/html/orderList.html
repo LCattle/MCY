@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>全部订单</title>
+	</head>
+	<style type="text/css">
+		#app .aui-tab .aui-active {
+			color: #f59b29;
+			border-bottom: 2px solid #f59b29;
+			z-index: 10;
+		}
+		
+		.list-top {
+			height: 1.7rem;
+			line-height: 1.7rem;
+			padding: 0 0.75rem;
+		}
+		
+		.list-but {
+			position: relative;
+			left: 0;
+			top: 1rem;
+		}
+		
+		.list-footer-btn {
+			background: #FFFFFF;
+			width: 100%;
+			height: 2.2rem;
+		}
+		
+		.aui-list .aui-list-item:after {
+			height: 0;
+		}
+		
+		.btn_bot {
+			position: absolute;
+			right: 0.75rem;
+			bottom: 0.5rem;
+		}
+		.aui-btn{
+			padding: 0.2rem 0.3rem;
+			border:1px solid #dbdbdb;
+			color: #757575;
+		}
+		.aui-btn.tip{
+			padding: 0.2rem 0.3rem;
+			border:1px solid #f38b00;
+			color: #f38b00;
+		}
+		.listbox{
+			display: none;
+			position: absolute;
+			width: 100%;
+			top:0,;
+			bottom: :0;
+		}
+	</style>
+
+	<body id="app">
+		<div class="aui-tab aui-margin-b-10" id="tab">
+			<div class="aui-tab-item">全部</div>
+			<div class="aui-tab-item">待支付</div>
+			<div class="aui-tab-item">待收货</div>
+			<div class="aui-tab-item">待评价</div>
+		</div>
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<div id="list">
+			<div  class="relativeBox" >	
+			<div id="list-1" class="listbox" style="display: block;">
+			</div>
+			<div id="list0" class="listbox" >
+			</div>
+			<div id="list1" class="listbox">
+			</div>
+			<div id="list2" class="listbox">
+			</div>
+			</div>
+			</div>
+		</section>
+		<script type="text/template" id="orderTemplate">
+			<ul class="aui-list aui-media-list aui-margin-b-10" id="skuitem_<@ it.id>">
+				<div style="position: relative; width: 100%;padding-bottom: 2.5rem;" class="app_bg_white">
+					<img src="../imgs/ordersuc.png" style="width: 4rem;position: absolute;right: 0.5rem;z-index: 10;display: <@ it.status==2?'block':'none'>;"/>
+					<li>
+						<div class="list-top">
+							<p>订单编号：
+								<@ it.orderno>
+									<span class="aui-pull-right" style="color: #f29b28;display: <@ it.status==2?'none':'block'>;">
+									<@ it.statusStr>
+								</span>
+							</p>
+						</div>
+						<div id="orderItem<@ it.id>">
+
+						</div>
+
+						<div class=" aui-font-size-14 aui-text-right list-top " style="border-bottom: 1px solid #DDDDDD;">
+							共<@ it.items.length>件商品 共计：
+							<span class=" aui-font-size-16">¥<@ it.actualpaied></span> (含运费¥<@ it.freightagefee>)
+						</div>
+					</li>
+					<div class="btn_bot" id="btnbox_<@ it.id>">
+						
+					</div>
+				</div>
+			</ul>
+		</script>
+		<script type="text/template" id="produtsTemplate">
+			<div class="aui-list-item aui-margin-b-5" style="background: #f2f2f2;">
+				<div class="aui-media-list-item-inner goodsIetm">
+					<div class="aui-list-item-media"  style="width: 5rem;" >
+						<img style="width: 4.25rem;height: 4.25rem;" onerror="this.src='../imgs/defaultGoods.png'"  src="<@ app.getMiddelPath(it.productpic)>">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+					</div>
+					<div  style="position: absolute;left: 5.75rem;right: 0.75rem;top:1.5rem">
+						<div class="aui-ellipsis-1 aui-font-size-14 " style="color: #757575;margin-top: 0.25rem;">
+							<@ it.memo>
+						</div>
+					</div>
+					<div class="goods_info" style="left: 5.75rem;">¥<@ it.actualpaied></div>
+					<div class="goods_num">x<@ it.refundamount></div>
+				</div>
+			</div>
+		</script>
+		
+		<script type="text/template" id="giftTemplate">
+			<div class="aui-list-item aui-margin-b-5" style="background: #f2f2f2;">
+				<div class="aui-media-list-item-inner goodsIetm">
+					<div class="aui-list-item-media"  style="width: 5rem;" >
+						<img style="width: 4.25rem;height: 4.25rem;" onerror="this.src='../imgs/defaultGoods.png'"  src="<@ app.getMiddelPath(it.productpic)>">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+					</div>
+					<div  style="position: absolute;left: 5.75rem;right: 0.75rem;top:1.5rem">
+						<div class="aui-ellipsis-1 aui-font-size-14 " style="color: #757575;margin-top: 0.25rem;">
+							<@ it.memo>
+						</div>
+					</div>
+					<div class="goods_info" style="left: 5.75rem;">¥<@ it.sellprice></div>
+					<div class="goods_num">x<@ it.refundamount></div>
+				</div>
+			</div>
+		</script>
+		
+		<script type="text/template" id="orderTemplate1">
+			<ul class="aui-list aui-media-list aui-margin-b-10" id="skuitem_<@ it.id>">
+				<div style="position: relative; width: 100%;padding-bottom: 2.5rem;" class="app_bg_white">
+					<img src="../imgs/ordersuc.png" style="width: 4rem;position: absolute;right: 0.5rem;z-index: 10;display: <@ it.status==2?'block':'none'>;"/>
+					<li>
+						<div class="list-top">
+							<p>订单编号：
+								<@ it.orderno>
+									<span class="aui-pull-right" style="color: #f29b28;display: <@ it.status==2?'none':'block'>;">
+									<@ it.statusStr>
+								</span>
+							</p>
+						</div>
+						<div id="orderItem<@ it.id>">
+
+						</div>
+
+						<div class=" aui-font-size-14 aui-text-right list-top " style="border-bottom: 1px solid #DDDDDD;">
+							共<@ it.items.length>件商品 共计：
+							<span class=" aui-font-size-16"><@ it.priceHtml></span> (含运费¥<@ it.freightagefee>)
+						</div>
+					</li>
+					<div class="btn_bot" id="btnbox_<@ it.id>">
+						
+					</div>
+				</div>
+			</ul>
+		</script>
+		<script type="text/template" id="produtsTemplate1">
+			<div class="aui-list-item aui-margin-b-5" style="background: #f2f2f2;">
+				<div class="aui-media-list-item-inner goodsIetm">
+					<div class="aui-list-item-media"  style="width: 5rem;" >
+						<img style="width: 4.25rem;height: 4.25rem;" onerror="this.src='../imgs/defaultGoods.png'"  src="<@ app.getMiddelPath(it.productpic)>">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+					</div>
+					<div  style="position: absolute;left: 5.75rem;right: 0.75rem;top:1.5rem">
+						<div class="aui-ellipsis-1 aui-font-size-14 " style="color: #757575;margin-top: 0.25rem;">
+							<@ it.memo>
+						</div>
+					</div>
+					<div class="goods_info" style="left: 5.75rem;"><@ it.weight>g</div>
+					<div class="goods_num">x<@ it.refundamount></div>
+				</div>
+			</div>
+		</script>
+		<script type="text/template" id="cardTemplate">
+			<div class="aui-list-item aui-margin-b-5" style="background: #f2f2f2;">
+				<div class="aui-media-list-item-inner goodsIetm " >
+					<div class="aui-list-item-media" style="width: 6rem;">
+						<img style="width: 5.25rem;height: 3.25rem;" onerror="this.src='../imgs/defaultGoods.png'"  src="<@ app.getMiddelPath(it.productpic)>">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-text">
+							<div class="aui-list-item-title">
+								<@ it.skuname>
+							</div>
+						</div>
+						
+					</div>
+					<div  style="position: absolute;left: 6.8rem;right: 0.75rem;top:1.5rem">
+						<div class="aui-ellipsis-1 aui-font-size-14 " style="color: #757575;margin-top: 0.25rem;">
+							<@ it.memo>
+						</div>
+					</div>
+					<div class="goods_info" style="left: 6.6rem;">￥<@ it.sellprice></div>
+					<div class="goods_num">x<@ it.refundamount></div>
+				</div>
+				
+			</div>
+		</script>
+		<script type="text/template" id="btnGroup">
+			<div style="display: <@ it.btnPay?'':'none'>;" onclick="app.toPay(<@ it.id>)" class="aui-btn tip app_bg_white aui-pull-right aui-margin-l-5">去支付</div>
+			<div style="display: <@ it.btnCommend?'':'none'>;" onclick="app.toCommend(<@ it.id>)" class="aui-btn tip app_bg_white aui-pull-right aui-margin-l-5">去评价</div>
+			<div style="display: <@ it.btnDetail & it.type != 9?'':'none'>;" onclick="app.toDetail(<@ it.id>, '<@ it.orderno>')" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">查看详情</div>
+			<div style="display: <@ it.type == 9?'':'none'>;" onclick="app.toPurchaseDetail(<@ it.id>)" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">查看详情</div>
+			<div style="display: <@ it.btnLogistic?'':'none'>;" onclick="app.toLogisticsDetails(<@ it.id>)" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">订单跟踪</div>
+			<div style="display: none;" onclick="app.toAmend(<@ it.id>)" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">修改订单</div>
+			<div style="display: <@ it.btnCancle?'':'none'>;" onclick="app.cancleOrder(<@ it.id>)" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">取消订单</div>
+			<div style="display: <@ it.btnInvoice?'':'none'>;" onclick="app.applyInvoice(<@ it.id>)" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">申请发票</div>
+			<div style="display: <@ it.btnLookInvoice?'':'none'>;" onclick="app.applyInvoice(<@ it.id>)" class="aui-btn  app_bg_white aui-pull-right aui-margin-l-5">已开发票</div>
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>
+

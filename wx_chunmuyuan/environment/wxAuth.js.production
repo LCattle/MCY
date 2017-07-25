@@ -1,0 +1,170 @@
+(function(){
+
+    var app = {};
+
+    app.getUrlParams = function(url) {
+        if(!url)
+            url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if(url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);//key=value
+            }
+        }
+        return theRequest;
+    };
+
+    app.UrlParams = app.getUrlParams();
+
+    app.getUrlParams(location.href);
+
+    var wxconfig = {
+        appid: "wx1fa1afa891a80a5a",
+        authorzationurl: "https://open.weixin.qq.com/connect/oauth2/authorize",
+        wxauthorization: function(rurl) {
+            var url = this.authorzationurl +
+                '?appid=' + this.appid +
+                '&redirect_uri=' + encodeURIComponent(rurl) +
+                '&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
+            location.replace(url);
+        },
+        //获取微信对象
+        getWxObj: function() {
+            return wx;
+        },
+        //获取js-sdk授权签名
+        getJS_SDK : function() {
+            app.POSTRequest_i("infrastructure/wx/mp/getJSSDKConfig.do", {
+                data: {
+                    url: encodeURIComponent(location.href)
+                },
+                success: function(data) {
+                    if(data.resultCode == 1)
+                        wxconfig.JsSDKConfig(data.resultObj);
+                }
+            });
+        },
+        //js-所需的功能列表 支付，选择图片
+        jsApiList: ["chooseWXPay", "chooseImage", "uploadImage", "getNetworkType", "scanQRCode"],
+        //js-sdk配置数据
+        JsSDKConfig: function(data) {
+            var config = {
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: wxconfig.appid, // 必填，公众号的唯一标识
+                timestamp: data.timestamp, // 必填，生成签名的时间戳
+                nonceStr: data.noncestr, // 必填，生成签名的随机串
+                signature: data.signature, // 必填，签名，见附录1
+                jsApiList: wxconfig.jsApiList // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            }
+            wx.config(config);
+        }
+    }
+
+    app.netConfig = {
+        runType: "release",
+        //商城服务host前缀
+        server: {
+            dev: "",
+            test: "http://test.springwoods.com/ctower-mall/",
+            release: "http://mall.springwoods.com/mall/",
+            my:""
+        },
+        //基础服务host前缀
+        server_i: {
+            dev: "",
+            test: "http://test.springwoods.com/ctower-mall-i/",
+            release: "http://mall.springwoods.com/mall-i/",
+            my:""
+        }
+    };
+
+    app.getNetServer = function(type) {
+        if(type === "i") {
+            return app.netConfig.server_i[app.netConfig.runType];
+        }
+        return app.netConfig.server[app.netConfig.runType];
+    };
+
+    app.POSTRequest_i = function(action, obj) {
+        $.ajax(app.getRequestObj(app.getNetServer("i"), action, obj, "POST"));
+    }
+
+    app.getRequestObj = function(server, action, obj, method) {
+        var _action = action;
+        _action += (_action.indexOf('?') === -1 ? '?' : '&') + "v=" + new Date().getTime();
+        var default_ = {
+            url: server + _action,
+            type: method,
+            dataType: "json"
+        };
+        var err = obj.error;
+        obj = jQuery.extend(obj, default_);
+        /**写入登录信息*/
+        if(obj.data) {
+            obj.data.loginedtoken = localStorage.loginedToken;
+        } else {
+            obj.data = {
+                loginedtoken: localStorage.loginedToken
+            };
+        }
+        obj.error = function(error, status) {
+            app.tipInfo("网络错误,请检查网络连接情况");
+            if(app.netConfig.runType == "dev") {
+                console.log(error);
+            }
+            if(err && err instanceof Function) {
+                err(error, status);
+            }
+        }
+        if(this.netConfig.runType == "dev") {
+            console.log(obj);
+        }
+        return obj;
+    }
+
+    //获取js-sdk授权签名
+    function getJS_SDK() {
+        app.POSTRequest_i("infrastructure/wx/mp/getJSSDKConfig.do", {
+            data: {
+                url: encodeURIComponent(location.href)
+            },
+            success: function(data) {
+                if(data.resultCode == 1)
+                    wxconfig.JsSDKConfig(data.resultObj);
+            }
+        });
+    }
+
+    //微信授权
+    function wxAuthorization() {
+        getJS_SDK();
+        if(localStorage.wxMemberOpenid && localStorage.wxMemberOpenid.length > 20) {
+            return;
+        }
+        if(app.UrlParams.code) { //有code，授权成功
+            //用code 向服务器请求openid
+            app.POSTRequest_i("infrastructure/wx/mp/getOpenid.do", {
+                data: {
+                    wx_code: app.UrlParams.code,
+                    loginedtoken: localStorage.loginedToken
+                },
+                success: function(data) {
+                    if(data.resultCode == 1) {
+                        localStorage.wxMemberOpenid = data.resultObj.openid;
+                    }
+                }
+            })
+        } else { //没code，跳转到授权页
+            wxconfig.wxauthorization(location.href);
+        }
+    }
+    if(/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+        if(app.checkLogin()){
+            wxAuthorization();
+        }
+    }
+
+})();
+

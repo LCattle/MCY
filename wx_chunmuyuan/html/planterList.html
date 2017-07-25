@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/layout.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>种植机</title>
+	</head>
+	<style type="text/css">
+		#shoppingCar {
+			position: fixed;
+			bottom: 2rem;
+			right: 0.75rem;
+			background: #481b13;
+			width: 2rem;
+			height: 2rem;
+			opacity: 0.8;
+			border-radius: 50%;
+			z-index: 5;
+		}
+		
+		#shoppingCar i {
+			display: block;
+			font-size: 1.2rem;
+			line-height: 2rem;
+			color: white;
+			text-align: center;
+		}
+		
+		#shoppingCar .aui-badge {
+			right: -0.1rem;
+			left: auto;
+			background: #f39c29;
+			color: white;
+			top: -0.3rem
+		}
+		.card-li {
+			padding-top: 1px;
+			padding-bottom: 1px;
+			border-bottom: solid 1px #EEEEEE;
+		}
+
+		.card-li:nth-last-child(1){
+			border-bottom:0px;
+		}
+
+		.card-centent {
+			margin-left: 0.5rem;
+		}
+
+		.card-li .vip-tip {
+			font-size: 0.6rem;
+			color: #000000;
+		}
+		.card-li .card-title {
+			font-size: 0.7rem;
+			width: 9rem;
+		}
+		.card-li .card-advs {
+			font-size: 0.6rem;
+			margin-bottom: 0.8rem;
+			color: #A3A3A3;
+			width: 9rem;
+		}
+		.card-li .card-img {
+			display: block;
+			min-height: 6.4rem;
+		}
+
+		.price {
+			font-size:0.7rem;
+			color:#f59b29;
+
+		}
+
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+
+		#app {
+			background-color: #ffffff;
+		}
+	</style>
+
+	<body id="app">
+		<div id="shoppingCar"  onclick="app.href('../html/cardShoppingCar.html')">
+			<i class="iconfont icon-goodslight"></i>
+			<div class="aui-badge" style="display: none;"></div>
+		</div>
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list">
+				
+			</ul>
+		</section>
+		
+		<script id="cardTemplate" type="text/template">
+			<li onclick="app.gotoDetails('<@ it.id>',event)" class="card-li img-card-li" layout>
+				<div flex="2" style="position: relative">
+					<img class="card-img img-card-show" src="<@ app.getMiddelPath(it.picpath)>" style="width:100%;" alt="" onerror="this.src='../imgs/defaultGoods.png'"/>
+				</div>
+				<div class="card-centent" flex="3" style="position: relative">
+					<div style="transform: translateY(-50%);-webkit-transform: translateY(-50%);; display:inline-block; position: absolute; top:50%;width: 100% ">
+						<div class="card-title aui-ellipsis-1"><@ it.names></div>
+						<div class="card-advs aui-ellipsis-1"><@ it.ads></div>
+						<div><span class="price">￥<@ it.price.toFixed(2)></span></div>
+					</div>
+				</div>
+				</div>
+			</li>
+		</script>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>个人中心主页</title>
+	</head>
+	<style type="text/css">
+		.userCenterTopBox {
+			background: url(../imgs/xq-images/head-bj.png) no-repeat top center;
+			background-size: cover;
+		}
+		
+		.Head {
+			position: relative;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #FFFDEF;
+		}
+		
+		.Head img {
+			width: 4rem;
+			height: 4rem;
+			border-radius: 50%;
+		}
+		
+		.aui-grid .iconfont {
+			font-size: 1.4rem;
+			line-height: 1.4rem;
+
+		}
+		.aui-grid .icon-daifukuan {
+			font-size: 1.8rem!important;
+			
+		}
+		.aui-grid .icon-daishouhuo {
+			font-size: 1.6rem!important;
+		}
+		.aui-grid .icon-daipingjia {
+			font-size: 1.6rem!important;
+		}
+		.aui-col-xs-3:active{
+			background: #f5f5f5;
+		}
+		.tishi{
+			background: #f39c29;
+			border-radius:0.5rem; 
+			min-width: 0.8rem;
+			height: 0.8rem; 
+			text-align: center;
+			color: #FFFFFF; 
+			line-height: 0.8rem;
+			position: absolute;
+			left: 3.5rem;
+			top: 0.65rem;
+		}
+	</style>
+
+	<body id="app">
+		<div class="userCenterContentBox" style="position: absolute;">
+			<div class="userCenterTopBox aui-text-center">
+				<div class="Head">
+					<img src="../imgs/xq-images/photo.png" /><br/> 未登录
+				</div>
+
+			</div>
+			<!--
+        	描述：全部订单
+        -->
+			<ul class="aui-list aui-media-list">
+				<li class="aui-list-item aui-list-item-middle">
+					<div class="aui-media-list-item-inner">
+						<div lan-res="all_order" class="aui-list-item-inner aui-list-item-arrow">
+							全部订单
+						</div>
+					</div>
+				</li>
+			</ul>
+			<section class="aui-grid">
+				<div class="aui-row">
+					<div class="aui-col-xs-3">
+						<i class="iconfont icon-daifukuan "></i>
+						<div class="aui-grid-label" lan-res="wait_pay">待支付</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="iconfont icon-daifahuo"></i>
+						<div class="aui-grid-label" style="margin-top: 0.37rem;">待发货</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="iconfont icon-daishouhuo"></i>
+						<div class="aui-grid-label" lan-res="wait_receipt">待收货</div>
+					</div>
+					<div class="aui-col-xs-3">
+						<i class="iconfont icon-daipingjia"></i>
+						<div class="aui-grid-label" lan-res="wait_evaluate">待评价</div>
+					</div>
+				</div>
+			</section>
+			<div class="aui-content aui-margin-b-5">
+				<ul class="aui-list aui-list-in">
+					<li class="aui-list-header">
+					</li>
+					<li class="aui-list-item aui-list-item-middle">
+						<div lan-res="my_account" class="aui-list-item-inner aui-list-item-arrow">
+							我的账户
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div lan-res="account_recharge" class="aui-list-item-inner aui-list-item-arrow">
+							会员信息
+
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div lan-res="account_recharge" class="aui-list-item-inner aui-list-item-arrow">
+							账户充值
+						</div>
+					</li>
+
+					<li class="aui-list-header">
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							消息中心
+							<span class="aui-font-size-12 tishi">2</span>
+						</div>
+					
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							帮助中心
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-title" lan-res="my_lv">春沐源客服</div>
+							<div class="aui-list-item-right">400-900-8838<i class="iconfont icon-dianhua aui-margin-l-5"></i></div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner aui-list-item-arrow">
+							产品反馈
+						</div>
+					</li>
+					<li class="aui-list-header">
+					</li>
+					<li class="aui-list-header">
+					</li>
+					<li class="aui-list-header">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--
+        	描述：底部tab
+        -->
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="aui-bar-tab-item aui-active" tapmode>
+				<i class="aui-iconfont aui-icon-home"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab1">首页</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<i class="aui-iconfont aui-icon-star"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab2">看现场</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<div class="aui-badge">99</div>
+				<i class="aui-iconfont aui-icon-cart"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab3">购物车</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode>
+				<div class="aui-dot"></div>
+				<i class="aui-iconfont aui-icon-my"></i>
+				<div class="aui-bar-tab-label" lan-res="home_tab4">我的</div>
+			</div>
+		</footer>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

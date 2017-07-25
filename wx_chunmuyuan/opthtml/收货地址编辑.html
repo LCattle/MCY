@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>收获地址管理</title>
+	</head>
+	<style type="text/css">
+		.aui-list .aui-list-item:after {
+		    left: 0.75rem; 
+			}
+			.right-text{
+			position: absolute;
+			top: 50%;
+			right: 0.75rem;
+			transform: translate(0,-50%);
+			font-size: 0.9rem;
+		}
+		.aui-switch:checked {
+		    border-color: #007548;
+		    background-color: #007548;
+		}	
+	</style>
+
+<body id="app">
+
+		<div class="aui-content aui-margin-b-10">
+		    <ul class="aui-list aui-form-list">
+		        
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                    收货人
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input type="text">
+		                </div>
+		            </div>
+		        </li>
+		        <li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-label">
+		                    联系电话
+		                </div>
+		                <div class="aui-list-item-input">
+		                    <input type="text">
+		                </div>
+		            </div>
+		        </li>
+		        <li class="aui-list-item">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						所在地区
+								
+					</div>
+				</li>
+				<li class="aui-list-item">
+		            <div class="aui-list-item-inner">
+		               
+		                <div class="aui-list-item-input">
+		                    <textarea  placeholder="详细地址"></textarea>
+		                </div>
+		            </div>
+		        </li>
+		        
+		    </ul>
+	   </div>
+  			 <ul class="aui-list aui-media-list ">
+				<li class="">
+					<div  class="aui-list-item">
+						<div class="aui-media-list-item-inner" >
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-title aui-font-size-14">
+									设为默认地址
+								</div>
+								<div class="aui-list-item-text  aui-font-size-12">
+									注：每次下单默认该地址
+								</div>
+								
+							</div>
+							<p class="app-text-green right-text"> <input type="checkbox" class="aui-switch" checked></p>
+						</div>
+					</div>
+				</li>	
+			</ul>
+	
+	
+
+
+
+  	<div class="aui-content-padded"  style="margin-top:1.5rem;">		
+		<div class="aui-btn app-text-white aui-btn-block  app_bg_green border-radius15 ">保 存</div>
+	</div>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

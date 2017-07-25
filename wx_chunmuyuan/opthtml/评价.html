@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>评价</title>
+	</head>
+	<style>
+		.aui-list textarea {
+			margin: 0.5rem 0 0;
+			font-size: 0.7rem;
+		}
+		
+		.btn_bot {
+			position: absolute;
+			right: 0.75rem;
+			bottom: 0.35rem;
+		}
+		
+		.checkBtn {
+			width: 0.75rem;
+			border: 0.5px #007548 solid;
+			height: 0.75rem;
+			border-radius: 0.75rem;
+		}
+		
+		.checkBtn:active {
+			background-color: #f5f5f5;
+		}
+		
+		.checkBtn.active {
+			background: url(../imgs/xq-images/on.png) #007548;
+			background-size: cover;
+		}
+		
+		.aui-list.aui-list-in .aui-list-item-inner.no:after {
+			height: 0;
+		}
+	</style>
+
+	<body id="app">
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-media-list">
+				<li class="aui-list-item aui-margin-b-5">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media">
+							<img src="../imgs/temp/img3.jpeg">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text aui-padded-b-5">
+								<div class="aui-list-item-title">自选菜</div>
+
+							</div>
+							<div class="aui-list-item-text" style="border-top: 1px solid #DDDDDD;">
+								<textarea placeholder="说点什么吧"></textarea>
+							</div>
+						</div>
+					</div>
+
+				</li>
+				<li class="aui-list-item aui-margin-b-5">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media">
+							<img src="../imgs/temp/img3.jpeg">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text aui-padded-b-5">
+								<div class="aui-list-item-title">自选菜</div>
+
+							</div>
+							<div class="aui-list-item-text" style="border-top: 1px solid #DDDDDD;">
+								<textarea placeholder="说点什么吧"></textarea>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-10">
+			<div class="aui-content goodsList" id="confirm_goods">
+				<ul class="aui-list aui-list-in aui-media-list">
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">订单评价</div>
+								<div class="aui-list-item-right aui-font-size-14">满意请给5星哦</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner no ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title  aui-font-size-14">描述相符</div>
+								<div class="aui-list-item-right app-text-orange ">
+									<i class="iconfont icon-wuxing-tianchong" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5 " style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner no ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title  aui-font-size-14">物流服务</div>
+								<div class="aui-list-item-right app-text-orange ">
+									<i class="iconfont icon-wuxing-tianchong" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing-tianchong aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing-tianchong aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing-tianchong aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title  aui-font-size-14">服务态度</div>
+								<div class="aui-list-item-right app-text-orange ">
+									<i class="iconfont icon-wuxing-tianchong" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing-tianchong aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing-tianchong aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing-tianchong aui-margin-l-5" style="font-size: 1rem;"></i>
+									<i class="iconfont icon-wuxing2 aui-margin-l-5" style="font-size: 1rem;"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner ">
+							<div class="aui-list-item-text">
+								<textarea placeholder="说点什么吧" style="margin: 0 0  0.25rem;"></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div style="height: 3rem;"></div>
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="confir_sum_order">
+				<div class="center_outter" style="float:left;width: 1rem;height: 100%;">
+					<div class="center_inner">
+						<div class="checkBtn"></div>
+					</div>
+				</div>
+				<div style="float: left;vertical-align: middle;">
+					匿名评价
+				</div>
+			</div>
+			<div class="btn_bot">
+				<div class="aui-btn app_bg_green  app-text-white  aui-pull-right aui-margin-l-10">提交</div>
+
+			</div>
+		</footer>
+	</body>
+
+</html>

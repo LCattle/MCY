@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>礼品卡</title>
+	</head>
+	<style type="text/css">
+		
+	</style>
+
+	<body id="app">
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list">
+				<li class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 6rem;">
+							<img  src="../imgs/lipink/lipinka2.png" style="border-radius: 0.3rem;">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									鲜食卡
+									<p>鲜食卡方便您的生活</p>
+									<p class="app-text-orange aui-font-size-16 aui-padded-t-5">
+										<span class="aui-font-size-12">¥</span>4000
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 6rem;">
+							<img  src="../imgs/lipink/lipinka1.png" style="border-radius: 0.3rem;">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									鲜食卡
+									<p>鲜食卡方便您的生活</p>
+									<p class="app-text-orange aui-font-size-16 aui-padded-t-5">
+										<span class="aui-font-size-12">¥</span>4000
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+		
+		<script id="cardTemplate" type="text/template">
+			<li class="aui-list-item" onclick="location.href='../goods/goodsDetails.html?pid=p<@ it.id>'">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 6rem;">
+							<img  src="../imgs/lipink/lipinka3.png" style="border-radius: 0.3rem;">
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									<@ it.skuname>
+									<p><@ it.product.ads></p>
+									<p class="app-text-orange aui-font-size-16 aui-padded-t-5">
+										<span class="aui-font-size-12">¥</span>4000
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+		</script>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

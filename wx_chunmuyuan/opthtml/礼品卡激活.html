@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>礼品卡激活</title>
+	</head>
+<style type="text/css">
+
+			.checkBtn {
+				width: 0.75rem;
+				border: 0.5px #007548 solid;
+				height: 0.75rem;
+				border-radius: 0.75rem;
+			}
+			
+			.checkBtn:active {
+				background-color: #f5f5f5;
+			}
+			
+			.checkBtn.active {
+				background: url(../imgs/xq-images/on.png) #007548;
+				background-size: cover;
+			}
+</style>
+	<body id="app">
+	
+			
+		
+			<div class="aui-content aui-margin-b-5">
+				<ul class="aui-list aui-list-in">
+					
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-input">
+                    				<input type="text" placeholder="请输入充值卡卡号">
+                				</div>
+							<div class="aui-list-item-right">
+								<div class="checkBtn active"></div>
+							</div>
+						</div>
+					</li>
+					<li class="aui-list-item">
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-input">
+                    				<input type="text" placeholder="请输入充值密码">
+                				</div>
+							<div class="aui-list-item-right">
+								<div class="checkBtn active" style="display: none;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+    			<div class="aui-btn aui-btn-success aui-btn-block  aui-pull-right app_bg_brown">确认激活</div>
+		</div>
+		
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

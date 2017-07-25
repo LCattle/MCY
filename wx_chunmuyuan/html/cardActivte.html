@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>卡券激活</title>
+	</head>
+	<style type="text/css">
+		html{
+			background: url(../imgs/giftbg.jpg) no-repeat center bottom;
+			background-size: contain;
+		}
+		.checkBtn {
+			width: 0.75rem;
+			border: 0.5px #007548 solid;
+			height: 0.75rem;
+			border-radius: 0.75rem;
+			display: none;
+		}
+		
+		.checkBtn:active {
+			background-color: #f5f5f5;
+		}
+		
+		.checkBtn.active {
+			background: url(../imgs/xq-images/on.png) #007548;
+			background-size: cover;
+			display: block;
+		}
+		
+		
+		@media screen and (max-width:720px) and (min-width:320px){
+
+		    #pwdInput::-webkit-input-placeholder { font-size: 0.7rem; text-align: center;}
+		
+		@media screen and (max-width:320px){
+		
+		     #pwdInput::-webkit-input-placeholder { font-size: 0.6rem; text-align: center;}
+		
+		}
+		
+	</style>
+
+	<body id="app">
+		<div style="padding: 0.9rem;">
+			请输入礼品卡/礼券激活密码：
+		</div>
+		<div class="aui-list-item-inner border-radius15 " style="border: 1px solid green; margin: 0.75rem; margin-top: 0;">
+			<div class="aui-list-item-input" style="width: 90%; margin: 0 auto;">
+				<input pattern="^[a-zA-Z\d]+$" style="text-align: center;"  type="text"  maxlength="19" id="pwdInput" placeholder="请输入10位或者16位密码，字母不区分大小写">
+			</div>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.2rem;">
+			<p><div onclick="app.submit()" class="aui-btn aui-btn-success aui-btn-block border-radius15">确认激活</div></p>
+		</div>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

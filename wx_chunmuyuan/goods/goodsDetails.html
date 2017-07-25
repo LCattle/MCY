@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>商品详情</title>
+	</head>
+	<style type="text/css">
+		.xingq-pic {
+			height: 12.5rem;
+		}
+		
+		.aui-list .aui-list-item:after {
+			width: inherit;
+			height: 1px;
+			background-color: #dddddd;
+			display: block;
+			content: '';
+			position: absolute;
+			top: auto;
+			right: 0.75rem;
+			bottom: 0;
+			left: 0.75rem;
+			z-index: 2;
+			-webkit-transform-origin: 50% 100%;
+			transform-origin: 50% 100%;
+			pointer-events: none;
+		}
+		
+		#app .aui-media-list-item-inner .aui-list-item-media {
+			width: 3rem;
+			padding: 0.5rem 0;
+			padding-right: 0.75rem;
+			-webkit-flex-shrink: 0;
+			-webkit-align-items: flex-start;
+			align-items: flex-start;
+		}
+		
+		.myTab {
+			position: absolute;
+			height: 2.2rem;
+			width: 50%;
+			line-height: 2.2rem;
+			text-align: center;
+			color: #757575;
+		}
+		
+		.myTab:active {
+			background: #f5f5f5;
+		}
+		
+		.spec_name,
+		.spec_value {
+			float: left;
+			display: inline-block;
+			line-height: 1.2rem;
+		}
+		
+		.myTab.app-text-orange span {
+			border-bottom: 2px solid;
+			display: block;
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+			height: 100%;
+		}
+		
+		.details img {
+			display: block;
+			width: 100%;
+		}
+		
+		#shoppingCar {
+			position: fixed;
+			bottom: 4rem;
+			right: 0.75rem;
+			background: #481b13;
+			width: 2rem;
+			height: 2rem;
+			opacity: 0.8;
+			border-radius: 50%;
+			z-index: 5;
+		}
+		
+		#shoppingCar i {
+			display: block;
+			font-size: 1.2rem;
+			line-height: 2rem;
+			color: white;
+			text-align: center;
+		}
+		
+		#shoppingCar .aui-badge {
+			right: -0.1rem;
+			left: auto;
+			background: #f39c29;
+			color: white;
+			top: -0.3rem
+		}
+
+		.myTriangular {
+			display: inline-block;
+			width: 0.4rem;
+			height: 0.4rem;
+			border-bottom: solid 1px #8E8E8E;
+			border-left: solid 1px #8E8E8E;
+			-webkit-transform: rotate(-135deg);
+			transform: rotate(-135deg);
+		}
+
+		.vipDialog {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 20;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.4);
+			display: none;
+		}
+
+		.vipDialogCenter {
+			position: absolute;
+			top: 18%;
+			left: 10%;
+			width: 80%;
+		}
+
+		.vipDialogCenter img {
+			display: block;
+			width: 100%;
+		}
+
+		.vipDialogBottom {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			bottom: 0;
+			padding-bottom: 1.5rem;
+		}
+
+		.vipDialogCenter .aui-btn-block {
+			padding: 0.4rem 0;
+			font-size: 0.9rem;
+		}
+
+		.vipDialogCenter .btn_div {
+			width: 90%;
+			margin: auto;
+		}
+
+		.vipDialogCenter .text_div {
+			padding: 0 0.8rem;
+			font-size: 0.75rem;
+			color: black;
+			margin-bottom: 1rem;
+			line-height: 1.2rem;
+		}
+	</style>
+
+	<body id="app">
+		<div id="shoppingCar" style="display: none;" onclick="app.href('../html/cardShoppingCar.html')">
+			<i class="iconfont icon-goodslight"></i>
+			<div class="aui-badge" style="display: none;"></div>
+		</div>
+		<div id="slideBox" class="relativeBox">
+			<div id="aui-slide">
+				<div class="aui-slide-wrap" id="bannerImgs">
+				</div>
+				<div class="aui-slide-page-wrap">
+				</div>
+			</div>
+		</div>
+		<div class="aui-content aui-margin-b-10">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">
+							<!--<div id="vipPrice" style="color:orange;display:none;float:left;font-size:0.6rem;margin-right:0.5rem;">会员价¥<span id="sellPrice"style="font-size:0.8rem;"></span>起</div>-->
+							<div id="priceDiv" class="aui-font-size-16 app-text-orange" style="float:left;">
+								<span id="priceName" class="aui-font-size-12"></span><span id="price"></span>
+								<span id="vipCoupon" onclick="app.showVipDailog();" class="aui-font-size-12" style="color:rgb(169,169,169);display: none">会员享更多优惠<i class="myTriangular"></i></span>
+						    </div>
+						</div>
+						<div class="aui-list-item-right">
+							<div class="inputBox">
+								<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+								<input id="countNum" type="number" value="1">
+								<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-title" style="width:100%;">
+						<span id="skuname"></span>
+						<span id="logisticsInfo" class="plh12 aui-list-item-right aui-text-default aui-pull-right">
+						</span>
+						<br>
+						<p><span class="" style="width: 90%;display: inline-block;color: #bb0000" id="describe"></span>
+						</p>
+					</div>
+				</li>
+				<li id="Cards" style="padding: 0.6rem 0.75rem;display: none;" class="aui-margin-t-10">
+				</li>
+				<div id="specBox" class="aui-margin-t-10">
+					<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+						<div class="aui-list-item-title" style="width:100%;">
+							<span>商品规格</span>
+							<br/>
+							<p>
+
+							</p>
+						</div>
+					</li>
+				</div>
+			</ul>
+		</div>
+
+		<div class="aui-card-list">
+			<div style="height: 2.2rem;position: relative;">
+				<div class="myTab app-text-orange" page_id="detailsbox" onclick="app.changeTab(this)" style="left: 0;">
+					<span>商品介绍</span>
+				</div>
+				<div page_id="commendbox" class="myTab" onclick="app.changeTab(this)" style="right: 0;">
+					<span>商品评价</span>
+				</div>
+				<div style="height: 1.2rem;position: absolute;left: 50%;top:0.5rem;width: 1px;background: #e1e1e1;"></div>
+			</div>
+			<div class="aui-card-list-content" id="commendbox" style="display: none;">
+				<ul class="aui-list aui-media-list noafer">
+				</ul>
+			</div>
+			<div id="detailsbox">
+				<div class="aui-list details noafer" style="" style="padding: 0;">
+				</div>
+			</div>
+		</div>
+		<div style="height: 3rem;"></div>
+		<div class="vipDialog">
+			<div class="vipDialogCenter">
+				<img src="../imgs/vipCouponBg.png">
+				<div class="vipDialogBottom">
+					<div class="text_div">
+						不同级别的客户购买时享受不同的等级优惠(暂定蔬果类):<br />
+						钻石卡8折、白金卡8.3折、金卡8.6折、银卡8.8折、铜卡9折。
+					</div>
+					<div class="btn_div">
+						<div onclick="app.hideVipDailog();" class="btnfilter aui-btn aui-btn-success aui-btn-block  aui-pull-right border-radius15 app_bg_green">我知道了</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="aui-bar aui-bar-tab" id="footer" style="display: none;">
+			<div class="aui-bar-tab-item" tapmode onclick="location.href = '../index.html'" id="indexPage">
+				<i class="aui-iconfont aui-icon-home"></i>
+				<div class="aui-bar-tab-label">首页</div>
+			</div>
+			<div class="aui-bar-tab-item" tapmode id="carBtn">
+				<div id="carNum" class="aui-badge" style="display: none;">
+				</div>
+				<i  class="aui-iconfont aui-icon-cart"></i>
+				<div class="aui-bar-tab-label">购物车</div>
+			</div>
+			<div class="aui-bar-tab-item app-bg-orange btnfilter" id="changeBtn" style="color:#fff; width:2%;display: none;">
+				<div style="">我要改菜</div>
+			</div>
+			<div class="aui-bar-tab-item app_bg_green btnfilter" id="buyBtn" style="background:#481c13; color:#fff; width:2.5%">
+				<div style="">加入购物车</div>
+			</div>
+		</footer>
+		<script type="text/template" id="bannerTemplate">
+			<div class="aui-slide-node bg-dark">
+				<img src="<@ app.getImgPath(it.picpath)>" alt="<@ it.name>" />
+			</div>
+		</script>
+		<script type="text/template" id="commendTemplate">
+			<li class="aui-list-item aui-list-item-middle" style="padding-left: 0.75rem;padding-right: 0.75rem;">
+				<div class="aui-media-list-item-inner ">
+					<div class="aui-list-item-media ">
+						<img src="<@ app.getImgPath(it.userPath).replace('/image/', '')>" onerror="this.src='../imgs/xq-images/photo.png '" class="aui-img-round aui-list-img-sm ">
+					</div>
+					<div class="aui-list-item-inner">
+						<div class="center_outter" style="height: 3.25rem;">
+							<div class="center_inner aui-font-size-16">
+								<!--<@ it.isanonymous!="Y"?(it.nickname?it.nickname:it.mobile):"春沐源用户">-->
+								<@ it.mobile>	
+								<span style="width: 1rem; vertical-align: middle; height: 1rem; display: inline-block; " class="aui-margin-l-5 "><img src="../imgs/xq-images/grade.png " width="100% "></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p style="word-break: break-all;"><@ it.comment></p>
+				<p class="aui-padded-b-5 aui-font-size-12 aui-padded-t-10 "><@ it.createtime></p>
+				<p style="display: <@ it.replycomment==''?'none':''>;" class="aui-font-size-14 aui-padded-t-5">春沐源沐沐 : <@ it.replycomment></p>
+			</li>
+		</script>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

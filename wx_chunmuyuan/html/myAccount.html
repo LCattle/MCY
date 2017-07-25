@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>我的账户</title>
+	</head>
+	<style type="text/css">
+		.right-text {
+			position: absolute;
+			top: 50%;
+			right: 0.75rem;
+			transform: translate(0, -50%);
+			font-size: 0.9rem;
+		}
+	</style>
+
+	<body id="app">
+		<section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list ">
+				<li id="ac_1"  class=" app_bg_white  aui-list-item aui-margin-b-10" style="height: 5rem;display: none;">
+					<p class="aui-font-size-16 aui-margin-t-15 aui-padded-t-10" style="width: 50%; display: inline-block; line-height: 1.3rem;">
+						积分总值：<br/>
+						<span class="app-text-orange" id="" style="font-size: 1.5rem;">
+							<span id="countNum"></span> 分
+						</span>
+					</p>
+					<i class="icon iconfont icon-jifen aui-pull-right app_text_gray  aui-text-center" style="font-size:4rem;line-height: 5rem; width: 50%;"></i>
+				</li>
+				<li id="ac_2" class=" app_bg_white  aui-list-item aui-margin-b-10" style="height: 5rem;display: none;">
+					<p class="aui-font-size-16 aui-margin-t-15 aui-padded-t-10" style="width: 50%; display: inline-block; line-height: 1.3rem;">
+						我的成长值：<br/>
+						<span class="app-text-orange" id="" style="font-size: 1.5rem;">
+							<span id="countNum"></span> 点
+						</span>
+					</p>
+					<i class="icon iconfont icon-chengchangjingli aui-pull-right app_text_gray  aui-text-center" style="font-size:4rem;line-height: 5rem; width: 50%;"></i>
+				</li>
+				<li id="ac_3" class=" app_bg_white  aui-list-item aui-margin-b-10" style="height: 5rem;display: none;">
+					<p class="aui-font-size-16 aui-margin-t-15 aui-padded-t-10" style="width: 50%; display: inline-block; line-height: 1.3rem;">
+						账户余额：<br/>
+						<span class="app-text-orange" id="" style="font-size: 1.5rem;">
+							<span id="countNum"></span>
+						</span>
+					</p>
+					<i class="icon iconfont icon-taocanshengyuliang aui-pull-right app_text_gray  aui-text-center" style="font-size:4rem;line-height: 5rem; margin-right: 16%;"></i>
+					<div class="lock_money" onclick="app.kgAccount()" style="font-size: 0.7rem; position: absolute; right: 40%; bottom: 1.3rem; color: #C7C7C7;">历史交易<span style="font-size: 1rem;color: #C7C7C7;">></span></div>
+				</li>
+				<div id="listbox">
+
+				</div>
+			</ul>
+		</section>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+		<script type="text/template" id="ac_t_1">
+			<li class="aui-margin-b-10 ">
+				<div class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner" style="padding-top: 0.2rem;padding-bottom: 0.2rem;">
+							<div class="aui-list-item-title" style="margin-bottom: 0.15rem;">
+								<@ it.description>
+							</div>
+							<div class="aui-list-item-text" style="margin-bottom: 0.65rem;">
+								积分值
+							</div>
+							<p class="aui-list-item-text">
+								<@ it.createtime>
+							</p>
+						</div>
+						<p class="right-text app-text-green"><@ it.tradesign<0?'-':"+" ><@ Math.abs(it.tradeamount)></p>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script type="text/template" id="ac_t_2">
+			<li class="aui-margin-b-10 ">
+				<div class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner" style="padding-top: 0.2rem;padding-bottom: 0.2rem;">
+							<div class="aui-list-item-title" style="margin-bottom: 0.15rem;">
+								<@ it.description>
+							</div>
+							<div class="aui-list-item-text" style="margin-bottom: 0.65rem;">
+							成长值
+							</div>
+							<p class="aui-list-item-text">
+								<@ it.createtime>
+							</p>
+						</div>
+						<p class="right-text app-text-green"><@ it.tradesign<0?'-':"+" ><@ Math.abs(it.tradeamount)></p>
+					</div>
+				</div>
+			</li>
+		</script>
+		
+		<script type="text/template" id="ac_t_3">
+			<li class="aui-margin-b-10 ">
+				<div class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner" style="padding-top: 0.2rem;padding-bottom: 0.2rem;">
+							<div class="aui-list-item-title" style="margin-bottom: 0.15rem;">
+								<@ it.description>
+							</div>
+							<div class="aui-list-item-text" style="margin-bottom: 0.65rem;">
+								余额:¥<@ it.balance>
+							</div>
+							<p class="aui-list-item-text">
+								<@ it.createtime>
+							</p>
+						</div>
+						<p class="right-text app-text-green"><@ it.tradesign<0?'-':"+" >¥<@ Math.abs(it.tradeamount)></p>
+					</div>
+				</div>
+			</li>
+		</script>
+	</body>
+
+</html>

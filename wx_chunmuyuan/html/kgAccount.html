@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>历史交易</title>
+	</head>
+	<style type="text/css">
+		.right-text {
+			position: absolute;
+			top: 50%;
+			right: 0.75rem;
+			transform: translate(0, -50%);
+			font-size: 0.9rem;
+		}
+	</style>
+
+	<body id="app">
+		<section id="wrapper" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list ">
+				
+				<div id="listbox">
+
+				</div>
+				<div id="noum" style="text-align: center;line-height: 6rem; display: none;">暂无数据~</div>
+			</ul>
+		</section>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+		<script type="text/template" id="ac_t_1">
+			<li class="aui-margin-b-10 ">
+				<div class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner" style="padding-top: 0.2rem;padding-bottom: 0.2rem;">
+							<div class="aui-list-item-title" style="margin-bottom: 0.15rem;">
+								<@ it.description>
+							</div>
+							<div class="aui-list-item-text" style="margin-bottom: 0.65rem;">
+								积分值
+							</div>
+							<p class="aui-list-item-text">
+								<@ it.createtime>
+							</p>
+						</div>
+						<p class="right-text app-text-green"><@ it.tradesign<0?'-':"+" ><@ Math.abs(it.tradeamount)></p>
+					</div>
+				</div>
+			</li>
+		</script>
+		<script type="text/template" id="ac_t_2">
+			<li class="aui-margin-b-10 ">
+				<div class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner" style="padding-top: 0.2rem;padding-bottom: 0.2rem;">
+							<div class="aui-list-item-title" style="margin-bottom: 0.15rem;">
+								<@ it.description>
+							</div>
+							<div class="aui-list-item-text" style="margin-bottom: 0.65rem;">
+							成长值
+							</div>
+							<p class="aui-list-item-text">
+								<@ it.createtime>
+							</p>
+						</div>
+						<p class="right-text app-text-green"><@ it.tradesign<0?'-':"+" ><@ Math.abs(it.tradeamount)></p>
+					</div>
+				</div>
+			</li>
+		</script>
+		
+		<script type="text/template" id="ac_t_3">
+			<li class="aui-margin-b-10 ">
+				<div class="aui-list-item">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner" style="padding-top: 0.2rem;padding-bottom: 0.2rem;">
+							<div class="aui-list-item-title" style="margin-bottom: 0.15rem;">
+								<@ it.description>
+							</div>
+							<div class="aui-list-item-text" style="margin-bottom: 0.65rem;">
+								余额:<@ app.getKg(it.balance)>
+							</div>
+							<p class="aui-list-item-text">
+								<@ it.createtime>
+							</p>
+						</div>
+						<p class="right-text app-text-green"><@ it.tradesign<0?'-':"+" ><@ app.getKg(Math.abs(it.tradeamount))></p>
+					</div>
+				</div>
+			</li>
+		</script>
+	</body>
+
+</html>

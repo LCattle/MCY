@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>确认订单</title>
+	</head>
+	<style>
+		.aui-list.aui-list-in .aui-list-item-inner.no:after {
+			height: 0;
+    }
+		.footer-bot{
+				height: 2.45rem;
+				background: #FFFFFF;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				z-index: 2;
+			}
+		
+		.down-arrow:before {
+		    content: '';
+		    width: 0.4rem;
+		    height: 0.4rem;
+		    position: absolute;
+		    right: 0.75rem;
+		    background: transparent;
+		    border: 2px solid #333333;
+		    border-right: none;
+		    border-bottom: none;
+		    z-index: 2;
+		    -webkit-border-radius: 0;
+		    border-radius: 0;
+		    -webkit-transform: rotate(-135deg);
+		    transform: rotate(-135deg);
+		    top: 0.75rem;
+		}
+	</style>
+
+	<body id="app">
+		<div class="aui-content aui-margin-b-10">
+	    <ul class="aui-list aui-media-list">
+	    		
+	        <li class="aui-list-item aui-list-item-middle aui-list-item-arrow ">
+	            <div class="aui-media-list-item-inner">
+	                <div class="aui-list-item-media" style="width: 2rem;">
+	                   <i class="aui-iconfont aui-icon-location" style="font-size: 1.1rem;"></i>
+	                </div>
+	                <div class="aui-list-item-inner">
+	                    <div class="aui-list-item-text ">
+	                        <div class="aui-list-item-title aui-font-size-14">收货人:黄丽萍</div>
+	                        <div class="aui-list-item-title aui-font-size-14">15902683717</div>
+	                    </div>
+	                    <div class="aui-list-item-text">
+	                       收货地址：广东省 深圳市 蓝山区 高新园 科技八路 超多维大厦 15楼
+	                    </div>
+	                </div>
+	            </div>
+	        </li> 
+	    </ul>
+	    <div class="confirmLine"></div>
+	</div>
+	<div class="aui-content aui-margin-b-10">
+		<ul class="aui-list aui-list-in">
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner aui-list-item-arrow">
+					预计送达日期
+					<span class="aui-font-size-12 tishi">11月21日[周一]</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="aui-content aui-margin-b-10">
+		<div class="aui-content goodsList" id="confirm_goods">
+			<ul class="aui-list aui-list-in aui-media-list">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner ">
+						商品信息
+						
+					</div>
+				</li>
+				<li class="aui-list-item aui-margin-b-5">
+					<div class="">
+						<div class="aui-media-list-item-inner goodsIetm " >
+							<div class="aui-list-item-media">
+								<img  class="goodsimg" src="../imgs/temp/img3.jpeg">
+							</div>
+							<div class="aui-list-item-inner no">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										单品白菜
+										<@ 1>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									新鲜大白菜新鲜大...
+								</div>
+							</div>
+							<div class="goods_info">3kg</div>
+							<div class="goods_num">x3</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-margin-b-5">
+					<div class="">
+						<div class="aui-media-list-item-inner goodsIetm " >
+							<div class="aui-list-item-media">
+								<img  class="goodsimg" src="../imgs/temp/img3.jpeg">
+							</div>
+							<div class="aui-list-item-inner no">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										单品白菜
+										<@ 1>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									新鲜大白菜新鲜大...
+								</div>
+							</div>
+							<div class="goods_info">3kg</div>
+							<div class="goods_num">x3</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-margin-b-5">
+					<div class="aui-media-list-item-inner">
+
+						<div class="aui-list-item-media" style="width: 6rem;">
+							<img  src="../imgs/lipink/lipinka1.png" style="border-radius: 0.3rem;">
+						</div>
+						<div class="aui-list-item-inner no">
+							<div class="aui-list-item-text">
+								<div class="aui-list-item-title">
+									鲜食卡
+								</div>
+							</div>
+							<div class="goods_describe aui-list-item-text">
+								<p>
+								鲜食卡方便您的生活！<br />
+								<span class="app-text-green aui-font-size-16">¥4000</span>
+								<p>
+							</div>
+						</div>
+						
+					</div>
+				</li>
+				<li style="position: relative;">
+					<div class="goodsIetm">
+						<div class="aui-list-item">
+							<div class="aui-media-list-item-inner goodsIetm " >
+								<div class="aui-list-item-media">
+									<img  class="goodsimg" src="../imgs/temp/img3.jpeg">
+								</div>
+								<div class="aui-list-item-inner">
+									<div class="aui-list-item-text">
+										<div class="aui-list-item-title">
+											套餐
+										</div>
+									</div>
+									<div class="goods_describe aui-list-item-text">
+										新鲜大白菜新鲜大...
+									</div>
+								</div>
+								<div class="goods_info">3kg</div>
+								<div class="goods_num">x3</div>
+							</div>
+						</div>
+					</div>
+					<div class="down-arrow"></div>
+					<div class="aui-list-item">
+						<div class="aui-media-list-item-inner " >
+							<div class="aui-list-item-media"></div>
+							<div class="aui-list-item-inner no">
+								<p style="width: 100%;">白菜<span class="aui-pull-right">200g</span></p>
+								<p style="width: 100%;">白菜<span class="aui-pull-right">200g</span></p>	
+								<p style="width: 100%;">白菜<span class="aui-pull-right">200g</span></p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="app_bg_white aui-list">
+					<div class="aui-card-list-footer aui-text-center">
+	         		   查看更多
+	       			 </div>
+				</li>
+			</ul>
+			
+		</div>
+</div>
+				
+		
+		<div class="">
+			<ul class="aui-list aui-list-in">
+				
+				<li class="aui-list-item  ">
+					<div class="aui-list-item-inner ">
+						<div class="aui-list-item-title">
+							支付方式
+						</div>
+						<div class="aui-list-item-right">
+							配送斤数支付
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item ">
+					<div class="aui-list-item-inner noafer">
+						<div class="aui-list-item-title">
+							商品斤数
+						</div>
+						<div class="aui-list-item-right">
+							6kg
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-padded-b-15">
+					<div class="aui-list-item-inner noafer">
+						<div class="aui-list-item-title">
+							运费
+						</div>
+						<div class="aui-list-item-right">
+							0.00
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div style="height: 2.8rem;"></div>
+		<div class="footer-bot">
+			<div class="aui-pull-left aui-font-size-14 app-text-green" style="padding: 0.15rem 0.75rem ; line-height: 2.45rem;">
+				总计：<span class="aui-font-size-16">3kg</span><br />
+				
+			</div>
+			<div class="btn_submit_order app_bg_green " style="text-align: center;">
+				提交订单
+			</div>
+		</div>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

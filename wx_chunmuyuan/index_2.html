@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="./lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="./css/app.css">
+		<link rel="stylesheet" type="text/css" href="./css/layout.css">
+		<link rel="stylesheet" type="text/css" href="./css/icon/iconfont.css">
+		<title>首页</title>
+		<style>
+			/*.scrolls::-webkit-scrollbar {
+				display: none;
+				}
+			
+			::scrollbar {
+				display: none;
+				}
+			
+			.scrolls::scrollbar {
+				display: none;
+				}*/
+			
+				
+			#informationBox {
+				background: white;
+			}
+			#advNavigation {
+				height: 3.5rem;
+				background: white;
+			}
+			
+			#informationBox .aui-border-l:before {
+				background: #f59b29;
+			}
+			
+			#advNavigation img {
+				display: block;
+				width: 40%;
+				margin: 0.2rem 30% 0rem 30%;
+			}
+			
+			.itemTitle {
+				padding: 1rem 0 0.2rem;
+				background: white;
+			}
+			/**
+			 * 菱形效果
+			 */
+			
+			.diamond,
+			.diamond2 {
+				display: inline-block;
+				width: 0.4rem;
+				height: 0.4rem;
+				margin: 0.5rem 1rem 0 1rem;
+				background: #1eff00;
+				/* Rotate */
+				-webkit-transform: rotate(-45deg);
+				-moz-transform: rotate(-45deg);
+				-ms-transform: rotate(-45deg);
+				-o-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				/* Rotate Origin */
+				-webkit-transform-origin: 0 100%;
+				-moz-transform-origin: 0 100%;
+				-ms-transform-origin: 0 100%;
+				-o-transform-origin: 0 100%;
+				transform-origin: 0 100%;
+			}
+			
+			.diamond2 {
+				margin-left: 1.3rem;
+			}
+			
+			.advMPic {
+				display: block;
+				width: 100%;
+			}
+			
+			.srcollDiv {
+				width: 10000px;
+			}
+			
+			.panel {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			
+			#wrapper {
+				overflow: scroll;
+			}
+			
+			#footer {
+				height: 2rem;
+				background: white;
+			}
+			/**
+			 * 重写分页器选中的颜色
+			 */
+			
+			#app .swiper-pagination-bullet-active {
+				background: #f59b29;
+			}
+			
+			#app .hidden {
+				display: none;
+			}
+			
+			.vegetables {
+				display: inline-block;
+				text-align: left;
+				background: white;
+				padding: 0.25rem;
+				margin-right: 1.8rem;
+			}
+			
+			.vegetables img {
+				width: 100%;
+				display: block;
+			}
+			
+			.hotsell {
+				background: white;
+				display: inline-block;
+			}
+			
+			#header,
+			#headerbg {
+				z-index: 10;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				color: white;
+				padding: 0 0.75rem;
+				font-size: 0.6rem;
+				text-align: center;
+			}
+			
+			#headerbg {
+				z-index: 9;
+				height: 2.2rem;
+				opacity: 0.5;
+				background: green;
+			}
+			.tabItemIcon{
+				height: 1.2rem;
+				width: 1.2rem;
+				background: url();
+				
+			}
+			#dh ul li {
+				line-height: 2rem;
+				height: 100%;
+				border-bottom: solid;
+				border-bottom-color: #EEEEEE;
+				border-bottom-width: 1px;
+			}
+
+			#dh ul li.actvie {
+				border-bottom: solid;
+				border-bottom-color: #137F59;
+				border-bottom-width: 2px;
+			}
+
+			.topInfo {
+				position: absolute;
+				top:0.25rem;
+				left:0.25rem;
+				width: 2rem;
+				height: 2rem;
+				border-bottom-left-radius: 0.5rem;
+				border-bottom-right-radius: 0.5rem;
+				border-top-right-radius: 0.5rem;
+				background-color: #FE9C14;
+				color: #FFFFFF;
+				line-height: 2rem;
+				text-align: center;
+			}
+
+			.swiper-slide .nutrition-slide {
+				background-color: rgba(0,0,0,0.4);width: 100%;height: 100%
+			}
+			.swiper-slide.swiper-slide-active .nutrition-slide {
+				background-color: rgba(0,0,0,0.4);
+			}
+
+			.swiper-slide .nutrition-name{
+				text-align: center;
+				color: white;
+				font-size: 0.8rem;
+				position: relative;
+				top: 2.25rem;
+			}
+			.nav{
+				width:100%;
+				height:2.5rem;
+				font-size:0.8rem;
+				font-weight:bold;
+			}
+			.middleNav{
+				width:50%;
+				height:2.5rem;
+				margin:0 auto;
+				text-align: center;
+				line-height: 2rem;
+				position:relative;
+			}
+			.leftNav{
+				width:10px;
+				height:10px;
+				background: orange;
+				position:absolute;
+				left:10%;top:40%;
+				transform:rotate(45deg);
+				-ms-transform:rotate(45deg); /* Internet Explorer */
+                -moz-transform:rotate(45deg); /* Firefox */
+                -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+                -o-transform:rotate(45deg); /* Opera */
+			}
+			.rightNav{
+				width:10px;
+				height:10px;
+				background: orange;
+				position:absolute;
+				right:10%;
+				top:40%;
+				transform:rotate(45deg);
+				-ms-transform:rotate(45deg); /* Internet Explorer */
+				-moz-transform:rotate(45deg); /* Firefox */
+				-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+				-o-transform:rotate(45deg); /* Opera */
+			}
+		</style>
+
+	</head>
+
+	<body id="app">
+		<div class="panel" layout="column">
+			<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+				<div flex id="contentBox">
+					<!-- 	描述:轮播图  -->
+					<div id="bannerbox" class="swiper-container" style="margin: 0">
+						<div class="swiper-wrapper">
+
+						</div>
+						<div class="swiper-pagination">
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div id="footer" class="aui-bar aui-bar-tab">
+				<div class="aui-bar-tab-item" tapmode>
+					<i class="aui-iconfont aui-icon-home"></i>
+					<div class="aui-bar-tab-label" >首页</div>
+				</div>
+				<div class="aui-bar-tab-item" tapmode>
+					<i class="aui-iconfont iconfont icon-shexiangtou" style="font-size: 1rem;"></i>
+					<div class="aui-bar-tab-label" lan-res="home_tab2"></div>
+				</div>
+				<div class="aui-bar-tab-item" tapmode>
+					<div class="aui-badge" id="carNum" style="display: none;"></div>
+					<i id="car_icon" class="aui-iconfont aui-icon-cart"></i>
+					<div class="aui-bar-tab-label">购物车</div>
+				</div>
+				<div class="aui-bar-tab-item" tapmode>
+					<div class="aui-dot" id="loginbtn" style="display: none;"></div>
+					<i class="aui-iconfont aui-icon-my"></i>
+					<div class="aui-bar-tab-label" lan-res="home_tab4"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="informationBox" class="aui-margin-b-10 hidden" style="padding:0.25rem 0.5rem">
+			<div layout>
+				<div><i class="iconfont icon-laba app-text-orange aui-margin-r-10 "></i></div>
+				<div id="informationDiv" style="overflow:hidden;height: 1.2rem">
+					<ul>
+
+					</ul>
+				</div>
+				<div style="display: none" class="app-text-orange aui-border-l aui-padded-l-5 aui-margin-l-10">更多...</div>
+			</div>
+		</div>
+
+		<div id="nutrition" class="hidden" style="background-color: white;margin-bottom: 0.5rem;padding-top: 0.25rem;padding-bottom: 0.25rem">
+			<div style="text-align: center;font-size: 0.9rem;line-height: 1.75rem;height: 1.75rem;">
+				<span style="color: #FE9C14">营养</span>知识
+			</div>
+			<div style="text-align: center;margin-bottom: 0.4rem;font-size: 0.7rem">
+				<span style="display:inline-block;height:0.3rem;width: 1.5rem;border-top: solid 1px #626262"></span>
+				NUTRITION KNOWLEDGE
+				<span style="display:inline-block;height:0.3rem;width: 1.5rem;border-top: solid 1px #626262"></span>
+			</div>
+			<div id="nutrition-swiper-container" class="swiper-container swiper-container-horizontal" style="height: 7.5rem;margin: 0rem">
+				<div class="swiper-wrapper nutrition-swiper" style="transform: translate3d(-138.75px, 0px, 0px); transition-duration: 0ms;">
+				</div>
+				<!-- Add Pagination -->
+				<!--<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>-->
+			</div>
+		</div>
+
+
+		<div id="hyqy" onclick="app.indexGo('html/interest.html');" class="aui-margin-b-10 aui-padded-l-10 aui-padded-r-10 hidden">
+			<img src="imgs/index/hyqy.png" style="width: 100%;display: block;">
+		</div>
+
+		<div id="vipc" onclick="app.href('html/cardList.html')" class="aui-margin-b-10 aui-padded-l-10 aui-padded-r-10 hidden">
+			<img src="imgs/index/vipc.jpg" style="width: 100%;display: block;">
+		</div>
+
+		<div id="wzws" class="aui-margin-b-10 hidden">
+			<div style="width: 100%;background-color: white;padding-top: 0.25rem;padding-bottom: 0.25rem">
+				<div style="text-align: center;font-size: 0.9rem;line-height: 1.75rem;height: 1.75rem;">
+					<span style="color: #FE9C14">我种</span>我送
+				</div>
+				<div style="text-align: center;margin-bottom: 0.15rem;font-size: 0.7rem">
+					<span style="display:inline-block;height:0.3rem;width: 1.5rem;border-top: solid 1px #626262"></span>
+					I PLANT  I DELIVER
+					<span style="display:inline-block;height:0.3rem;width: 1.5rem;border-top: solid 1px #626262"></span>
+				</div>
+				<div layout>
+					<div flex="10">
+						<div style="text-align: center;font-size: 0.7rem; font-size: 0.8rem; margin-left: 0.8rem;">
+							<i class="iconfont icon-wuliu" style="font-size:0.7rem;color: #FE9C14"></i>&nbsp;深圳地区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+						<div style="text-align: center;font-size: 0.65rem">每周二、周五配送</div>
+					</div>
+					<div flex>
+						<div style="text-align: center;height: 100%">
+							<span style="position:relative;top:20%;display:inline-block;height:60%;width: 1px;background-color: #DADADA;margin-top: 10%"></span>
+						</div>
+					</div>
+					<div flex="10">
+						<div style="text-align: center;font-size: 0.7rem;font-size: 0.8rem; margin-left: 0.8rem;">
+							河源地区&nbsp;<i class="iconfont icon-wuliu1" style="font-size:0.7rem;color: #FE9C14"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+						<div style="text-align: center;font-size: 0.65rem">每周三、周六配送</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="dh" style="background-color: white" class="hidden">
+			<ul id="columnUl" layout style="height:2rem;font-size: 0.8rem">
+			</ul>
+		</div>
+
+		<!--导航操作广告位-->
+		<div id="advNavigation" class="aui-margin-b-10 hidden" >
+		</div>
+
+		<!-- 热销推荐广告位 -->
+		<div id="advHotSell" class="hidden aui-margin-b-10">
+			<img src="imgs/chongz/2.jpg" class="advMPic" />
+			<div class="itemTitle aui-border-b" layout>
+				<div flex></div>
+				<div class="diamond"></div>
+				热销推荐
+				<div class="diamond2"></div>
+				<div flex class="aui-text-right app-text-orange plh12">
+				</div>
+			</div>
+			<div style="overflow: scroll;">
+				<div id="optional" class="swiper-wrapper">
+
+				</div>
+			</div>
+		</div>
+		<!-- 回到顶部-->
+		<div id="mask" style="width: 3rem; height: 3rem; border-radius: 3rem;display:none; background: url(imgs/to_top.png) no-repeat center; background-size: 100% 100%; z-index: 1000; position: fixed; right: 1rem; bottom: 3rem;"></div>
+	</body>
+	<!-- 广告位头部模板 -->
+	<script type="text/template" id="advTitleTemplate">
+		<div class="aui-margin-b-10">
+			<img  onclick="app.href('<@ it.url>');" src="<@ it.img>" class="advMPic" style="display: <@ it.hideImg?'none':''>;" />
+		</div>
+	</script>
+	<!--热销推荐商品模板-->
+	<script type="text/template" id="hotsellTemplate">
+		<div onclick="app.href('<@ it.url>')" style="width: <@ it.width>px;position: relative" class="hotsell">
+			<div style="display: <@ it.label?'block':'none'>;top:0;left:0" class="topInfo"><@ it.labelname></div>
+			<img src="<@ it.img>" style="width: <@ it.width>px;height: <@ it.width>px;">
+			<div class="aui-padded-t-5  aui-padded-l-15 aui-padded-r-15 aui-ellipsis-1">
+				<div style="font-size: 0.7rem">
+					<@ it.name>
+				</div>
+				<div style="color: #858585;font-size: 0.65rem" class="app_text_999 aui-ellipsis-1">
+					<@ it.ads>
+				</div>
+			</div>
+			<div style="font-size: 0.6rem;" class="app-text-orange aui-padded-b-10 aui-padded-l-15 aui-padded-r-15">
+				<apan style="font-size: 0.8rem"><@ app.getPriceStr(it.sellprice)></apan>
+			</div>
+		</div>
+	</script>
+	<!--自选菜和宅配套餐的商品模板-->
+	<script type="text/template" id="vegetablesTemplate">
+		<div class="swiper-slide" onclick="app.href('<@ it.url>')" style="width: <@ it.width>px;position: relative" class="vegetables">
+			<div style="display: <@ it.label?'block':'none'>" class="topInfo"><@ it.labelname></div>
+			<img src="<@ it.img>" style="width: <@ it.width>px;height: <@ it.width>px;">
+			<div style="font-size: 0.7rem" class="aui-padded-t-5 aui-ellipsis-1">
+				<@ it.name><@ it.price>g
+			</div>
+			<div style="font-size: 0.65rem;line-height: 1rem" class="app-text-orange">
+				市场价<span style="font-size: 0.75rem"><@  app.getPriceStr(it.sellprice)></span>
+			</div>
+			<div style="font-size: 0.65rem;color: #A3A3A3;" class="app-text-orange">
+				会员享更多优惠
+			</div>
+		</div>
+	</script>
+
+	<!-- 种植机的商品模板-->
+	<script type="text/template" id="plantTemplate">
+		<div class="swiper-slide" onclick="app.href('<@ it.url>')" style="width: <@ it.width>px;position: relative" class="vegetables">
+			<div style="display: <@ it.label?'block':'none'>" class="topInfo"><@ it.labelname></div>
+			<img src="<@ it.img>" style="width: <@ it.width>px;height: <@ it.width>px;">
+			<div style="font-size: 0.7rem" class="aui-padded-t-5 aui-ellipsis-1">
+				<@ it.name>
+			</div>
+			<div style="font-size: 0.65rem;line-height: 1rem" class="app-text-orange">
+				<span style="font-size: 0.75rem"><@  app.getPriceStr(it.sellprice)></span>
+			</div>
+		</div>
+	</script>
+
+	<!--
+    	描述：banner模板
+    -->
+	<script type="text/template" id="bannerTemplate">
+		<img onclick="app.href('<@ it.url>')"  src="<@ it.img>" class="swiper-slide" />
+	</script>
+	<!--
+    	描述：导航按钮的模板
+    -->
+	<script type="text/template" id="advNavigationTemplate">
+		<div flex class="aui-text-center" onclick="app.navigationGo('<@ it.url>','<@ it.name>')">
+			<img src="<@ it.img>" />
+			<div style="font-size: 0.7rem"><@ it.name></div>
+		</div>
+	</script>
+	<script type="text/template" id="campaing1temp">
+		<div class="app_bg_white">
+			<img class="advMPic" src="<@ it[0].img>" style="height: <@ app.actImg1Height>px;" />
+		</div>
+	</script>
+	<script type="text/template" id="campaing2temp">
+		<div layout class="app_bg_white" style="height: <@ app.actImg1Height>px;">
+			<div flex class="aui-border-r" style="height: 100%;">
+				<img class="advMPic" src="<@ it[0].img>" style="height: 100%;" />
+			</div>
+			<div flex style="height: 100%;">
+				<img class="advMPic" src="<@ it[1].img>" style="height: 100%;" />
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="campaing3temp">
+		<div layout style="height: <@ app.actImg1Height>px;" class="app_bg_white">
+			<div layout="column" class="aui-border-r" style="width: <@ app.actImg1Width>px;height: <@ app.actImg1Height>px;">
+				<div style="height: <@ app.actImg1Height/9*5>px;" class="aui-border-b">
+					<img  class="advMPic" src="<@ it[0].img>" style="height: 100%;" />
+				</div>
+				<img style="height: <@ app.actImg1Height/9*4>px;" class="advMPic" src="<@ it[1].img>" />
+			</div>
+			<img class="advMPic" src="<@ it[2].img>" style="height: 100%;width: <@ $(window).width()-app.actImg1Width>px;" />
+		</div>
+	</script>
+	<script type="text/template" id="campaing4temp">
+		<div layout style="height: <@ app.actImg1Height>px;" class="app_bg_white">
+			<div class="aui-border-r" style="width:<@ $(window).width()*0.6>px">
+				<div class="aui-border-b" layout style="height: <@ app.actImg1Height/3*2>px;">
+					<div class="aui-border-r" style="width: 50%;height: 100%;">
+						<img class="advMPic" src="<@ it[0].img>" style="height: 100%;" />
+					</div>
+					<img src="<@ it[1].img>" style="width: 50%;" />
+				</div>
+				<img class="advMPic" src="<@ it[2].img>" style="height: <@ app.actImg1Height/3>px;" />
+			</div>
+			<div flex style="height: 100%;">
+				<img class="advMPic" src="<@ it[3].img>" style="height: 100%;" />
+			</div>
+		</div>
+	</script>
+	<script type="text/template" id="nutritionTemp">
+        <div onclick="app.href('<@ it.url>');" class="swiper-slide" style="background-image: url('<@ it.img>');background-size:100% 100%;background-repeat: no-repeat">
+
+		</div>
+	</script>
+	<script  type="text/template" id="columnTemp">
+		<li onclick="app.href('<@ it.url>');" flex class="aui-text-center"><@ it.name></li>
+	</script>
+
+	<script type="text/template" id="informationTemp">
+		<li><@ it.name></li>
+	</script>
+	<script data-main="js/main" data-app="../index_new" src="lib/requirejs/require.js"></script>
+
+</html>

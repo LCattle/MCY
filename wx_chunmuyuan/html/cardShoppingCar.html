@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>购物车</title>
+		<style>
+			#top {
+				position: relative;
+				color: #f39c29;
+				height: 1.5rem;
+				line-height: 1.5rem;
+				width: 100%;
+				z-index: 3;
+				background: #f5f5f5;
+			}
+			
+			#top .aui-list-item-arrow:before {
+				border: 1px solid #f39c29;
+				border-top: none;
+				border-right: none;
+				width: 0.3rem;
+				height: 0.3rem;
+			}
+			
+			.btn_nub {
+				position: absolute;
+				right: 0.75rem;
+				bottom: 0.3rem;
+			}
+			
+			.checkBtn,
+			.checkBtn_No {
+				width: 0.75rem;
+				border: 1px #007548 solid;
+				height: 0.75rem;
+				border-radius: 50%;
+			}
+			
+			.checkBtn_No {
+				border-color: #757575;
+			}
+			
+			.checkBtn:active {
+				background-color: #f5f5f5;
+			}
+			
+			.checkBtn.active {
+				border: none;
+				background: url(../imgs/xq-images/on.png);
+				background-size: 100% 100%;
+			}
+			
+			.itembox {
+				height: 5.25rem;
+				position: relative;
+			}
+			
+			.itembox .aui-list-item {
+				position: absolute;
+				top: 0;
+				padding-left: 1.75rem;
+				width: 100%;
+			}
+			
+			.itembox .checkBtn,
+			.itembox .checkBtn_No {
+				position: absolute;
+				top: 2.25rem;
+				z-index: 1;
+				left: 0.75rem;
+			}
+			
+			.behind {
+				width: 100%;
+				position: absolute;
+				top: 1px;
+				bottom: 1px;
+				right: 0;
+			}
+			
+			.behind a.ui-btn {
+				width: 68px;
+				margin: 0px;
+				float: right;
+				border: none;
+			}
+			
+			.behind a.delete-btn,
+			.behind a.delete-btn:active,
+			.behind a.delete-btn:visited,
+			.behind a.delete-btn:focus,
+			.behind a.delete-btn:hover {
+				color: white;
+				background-color: red;
+				height: 100%;
+				display: block;
+				width: 100px;
+				line-height: 5.25rem;
+				text-align: center;
+				text-shadow: none;
+			}
+			
+			.footer-bot {
+				height: 2.45rem;
+				background: #FFFFFF;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				z-index: 2;
+			}
+			
+			.del {
+				float: right;
+			}
+			
+			.del:active {
+				color: #757575!important;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;padding-bottom: 2.45rem;">
+
+			<ul id="list" class="aui-list aui-media-list">
+				<div id="shitilisthead" style="height: 2.2rem; padding: 0 0.75rem; line-height: 2.2rem;display: none ;">
+					<span class="app-text-orange del" onclick="app.delSelect(1)">删除</span>
+					<div onclick="app.delSelect(1)" style="width:0.5rem;float:right;height:2.2rem;"></div>
+					<div class="center_outter" onclick="app.selectAll(1)" style="height: 100%; width: 1.2rem;float: left;">
+						<div class="center_inner">
+							<div class="checkBtn type1" id="checkAllBtn"></div>
+						</div>
+					</div>
+					<div onclick="app.selectAll(1)" style="width:9rem;">实体卡</div>
+				</div>
+				<div id="shitilist">
+
+				</div>
+				<div id="dianzilisthead" style="height: 2.2rem; padding: 0 0.75rem; line-height: 2.2rem;display: none;">
+					<span class="app-text-orange del" onclick="app.delSelect(2)">删除</span>
+					<div onclick="app.delSelect(2)" style="width:0.5rem;float:right;height:2.2rem;"></div>
+					<div class="center_outter" onclick="app.selectAll(2)" style="height: 100%; width: 1.2rem;float: left;">
+						<div class="center_inner">
+							<div class="checkBtn type2" id="checkAllBtn"></div>
+						</div>
+					</div>
+					<div onclick="app.selectAll(2)" style="width:9rem;">电子卡</div>
+				</div>
+				<div id="dianzilist">
+
+				</div>
+				<div id="zhongzhilisthead" style="height: 2.2rem; padding: 0 0.75rem; line-height: 2.2rem;display: none;">
+					<span class="app-text-orange del" onclick="app.delSelect(6)">删除</span>
+					<div onclick="app.delSelect(6)" style="width:0.5rem;float:right;height:2.2rem;"></div>
+					<div class="center_outter" onclick="app.selectAll(6)" style="height: 100%; width: 1.2rem;float: left;">
+						<div class="center_inner">
+							<div class="checkBtn type6" id="checkAllBtn"></div>
+						</div>
+					</div>
+					<div onclick="app.selectAll(6)" style="width:9rem;">种植机</div>
+				</div>
+				<div id="zhongzhilist">
+
+				</div>
+				<div id="shouqingBtn" style="height: 4.5rem;padding-top:;text-align: center;padding-top:1.5rem;display: none;">
+					<div class="app-btn-orange app-text-orange btnfilter" onclick="app.removeSq()" style="width: 6rem;height:1.5rem;line-height:1.5rem;display:inline-block;border-radius: 0.3rem;">清除失效商品</div>
+				</div>
+			</ul>
+
+		</section>
+		<div style="height: 2.8rem;"></div>
+		<div class="footer-bot">
+			<div class="aui-pull-left aui-font-size-14 " style="padding: 0.15rem 0.75rem ;">
+				<div class="center_outter" style="text-align: left;height:2.3rem;">
+					<div class="center_inner ">
+						<div>总计：<span class="aui-font-size-16 app-text-orange"><span id="sumWeight"></span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn_submit_order app_bg_gray " onclick="app.toSubmit(this)" style="text-align: center;">
+				去结算
+			</div>
+		</div>
+		<script type="text/template" id="template">
+			<div class="itembox" id="skuitem_<@ it.id>" data-price="<@ it.sellprice>">
+				<div class="behind">
+					<a class="ui-btn delete-btn btnfilter" onclick="app.delOne(<@ it.id>)">删除</a>
+				</div>
+				<div class="itembox swiper">
+					<div class=" <@ it.isDisabled?'checkBtn_No':'checkBtn' >  " onclick="app.selectOne(<@ it.id>,<@ it.product.type == 6?6:it.ctype>);" data-sku="<@ it.id>"></div>
+					<li class="aui-list-item " onclick="app.selectOne(<@ it.id>,<@ it.product.type == 6?6:it.ctype>);">
+						<div class="aui-media-list-item-inner goodsIetm">
+							<div class="aui-list-item-media" style="width: 6.5rem;">
+								<img style="width: 6.2rem;height: 4.25rem;padding: 0.25rem 0;" src="<@ app.getMiddelPath(it.picpath)>">
+							</div>
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										<@ it.skuname>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									<@ it.product.ads>
+								</div>
+							</div>
+							<div class="goods_info app-text-orange aui-font-size-16" style="left:8.1rem;">
+								<@ app.getPriceStr(it.sellprice)>
+							</div>
+						</div>
+					</li>
+					<div class="btn_nub" style="padding: 0;">
+						<div class="inputBox" style="display: <@ it.isDisabled?'none':'block' >;">
+							<i onclick="app.clickMinus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+							<input class="buynum" data-skuid="<@ it.id>" type="number" value="<@ app.car.data[it.id].skucount>">
+							<i onclick="app.clickPlus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+						</div>
+						<div class="inputBox app_bg_gray" style="color: white;display:<@ it.isDisabled?'block':'none' > ;">
+							已失效
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script id="shouqing" type="text/template">
+
+		</script>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

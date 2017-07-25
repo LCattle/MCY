@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>商品评价</title>
+	</head>
+	<style type="text/css">
+		.xingq-pic {
+			height: 12.5rem;
+		}
+		
+		.aui-list .aui-list-item:after {
+			width: inherit;
+			height: 1px;
+			background-color: #dddddd;
+			display: block;
+			content: '';
+			position: absolute;
+			top: auto;
+			right: 0.75rem;
+			bottom: 0;
+			left: 0.75rem;
+			z-index: 2;
+			-webkit-transform-origin: 50% 100%;
+			transform-origin: 50% 100%;
+			pointer-events: none;
+		}
+		
+		.aui-list .aui-list-item-media {
+			width: 3rem;
+			padding: 0.5rem 0;
+			padding-right: 0.75rem;
+			-webkit-flex-shrink: 0;
+			-webkit-align-items: flex-start;
+			align-items: flex-start;
+		}
+		
+		.myTab {
+			position: absolute;
+			height: 2.2rem;
+			width: 50%;
+			line-height: 2.2rem;
+			text-align: center;
+			color: #757575;
+		}
+		
+		.aui-bar-tab-item:active,
+		.myTab:active {
+			background: #f5f5f5;
+		}
+	</style>
+
+	<body id="app">
+		<div class="xingq-pic"><img src="../imgs/xq-images/top-pic.png" width="100%" /></div>
+		<div class="aui-content aui-margin-b-10">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">300g</div>
+						<div class="aui-list-item-right">
+							<div class="inputBox">
+								<i onclick="app.clickMinus(this,event)" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+								<input id="countNum" type="number" readonly="" value="1">
+								<i onclick="app.clickPlus(this,event)" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-title" style="width:100%;">有机包菜<br/>
+						<p><span>描述描述描述述描述描述述</span><span class="aui-list-item-right aui-text-default aui-pull-right">包邮</span></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content aui-margin-b-10">
+			<ul class="aui-list aui-list-in">
+				
+				<li class="aui-list-item aui-padded-b-5 aui-padded-t-5 aui-list-item-inner">
+					<div class="aui-list-item-title">规格<br/>
+						<p class="aui-padded-t-5">
+							重量：3kg<br/>
+							包装：袋装<br/>
+							
+						</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-card-list ">
+			<div style="height: 2.2rem;position: relative;">
+				<div class="myTab" style="left: 0;">商品介绍</div>
+				<div class="myTab app_color_brown" style="right: 0;">商品评价</div>
+				<div style="height: 1.2rem;position: absolute;left: 50%;top:0.5rem;width: 1px;background: #e1e1e1;"></div>
+			</div>
+		</div>
+		<div class="aui-card-list-content " >
+            <ul class="aui-list aui-media-list ">
+                 <li class="aui-list-item aui-list-item-middle ">
+                    <div class="aui-media-list-item-inner ">
+                        <div class="aui-list-item-media ">
+                            <img src="../imgs/xq-images/photo.png "  class="aui-img-round aui-list-img-sm ">
+                        </div>
+                        <div class="aui-list-item-inner ">
+                            流浪男<span style="width: 1rem; vertical-align: middle; height: 1rem; display: inline-block; " class="aui-margin-l-5 "><img src="../imgs/xq-images/grade.png " width="100% "></span>
+                        </div>
+                    </div>
+                    <p>太好的，下次还买，推荐！</p>
+                    <p class="aui-padded-b-5 aui-font-size-12 aui-padded-t-10 ">2016-12-12  20:10</p>
+                </li>
+                    
+                <li class="aui-list-item aui-list-item-middle ">
+                    <div class="aui-media-list-item-inner ">
+                        <div class="aui-list-item-media ">
+                            <img src="../imgs/xq-images/photo.png " class="aui-img-round aui-list-img-sm ">
+                        </div>
+                        <div class="aui-list-item-inner ">
+                            流浪男<span style="width: 1rem; vertical-align: middle; height: 1rem; display: inline-block; " class="aui-margin-l-5 "><img src="../imgs/xq-images/grade.png " width="100% "></span>
+                        </div>
+                    </div>
+                    <p>太好的，下次还买，推荐！</p>
+                    <p class="aui-padded-b-5 aui-font-size-12 aui-padded-t-10 ">2016-12-12  20:10</p>
+                </li>
+           		
+            </ul>
+        </div>
+  
+		<div style="display: none; " class="aui-card-list-content-padded aui-border-b aui-border-t ">
+				<div class="aui-row aui-row-padded " style="margin-bottom: 4.25rem; ">
+					<img src="../imgs/xq-images/con-pic.png " width="100% " />
+				</div>
+			</div>	
+		<div style="height: 3rem; "></div>
+		<footer class="aui-bar aui-bar-tab " id="footer ">
+			<div class="aui-bar-tab-item " tapmode>
+				<i class="aui-iconfont aui-icon-home "></i>
+				<div class="aui-bar-tab-label ">首页</div>
+			</div>
+			<div class="aui-bar-tab-item " tapmode>
+				<i class="aui-iconfont aui-icon-cart "></i>
+				<div class="aui-bar-tab-label ">购物车</div>
+			</div>
+			<div class="aui-bar-tab-item " style="background:#481c13; color:#fff; width:2.5% ">
+				<div style=" ">立即订购</div>
+			</div>
+		</footer>
+	</body>
+
+</html>

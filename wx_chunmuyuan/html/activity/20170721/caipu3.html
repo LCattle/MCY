@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="adress=no">
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" type="text/css" href="../../../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/icon/iconfont.css">
+    <title lan-res="app_name">春沐源</title>
+</head>
+    <style>
+    	.box{
+    		width:100%;
+    		position:relative;
+    	}
+    	.box img{
+    		width:100%;
+    	}
+    	.box1{
+            width: 20%;
+            height: 1%;
+            position: absolute;
+            top: 98%;
+            left: 28%;
+    	}
+    	.box2{
+    		width: 20%;
+            height: 1%;
+            position: absolute;
+            top: 88.8%;
+            left: 78%;
+    	}
+    	.box3{
+    		width: 20%;
+            height: 1%;
+            position: absolute;
+            top: 88.8%;
+            left: 28%;
+    	}
+    </style>
+<body id="app" style="background-color: #EEEEEE; margin:0;">
+<div class="aui-content box">
+	<img src="caipu3.jpg">
+    <div class="box1" onclick= "app.toRecharge()">   
+    </div>
+    <div class="box2" onclick= "app.toReplace()">
+    </div>
+    <div class="box3" onclick= "app.toRemove()">
+    </div>
+</div>
+<script data-main="../../../js/main" data-app="../html/activity/20170721/caipu3" src="../../../lib/requirejs/require.js"></script>
+</body>
+</html>

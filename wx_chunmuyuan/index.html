@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="./lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css">
+    <link rel="stylesheet" type="text/css" href="./css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./css/icon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./css/module/index.css">
+    <title>首页</title>
+</head>
+<body id="app">
+    <div class="panel" layout="column">
+        <section id="wrapper" class="goodsList" style="overflow: hidden">
+            <div flex id="contentBox">
+                <!-- 	描述:轮播图  -->
+                <div id="bannerbox" class="swiper-container" style="margin: 0">
+                    <div class="swiper-wrapper">
+
+                    </div>
+                    <div class="swiper-pagination">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="footer" class="aui-bar aui-bar-tab">
+            <div class="aui-bar-tab-item" tapmode>
+                <i class="aui-iconfont aui-icon-home"></i>
+                <div class="aui-bar-tab-label" >首页</div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode>
+                <i class="aui-iconfont iconfont icon-shexiangtou" style="font-size: 1rem;"></i>
+                <div class="aui-bar-tab-label" lan-res="home_tab2"></div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode>
+                <div class="aui-badge" id="carNum" style="display: none;"></div>
+                <i id="car_icon" class="aui-iconfont aui-icon-cart"></i>
+                <div class="aui-bar-tab-label">购物车</div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode>
+                <div class="aui-dot" id="loginbtn" style="display: none;"></div>
+                <i class="aui-iconfont aui-icon-my"></i>
+                <div class="aui-bar-tab-label" lan-res="home_tab4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部-->
+    <div id="mask" style="width: 3rem; height: 3rem; border-radius: 3rem;display:none; background: url(imgs/to_top.png) no-repeat center; background-size: 100% 100%; z-index: 1000; position: fixed; right: 1rem; bottom: 3rem;"></div>
+
+    <!-- 会员优惠弹窗 -->
+    <div class="vipDialog">
+        <div class="vipDialogCenter">
+            <img src="imgs/vipCouponBg.png">
+            <div class="vipDialogBottom">
+                <div class="text_div">
+                    不同级别的客户购买时享受不同的等级优惠(暂定蔬果类):<br />
+                    钻石卡8折、白金卡8.3折、金卡8.6折、银卡8.8折、铜卡9折。
+                </div>
+                <div class="btn_div">
+                    <div onclick="app.hideVipDailog();" class="btnfilter aui-btn aui-btn-success aui-btn-block  aui-pull-right border-radius15 app_bg_green">我知道了</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 小沐快报 -->
+    <div id="informationBox" class="information-box hidden" style="padding:0.25rem">
+        <div layout>
+            <div style="padding-left: 0.25rem;line-height: 1rem;height: 1.2rem;"><img src="imgs/index/xmkb.png" style="vertical-align:middle;height: 0.8rem;padding-right:0.5rem;border-right: solid 1px #cccccc"></div>
+            <div id="informationDiv" style="overflow:hidden;height: 1.2rem;font-size: 0.7rem;line-height: 1.2rem;padding-left:0.5rem;display: inline-block">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--导航操作广告位-->
+    <div id="advNavigation" class="hidden" >
+    </div>
+
+    <!-- 商品分类导航广告位 -->
+    <div id="dh" class="hidden">
+        <ul id="columnUl" layout style="height:2rem;font-size: 0.7rem">
+        </ul>
+    </div>
+
+    <!--tab容器-->
+    <div id="tab-content" class="hidden">
+
+    </div>
+
+    <!-- 描述：banner模板 -->
+    <script type="text/template" id="bannerTemplate">
+        <img onclick="app.href('<@ it.url>')" data-type="banner"  src="<@ it.img>" class="swiper-slide j-counts" />
+    </script>
+
+    <!-- 描述：资讯模板 -->
+    <script type="text/template" id="informationTemp">
+        <li class="information-li text-overflow"><@ it.name></li>
+    </script>
+
+    <!-- 描述：导航按钮的模板 -->
+    <script type="text/template" id="advNavigationTemplate">
+        <div flex class="aui-text-center j-counts" data-type="nav <@ it.name>" onclick="app.navigationGo('<@ it.url>','<@ it.name>')">
+            <img src="<@ it.img>" />
+            <div style="font-size: 0.6rem"><@ it.name></div>
+        </div>
+    </script>
+
+    <!-- 描述：商品分类tab -->
+    <script type="text/template" id="columnTemp">
+        <li onclick="app.colClick(this);" data-type="分类 ：<@ it.name>" data-index="<@ it.index>" flex class="aui-text-center j-counts" style="line-height: 2rem"><@ it.name></li>
+    </script>
+
+
+    <!-- 描述：今日推荐 -->
+    <script type="text/template" id="todayContentTemp">
+        <ul class="today-ul clearfix">
+            <li class="today-head">
+                <img style="vertical-align: middle" src="imgs/index/today-head-l.png" />
+                今日推荐
+                <img style="vertical-align: middle" src="imgs/index/today-head-r.png" />
+            </li>
+        </ul>
+    </script>
+
+    <!-- 描述：今日推荐 -->
+    <script type="text/template" id="todayTemp">
+        <li class="today-li img-card-li ">
+            <div class="today-div">
+                <div style="display: <@ it.label?'block':'none'>" class="topInfo"><@ it.labelname></div>
+                <img onclick="app.href('<@ it.url>')" class="today-img img-card-show j-counts" src="<@ it.img>"  data-type="今日推荐：<@ it.name>"/>
+                <h2 style="width: 95%" class="aui-ellipsis-1"><@ it.name></h2>
+                <h3><span class="price">￥<@ it.sellprice.toFixed(2)></span><span class="weight">/<@ it.weight>g</span></h3>
+                <h4 style="position: relative"><span onclick="app.showVipDailog();" class="vip-tip">会员价8-9折</span>
+                    <div class="inputPage">
+                        <span class="buyBtn" style="display:<@ 0<it.count?'none':''>;" onclick="app.clickShow(this,event,'<@ it.id>', '<@ it.skuType>')">
+                            <i class="iconfont icon-icon2 app-text-white"></i>
+                        </span>
+                            <span style="display:<@ 0<it.count?'':'none'>;" class="kobe">
+                            <i onclick="app.clickMinus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+                            <input id="countNum" style="color:#424242;min-height:1rem!important;-webkit-text-fill-color:#424242;-webkit-opacity:1;opacity: 1;" type="number" readonly="" disabled="" value="<@ it.count>">
+                            <i onclick="app.clickPlus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+                                <!--<i onclick="app.clickPlus(this,event,'<@ it.id>')" style="display: inline-block;background-color: #FF9200;color: white;width: 1.5rem;height: 1.5rem;border-radius: 1.5rem;line-height: 1.5rem;font-size: 1rem" class="icon iconfont icon-gouwuche2"></i>-->
+                        </span>
+                    </div>
+                </h4>
+                <i class="iconfont icon-yishouqing" style="visibility: <@ it.stock<1?'visible':'hidden' >;"></i>
+            </div>
+        </li>
+    </script>
+
+    <!-- 描述：分隔区模板 -->
+    <script type="text/template" id="separateTemp">
+        <div style="height: 0.5rem;background-color: #EEEEEE;width: 100%"></div>
+    </script>
+
+    <!-- 描述：蔬菜容器模板 -->
+    <script type="text/template" id="vegContentTemp">
+        <div class="column-content">
+            <div class="column-header"><@ it.headerName></div>
+            <div class="column-advs"><@ it.headerAds></div>
+            <div><img class="column-img j-counts" data-type="ad <@ it.img>" style="width:100%;display: block" src="<@ it.img>"></div>
+            <ul class="optional-ul clearfix" style="position: relative">
+
+            </ul>
+        </div>
+    </script>
+
+    <!-- 描述：蔬菜容器模板 -->
+    <script type="text/template" id="vegTemp">
+        <li class="card-li img-card-li" layout>
+            <div flex="2" style="position: relative">
+                <div style="display: <@ it.label?'block':'none'>" class="topInfo"><@ it.labelname></div>
+                <img  onclick="app.href('<@ it.url>')" class="card-img img-card-show" src="<@ it.img>" style="width:100%;" alt="" onerror="this.src='imgs/defaultGoods.png'"/>
+                <i class="iconfont icon-yishouqing" style="visibility: <@ it.stock<1?'visible':'hidden' >;"></i>
+            </div>
+            <div class="card-centent" flex="3" style="position: relative">
+                <div style="transform: translateY(-50%);-webkit-transform: translateY(-50%);; display:inline-block; position: absolute; top:50%;width: 100% ">
+                    <div class="card-title aui-ellipsis-1"><@ it.name></div>
+                    <div class="card-advs aui-ellipsis-1"><@ it.ads></div>
+                        <div layout>
+                        <div flex="2">
+                            <div><span class="price">￥<@ it.sellprice.toFixed(2)></span><span class="weight" style="display: <@ it.skuType <= 2?'':'none'>">/<@ it.weight>g</span></div>
+                            <div style="display: <@ it.skuType <= 2?'block':'none'>"><span onclick="app.showVipDailog();" class="vip-tip">会员价8-9折</span></div>
+                        </div>
+                        <div class="inputPage" flex style="position: relative">
+                            <span class="buy-empty app-text-orange" style="display:<@  it.stock<1?'':'none' >;" >
+                                已售罄
+                            </span>
+                            <span style="display:<@ it.stock<1?'none':''>;">
+                                <span class="buyBtn" style="display:<@ 0<it.count?'none':''>;" onclick="app.clickShow(this,event,'<@ it.id>', '<@ it.skuType>')">
+                                    <i class="iconfont icon-icon2 app-text-white"></i>
+                                </span>
+                                <span style="display:<@ 0<it.count?'':'none'>;" class="kobe">
+                                    <i onclick="app.clickMinus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-minus inputMnieus btnfilter"></i>
+                                    <input id="countNum" style="color:#424242;min-height:1rem!important;-webkit-text-fill-color:#424242;-webkit-opacity:1;opacity: 1;" type="number" readonly="" disabled="" value="<@ it.count>">
+                                    <i onclick="app.clickPlus(this,event,'<@ it.id>')" class="aui-iconfont aui-icon-plus inputPlus btnfilter"></i>
+                                    <!--<i onclick="app.clickPlus(this,event,'<@ it.id>')" style="display: inline-block;background-color: #FF9200;color: white;width: 1.5rem;height: 1.5rem;border-radius: 1.5rem;line-height: 1.5rem;font-size: 1rem" class="icon iconfont icon-gouwuche2"></i>-->
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+
+    <!-- 描述：菜谱容器模板 -->
+    <script type="text/template" id="nutritionContentTemp">
+        <div style="padding-bottom: 1rem">
+            <div class="column-header">春沐源食谱</div>
+            <div class="column-advs">教您如何用好食材烹饪出健康好味道</div>
+            <div id="nutrition-swiper-container" class="swiper-container swiper-container-horizontal" style="height: 8rem;margin: 0rem">
+                <div class="swiper-wrapper nutrition-swiper" style="transform: translate3d(-138.75px, 0px, 0px); transition-duration: 0ms;">
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- 描述：菜谱 -->
+    <script type="text/template" id="nutritionTemp">
+        <div onclick="app.href('<@ it.url>');" class="swiper-slide" style="background-image: url('<@ it.img>');background-size:100% 100%;background-repeat: no-repeat"></div>
+    </script>
+
+    <!-- 描述：我种我送模板 -->
+    <script type="text/template" id="wzwsTemp">
+        <div id="wzws">
+            <div style="width: 100%;background-color: white;padding-top: 0.25rem;padding-bottom: 0.25rem">
+                <div style="text-align: center;font-size: 0.9rem;line-height: 1.75rem;height: 1.75rem;">
+                    <span style="color: #FE9C14">我种</span>我送
+                </div>
+                <div style="text-align: center;margin-bottom: 0.15rem;font-size: 0.7rem">
+                    <span style="display:inline-block;height:0.3rem;width: 1.5rem;border-top: solid 1px #626262"></span>
+                    I PLANT  I DELIVER
+                    <span style="display:inline-block;height:0.3rem;width: 1.5rem;border-top: solid 1px #626262"></span>
+                </div>
+                <div layout>
+                    <div flex="10">
+                        <div style="text-align: center;font-size: 0.7rem; font-size: 0.8rem; margin-left: 0.8rem;">
+                            <i class="iconfont icon-wuliu" style="font-size:0.7rem;color: #FE9C14"></i>&nbsp;深圳地区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div style="text-align: center;font-size: 0.65rem">每周二、周五配送</div>
+                    </div>
+                    <div flex>
+                        <div style="text-align: center;height: 100%">
+                            <span style="position:relative;top:20%;display:inline-block;height:60%;width: 1px;background-color: #DADADA;margin-top: 10%"></span>
+                        </div>
+                    </div>
+                    <div flex="10">
+                        <div style="text-align: center;font-size: 0.7rem;font-size: 0.8rem; margin-left: 0.8rem;">
+                            河源地区&nbsp;<i class="iconfont icon-wuliu1" style="font-size:0.7rem;color: #FE9C14"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div style="text-align: center;font-size: 0.65rem">每周三、周六配送</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <!-- 描述：蔬菜tab容器模板 -->
+    <script type="text/template" id="vegTabContentTemp">
+        <div class="column-content">
+            <ul class="optional-ul clearfix" style="position: relative">
+
+            </ul>
+        </div>
+    </script>
+
+    <!-- 描述：蔬菜tab容器模板 -->
+    <script type="text/template" id="moveImgTemp">
+        <div id='<@ it.id>' class='move_img' style='top:<@ it.y>px;left:<@ it.x>px;width: <@ it.imgWidth>px;height: <@ it.imgHeight>px'><img src='<@ it.img>' style="display: block;width: 100%;height: 100%"><div>
+    </script>
+
+    <script data-main="js/main" data-app="../index_1" src="lib/requirejs/require.js"></script>
+</body>
+</html>

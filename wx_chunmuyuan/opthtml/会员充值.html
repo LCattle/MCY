@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>会员充值</title>
+	</head>
+	<style type="text/css">
+		.chongzka {
+			margin: 0 0.5rem;
+		}
+		
+		.checkBtn {
+			width: 0.75rem;
+			border: 0.5px #007548 solid;
+			height: 0.75rem;
+			border-radius: 0.75rem;
+		}
+		
+		.checkBtn:active {
+			background-color: #f5f5f5;
+		}
+		
+		.checkBtn.active {
+			background: url(../imgs/xq-images/on.png) #007548;
+			background-size: cover;
+			z-index: 3;
+		}
+		
+		.chongzka .aui-col-xs-6 {
+			position: relative;
+		}
+		
+		.chongzka .aui-col-xs-6 .checkBtn.active {
+			position: absolute;
+			right: 0.4rem;
+			top: 0.3rem;
+		}
+		
+		.chongzka li .pic {
+			padding: 0 0.15rem;
+		}
+		
+		.chongzka .aui-col-xs-6 img {
+			width: 100%;
+			border-radius: 0.3rem;
+		}
+	</style>
+
+	<body id="app">
+
+		<div class="aui-content aui-margin-b-10">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-title">可使用定金券:500元</div>
+						<div class="aui-list-item-right">一次支付，不设找赎<i class="icon iconfont icon-zhanghuchongzhi"></i></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-padded-t-10">
+			<ul class="chongzka">
+				<li>
+					<div class="aui-col-xs-6">
+						<div class="pic"><img src="../imgs/chongz/ka1.png" /></div>
+						<div class="checkBtn active"></div>
+					</div>
+				</li>
+				<li>
+					<div class="aui-col-xs-6">
+						<div class="pic"><img src="../imgs/chongz/ka2.png" width="100%" /></div>
+						<div class="checkBtn active" style="display: none;"></div>
+					</div>
+				</li>
+				<li>
+					<div class="aui-col-xs-6">
+						<div class="pic"><img src="../imgs/chongz/ka3.png" width="100%" /></div>
+						<div class="checkBtn active" style="display: none;"></div>
+					</div>
+				</li>
+				<li>
+					<div class="aui-col-xs-6">
+						<div class="pic"><img src="../imgs/chongz/ka4.png" width="100%" /></div>
+						<div class="checkBtn active" style="display: none;"></div>
+					</div>
+				</li>
+				<li>
+					<div class="aui-col-xs-6">
+						<div class="pic"><img src="../imgs/chongz/ka5.png" width="100%" /></div>
+						<div class="checkBtn active" style="display: none;"></div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		</div>
+		<footer class="footer_bar">
+			<div class="confir_sum_order">
+				<span class="aui-pull-left">还需支付：500元</span>
+			</div>
+			<div class="btn_submit_order app_bg_brown aui-text-center">
+				下一步
+			</div>
+		</footer>
+
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

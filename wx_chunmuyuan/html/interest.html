@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>我的权益</title>
+    <style>
+		#app {
+			background-color: #FFFFFF;
+		}
+		.head {
+			background-image: url("../imgs/rights/h_bg.png");
+			background-repeat: repeat;
+			height: 7rem;
+		}
+		.head:before{
+			content:'';
+			display:inline-block;
+			vertical-align:middle;
+			height:100%;
+		}
+
+		.card_ul {
+			padding: 0.25rem;
+		}
+
+		.aui-list .card_li {
+			height: 5.25rem;
+			padding-left: 0rem;
+			margin-bottom: 0.05rem;
+			border:0;
+			border-radius: 0.5rem;
+		}
+
+		.aui-list .aui-list-item:after{
+			height: 0;
+		}
+
+		.card_row {
+			z-index: 3;
+			width: 100%;
+			height: 100%;
+			border-radius: 0.5rem;
+		}
+		.card-right {
+			height:  100%;
+			border:0;
+		}
+		.card-right:before{
+			content:'';
+			display:inline-block;
+			vertical-align:middle;
+			height:100%;
+		}
+		.card-left {
+			height:  100%;
+			border:0;
+		}
+		.card-left:before {
+			content:'';
+			display:inline-block;
+			vertical-align:middle;
+			height:100%;
+		}
+		.top-black {
+			position: absolute;
+			top:0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 10;
+			border-radius: 0.5rem;
+		}
+
+		.top-black img {
+			width: 100%;
+			height: 100%;
+		}
+
+		.img-c {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 0.75rem;
+			height: 4rem;
+			width: 4rem;
+			background-color: #FFFFFF;
+			border-radius: 2rem;
+		}
+		.img-c img {
+			width: 100%;
+			height: 100%;
+		}
+		.card_text_c {
+			display: inline-block;
+			vertical-align: middle;
+			width: 58%;
+		}
+		.card_p1 {
+			font-size:0.8rem;
+			font-weight: bold;
+			color: #FFFFFF
+		}
+		.card_p2 {
+			font-size:0.7rem;
+			color: #FFFFFF
+		}
+		.card_p3 {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 1rem;
+			width:0.8rem;
+			font-size:0.8rem;
+			font-weight: bold;
+			line-height:0.9rem;
+			color: #FFFFFF
+		}
+		.card_bg_img {
+			position:absolute;
+			width: 100%;
+			height: 100%
+		}
+		.aui-col-xs-10 {
+			width: 81%;
+		}
+		.aui-col-xs-2 {
+			width: 19%
+		}
+		#hit {
+			width:4rem;
+			height:4rem;
+			border-radius: 50%;
+		}
+		.top_img {
+			display:inline-block;
+			vertical-align:middle;
+			width: 30%;
+			text-align: right;
+			padding-left: 0.5rem;
+		}
+		.user_leave{
+			display:inline-block;
+			width:1rem;
+			height:1rem;
+			background:orange;
+			border-radius: 50%;
+			text-align: center;
+			color:#fff;
+		}
+		.user_detail {
+			display:inline-block;
+			vertical-align:middle;
+			width: 60%;
+		}
+    </style>
+</head>
+<body id="app">
+	<div class="aui-content">
+		<div class="aui-row head">
+			<div class="top_img">
+				<img id="hit" src="../imgs/xq-images/photo.png" />
+			</div>
+			<div class="user_detail">
+				<p>
+					<span class="user_leave" >
+						<i class="iconfont icon-huangguan1" ></i>
+					</span>
+					<span class="user_card" style="font-size: 0.9rem;color: #FFFFFF;font-weight: bold"></span>
+				</p>
+				<p class="change_leave" style="font-size: 0.7rem;color: #FFFFFF">
+					再消费<span id = "consume"></span>元您将升级为<span id = "changeLeave"></span>会员,可尊享更多权益哟
+				</p>
+			</div>
+		</div>
+		<ul class="aui-list card_ul">
+			<li id="ys_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/ys_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/ys.png"/>
+						</div>
+						<div class="card_text_c">
+							<p class="card_p1">健康养生讲座</p>
+							<p id="ys_detail" class="aui-margin-l-5 card_p2"></p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="ys_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<li id="sr_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/sr_card.png" />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/sr.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">专享生日礼物</p>
+							<p class="aui-margin-l-5 card_p2">生日专享，送货上门</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="sr_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<li id="pt_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/pt_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/pt.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">专属“跑腿”小秘书</p>
+							<p class="aui-margin-l-5 card_p2">专属跑腿，随叫随到</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="pt_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<li id="fh_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/fh_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/fh.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">VIP专享“反悔”</p>
+							<p class="aui-margin-l-5 card_p2">“反悔”您说了算</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="fh_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<!--<li id="bx_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/bx_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/bx.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">专享意外保险</p>
+							<p class="aui-margin-l-5 card_p2">电子保单，全国通赔</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2 card-left">
+						<p id="bx_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>-->
+			<li id="dj_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/dj_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/dj.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">春沐源度假小镇亲子一日游</p>
+							<p class="aui-margin-l-5 card_p2">田园游学一日游，说走就走</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="dj_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<li id="zzj_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/zzj_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/zzj.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">家庭阳台梦幻种植机</p>
+							<p class="aui-margin-l-5 card_p2">无土水培，四季种植</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="zzj_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<li id="cx_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/cx_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/cx.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">春沐源新品尝鲜</p>
+							<p class="aui-margin-l-5 card_p2">新品品鉴，随单赠送</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="cx_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+			<li id="jd_li" class="aui-list-item card_li">
+				<div class="aui-row card_row">
+					<img class="card_bg_img" src="../imgs/rights/jd_card.png"  />
+					<div class="aui-col-xs-10 card-right">
+						<div class="img-c">
+							<img src="../imgs/rights/jd.png"/>
+						</div>
+						<div class="card_text_c" >
+							<p class="card_p1">春沐源小镇豪华度假酒店免费体验</p>
+							<p class="aui-margin-l-5 card_p2">豪华酒店，免费体验</p>
+						</div>
+					</div>
+					<div class="aui-col-xs-2  card-left">
+						<p id="jd_get_btn" class="card_p3"></p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>确认订单</title>
+	</head>
+	<style>
+		.aui-list.aui-list-in .aui-list-item-inner.no:after {
+			height: 0;
+		}
+		
+		.footer-bot {
+			height: 2.45rem;
+			background: #FFFFFF;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: 2;
+		}
+		
+		.down-arrow:before {
+			content: '';
+			width: 0.4rem;
+			height: 0.4rem;
+			position: absolute;
+			right: 0.75rem;
+			background: transparent;
+			border: 2px solid #333333;
+			border-right: none;
+			border-bottom: none;
+			z-index: 2;
+			-webkit-border-radius: 0;
+			border-radius: 0;
+			-webkit-transform: rotate(-135deg);
+			transform: rotate(-135deg);
+			top: 0.75rem;
+		}
+		.down-arrow.active:before {
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+			transition-duration: 0.2s;
+			top: 0.75rem;
+		}
+		.right-text {
+			position: absolute;
+			top: 50%;
+			right: 1.2rem;
+			transform: translate(0, -50%);
+			font-size: 0.9rem;
+		}
+	</style>
+
+	<body id="app">
+		<div class="aui-content">
+			<ul class="aui-list aui-media-list">
+				<li id="addressInfo" class="aui-list-item aui-list-item-middle aui-list-item-arrow ">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 2rem;">
+							<i class="aui-iconfont aui-icon-location" style="font-size: 1.1rem;"></i>
+						</div>
+						<div class="aui-list-item-inner">
+							<div class="aui-list-item-text plh13">
+								<div class="aui-list-item-title aui-font-size-14">收货人:<span id="adName"></span></div>
+								<div class="aui-list-item-title aui-font-size-14" id="adPhone"></div>
+							</div>
+							<div class="aui-list-item-text" id="adFull">
+								收货地址：
+							</div>
+						</div>
+					</div>
+				</li>
+				<li id="addressAdd" style="display: none;" class="aui-list-item aui-list-item-middle aui-list-item-arrow ">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-media" style="width: 2rem;">
+							<i class="aui-iconfont aui-icon-location" style="font-size: 1.1rem;"></i>
+						</div>
+						<div class="aui-list-item-inner">请添加地址</div>
+					</div>
+				</li>
+				
+				<li id="addressDef" style="display: none;" class="aui-list-item aui-list-item-middle aui-list-item-arrow ">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-inner plh14">
+							收信人：春沐源会员本人<br>
+							收信电话：<span id="userMobile"></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="confirmLine"></div>
+		</div>
+		<div class="aui-content">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" id="DeliveryDateBox" style="display: none;">
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						配送日期
+						<span class="aui-font-size-12 tishi" id="DeliveryDate">加载中...</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="aui-list-item-inner" style="height:47px;line-height:47px;padding-left:0.75rem;font-weight: bold">
+			商品信息
+		</div>
+		<div class="aui-content aui-margin-b-10">
+			<div class="aui-content goodsList" id="confirm_goods">
+				<ul id="goodsList" class="aui-list aui-list-in aui-media-list">
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="">
+			<ul class="aui-list aui-list-in ">
+				<li id="paywaySelect" class="aui-list-item aui-list-item-arrow ">
+					<div class="aui-list-item-inner ">
+						<div class="aui-list-item-title">
+							支付方式
+						</div>
+						<div class="aui-list-item-right aui-font-size-14" id="payway">
+							活动赠送
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item ">
+					<div class="aui-list-item-inner noafer">
+						<div class="aui-list-item-title" id="goodsPriceLable">
+							商品斤数
+						</div>
+						<div class="aui-list-item-right app-text-orange aui-font-size-16" id="goodsPrice"></div>
+					</div>
+				</li>
+				<li class="aui-list-item ">
+					<div class="aui-list-item-inner noafer">
+						<div class="aui-list-item-title aui-font-size-14">
+							运费
+						</div>
+						<div class="aui-list-item-right aui-font-size-16 app-text-orange">
+							+<span class="aui-font-size-12" >￥</span>0.<span class="aui-font-size-14" >00</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-bot">
+			<div class="aui-pull-left aui-font-size-14 " style="padding: 0.15rem 0.75rem ;">
+				<div class="center_outter" style="text-align: left;height:2.3rem;">
+					<div class="center_inner ">
+						<div><span id="totalLable" class="aui-font-size-18">总计：</span><span class="aui-font-size-16 app-text-orange" id="goodCount"></span></div>
+					</div>
+				</div>
+			</div>
+			<div class="btn_submit_order app_bg_green btnfilter" id="buyBtn" style="text-align: center;">
+				提交订单
+			</div>
+		</div>
+
+		<!--宅配菜商品模型-->
+		<script type="text/template" id="gdsTemp2">
+			<li style="position: relative;">
+				<div class="goodsIetm">
+					<div class="aui-list-item">
+						<div class="aui-media-list-item-inner goodsIetm ">
+							<div class="aui-list-item-media">
+								<img class="goodsimg" onerror="this.src='../imgs/defaultGoods.png'" src="<@ app.getMiddelPath(it.path)>">
+							</div>
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										<@ it.skuName>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									<@ it.ads>
+								</div>
+							</div>
+							<div class="goods_info app-text-orange">
+								<@ parseInt(it.weight)>g</div>
+							<div class="goods_num">x
+								1
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="down-arrow " onclick="app.showCombo(this,<@ it.id>)" ></div>
+				<ul class="skubox_" id="skubox_<@ it.id>" style="display: none;" >
+				</ul>
+			</li>
+		</script>
+
+		<!--宅配-单品菜商品模型-->
+		<script type="text/template" id="gdsTemp4">
+			<li class="aui-list-item">
+				<div class="aui-media-list-item-inner ">
+					<div class="aui-list-item-media"></div>
+					<div class="aui-list-item-inner aui-list-item-arrow">
+						<div class="aui-list-item-text aui-font-size-12">
+							<div class="aui-list-item-title aui-font-size-14 plh13">
+								<@ it.skuName><br />
+									<span class="app-text-orange"><@ parseInt(it.weight)>g x<@ it.count></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</script>
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

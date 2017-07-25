@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<title>纪念卡激活</title>
+	</head>
+	<style type="text/css">
+		.checkBtn {
+			width: 0.75rem;
+			border: 0.5px #007548 solid;
+			height: 0.75rem;
+			border-radius: 0.75rem;
+			display: none;
+		}
+		
+		.checkBtn:active {
+			background-color: #f5f5f5;
+		}
+		
+		.checkBtn.active {
+			background: url(../imgs/xq-images/on.png) #007548;
+			background-size: cover;
+			display: block;
+		}
+		.bolde{
+			width:92%;
+			margin:0 auto;
+		}
+	</style>
+
+	<body id="app">
+		<div class="aui-content aui-margin-b-5">
+			<ul class="aui-list aui-list-in">
+
+				<li class="aui-list-item">
+					<div class="aui-list-item-inner">
+						
+						<div class="aui-list-item-input">
+							<input type="text" id="cardInput" placeholder="请扫描卡片条码或输入卡号">
+						</div>
+						<i onclick="app.openScan()" class="iconfont icon-saoma " style="padding: 0.25rem;font-size: 1rem;color: #757575"></i>
+						<div class="aui-list-item-right">
+							<div class="checkBtn " id="cardCheck"></div>
+						</div>
+					</div>
+				</li>
+				<li  class="aui-list-item" >
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-input">
+							<input type="text"  id="pwdInput" placeholder="请输入密码">
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn" id="pwdCheck"></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="aui-content-padded haha" style="margin-top:1.5rem;margin-bottom:1.5rem">
+			<div onclick="app.submit()" class="aui-btn aui-btn-success btnfilter border-radius15 aui-btn-block app_bg_green">确认激活</div>
+		</div>
+        <div class="bolde">
+        	<h2>使用须知</h2>
+        	<p>1.本卡可兑换春沐源生态农产品12斤。</p>
+        	<p>2.本卡激活后将为您配送两次，每次配送6斤生态农产品。</p>
+        	<p>3.关注春沐源微信公众号（微信搜索公众号：春沐源）进入商城。</p>
+        	<p>4.点击商城进入"1.16VIP臻品纪念卡激活专属通道",首次使用需验证手机号码，输入套餐卡卡号及密码进行礼品卡兑换。</p>
+        	<p>5.填写收货人及相关配送信息即可完成激活领取。</p>
+        	<p>6.本卡目前仅限广东省内使用，不记名、不挂失、不兑现，请在2017年5月30日前使用。</p>
+        </div>
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

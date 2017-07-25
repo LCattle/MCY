@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <title>发票信息</title>
+    <style>
+        .invoice .aui-card-list {
+            padding-left: 0.75rem;
+        }
+        .invoice .aui-card-list:last-child {
+            margin-bottom: 0rem;
+        }
+
+        .invoice .aui-card-list-header {
+            padding-left: 0rem;
+            color: #333333;
+            font-size: 0.8rem;
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+        }
+        .invoice .aui-card-list-footer {
+            padding-left: 0rem;
+        }
+        .invoice .aui-card-list-content{
+            font-size: 0.8rem;
+            color: #087C55;
+        }
+        .invoice .invoiceType{
+            display: inline-block;
+            border:1px solid #087C55;
+            padding: 0rem 0.25rem;
+            border-radius: 0.2rem;
+            margin-left: 0.5rem;
+        }
+        .invoice .headInfo {
+            width: 75%;
+            min-height: 1.5rem;
+            background-color: #EEEEEE;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        .userInfo .aui-list-item-inner,.userInfo .aui-list-item-label{
+            color: #087C55;
+        }
+        .checkBtn {
+            width: 0.75rem;
+            border: 1px #007548 solid;
+            height: 0.75rem;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            top: 2px;
+        }
+        .checkBtn.active {
+            border: none;
+            background: url(../imgs/xq-images/on.png);
+            background-size: 100% 100%;
+        }
+        .note {
+            position: fixed;
+            top: 0rem;
+            left: 0rem;
+            right: 0rem;
+            bottom: 0rem;
+            background-color: rgba(0,0,0,0.4);
+            z-index:3;
+            display: none;
+        }
+        .note_div {
+            position: relative;
+            width: 80%;
+            margin: 5rem auto 0rem;
+            background-color: #FFFFFF;
+            border-radius: 0.25rem;
+
+        }
+        .note_div div {
+            padding: 0rem 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        input[type="text"], input[type="password"], input[type="search"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="datetime-local"], input[type="time"], input[type="number"], select, textarea{
+            color: #087C55;
+        }
+        input:disabled,
+        input[disabled],
+        textarea:disabled,
+        textarea[disabled]{
+            color: #087C55;
+            -webkit-text-fill-color:#087C55;
+            -webkit-opacity:1;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body id="app">
+<div class="aui-content invoice">
+    <div class="aui-card-list">
+        <div class="aui-card-list-header">
+            发票类型<span class="invoiceType active" data-value="1">纸质发票</span>
+            <div style="position: absolute;top: 0rem;right: 0.25rem;"><i onclick="app.showNote();" class="iconfont icon-wenhao
+" style="font-size: 1.4rem"></i></div>
+        </div>
+    </div>
+    <div class="aui-card-list">
+        <div class="aui-card-list-header">
+            发票抬头
+        </div>
+        <div class="aui-card-list-content">
+            <span class="headType"><div class="checkBtn active" data-value="2"></div>&nbsp;单位</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="headType"><div class="checkBtn" data-value="1"></div>&nbsp;个人</span>
+        </div>
+        <div class="aui-card-list-footer">
+            <input class="headInfo"  placeholder="请填写单位名称" type="text" />
+            <!--请填写您的姓名-->
+        </div>
+    </div>
+    <div class="aui-card-list">
+        <div class="aui-card-list-header">
+            发票内容
+        </div>
+        <div class="aui-card-list-content"  style="padding-bottom: 0.5rem">
+            <span class="contentInfo"><div class="checkBtn active"></div>&nbsp;<span class="contentText"></span></span>
+        </div>
+    </div>
+    <div class="aui-card-list">
+        <div class="aui-card-list-header">
+            收票人信息
+        </div>
+    </div>
+</div>
+<div class="aui-content userInfo">
+    <ul class="aui-list aui-form-list">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="" style="width: 3.3rem;">
+                    收件人:
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" id="nameInput">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div style="width: 4.6rem;">
+                    手机号码:
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="tel" id="phoneInput">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item" id="address">
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-label">
+                    所在地区：
+                </div>
+                <div class="aui-list-item-input" id="selectArea">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+
+                <div class="aui-list-item-input">
+                    <textarea id="addressDetail" placeholder="详细地址"></textarea>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+<div id="submitApplyDiv" class="aui-content-padded" style="margin-top:1.5rem;display: none">
+        <div onclick="app.submitApply();" class="aui-btn app-text-white aui-btn-block  app_bg_green border-radius15 ">确 定</div>
+</div>
+
+<div class="note">
+    <div class="note_div">
+        <h3 style="text-align: center;padding-top: 0.5rem;padding-bottom: 0.25rem;font-size: 0.9rem">发票须知</h3>
+        <div style="height: 13rem;overflow: auto">
+            <div>1、春沐源商城可为您提供纸质增值税普通发票。</div>
+            <div>2、发票抬头必须填写，如果抬头是单位，需填写“单位全称”，如果抬头是个人，需填写个人“姓名”。</div>
+            <div>3、发票申请成功后我们会以邮寄的方式寄给您，故请准确填写收件人信息，具体包括收件人、联系方式、详细地址。感谢您的配合！</div>
+        </div>
+        <div onclick="app.hideNote();" style="text-align: center;border-top: 1px solid #eeeeee;padding: 0.25rem 0rem;color:#f29b28;">我知道了</div>
+    </div>
+</div>
+<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link href="green.css" rel="stylesheet" type="text/css" />
+		<title>绿色履历</title>
+		<link href="green.css" rel="stylesheet" type="text/css" />
+	</head>
+	<style>
+		.page-wrap{
+			position: absolute;
+			width: 100%;
+			top: 0.3rem;
+			z-index: 30;
+			height: 0.3rem;
+			text-align: center;
+		}
+		.page-items{
+			display: inline-block;
+			height: 0.25rem;
+			width: 0.25rem;
+			margin: 0 5px;
+			border-radius: 50%;
+			background-color: #a9a9a9;
+		}
+		.page-items.active{
+			border:0;
+			background-color: #f28b00!important;
+		}
+	</style>
+	<body>
+		<div class="page-wrap">
+		</div>
+		<div id="aui-slide">
+			<div class="aui-slide-wrap">
+				<div class="aui-slide-node">
+					<div class="aui-row">
+						<div class="outer">
+							<div class="vagetable_pic">
+								<div class="outline_border">
+									<img src="img/outline.jpg" class="round" />
+									<!--放置蔬菜图片的位置-->
+									<div class="breed"></div>
+								</div>
+							</div>
+							<div class="vagetable_name">
+								<div class="line_left">
+
+								</div>
+								<div class="text_middle">
+									大葡萄
+								</div>
+								<div class="line_right">
+
+								</div>
+							</div>
+							<div class="line_chart">
+								<div class="line_chart_nav">
+									<p>果实生长趋势</p>
+									<ul class="massage">
+										<li class="kobe">温度</li>
+										<li>湿度</li>
+										<li>光照</li>
+										<li>CO2</li>
+									</ul>
+								</div>
+								<ul class="line_chart_pic">
+									<li id="main"></li>
+									<li id="easy"></li>
+									<li id="lake"></li>
+									<li id="jeep"></li>
+								</ul>
+							</div>
+							<!--树的大图-->
+							<div class="tree">
+								<img src="img/tree.jpg" class="tree_tall">
+								<div class="data1">
+									<p class="process1">播种</p>
+									<p class="time1">2016-12-01</p>
+									<div class="time_pic1 like"><img src="img/dog.jpg"></div>
+								</div>
+								<div class="data2">
+									<p class="process2">通风</p>
+									<p class="time2">2016-12-01</p>
+									<div class="time_pic2 like"><img src="img/1.jpg"></div>
+								</div>
+								<div class="data3">
+									<p class="process3">通风</p>
+									<p class="time3">2016-12-01</p>
+									<div class="time_pic3 like"></div>
+								</div>
+								<div class="data4">
+									<p class="process4">通风</p>
+									<p class="time4">2016-12-01</p>
+									<div class="time_pic4 like"></div>
+								</div>
+								<div class="data5">
+									<p class="process5">通风</p>
+									<p class="time5">2016-12-01</p>
+									<div class="time_pic5 like"></div>
+								</div>
+								<div class="data6">
+									<p class="process6">通风</p>
+									<p class="time6">2016-12-01</p>
+									<div class="time_pic6 like"></div>
+								</div>
+							</div>
+							<div class="Authentication">
+								<h2>认证信息</h2>
+								<p>认证种类:有机认证</p>
+								<p>认证机构 : 春沐源</p>
+								<p>认证时间 : 2016-12-05</p>
+								<div class="certificate">
+									<img src="img/certificate.jpg" class="img1">
+									<img src="img/certificate.jpg" class="img2">
+								</div>
+								<h2>农残检测</h2>
+								<p>检测种类:有机</p>
+								<p>检测机构 : 其他机构</p>
+								<p>检测时间 : 2016-12-05</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="aui-slide-node">
+					<div class="aui-content-padded">
+						轮播图 实现1
+					</div>
+				</div>
+				<!--图片遮罩层-->
+				<div class="carrousel"> <span class="close entypo-cancel"></span> 
+                    <div class="wrapper"> <img src="images/" /> </div>
+                </div>
+			</div>
+		</div>
+	</body>
+	<script data-main="../js/main" data-app="../Trace/Trace" src="../lib/requirejs/require.js"></script>
+	<script src="suit.js"></script>
+	<!--<script src="echarts-all.js"></script>-->
+	<script type="text/javascript" src="highcharts.js"></script>
+	<script type="text/javascript" src="exporting.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+    
+</html>

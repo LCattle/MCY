@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<title>确认支付</title>
+		<style>
+			#app .btn_disable {
+				background-color: #dddddd!important;
+			}
+			.checkBtn {
+			width: 0.75rem;
+			border: 1px #007548 solid;
+			height: 0.75rem;
+			border-radius: 50%;
+		}
+		
+		.checkBtn.active {
+			border: none;
+			background: url(../imgs/xq-images/on.png);
+			background-size: 100% 100%;
+		}
+		</style>
+	</head>
+
+	<body id="app">
+		<div class="aui-text-center aui-font-size-16 " style="height:5.65rem;">
+			<div class="aui-padded-t-15">
+				<div class="aui-padded-t-15" style="color:#333;">春沐源－订单编号</div>
+				<div class="aui-margin-t-10" id="orderId"></div>
+			</div>
+		</div>
+		<div class="aui-content">
+			<ul class="aui-list aui-list-in">
+				<li class="aui-list-item" style="height:3rem;">
+					<div class="aui-list-item-inner">
+						<div style="color: #666666;" id="label">
+						</div>
+						<div id="number" class="aui-list-item-title aui-list-item-right aui-font-size-16 aui-text-default">
+						</div>
+					</div>
+				</li>
+				<li id="wx-pay" class="aui-list-item"  onclick="app.clickCk(this,10)">
+					<div class="aui-list-item-inner ">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/weixin.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							微信支付
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn active"></div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item" onclick="app.clickCk(this,50)">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/yinlian.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							银联支付
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"></div>
+						</div>
+					</div>
+				</li>
+				<li class="aui-list-item"  id="hdhk" style="display: none;" onclick="app.clickCk(this,30)">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/daofu.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							货到付款
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"  id="check30"></div>
+						</div>
+					</div>
+				</li>
+				<li  id="offlinePay" class="aui-list-item" onclick="app.clickCk(this,40)" style="display: none;">
+					<div class="aui-list-item-inner">
+						<div class="aui-list-item-label" style="width: 3.4rem;">
+							<i><img src="../imgs/chongz/xianxia.png"/ width="80%" style="vertical-align: middle;"></i>
+						</div>
+						<div class="aui-list-item-input">
+							线下转账
+						</div>
+						<div class="aui-list-item-right">
+							<div class="checkBtn"  id="check40"></div>
+						</div>
+					</div>
+				</li> 
+			</ul>
+		</div>
+		<div class="aui-content-padded" style="margin-top:1.5rem;">
+			<div id="payBtn" class="btnfilter aui-btn aui-btn-success aui-btn-block  aui-pull-right border-radius15 app_bg_green btn_disable"> 立即支付</div>
+		</div>
+		<div id="wxTip" class="aui-font-size-14 app-text-orange " style="padding: 0 0.75rem;display: none;">
+			注：通过微信支付时，中、农、工、建、交等银行单日/单笔最高限额10000元，请使用其他银行如平安、招行、中信等银行
+		</div>
+		<script data-main="../js/main"  src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

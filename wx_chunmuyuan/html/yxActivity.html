@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <title>元宵节活动</title>
+    <style>
+        .yx-container {
+            position:relative;
+        }
+        .operate-bar{
+            position: absolute;
+            top:45.3%;
+            width: 100%;
+            text-align: center
+        }
+        .get-btn {
+            width:34%;
+        }
+
+        .cancel-btn {
+            margin-left:2%;
+            width:34%;
+        }
+    </style>
+</head>
+<body  id="app">
+    <div class="yx-container" >
+        <img style="width: 100%" src="../imgs/yuanxiao/yuanxiao.jpg" >
+        <div class="operate-bar" >
+            <img class="get-btn" src="../imgs/yuanxiao/get.png" >
+            <img class="cancel-btn" src="../imgs/yuanxiao/cancel.png" >
+        </div>
+    </div>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

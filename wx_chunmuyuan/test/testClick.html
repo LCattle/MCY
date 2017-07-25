@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点击事件</title>
+	</head>
+	<script src="../js/jquery.js"></script>
+	<style>
+		div{
+			padding: 2rem 0;
+		}
+		
+	</style>
+	<body>
+		<div class="active btn" onclick="alert(1111)">
+			btn1
+		</div>
+		<div class="btn">
+			btn2
+		</div>
+		<div class="btn">
+			btn3
+		</div>
+		<script>
+			$(function(){
+				$(".btn").click(function(){
+					alert(1235);
+				});
+				$(".btn").bind("click",function(){
+					alert(123);
+				});
+				$(".btn")[0].onclick = function(){
+					alert('原生js绑定');
+				}
+				
+				$(".active").unbind("click");
+			});
+		</script>
+	</body>
+</html>

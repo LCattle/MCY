@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<title>全部订单</title>
+	</head>
+<style type="text/css">
+	#app .aui-tab .aui-active{
+		    color: #007548;
+		    border-bottom: 2px solid #007548;
+		    z-index: 100;
+			}
+			.list-top{
+				height: 1.7rem;
+				line-height:1.7rem;
+				padding:0  0.75rem;
+			}
+			.list-but{
+				position: relative;
+				left: 0 ;
+				top:1rem;
+			}
+			
+			.list-footer-btn{
+				background: #FFFFFF;
+				width: 100%;
+				height: 2.2rem;
+				
+			}
+			
+			.aui-list .aui-list-item:after{
+				height: 0;
+			}
+			.btn_bot{
+				position: absolute;
+				right: 0.75rem;
+				bottom: 0.35rem;
+			}
+			
+</style>
+	<body id="app">
+		<div class="aui-tab aui-margin-b-10" id="tab">
+		    <div class="aui-tab-item aui-active">全部</div>
+		    <div class="aui-tab-item">待支付</div>
+		    <div class="aui-tab-item">待发货</div>
+		    <div class="aui-tab-item">配送中</div>
+		    <div class="aui-tab-item">待评价</div>
+		</div>
+		<section id="wrapper" class="goodsList" style="-webkit-overflow-scrolling: touch;">
+			<ul id="list" class="aui-list aui-media-list aui-margin-b-10">
+				<div style="position: relative; width: 100%;padding-bottom: 2.2rem;" class="app_bg_white">
+				<li class="" >
+					<div class="list-top">
+						<p>订单编号：12345678<span class="aui-pull-right" style="color: #f29b28;">待支付</span></p>
+						
+					</div>
+					<div class="aui-list-item aui-margin-b-5" style="background: #f2f2f2;">
+						<div class="aui-media-list-item-inner goodsIetm " >
+							<div class="aui-list-item-media">
+								<img  class="goodsimg" src="../imgs/temp/img3.jpeg">
+							</div>
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										白菜
+										<@ 1>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									新鲜大白菜新鲜大...
+								</div>
+							</div>
+							<div class="goods_info">3kg</div>
+							<div class="goods_num">x3</div>
+						</div>
+					</div>
+					<div class="aui-list-item" style="background: #f2f2f2;">
+						<div class="aui-media-list-item-inner goodsIetm " >
+							<div class="aui-list-item-media">
+								<img  class="goodsimg" src="../imgs/temp/img3.jpeg">
+							</div>
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										白菜
+										<@ 1>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									新鲜大白菜新鲜大...
+								</div>
+							</div>
+							<div class="goods_info">3kg</div>
+							<div class="goods_num">x3</div>
+						</div>
+					</div>
+					<div class=" aui-font-size-14 aui-text-right list-top " style="border-bottom: 1px solid #DDDDDD;">
+						共1件商品
+						共计：<span class=" aui-font-size-16">¥300.00</span>
+						(含运费¥0.00)
+					</div>
+				</li>
+				<div class="btn_bot">
+					<div class="aui-btn aui-btn-info app_bg_green  aui-margin-l-10 aui-pull-right">去支付</div>
+					<div class="aui-btn border_green app_bg_white aui-pull-right aui-margin-l-10">取消订单</div>
+				</div>
+			</div>
+			</ul>
+			
+			<ul id="list" class="aui-list aui-media-list aui-margin-b-10">
+				<div style="position: relative; width: 100%;padding-bottom: 2.2rem;" class="app_bg_white">
+				<li class="" >
+					<div class="list-top">
+						<p>订单编号：12345678<span class="aui-pull-right" style="color: #f29b28;">已完成</span></p>
+						
+					</div>
+					<div class="aui-list-item" style="background: #f2f2f2;">
+						<div class="aui-media-list-item-inner goodsIetm " >
+							<div class="aui-list-item-media">
+								<img  class="goodsimg" src="../imgs/temp/img3.jpeg">
+							</div>
+							<div class="aui-list-item-inner">
+								<div class="aui-list-item-text">
+									<div class="aui-list-item-title">
+										白菜
+										<@ 1>
+									</div>
+								</div>
+								<div class="goods_describe aui-list-item-text">
+									新鲜大白菜新鲜大...
+								</div>
+							</div>
+							<div class="goods_info">3kg</div>
+							<div class="goods_num">x3</div>
+						</div>
+					</div>
+					<div class=" aui-font-size-14 aui-text-right list-top " style="border-bottom: 1px solid #DDDDDD;">
+						共1件商品
+						共计：<span class=" aui-font-size-16">¥300.00</span>
+						(含运费¥0.00)
+					</div>
+				</li>
+				<div class="btn_bot">
+					<div class="aui-btn aui-btn-info app_bg_green  aui-margin-l-10 aui-pull-right">去评价</div>
+					<div class="aui-btn border_green app_bg_white aui-pull-right aui-margin-l-10">查看物流</div>
+					<div class="aui-btn border_green app_bg_white aui-pull-right aui-margin-l-10">删除订单</div>
+				</div>
+			</div>
+			</ul>
+			
+		</section>
+		
+		
+			
+		
+		<script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+	</body>
+
+</html>

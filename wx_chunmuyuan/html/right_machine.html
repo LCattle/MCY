@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--屏蔽标签拨号/email/address链接-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="format-detection" content="adress=no" />
+    <!--不启用缓存-->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="../lib/aui/css/aui.2.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <title>家庭阳台梦幻种植机</title>
+    <style>
+        #app {
+            background-color: #FFFFFF;
+        }
+        .head img {
+            width: 100%;
+        }
+        .title {
+            font-size: 0.9rem;
+            line-height: 1.4rem;
+        }
+        .item {
+            font-size: 0.8rem;
+            color: #666666;
+            line-height: 1.2rem;
+        }
+        .detail {
+            font-size: 0.7rem;
+            color: #787878;
+            text-indent: 2em;
+            line-height: 1rem;
+        }
+        .get_btn_row{
+            margin: 0.75rem auto;
+            text-align: center;
+        }
+        .get_btn {
+            display: inline-block;
+            vertical-align: middle;
+            width: 6.25rem;
+            height: 1.5rem;
+            background-image: url("../imgs/rights/get_btn.png");
+            background-size: 100%;
+            margin: auto;
+            text-align: center;
+            line-height: 1.5rem;
+            font-weight: bold;
+            color: #570B08;
+            font-size: 0.8rem;
+        }
+        .b_q {
+            display: inline-block;
+            height: 0.8rem;
+            width: 0.2rem;
+            background-color: #000000;
+            vertical-align: -2px;
+        }
+        .line {
+            height: 1px;
+            background-image: url("../imgs/rights/line.png");
+            background-repeat: repeat-x;
+            margin: 0rem 0.75rem;
+        }
+        .v_line {
+            height: 100%;
+            width: 1px;
+            background-image: url("../imgs/rights/v_line.png");
+            background-repeat: repeat-y;
+        }
+        .get-detail {
+            padding: 0.5rem 0.75rem;
+        }
+        .detail-ul {
+            padding: 0 0.75rem;
+        }
+        .detail-ul:before,.detail-ul:after {
+            height: 0;
+        }
+        .detail-ul .detail-li {
+            padding-left:0;
+            border: 1px solid #EFEFEF;
+            height: 4.75rem;
+            border-radius: 0.5rem;
+            box-shadow: 0.1rem 0.1rem 0.1rem #EFEFEF;
+            margin-bottom: 0.75rem;
+        }
+        .detail-stat {
+            width: 36%;
+            padding-bottom: 0.75rem;
+            text-align: center;
+            height: 100%;
+        }
+        .detail-stat:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        .detail-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0.75rem;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            background-color: #A7D438;
+        }
+        .detail-use {
+            width: 4rem;
+            height: 1.6rem;
+            line-height: 1.4rem;
+            text-align: center;
+            border: 2px solid #2EBB2E;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            color: #4DBE36;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .detail-info {
+            width: 63.8%;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #B2B2B2;
+            padding-bottom: 0.75rem;
+            height: 100%;
+        }
+        .detail-info:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        .detail-info-inner {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .my_dialog {
+            position: fixed;
+            top:0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            text-align: center;
+            display: none;
+        }
+        .my_dialog:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        .dialog_c {
+            width: 80%;
+            border-radius: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .dialog_info {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            background-color: #FC6455;
+            padding-bottom: 0.5rem;
+        }
+        .dialog_img {
+            width:90%;
+            margin-top: 0.25rem;
+            margin-left: 0.5rem;
+        }
+        .dialog_img img {
+            width: 100%;
+        }
+        .dialog_text p {
+            text-align: center;
+            color: #FFFFFF;
+            line-height: 0.9rem;
+        }
+        .dialog_btn_c {
+            height: 3.5rem;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+        .dialog_btn_c:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id="app">
+    <div class="aui-content">
+        <div class="aui-row head">
+            <img src="../imgs/rights/zzj_head.png" />
+        </div>
+        <div class="aui-row aui-padded-l-15 aui-padded-r-15">
+            <h3 class="title">家庭阳台梦幻种植机</h3>
+            <p class="item">1、权益说明：</p>
+            <p class="detail">钻石卡会员可免费领取春沐源为您打造的家庭阳台梦幻种植机一台，让您随心享受种植与丰收的乐趣。</p>
+            <p class="item">2、兑现方式：</p>
+            <p class="detail">领取成功后您的专属顾问会及时与您联系，为您送货上门~</p>
+        </div>
+        <div class="aui-row get_btn_row" id="get_btn_row">
+            <div class="get_btn" style="display: none">立即领取</div>
+        </div>
+        <div class="aui-row" id="details" style="display: none">
+            <div class="aui-row line"></div>
+            <div class="aui-row get-detail">
+                <div class="b_q"></div> 领取记录
+            </div>
+            <ul class="aui-list detail-ul">
+
+            </ul>
+        </div>
+    </div>
+    <div class="my_dialog">
+        <div class="dialog_c">
+            <div class="dialog_info">
+                <div class="dialog_img">
+                    <img src="../imgs/rights/lqcg.png" />
+                </div>
+                <div class="dialog_text">
+                    <p style="font-size: 0.8rem">恭喜您成功领取春沐源</p>
+                    <p style="font-size: 0.8rem">家庭阳台梦幻种植机一台！</p>
+                    <p style="margin-top: 0.5rem">随后您的专属顾问将联系您，</p>
+                    <p>为您送货上门！</p>
+                </div>
+            </div>
+            <div class="dialog_btn_c">
+                <div class="get_btn">确认</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/template" id="detailItem">
+        <li class="aui-list-item detail-li">
+            <div class="detail-stat">
+                <div class="detail-use"><@ it.isuse=='N'?'待 收 货':'已 收 货'></div>
+            </div>
+            <div class="v_line"></div>
+            <div class="detail-info">
+                <div class="detail-info-inner">
+                    <p>领取时间: <@ it.createtime></p>
+                    <p>收货时间: <@ it.goodsreceipttime></p>
+                </div>
+            </div>
+            <div class="detail-bottom"></div>
+        </li>
+    </script>
+    <script data-main="../js/main" src="../lib/requirejs/require.js"></script>
+</body>
+</html>

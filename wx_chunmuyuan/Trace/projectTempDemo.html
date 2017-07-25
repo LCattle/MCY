@@ -1,0 +1,150 @@
+<html lang="en" >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<!--屏蔽标签拨号/email/address链接-->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="email=no" />
+		<meta name="format-detection" content="adress=no" />
+		<!--不启用缓存-->
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css">
+		<link rel="stylesheet" type="text/css" href="../lib/aui/css/aui-slide.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon/iconfont.css">
+		<link href="copygreen.css" rel="stylesheet" type="text/css" />
+		<title>绿色履历</title>
+	</head>
+	<style>
+		.page-wrap {
+			position: absolute;
+			width: 100%;
+			top: 20px;
+			z-index: 30;
+			height: 0.3rem;
+			text-align: center;
+		}
+		
+		.page-items {
+			display: inline-block;
+			height: 0.2rem;
+			width: 0.2rem;
+			margin: 0 5px;
+			border-radius: 0.2rem;
+			background-color: grey;
+		}
+		
+		.page-items.active {
+			border: 0;
+			background-color: orange!important;
+		}
+	</style>
+
+	<body id="app">
+		<div class="page-wrap">
+		</div>
+		<div id="aui-slide">
+			<div class="aui-slide-wrap">
+				
+			</div>
+		</div>
+	</body>
+	<script id="pagetemplate" type="text/template">
+		<div class="aui-slide-node box_<@ it.id>" >
+			<div class="aui-row">
+				<div class="outer">
+					<div class="carrousel">
+                        <span></span><img src="images/" />
+                    </div>
+					<div class="vagetable_pic">
+						<div class="outline_border">
+							<img src="img/outline.jpg" class="round" />
+							<div class="breed"><img src="" /></div>
+						</div>
+					</div>
+					<div class="vagetable_name">
+						<div class="line_left">
+
+						</div>
+						<div class="text_middle">
+							
+						</div>
+						<div class="line_right">
+
+						</div>
+					</div>
+					<div class="line_chart">
+						<div class="line_chart_nav">
+							<p>蔬菜生长趋势</p>
+							<ul class="massage">
+								<li class="kobe">温度</li>
+								<li>湿度</li>
+								<li>光照</li>
+								<li>CO2</li>
+							</ul>
+						</div>
+						<ul class="line_chart_pic">
+							<li class="main<@ it.id> mains"></li>
+							<li class="easy<@ it.id> easys"></li>
+							<li class="lake<@ it.id> lakes"></li>
+							<li class="jeep<@ it.id> jeeps"></li>
+						</ul>
+					</div>
+					<!--树的大图-->
+					<div class="tree">
+						<div class="up_tree"></div>
+						<img src="img/lasttree.jpg" class="tree_tall">
+						<div class="data1">
+							<p class="process1"><@ it.description1></p>
+							<p class="time1"><@ it.time1></p>
+							<div class="time_pic1 like"><img src='<@ it.picture6>'></em></div>
+						</div>
+						<div class="data2">
+							<p class="process2"><@ it.description2></p>
+							<p class="time2"><@ it.time2></p>
+							<div class="time_pic2 like"><img src='<@ it.picture5>'></div>
+						</div>
+						<div class="data3">
+							<p class="process3"><@ it.description3></p>
+							<p class="time3"><@ it.time3></p>
+							<div class="time_pic3 like"><img src='<@ it.picture4>'></div>
+						</div>
+						<div class="data4">
+							<p class="process4"><@ it.description4></p>
+							<p class="time4"><@ it.time4></p>
+							<div class="time_pic4 like"><img src='<@ it.picture3>'></div>
+						</div>
+						<div class="data5">
+							<p class="process5"><@ it.description5></p>
+							<p class="time5"><@ it.time5></p>
+							<div class="time_pic5 like"><img src='<@ it.picture2>'></div>
+						</div>
+						<div class="data6">
+							<p class="process6"><@ it.description6></p>
+							<p class="time6"><@ it.time6></p>
+							<div class="time_pic6 like"><img src='<@ it.picture1>'></div>
+						</div>
+					</div>
+					<div class="Authentication">
+						<h2>认证信息</h2>
+						<p>认证种类:有机认证</p>
+						<p>认证机构 : 广东省质量监督食品检验站(深圳)</p>
+						<p>认证时间 : 2016-12-12</p>
+						<div class="certificate">						
+							<img src="img/hj1.jpg" class="img1">
+							<img src="img/hj2.jpg" class="img2">
+					    </div>
+						<div class="certificate1">	
+							<img src="img/hj3.jpg" class="img3">
+							<img src="img/hj4.jpg" class="img4">
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</script>
+	<script data-main="../js/main" data-app="../Trace/projectTempDemo" src="../lib/requirejs/require.js"></script>
+</html>
